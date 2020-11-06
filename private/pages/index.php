@@ -14,32 +14,6 @@
 
     
     $pages = $site::find_all_pages();
-
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-    } else {
-        $id=1;
-    }
-
-    foreach($pages as $row) {
-        //Logic to match the requested page id
-        // echo $row['id'];
-        if($row['id'] == $id) {
-            //Requested Page
-            $page = $row['page'];
-            $title = $row['title'];
-            $subtitle = $row['subtitle'];
-            $description = $row['description'];
-            
-            break;
-
-        }
-
-    }
-
-    $page = new Page($title, $description);
-    $site->setPage($page);
-
     // echo '<pre>';
     // print_r($pages);
 

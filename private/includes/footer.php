@@ -106,6 +106,248 @@
 
     });
 
+    $("#new-gallery").on("submit", function(e){
+        e.preventDefault();
+
+        console.log('a gallery submission has been tried');
+
+            // tinyMCE.triggerSave();
+            
+            var formId = $('form').attr('id');
+            var gallery_title = $("#gallery_title").val();
+            var gallery_desc = $("#gallery_description").val();
+            var gallery_assoc = $('option:selected', this).attr('value');
+            var gallery_images = $('#gallery_images').prop('files');
+
+            if ( $('#gallery_active').is(':checked') ) {
+
+                $('#gallery_active').val(1);
+                } else {
+
+                $('#gallery_active').val(0);
+                }
+
+            var gallery_active = $("#gallery_active").val();
+
+            // var gallery_description = $("#gallery_description").val();
+
+            var form_data = new FormData();
+
+            form_data.append('id', formId);
+            form_data.append('gallery_title', gallery_title);
+            form_data.append('gallery_description', gallery_desc);
+            form_data.append('gallery_assoc', gallery_assoc);
+            form_data.append('gallery_active', gallery_active);
+
+            var totalfiles = document.getElementById('gallery_images').files.length;
+                for (var index = 0; index < totalfiles; index++) {
+                    form_data.append("gallery_images[]", document.getElementById('gallery_images').files[index]);
+                }
+            // form_data.append('gallery_images', gallery_images);
+
+
+            console.log(formId, gallery_title, gallery_assoc, gallery_desc, gallery_active, gallery_images);
+            
+
+            $.ajax({
+                type: "POST",
+                url: "../process.php",
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    if (data.errors.title) {
+
+                        $('#title-warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.title + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    } else {
+                        $('#title-warning').html('');
+                    }
+
+                    if (data.errors.assoc) {
+
+                        $('#assoc-warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.assoc + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');    
+                    } else {
+                        $('#assoc-warning').html('');
+                    }
+                
+                    $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                
+                    console.log('gallery did not submit!');
+
+                } else {
+
+                    $(location).attr('href', data.redirect);
+                    
+                    console.log('gallery created!');
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
+                }
+            
+        });
+
+    });
+
+    $(".remove-slide").on("click", function(e){
+        $(this).closest('.img-container').remove();
+    });
+
+    $("#edit-gallery").on("submit", function(e){
+        e.preventDefault();
+
+        console.log('a gallery edit has been tried');
+
+            // tinyMCE.triggerSave();
+            
+            var formId = $('form').attr('id');
+            var gallery_id = $("#gallery_id").val();
+            var gallery_title = $("#gallery_title").val();
+            var gallery_desc = $("#gallery_description").val();
+            var gallery_assoc = $('option:selected', this).attr('value');
+            var gallery_images = $('#gallery_images').prop('files');
+
+            if ( $('#gallery_active').is(':checked') ) {
+
+                $('#gallery_active').val(1);
+                } else {
+
+                $('#gallery_active').val(0);
+                }
+
+            var gallery_active = $("#gallery_active").val();
+
+            // var gallery_description = $("#gallery_description").val();
+
+            var form_data = new FormData();
+
+            form_data.append('id', formId);
+            form_data.append('gallery_id', gallery_id);
+            form_data.append('gallery_title', gallery_title);
+            form_data.append('gallery_description', gallery_desc);
+            form_data.append('gallery_assoc', gallery_assoc);
+            form_data.append('gallery_active', gallery_active);
+
+            var totalfiles = document.getElementById('gallery_images').files.length;
+                for (var index = 0; index < totalfiles; index++) {
+                    form_data.append("gallery_images[]", document.getElementById('gallery_images').files[index]);
+                }
+            // form_data.append('gallery_images', gallery_images);
+
+            var existing = [];
+
+            $('.current-image').each(function(i, obj) {
+                $image = $(this).attr('data-name');
+                console.log($image);
+                existing.push($image);
+            });
+
+            form_data.append('existing', existing);
+
+
+            console.log(formId, gallery_title, gallery_assoc, gallery_active, gallery_images, gallery_desc, existing);
+            
+
+            $.ajax({
+                type: "POST",
+                url: "../process.php",
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    if (data.errors.title) {
+
+                        $('#title-warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.title + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    } else {
+                        $('#title-warning').html('');
+                    }
+
+                    if (data.errors.assoc) {
+
+                        $('#assoc-warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.assoc + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');    
+                    } else {
+                        $('#assoc-warning').html('');
+                    }
+                
+                    $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                
+                    console.log('gallery did not submit!');
+
+                } else {
+
+                    $(location).attr('href', data.redirect);
+                    
+                    console.log('gallery created!');
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
+                }
+            
+        });
+
+    });
+
+
+    $(".delete-gallery").on("click", function(e){
+        let modal = $('#id01');
+        let modal_delete = $('.confirm-delete-gallery');
+
+        let button_id = $(this).attr('data-id');
+        let modal_delete_id = $(modal_delete).attr('data-id');
+
+        $(modal_delete).attr('data-id', button_id);
+
+
+        $(modal).css('display', 'block');
+    });
+
+    $(".confirm-delete-gallery").on("click", function(e){
+        e.preventDefault();
+
+        console.log('a gallery deletion has been tried');
+            
+            var formId = $(this).attr('class');
+            var gallery_id = $(this).attr('data-id');
+
+        console.log(formId, gallery_id);
+
+    
+            $.ajax({
+                type: "POST",
+                url: "../process.php",
+                dataType: "json",
+                data: {gallery_id:gallery_id, id:formId},
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                
+                    console.log('Gallery did not delete!');
+
+                } else {
+                    
+                    console.log('Gallery deleted!');
+
+                    let modal = $('#id01');
+
+                    $(modal).css('display', 'none');
+                    
+                    $('.delete-gallery[data-id="' + data.id + '"]').closest('.gallery').remove();
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                }
+            
+        });
+
+    });
+
+
     $("#edit-page").on("submit", function(e){
         e.preventDefault();
 

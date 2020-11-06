@@ -34,8 +34,10 @@
     }
 
 
-    $page = new Page($title, $description);
+    $page = new Page($title, $description, $db);
     $site->setPage($page);
+
+    $gallery = $site->findSliderByPageId($id);
 
     //  $page->render_nav();
     // echo '<pre>';
@@ -79,8 +81,11 @@
     </div>
 </header>
 <main>
-    <div class="container">
+<div class="container-fluid">
         <div class="row">
+        <?php if ($gallery) :?>
+                <?= $site->addSlider(); ?>
+        <?php endif; ?>
             <p>
                 <?php $site->render(); ?>
             </p> 

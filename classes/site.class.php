@@ -7,7 +7,7 @@
         private $conn;
         static protected $connect;
 
-        public function __construct($db) {
+        public function __construct() {
 
             // $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini');
             $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/db.ini');
@@ -52,8 +52,35 @@
 
         }
 
+        public function addSlider() {
+            require_once("includes/slider.php");
+        }
+
+        public function findSliderById($id) {
+            $stmt = self::$connect->prepare('SELECT title, description, page_id, slides, active FROM galleries WHERE id=:id');
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $gallery = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $gallery;
+        }
+
+        public function findSliderByPageId($page_id) {
+            $stmt = self::$connect->prepare('SELECT title, slides, active FROM galleries WHERE page_id=:page_id');
+            $stmt->bindParam(":page_id", $page_id);
+            $stmt->execute();
+            $gallery = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $gallery;
+        }
+
          static public function find_all_pages() {
             $statement = self::$connect->prepare('SELECT * FROM pages');
+            $statement->execute();
+            $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $pages;
+        }
+
+        static public function find_all_galleries() {
+            $statement = self::$connect->prepare('SELECT * FROM galleries');
             $statement->execute();
             $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $pages;
@@ -220,7 +247,7 @@
                 if( ! $stmt->rowCount() ) {
                     $data['success'] = false;
 
-                    $data['message'] = 'Deletion Failed!';
+                    $data['message'] = 'Deletion Failed, this page may be currently set to a Gallery which will need to be removed first.';
                 } else {
                     $data['success'] = true;
                     $data['id'] = $id;

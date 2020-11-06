@@ -36,6 +36,30 @@
             return $this->conn;
         }
 
+        public function find_all() {
+            $statement = $this->conn->prepare('SELECT * FROM ' . static::$table_name);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+
+        public function find_by_id($id) {
+
+            try {
+
+                $statement = $this->conn->prepare('SELECT * FROM ' . static::$table_name . ' where id=:id');
+                $statement->bindParam(":id", $id);
+                $statement->execute();
+                $response = $statement->fetch(PDO::FETCH_ASSOC);
+
+                return $response;
+
+            } catch (Exception $e) {
+
+                return $e->getMessage();
+            }
+        }
+
         // public function __construct($server, $user, $password, $database) {
 
         //     self::$server = $server;

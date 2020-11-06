@@ -1,2 +1,3 @@
 .env/smtp.ini
 .env/db.ini
+uploads/

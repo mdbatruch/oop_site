@@ -14,6 +14,8 @@
         <!-- main stylesheet link -->
             <link rel="stylesheet" href="<?php echo root_url('css/font-awesome.min.css'); ?>" />
             <link rel="stylesheet" href="<?php echo root_url('css/bootstrap.css'); ?>" />
+            <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
 
 <body>

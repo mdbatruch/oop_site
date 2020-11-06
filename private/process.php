@@ -124,6 +124,315 @@
 
       break;
 
+      case 'new-gallery':
+
+        $title = $_POST['gallery_title'];
+
+        if ($_POST['gallery_assoc'] == 999) {
+          $_POST['gallery_assoc'] = NULL;
+        } else {
+
+          $assoc = $_POST['gallery_assoc'];
+
+        }
+
+        $assoc = $_POST['gallery_assoc'];
+
+        $description = $_POST['gallery_description'];
+
+        $active = $_POST['gallery_active'];
+  
+        // var_dump($active);
+
+        // exit;
+
+        $slides = [];
+
+        if (!empty($_FILES['gallery_images'])) {
+
+          foreach ($_FILES['gallery_images']['name'] as $key => $name) {
+
+
+            //to make indexed
+            // $slides[][$key] = $name;
+
+            $tmp_name = $_FILES['gallery_images']['tmp_name'][$key];
+
+            $path = $_SERVER['DOCUMENT_ROOT'] . dirname(dirname($_SERVER['PHP_SELF'])) . '/uploads/';
+
+            move_uploaded_file($tmp_name, $path . $name);
+
+            $slides[] = $name;
+
+          }
+      }
+
+       $slides = json_encode($slides);
+
+      //  print_r($slides);
+
+      //   for($i=0; $i<count($_FILES['gallery_images']); $i++) {
+
+      //     $target_path = "uploads/";
+
+      //     // print_r($slides);
+
+      //     // $ext = explode('.', basename( $_FILES['file']['gallery_images'][$i]));
+      //     // $target_path = $target_path . md5(uniqid()) . "." . $ext[count($ext)-1]; 
+      
+      //     // if(move_uploaded_file($_FILES['file']['tmp_name'][$i], $target_path)) {
+      //     //     echo "The file has been uploaded successfully <br />";
+      //     // } else{
+      //     //     echo "There was an error uploading the file, please try again! <br />";
+      //     // }
+      // }
+
+       $stmt = $db->prepare("SELECT title, id from galleries WHERE title = ?");
+       $stmt->execute(array($title));
+       $title_exists = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+       $stmt2 = $db->prepare("SELECT page_id, id from galleries WHERE page_id = ?");
+       $stmt2->execute(array($assoc));
+       $assoc_exists = $stmt2->fetchAll();
+
+        if ($title_exists){
+            $errors['title'] = "This name already exists, please choose another one";
+        }
+
+        if ($assoc_exists && $assoc !== NULL){
+            $errors['assoc'] = "This slider is already on another page, please choose another one";
+        }
+
+      if (empty($title)) {
+        $errors['title'] = "Title can't be blank";
+      }
+
+      if (!empty($errors)) {
+        
+        $data['success'] = false;
+        $data['message'] = 'There were errors. Please try again';
+        $data['errors'] = $errors;
+
+      } else {
+
+          try {
+
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $db->prepare('INSERT INTO galleries (title, description, page_id, slides, active)
+                                  VALUES (?, ?, ?, ?, ?)');
+
+            $stmt->bindParam(1, $title);
+            $stmt->bindParam(2, $description);
+            $stmt->bindParam(3, $assoc);
+            $stmt->bindParam(4, $slides);
+            $stmt->bindParam(5, $active);
+
+            $stmt->execute();
+
+            // if ($stmt->execute()) {
+
+
+              $data['success'] = true;
+
+              $data['message'] = 'Success! Gallery was created!';
+            // } else {
+            //   print_r($db->errorInfo());
+            // }
+
+          } catch (PDOException $e) {
+                    
+              $data['success'] = false;
+
+              $data['message'] = $e->getMessage();
+          }
+      }
+
+      echo json_encode($data);
+
+      break;
+
+      case 'edit-gallery':
+
+        $errors = [];
+
+        $gallery_id = $_POST['gallery_id'];
+
+        $title = $_POST['gallery_title'];
+
+        $description = $_POST['gallery_description'];
+
+        if ($_POST['gallery_assoc'] == 999) {
+          $_POST['gallery_assoc'] = NULL;
+        } else {
+
+          $assoc = $_POST['gallery_assoc'];
+
+        }
+
+        $assoc = $_POST['gallery_assoc'];
+
+        $active = $_POST['gallery_active'];
+
+
+        // if ($_POST['gallery_active']) {
+        // $active = 'Yes';
+        // } else {
+        //   $active = 'No';
+        // }
+
+        // var_dump($active);
+
+        // exit;
+
+
+        //add images to this
+        $slides = [];
+
+        $existing = $_POST['existing'];
+
+        $existing = explode(',', $existing);
+
+        foreach($existing as $exists) {
+          $slides[] = $exists;
+        }
+
+        // print_r($slides);
+
+        // exit;
+
+        if (!empty($_FILES['gallery_images'])) {
+
+            foreach ($_FILES['gallery_images']['name'] as $key => $name) {
+
+
+              //to make indexed
+              // $slides[][$key] = $name;
+
+              $tmp_name = $_FILES['gallery_images']['tmp_name'][$key];
+
+              $path = $_SERVER['DOCUMENT_ROOT'] . dirname(dirname($_SERVER['PHP_SELF'])) . '/uploads/';
+
+              move_uploaded_file($tmp_name, $path . $name);
+
+              $slides[] = $name;
+
+          }
+      }
+
+      //  print_r($slides);
+
+      //  exit;
+
+       $slides = json_encode($slides);
+
+       $stmt = $db->prepare("SELECT title, id from galleries WHERE title = ?");
+       $stmt->execute(array($title));
+       $title_exists = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+       $stmt2 = $db->prepare("SELECT page_id, id from galleries WHERE page_id = ?");
+       $stmt2->execute(array($assoc));
+       $assoc_exists = $stmt2->fetchAll();
+
+
+      // function to check if submitted gallery id exists in DB AND matches title from fetch from above
+       function in_array_r($needle, $haystack, $strict = false) {
+        foreach ($haystack as $item) {
+            if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && in_array_r($needle, $item, $strict))) {
+                return true;
+            }
+        }
+    
+        return false;
+    }
+
+      $check_id = in_array_r($gallery_id, $title_exists) ? 'found' : 'not found';
+
+      $check_assoc = in_array_r($gallery_id, $assoc_exists) ? 'found' : 'not found';
+
+      //  echo $title_exists . '<br>';
+      //  echo $assoc_exists . '<br>';
+      // echo $gallery_id;
+      //  print_r($assoc_exists);
+
+       if ($title_exists && $check_id == 'not found'){
+            $errors['title'] = "This name already exists, please choose another one";
+        }
+
+      if ($assoc_exists && $check_assoc == 'not found'){
+          $errors['assoc'] = "This slider is already on another page, please choose another one";
+      }
+
+
+      if (empty($title)) {
+          $errors['title'] = "Title can't be blank";
+      }
+
+      if (!empty($errors)) {
+        
+        $data['success'] = false;
+        $data['message'] = 'There were errors. Please try again';
+        $data['errors'] = $errors;
+
+      } else {
+
+        try {
+
+          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+          $stmt = $db->prepare("UPDATE galleries SET title = ?, description = ?, page_id = ?, slides = ?, active = ? WHERE id = ? LIMIT 1");
+          // $stmt->bindParam("sisi", $title, $assoc, $slides, $gallery_id);
+  
+          $stmt->bindParam(1, $title);
+          $stmt->bindParam(2, $description);
+          $stmt->bindParam(3, $assoc);
+          $stmt->bindParam(4, $slides);
+          $stmt->bindParam(5, $active);
+          $stmt->bindParam(6, $gallery_id);
+  
+          $stmt->execute();
+  
+          $data['success'] = true;
+  
+          $data['message'] = 'Success! Gallery was edited!';
+  
+        } catch (PDOException $e) {
+                  
+            $data['success'] = false;
+  
+            $data['message'] = $e->getMessage();
+        }
+
+      }
+
+      echo json_encode($data);
+
+      break;
+
+      case 'confirm-delete-gallery':
+
+        $gallery_id = $_POST['gallery_id'];
+
+        $stmt = $db->prepare("DELETE FROM galleries WHERE id = ? LIMIT 1");
+        $stmt->bindParam(1, $gallery_id);
+        $stmt->execute();
+        
+        if ($stmt) {
+          
+            $data['success'] = true;
+            $data['status'] = 'deleted';
+            $data['message'] = 'Success! Your Gallery has been deleted!';
+            $data['id'] = $gallery_id;
+            
+        } else {
+            
+            $data['message'] = 'We could not delete your gallery at this time';
+        }
+  
+      echo json_encode($data);
+
+      break;
+
     }
 
 ?>

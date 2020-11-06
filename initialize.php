@@ -37,6 +37,6 @@
 
     // $db = new Connect($db['server'], $db['username'], $db['password'], $db['db']);
 
-    $site = new Site($db);
+    $site = new Site();
 
     $session = new Session;

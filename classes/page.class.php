@@ -2,18 +2,18 @@
 
     // namespace Front;
 
-    class Page {
+    class Page extends Database {
         private $title;
         public $content;
         public $url;
         static protected $table_name = 'pages';
         // static protected $connect;
 
-        public function __construct($title, $content) {
+        public function __construct($title, $content, $db) {
             $this->title = $title;
             $this->content = $content;
 
-            // $this->conn = $db;
+            $this->conn = $db;
             
             // self::$connect = $connect;
 
@@ -41,8 +41,8 @@
             $this->url = $url;
         }
 
-        // static public function find_all_pages() {
-        //     $statement = static::$connect->prepare('SELECT * FROM pages');
+        // public function find_all_pages() {
+        //     $statement = $this->conn->prepare('SELECT * FROM ' . self::$table_name);
         //     $statement->execute();
         //     $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
         //     return $pages;
@@ -54,13 +54,6 @@
         //     //     echo $row['title'];
         //     // }
         //     echo 'bleh';
-        // }
-
-        // static public function find_all_pages() {
-        //     $statement = self::$connect->prepare('SELECT * FROM pages');
-        //     $statement->execute();
-        //     $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
-        //     return $pages;
         // }
     }
 ?>
