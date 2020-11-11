@@ -37,20 +37,79 @@
             require_once("includes/footer.php");
         }
 
-        public function addNav() {
-            $items = self::find_all_pages();
+        public function addEditNav() {
 
-            $nav = [];
+            $items = self::find_nav_by_title('main-navigation');
 
-            echo '<ul class="navbar-nav">';
+            $items = json_decode($items[0]['output'], true);
+
+            // echo '<pre>';
+            // print_r($items);
+
+            echo '<ol id="main-navigation" class="navbar-nav dd-list">';
                 foreach($items as $item) {
-                    echo '<li class="nav-item">';
-                        echo '<a class="nav-link" href="index.php?id=' . $item['id'] . '">' . $item['page'] . '</a>';
+                    echo '<li class="nav-item dd-item" data-name="' . $item['name'] . '" data-order="' . $item['order'] . '" data-id="' . $item['id'] . '">';
+                        echo '<a class="nav-link dd-handle" href="index.php?id=' . $item['id'] . '">' . $item['name'] . '</a>';
+
+                        if (isset($item['children'])) {
+                            echo '<ol class="navbar-nav sub-nav dd-list">';
+                                foreach($item['children'] as $key => $value) {
+                                    echo '<li class="nav-item dd-item" data-name="' . $value['name'] . '" data-order="' . $value['order'] . '" data-id="' . $value['id'] . '">';
+                                        echo '<a class="nav-link dd-handle" href="index.php?id=' . $item['id'] . '">' . $value['name'] . '</a>';
+                                    echo '</li>'; 
+                                }
+                            echo '</ol>';
+                        }
+                    echo '</li>';
+                }
+            echo '</ol>';
+
+        }
+
+        public function addNav() {
+            $items = self::find_nav_by_title('main-navigation');
+
+            $items = json_decode($items[0]['output'], true);
+
+            // echo '<pre>';
+            // print_r($items);
+
+            echo '<ul id="main-navigation" class="navbar-nav dd-list">';
+                foreach($items as $item) {
+                    echo '<li class="nav-item dd-item" data-name="' . $item['name'] . '" data-order="' . $item['order'] . '">';
+                        echo '<a class="nav-link dd-handle" href="index.php?id=' . $item['id'] . '">' . $item['name'] . '</a>';
+
+                        if (isset($item['children'])) {
+                            echo '<ul class="navbar-nav sub-nav dd-list dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                                echo   '<div class="dropdown-menu">'; 
+                                foreach($item['children'] as $key => $value) {
+                                        echo '<li class="nav-item dd-item" data-name="' . $value['name'] . '" data-order="' . $value['order'] . '">';
+                                            echo '<a class="nav-link dd-handle" href="index.php?id=' . $value['id'] . '" style="color: #000">' . $value['name'] . '</a>';
+                                        echo '</li>'; 
+                                    }
+                                echo '</div>';
+                            echo '</ul>';
+                        }
                     echo '</li>';
                 }
             echo '</ul>';
 
         }
+
+        // public function addNav() {
+        //     $items = self::find_all_pages_by_nav_order();
+
+        //     $nav = [];
+
+        //     echo '<ol id="main-navigation" class="navbar-nav dd-list">';
+        //         foreach($items as $item) {
+        //             echo '<li class="nav-item dd-item" data-name="' . $item['page'] . '" data-order="' . $item['nav_order'] . '">';
+        //                 echo '<a class="nav-link dd-handle" href="index.php?id=' . $item['id'] . '">' . $item['page'] . '</a>';
+        //             echo '</li>';
+        //         }
+        //     echo '</ol>';
+
+        // }
 
         public function addSlider() {
             require_once("includes/slider.php");
@@ -74,6 +133,21 @@
 
          static public function find_all_pages() {
             $statement = self::$connect->prepare('SELECT * FROM pages');
+            $statement->execute();
+            $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $pages;
+        }
+
+        static public function find_nav_by_title($title) {
+            $stmt = self::$connect->prepare('SELECT output FROM navigations WHERE title=:title');
+            $stmt->bindParam(":title", $title);
+            $stmt->execute();
+            $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $pages;
+        }
+
+        static public function find_all_pages_by_nav_order() {
+            $statement = self::$connect->prepare('SELECT * FROM pages ORDER BY nav_order');
             $statement->execute();
             $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $pages;

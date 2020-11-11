@@ -71,12 +71,23 @@
     //  $page->content = $description;
 
 ?>
-<header class="container">
-    <div class="row">
-        <div id="navigation">
-            <nav class="navbar navbar-expand-sm bg-light">
-                <?php $site->addNav(); ?>
-            </nav>
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="navigation" style="width: 100%;">
+                <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <?php $site->addNav(); ?>
+                </div>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <button class="btn my-2 my-sm-0 btn-outline-secondary" type="submit">Search</button>
+                </form>
+                </nav>
+            </div>
         </div>
     </div>
 </header>

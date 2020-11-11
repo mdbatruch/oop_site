@@ -7,6 +7,84 @@
 <script src="<?php echo root_url('js/lightbox-plus-jquery.min.js'); ?>"></script>
     <script src="<?php echo root_url('js/bootstrap.js'); ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="<?php echo root_url('js/nestable.js'); ?>"></script>
+
+    <script type="text/javascript">
+        $(function  () {
+            // $("ol.navbar-nav").sortable();
+
+        $('.nav-sort').nestable({
+            group: 1
+        });
+
+        // var output = $('.nav-sort').contents();
+        // var output = window.JSON.stringify($('.nav-sort').nestable('serialize'));
+
+        // console.log(output);
+
+        // updateOutput($('#nestable').data('output', $('#nestable-output')));
+
+            $(".save-navigation").on("click", function(e){
+                e.preventDefault();
+
+                console.log('a nav edit has been tried');
+                    
+                    var button = $(this).attr('class');
+                    var nav_name = $("ol.navbar-nav").attr('id');
+                    var nav_container = $("ol.navbar-nav").contents();
+
+                    console.log(button, nav_name, nav_container);
+
+                    var output = window.JSON.stringify($('.nav-sort').nestable('serialize'));
+
+                    console.log(output);
+
+
+                    // only one tier item
+
+                    // var order = [];
+
+                    // $('li.nav-item').each(function(i, obj) {
+                    //     $item = $(this).index();
+                    //     $page = $(this).text();
+
+                    //     order.push({
+                    //         order: $item,
+                    //         page: $page
+                    //     });
+
+                    // });
+
+                    // console.log(order);
+
+                    // end only one tier item
+
+                    $.ajax({
+                        type: "POST",
+                        url: "../process.php",
+                        dataType: "json",
+                        data: {id:button, title: nav_name, output},
+                    }).done(function(data){
+
+                    if (!data.success) {
+                        
+                            $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        
+                            console.log('nav did not submit!');
+
+                        } else {
+                            
+                            console.log('nav edited!');
+
+                            $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        }
+                    
+                });
+
+            });
+
+        });
+    </script>
 
 <script type="text/javascript">
 

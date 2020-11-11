@@ -29,6 +29,9 @@
                     <a href="<?php echo root_url_private('galleries/index.php'); ?>" class="button">Galleries</a>
                 </li>
                 <li>
+                    <a href="<?php echo root_url_private('navigation/index.php'); ?>" class="button">Navigation</a>
+                </li>
+                <li>
                     <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
                 </li>
             </ul>

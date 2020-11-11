@@ -433,6 +433,65 @@
 
       break;
 
+      case 'save-navigation':
+
+        // echo '<pre>';
+        // print_r($_POST);
+
+        // old
+
+      //   $nav = $_POST['order'];
+
+      //   try {
+          
+      //     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      //     $stmt = $db->prepare('UPDATE pages SET nav_order = ? WHERE page=?');
+
+      //     foreach ($nav as $key => $value) {
+      //         $stmt->bindValue(1, $value['order'], PDO::PARAM_INT);
+      //         $stmt->bindValue(2, $value['page']);
+      //         $stmt->execute();
+      //     }
+
+      //       $data['success'] = true;
+      //       $data['message'] = 'Success! Your Nav has been edited!';
+
+
+      //   } catch (PDOException $e) {
+                  
+      //     $data['success'] = false;
+
+      //     $data['message'] = $e->getMessage();
+      // }
+
+      //old
+
+         try {
+          
+          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+          $stmt = $db->prepare('UPDATE navigations SET output = ? WHERE title=?');
+
+            $stmt->bindValue(1, $_POST['output']);
+            $stmt->bindValue(2, $_POST['title'], PDO::PARAM_STR);
+            $stmt->execute();
+
+            $data['success'] = true;
+            $data['message'] = 'Success! Your Nav has been edited!';
+
+
+        } catch (PDOException $e) {
+                  
+          $data['success'] = false;
+
+          $data['message'] = $e->getMessage();
+      }
+
+      echo json_encode($data);
+
+      break;
+
     }
 
 ?>
