@@ -57,7 +57,6 @@
     // $page_id = '';
 
     // echo $page_id;
-
     
     // $nav = array();
         $site->addHeader();
@@ -82,8 +81,9 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <?php $site->addNav(); ?>
                 </div>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <form id="search" action="search.php" method="GET" class="form-inline my-2 my-lg-0">
+                    <?php $q = isset($_GET['q']) ? $_GET['q'] : ''; ?>
+                    <input class="search-term form-control mr-sm-2" type="search" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Search">
                     <button class="btn my-2 my-sm-0 btn-outline-secondary" type="submit">Search</button>
                 </form>
                 </nav>

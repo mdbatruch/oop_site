@@ -137,6 +137,42 @@
             });
         });
 
+        // $('#search').submit(function(e){
+
+        //     e.preventDefault(); 
+
+        //     console.log('a search has been attempted');
+
+        //     var formId = $('form').attr('id');
+        //     var term = $('.search-term').val();
+
+
+        //     console.log(formId, term);
+
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "private/process.php",
+        //         dataType: "json",
+        //         data: {id: formId, term: term},
+        //     }).done(function(data) {
+
+        //         if(!data.success) {
+
+        //                 $('#form-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
+
+        //                 $(location).attr('href', data.redirect);
+
+        //             } else {
+
+        //                 $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
+
+        //                 $(location).attr('href', data.redirect);
+
+        //             }
+        //     });
+
+        // });
+
     </script>
     </body>
 </html>
