@@ -1,0 +1,22 @@
+{
+  "name": "gulp-sass-bootstrap",
+  "version": "1.0.0",
+  "description": "Gulp Version 4 Sass and BrowserSync",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "bootstrap": "^4.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amylily1011/gulp4-sass-bootstrap.git"
+  },
+  "author": "Mike Batruch",
+  "license": "ISC"
+}

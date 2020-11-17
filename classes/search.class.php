@@ -10,7 +10,7 @@
 
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $this->conn->prepare("SELECT page, title, subtitle, description from pages WHERE page LIKE :keywords OR title LIKE :keywords OR subtitle LIKE :keywords OR description LIKE :keywords");
+            $stmt = $this->conn->prepare("SELECT id, page, title, subtitle, description from pages WHERE page LIKE :keywords OR title LIKE :keywords OR subtitle LIKE :keywords OR description LIKE :keywords");
             $stmt->bindValue(':keywords', '%' . $term . '%');
             $stmt->execute();
 
@@ -36,6 +36,7 @@
                     echo '<h3>' . $query['title'] . '</h3>';
                     echo '<h4>' . $query['subtitle'] . '</h4>';
                     echo '<p>' . $query['description'] . '</p>';
+                    echo '<a href="index.php?id=' . $query['id'] . '"> Go to page</a>';
 
                 }
             } else {

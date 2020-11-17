@@ -83,9 +83,10 @@
                 </div>
                 <form id="search" action="search.php" method="GET" class="form-inline my-2 my-lg-0">
                     <?php $q = isset($_GET['q']) ? $_GET['q'] : ''; ?>
-                    <input class="search-term form-control mr-sm-2" type="search" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Search">
+                    <input id="type-search" class="search-term form-control mr-sm-2" type="search" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Search">
                     <button class="btn my-2 my-sm-0 btn-outline-secondary" type="submit">Search</button>
                 </form>
+                <div id="display"></div>
                 </nav>
             </div>
         </div>

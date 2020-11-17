@@ -13,6 +13,7 @@
 
         <!-- main stylesheet link -->
             <link rel="stylesheet" href="<?php echo root_url('css/font-awesome.min.css'); ?>" />
+            <link rel="stylesheet" href="<?php echo root_url('css/styles.css'); ?>">
             <link rel="stylesheet" href="<?php echo root_url('css/bootstrap.css'); ?>" />
 
             <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

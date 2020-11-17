@@ -76,19 +76,22 @@
 
             echo '<ul id="main-navigation" class="navbar-nav dd-list">';
                 foreach($items as $item) {
-                    echo '<li class="nav-item dd-item" data-name="' . $item['name'] . '" data-order="' . $item['order'] . '">';
+
+                    $result = isset($item['children']) ? 'dropdown' : '';
+                    echo '<li class="nav-item dd-item ' . $result . ' data-name="' . $item['name'] . '" data-order="' . $item['order'] . '">';
                         echo '<a class="nav-link dd-handle" href="index.php?id=' . $item['id'] . '">' . $item['name'] . '</a>';
 
                         if (isset($item['children'])) {
-                            echo '<ul class="navbar-nav sub-nav dd-list dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                            echo '<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"></a>';
+                            /* echo '<ul class="navbar-nav sub-nav dd-list dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';*/
                                 echo   '<div class="dropdown-menu">'; 
                                 foreach($item['children'] as $key => $value) {
-                                        echo '<li class="nav-item dd-item" data-name="' . $value['name'] . '" data-order="' . $value['order'] . '">';
+                                        echo '<div class="dropdown-item dd-item" data-name="' . $value['name'] . '" data-order="' . $value['order'] . '">';
                                             echo '<a class="nav-link dd-handle" href="index.php?id=' . $value['id'] . '" style="color: #000">' . $value['name'] . '</a>';
-                                        echo '</li>'; 
+                                        echo '</div>'; 
                                     }
                                 echo '</div>';
-                            echo '</ul>';
+                            /* echo '</ul>'; */
                         }
                     echo '</li>';
                 }

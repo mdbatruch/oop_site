@@ -1,3 +1,4 @@
 .env/smtp.ini
 .env/db.ini
 uploads/
+resources/node_modules

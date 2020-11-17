@@ -1,0 +1,8 @@
+header nav #main-navigation li a {
+  display: inline-block; }
+
+body {
+  background: #f00;
+  height: 500px; }
+  body main {
+    background: #0ff; }
