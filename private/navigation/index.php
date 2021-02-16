@@ -13,9 +13,9 @@
     }
 
     
-    // $pages = $site::find_all_pages();
+    // $pages = $site->find_all_pages();
 
-    // $pages = $site::find_nav_by_title('main-navigation');
+    // $pages = $site->find_nav_by_title('main-navigation');
 
     // $pages = json_decode($pages[0]['output']);
 

@@ -4,7 +4,7 @@
 
     // $page = new Page("Welcome to my site!", $db);
 
-    $pages = $site::find_all_pages();
+    $pages = $site->find_all_pages();
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];

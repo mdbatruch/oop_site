@@ -28,7 +28,7 @@
       
         } else {
       
-          $admin = $site::find_admin($username);
+          $admin = $site->find_admin($username);
       
           if ($admin['username'] !== $username) {
             $errors['username'] = 'This username does not exist, man!';

@@ -13,7 +13,7 @@
     }
 
     
-    $galleries = $site::find_all_galleries();
+    $galleries = $site->find_all_galleries();
 
     include('../includes/header.php');
 ?>
@@ -62,7 +62,7 @@
 
                     // print_r($slides);
 
-                    $page_assoc = $site::find_by_id($gallery['page_id']);
+                    $page_assoc = $site->find_by_id($gallery['page_id']);
 
                     ?>
                     <li class="gallery">

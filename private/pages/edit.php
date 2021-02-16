@@ -17,7 +17,7 @@
 
     $id = $_GET['id'];
 
-    $page = Site::find_by_id($id);
+    $page = $site->find_by_id($id);
 
     // echo '<pre>';
     // print_r($page);

@@ -4,18 +4,18 @@
   "description": "Gulp Version 4 Sass and BrowserSync",
   "main": "gulpfile.js",
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
-    "bootstrap": "^4.3.1"
+    "node-sass": "^4.14.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amylily1011/gulp4-sass-bootstrap.git"
+    "url": ""
   },
   "author": "Mike Batruch",
   "license": "ISC"

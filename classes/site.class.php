@@ -5,19 +5,16 @@
         private $nav;
         private $page;
         private $conn;
-        static protected $connect;
+        // static protected $connect;
 
-        public function __construct() {
+        public function __construct($db) {
 
-            // $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini');
-            $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/db.ini');
+            // $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/db.ini');
 
-            $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
-            self::$connect = new PDO($dsn, 'root', 'root');
+            // $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
+            // self::$connect = new PDO($dsn, 'root', 'root');
 
-            // $this->conn = $db;
-
-            // $pages = self::find_all_pages();
+            $this->conn = $db;
 
         }
 
@@ -99,27 +96,12 @@
 
         }
 
-        // public function addNav() {
-        //     $items = self::find_all_pages_by_nav_order();
-
-        //     $nav = [];
-
-        //     echo '<ol id="main-navigation" class="navbar-nav dd-list">';
-        //         foreach($items as $item) {
-        //             echo '<li class="nav-item dd-item" data-name="' . $item['page'] . '" data-order="' . $item['nav_order'] . '">';
-        //                 echo '<a class="nav-link dd-handle" href="index.php?id=' . $item['id'] . '">' . $item['page'] . '</a>';
-        //             echo '</li>';
-        //         }
-        //     echo '</ol>';
-
-        // }
-
         public function addSlider() {
             require_once("includes/slider.php");
         }
 
         public function findSliderById($id) {
-            $stmt = self::$connect->prepare('SELECT title, description, page_id, slides, active FROM galleries WHERE id=:id');
+            $stmt = $this->conn->prepare('SELECT title, description, page_id, slides, active FROM galleries WHERE id=:id');
             $stmt->bindParam(":id", $id);
             $stmt->execute();
             $gallery = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -127,55 +109,55 @@
         }
 
         public function findSliderByPageId($page_id) {
-            $stmt = self::$connect->prepare('SELECT title, slides, active FROM galleries WHERE page_id=:page_id');
+            $stmt = $this->conn->prepare('SELECT title, slides, active FROM galleries WHERE page_id=:page_id');
             $stmt->bindParam(":page_id", $page_id);
             $stmt->execute();
             $gallery = $stmt->fetch(PDO::FETCH_ASSOC);
             return $gallery;
         }
 
-         static public function find_all_pages() {
-            $statement = self::$connect->prepare('SELECT * FROM pages');
+        public function find_all_pages() {
+            $statement = $this->conn->prepare('SELECT * FROM pages');
             $statement->execute();
             $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $pages;
         }
 
-        static public function find_nav_by_title($title) {
-            $stmt = self::$connect->prepare('SELECT output FROM navigations WHERE title=:title');
+        public function find_nav_by_title($title) {
+            $stmt = $this->conn->prepare('SELECT output FROM navigations WHERE title=:title');
             $stmt->bindParam(":title", $title);
             $stmt->execute();
             $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $pages;
         }
 
-        static public function find_all_pages_by_nav_order() {
-            $statement = self::$connect->prepare('SELECT * FROM pages ORDER BY nav_order');
+        public function find_all_pages_by_nav_order() {
+            $statement = $this->conn->prepare('SELECT * FROM pages ORDER BY nav_order');
             $statement->execute();
             $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $pages;
         }
 
-        static public function find_all_galleries() {
-            $statement = self::$connect->prepare('SELECT * FROM galleries');
+        public function find_all_galleries() {
+            $statement = $this->conn->prepare('SELECT * FROM galleries');
             $statement->execute();
             $pages = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $pages;
         }
 
-        static public function find_admin($username) {
-            $statement = self::$connect->prepare('SELECT username, hashed_password FROM admins WHERE username=:username');
+        public function find_admin($username) {
+            $statement = $this->conn->prepare('SELECT username, hashed_password FROM admins WHERE username=:username');
             $statement->bindParam(":username", $username);
             $statement->execute();
             $admin = $statement->fetch(PDO::FETCH_ASSOC);
             return $admin;
         }
 
-        static public function find_by_id($id) {
+        public function find_by_id($id) {
 
             try {
 
-                $statement = self::$connect->prepare('SELECT * FROM pages where id=:id');
+                $statement = $this->conn->prepare('SELECT * FROM pages where id=:id');
                 $statement->bindParam(":id", $id);
                 $statement->execute();
                 $response = $statement->fetch(PDO::FETCH_ASSOC);
@@ -190,7 +172,7 @@
 
         public function insertPage($name, $title, $subtitle, $description) {
 
-            $stmt = self::$connect->prepare('SELECT page, title, subtitle, description from pages WHERE page=:page');
+            $stmt = $this->conn->prepare('SELECT page, title, subtitle, description from pages WHERE page=:page');
             $stmt->bindParam(':page', $name);
             $stmt->execute();
 
@@ -221,7 +203,7 @@
 
                 try {
 
-                    $sql = self::$connect->prepare('INSERT INTO pages (page, title, subtitle, description)
+                    $sql = $this->conn->prepare('INSERT INTO pages (page, title, subtitle, description)
                             VALUES (?, ?, ?, ?)');
         
                     $sql->bindParam(1, $name);
@@ -253,7 +235,7 @@
 
         public function editPage($id, $name, $title, $subtitle, $description) {
 
-            $stmt = self::$connect->prepare('SELECT id, page, title, subtitle, description from pages WHERE page=:page');
+            $stmt = $this->conn->prepare('SELECT id, page, title, subtitle, description from pages WHERE page=:page');
             $stmt->bindParam(':page', $name);
             $stmt->execute();
 
@@ -288,7 +270,7 @@
   
                   try {
   
-                      $stmt = self::$connect->prepare('UPDATE pages SET page = ?, title = ?, subtitle = ?, description = ? WHERE id=?');
+                      $stmt = $this->conn->prepare('UPDATE pages SET page = ?, title = ?, subtitle = ?, description = ? WHERE id=?');
           
                       $stmt->bindParam(1, $name);
                       $stmt->bindParam(2, $title);
@@ -317,7 +299,7 @@
     
             try {
 
-                $stmt = self::$connect->prepare('DELETE FROM pages WHERE id=:id');
+                $stmt = $this->conn->prepare('DELETE FROM pages WHERE id=:id');
                 $stmt->bindParam(':id', $id);
                 $stmt->execute();
 

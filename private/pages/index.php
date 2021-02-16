@@ -13,7 +13,7 @@
     }
 
     
-    $pages = $site::find_all_pages();
+    $pages = $site->find_all_pages();
     // echo '<pre>';
     // print_r($pages);
 

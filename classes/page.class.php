@@ -17,7 +17,7 @@
             
             // self::$connect = $connect;
 
-            // $pages = $site::find_all_pages();
+            // $pages = $site->find_all_pages();
 
 
             

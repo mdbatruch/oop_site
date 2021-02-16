@@ -14,11 +14,12 @@
 
     $id = $_GET['id'];
 
-    $gallery = Site::find_by_id($id);
+    // $gallery = Site::find_by_id($id);
+    $gallery = $site->find_by_id($id);
 
     include('../includes/header.php');
 
-    $pages = $site::find_all_pages();
+    $pages = $site->find_all_pages();
 
     $gallery = $site->findSliderById($_GET['id']);
 

@@ -29,14 +29,11 @@
     }
     spl_autoload_register('my_autoload');
 
-    // $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
-    // $db = new PDO($dsn, 'root', 'root');
-    
     $database = new Database();
     $db = $database->getConnection();
 
-    // $db = new Connect($db['server'], $db['username'], $db['password'], $db['db']);
+    // include_once 'classes/database.class.php';
 
-    $site = new Site();
+    $site = new Site($db);
 
     $session = new Session;
