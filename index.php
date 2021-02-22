@@ -73,6 +73,11 @@
 <header>
     <div class="container-fluid">
         <div class="row">
+            <div class="customer">
+                <a href="customer.php">
+                    Sign In/Register
+                </a>
+            </div>
             <div id="navigation" style="width: 100%;">
                 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

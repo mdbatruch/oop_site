@@ -137,6 +137,96 @@
             });
         });
 
+        $('#customer-register').submit(function(e){
+
+        e.preventDefault(); 
+
+        console.log('customer register has been attempted');
+
+        var id = $(this).attr('id');
+        var first_name = $('#firstname').val();
+        var last_name = $('#lastname').val();
+        var email = $('#email').val();
+        var address = $('#address').val();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var password_validate = $('#confirm-password').val();
+
+
+        console.log(id, first_name, last_name, email, address, username, password, password_validate);
+
+        // data = {id:id, firstname: first_name, lastname: last_name, email: email, address: address, username: username, password: password};
+
+        // console.log(data);
+
+        if (password !== password_validate) {
+            $('#confirm-password-error').html('<div class="alert alert-danger mt-3 input-alert-error">Passwords do not match, please try again<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "private/process.php",
+                dataType: "json",
+                data: {id:id, firstname: first_name, lastname: last_name, email: email, address: address, username: username, password: password},
+            }).done(function(data) {
+
+                if(!data.success) {
+                    if(data.errors.firstname) {
+                        $('#firstname-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.firstname + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#firstname-error').html('');
+                            }
+
+                    if(data.errors.lastname) {
+                        $('#lastname-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.lastname + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#lastname-error').html('');
+                            }
+                    
+                    if(data.errors.email) {
+                        $('#email-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.email + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#email-error').html('');
+                            }
+
+                    if(data.errors.address) {
+                        $('#address-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.address + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#address-error').html('');
+                            }
+
+                    if(data.errors.username) {
+                        $('#username-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.username + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#username-error').html('');
+                            }
+
+                    if(data.errors.password) {
+                        $('#password-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.password + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#password-error').html('');
+                            }
+
+
+                        $('#form-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
+
+                    } else {
+
+                        $('#firstname-error').html('');
+                        $('#lastname-error').html('');
+                        $('#email-error').html('');
+                        $('#address-error').html('');
+                        $('#username-error').html('');
+                        $('#password-error').html('');
+                        $('#confirm-password-error').html('');
+
+                        $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
+
+                    }
+            });
+        }
+
+        });
+
         // $('#search').submit(function(e){
 
         //     e.preventDefault(); 

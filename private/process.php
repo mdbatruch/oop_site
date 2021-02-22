@@ -14,6 +14,8 @@
     $errors = [];
     $id = $_POST['id'];
 
+    // print_r($_POST);
+
     global $connect;
 
   switch($id){
@@ -550,6 +552,22 @@
       }
 
       echo json_encode($data);
+
+      break;
+
+      case 'customer-register':
+
+        // $id = $_POST['id'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $customer = new Customer($db);
+
+        $customer->create_customer($firstname, $lastname, $email, $address, $username, $password);
 
       break;
 
