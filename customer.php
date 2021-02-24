@@ -4,14 +4,14 @@
 
   include('includes/header.php');
 
-  if ($session->is_logged_in()) {
-    header( 'location: private/index.php' );
+  if (isset($_SESSION['account']) && $session->is_logged_in_as_customer($_SESSION['account'])) {
+    header( 'location: private/customer/index.php' );
   }
 
 ?>
 <div class="container">
     <div class="row">
-        <div id="login-content" class="customer-login-page col-12">
+        <div id="login-customer" class="customer-login-page col-12">
             <div class="row">
             <div class="col-12 col-md-6">
             <form id="customer-login" method="post">

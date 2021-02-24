@@ -5,10 +5,10 @@
     // echo $_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini'
 
     global $session;
-    // // echo '<pre>';
-    // // print_r($session);
+    // echo '<pre>';
+    print_r($_SESSION);
 
-    if (!$session->is_logged_in()) {
+    if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../login.php?timedout=true' );
     }
 

@@ -3,7 +3,15 @@
 
     $_SESSION['logout_message'] = 'You have successfully logged out.';
 
+    if ($_SESSION['account'] == 'Customer') {
+        $customer = true;
+    }
+
     $session->logout();
 
-    header( 'location: ./login.php' );
+    if ($customer) {
+        header( 'location: ./customer.php' );
+    } else {
+        header( 'location: ./login.php' );
+    }
 ?>

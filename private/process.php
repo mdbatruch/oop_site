@@ -64,6 +64,7 @@
           // $session = new Session;
 
           $_SESSION['username'] = $admin['username'];
+          $_SESSION['account'] = 'Administrator';
           $_SESSION['last_login'] = time();
           $login_time = date('D-M-d-Y g:i A', $_SESSION['last_login']);
 
@@ -557,7 +558,6 @@
 
       case 'customer-register':
 
-        // $id = $_POST['id'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
@@ -568,6 +568,17 @@
         $customer = new Customer($db);
 
         $customer->create_customer($firstname, $lastname, $email, $address, $username, $password);
+
+      break;
+
+      case 'customer-login':
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $customer = new Customer($db);
+
+        $customer->login_customer($username, $password);
 
       break;
 

@@ -153,9 +153,9 @@
         var password_validate = $('#confirm-password').val();
 
 
-        console.log(id, first_name, last_name, email, address, username, password, password_validate);
+        console.log(id, first_name, last_name, email, address, username);
 
-        // data = {id:id, firstname: first_name, lastname: last_name, email: email, address: address, username: username, password: password};
+        // data = {id:id, firstname: first_name, lastname: last_name, email: email, address: address, username: username};
 
         // console.log(data);
 
@@ -226,6 +226,57 @@
         }
 
         });
+
+        $('#customer-login').submit(function(e){
+
+            e.preventDefault(); 
+
+            console.log('customer login has been attempted');
+
+            var id = $(this).attr('id');
+            var username = $('#login-username').val();
+            var password = $('#login-password').val();
+
+
+            // console.log(username);
+
+                $.ajax({
+                    type: "POST",
+                    url: "private/process.php",
+                    dataType: "json",
+                    data: {id: id, username: username, password: password},
+                }).done(function(data) {
+
+                    if(!data.success) {
+
+                        if(data.errors.username) {
+                            $('#login-username-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.username + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                                } else {
+                                    $('#login-username-error').html('');
+                                }
+
+                        if(data.errors.password) {
+                            $('#login-password-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.password + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                                } else {
+                                    $('#login-password-error').html('');
+                                }
+
+
+                            $('#login-form-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
+
+                        } else {
+
+                            $('#login-username-error').html('');
+                            $('#login-password-error').html('');
+
+                            $('#login-form-message').html('<div class="alert alert-success">' + data.message + '</div>');
+
+                            $(location).attr('href', data.redirect);
+
+                        }
+                });
+
+            });
 
         // $('#search').submit(function(e){
 

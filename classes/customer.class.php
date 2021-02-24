@@ -1,4 +1,5 @@
 <?php
+
 class Customer {
   
     private $conn;
@@ -104,6 +105,90 @@ class Customer {
 
         echo json_encode($data);
 
+    }
+
+    public function login_customer($username, $password) {
+
+        
+        if (empty($username)) {
+            $errors['username'] = 'Username cannot be blank';
+          }
+
+        if (empty($password)) {
+            $errors['password'] = 'Password cannot be blank';
+        }
+
+        if (!empty($errors)) {
+
+            $data['message'] = 'There was an error with your submission. Please try again.';
+            $data['success'] = false;
+            $data['errors'] = $errors;
+
+          } else {
+
+
+                try {
+
+                    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $stmt = $this->conn->prepare("SELECT id, username, hashed_password FROM customers WHERE username=:username");
+                    
+                    $stmt->bindParam(":username", $username);
+
+                    $stmt->execute();
+
+                    $customer_exists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    // print_r($customer_exists);
+
+                    if (empty($customer_exists)) {
+                        $data['success'] = false;
+                        $data['errors'] = '';
+                        $data['message'] = 'This account does not exist, please try again.';
+                    } else if (!password_verify($password, $customer_exists['hashed_password'])) {
+                        $data['success'] = false;
+                        $data['errors'] = '';
+                        $data['message'] = 'Invalid Username and/or password, please try again.';
+                    } else {
+                        //protects against session fixation attacks. Regenerates id everytime you log in.
+                        session_regenerate_id();
+
+                        $data['redirect'] = 'private/customer/index.php?id=' . $customer_exists['id'];;
+                        $data['success'] = true;
+                        $data['message'] = 'Success! Logging into your account now.';
+
+                        // set this instances' properties and session variables with the given values from the form submission and validation from database
+                        $_SESSION['username'] = $customer_exists['username'];
+                        $_SESSION['id'] = $customer_exists['id'];
+                        $_SESSION['account'] = 'Customer';
+                        $_SESSION['last_login'] = time();
+                        $login_time = date('D-M-d-Y g:i A', $_SESSION['last_login']);
+
+                    }
+        
+                } catch (Exception $e) {
+                            
+                    $data['success'] = false;
+        
+                    $data['message'] = $e->getMessage();
+                }
+                
+          }
+        
+        echo json_encode($data);
+    }
+
+    static public function view_customer_info($id, $db) {
+
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $db->prepare("SELECT id, first_name, last_name, address, username FROM customers WHERE id=:id");
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
+
+        $profile = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $profile;
     }
 }
 ?>

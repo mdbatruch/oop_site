@@ -74,9 +74,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="customer">
+            <?php if (isset($_SESSION['account'])) : ?>
+                <a href="<?= root_url_private('customer/index.php'); ?>">
+                    View Your Account,
+                    <?= $_SESSION['username']; ?>
+                </a>
+            <?php else :?>
                 <a href="customer.php">
                     Sign In/Register
                 </a>
+            <?php endif; ?>
             </div>
             <div id="navigation" style="width: 100%;">
                 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">

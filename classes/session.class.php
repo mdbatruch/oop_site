@@ -3,7 +3,9 @@
     class Session {
 
         private $admin_id;
+        // public $account;
         public $username;
+        public $id;
         private $last_login;
 
         public const MAX_LOGIN_AGE = 60 * 60 * 24;
@@ -25,20 +27,51 @@
                 // $this->admin_id = $_SESSION['admin_id'] = $admin->id;
                 $this->username = $username;
                 $this->last_login = $login_time;
+                $this->admin = true;
             }
 
             return true;
         }
 
-        public function is_logged_in() {
+        public function customer_login($username, $login_time, $customer) {
+
+            //protects against session fixation attacks. Regenerates id everytime you log in.
+            session_regenerate_id();
+
+            // set this instances' properties and session variables with the given values from the form submission and validation from database
+            $this->username = $username;
+            $this->last_login = $login_time;
+            $this->customer = $customer;
+
+            return true;
+        }
+
+
+        public function is_logged_in_as_admin($account) {
             // returns true is there is and admin id and the last login was no too long ago
-            return isset($this->username) && $this->last_login_is_recent();
-            return isset($this->username);
+            // return isset($this->username) && $this->last_login_is_recent();
+            // return isset($this->username);
+            if ($account === 'Administrator') {
+                return true;
+            }
+        }
+
+        public function is_logged_in_as_customer($account) {
+            
+            // returns true is there is and admin id and the last login was no too long ago
+            if ($account === 'Customer') {
+                return true;
+            }
+
+            // if (isset($this->admin)){
+            //     return true;
+            // }
         }
 
         public function logout() {
             // unset($_SESSION['admin_id']);
             unset($_SESSION['username']);
+            unset($_SESSION['account']);
             unset($_SESSION['last_login']);
             unset($this->username);
             unset($this->last_login);

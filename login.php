@@ -4,7 +4,8 @@
 
   include('includes/header.php');
 
-  if ($session->is_logged_in()) {
+
+  if ($session->is_logged_in_as_admin($_SESSION['account'])) {
     header( 'location: private/index.php' );
   }
 
