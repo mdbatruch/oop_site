@@ -74,7 +74,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="customer">
-            <?php if (isset($_SESSION['account'])) : ?>
+            <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
                 <a href="<?= root_url_private('customer/index.php'); ?>">
                     View Your Account,
                     <?= $_SESSION['username']; ?>
@@ -84,6 +84,12 @@
                     Sign In/Register
                 </a>
             <?php endif; ?>
+            </div>
+            <div class="cart <?= $page_title=="Cart" ? "class='active'" : ""; ?>">
+                <a href="cart.php">
+                    <!--later, we'll put a PHP code here that will count items in the cart -->
+                    Cart <span class="badge" id="comparison-count">0</span>
+                </a>
             </div>
             <div id="navigation" style="width: 100%;">
                 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">

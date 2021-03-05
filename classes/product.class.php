@@ -16,12 +16,29 @@ class Product{
         $this->conn = $db;
     }
 
-    public function read(){
-    
-        $stmt = $this->conn->prepare("SELECT c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created FROM " . $this->table_name . " p LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.created DESC");
-    
+    function read($from_record_num, $records_per_page){
+ 
+        // select all products query
+        $query = "SELECT
+                    id, name, description, price 
+                FROM
+                    " . $this->table_name . "
+                ORDER BY
+                    created DESC
+                LIMIT
+                    ?, ?";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+     
+        // bind limit clause variables
+        $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
+        $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
+     
+        // execute query
         $stmt->execute();
-    
+     
+        // return values
         return $stmt;
     }
 
@@ -43,21 +60,34 @@ class Product{
         
     }
 
-    public function readOne(){
-    
-        $stmt = $this->conn->prepare("SELECT c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created FROM " . $this->table_name . " p LEFT JOIN categories c ON p.category_id = c.id WHERE p.id = ? LIMIT 0,1");
-    
-        $stmt->bindParam(1, $this->id);
-    
+    public function readOne($id){
+ 
+        // query to select single record
+        $query = "SELECT
+                    id, name, description, price
+                FROM
+                    " . $this->table_name . "
+                WHERE
+                    id = ?
+                LIMIT
+                    0,1";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+     
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($id));
+     
+        // bind product id value
+        $stmt->bindParam(1, $id);
+     
+        // execute query
         $stmt->execute();
-    
+     
+        // get row values
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-        $this->name = $row['name'];
-        $this->price = $row['price'];
-        $this->description = $row['description'];
-        $this->category_id = $row['category_id'];
-        $this->category_name = $row['category_name'];
+     
+        return $row;
     }
 
     public function update(){
@@ -121,13 +151,21 @@ class Product{
     }
 
     public function count(){
-
-        $stmt = $this->conn->prepare( "SELECT COUNT(*) as total_rows FROM " . $this->table_name . "" );
+ 
+        // query to count all product records
+        $query = "SELECT count(*) FROM " . $this->table_name;
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+     
+        // execute query
         $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      
-        return $row['total_rows'];
+     
+        // get row value
+        $rows = $stmt->fetch(PDO::FETCH_NUM);
+     
+        // return count
+        return $rows[0];
     }
-
 }
 ?>

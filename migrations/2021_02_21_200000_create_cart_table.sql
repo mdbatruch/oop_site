@@ -1,9 +1,8 @@
 CREATE TABLE cart_items (
-  id int(11) NOT NULL AUTO_INCREMENT,
-  product_id int(11) NOT NULL,
-  quantity double NOT NULL,
-  user_id int(11) NOT NULL,
-  created datetime NOT NULL,
-  modified timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (id) REFERENCES customers(id)
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  product varchar(255) NOT NULL,
+  cart_id int(11) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (cart_id) REFERENCES carts(id)
 )

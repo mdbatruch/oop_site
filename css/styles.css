@@ -6,3 +6,5 @@ body {
   height: 500px; }
   body main {
     background: #ff0; }
+    body main .product-id {
+      display: none; }

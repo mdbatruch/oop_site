@@ -278,6 +278,46 @@
 
             });
 
+            $('#add-cart').click(function(e){
+
+                e.preventDefault(); 
+
+                console.log('cart addition has been attempted');
+
+                var id = $(this).attr('id');
+                var user_id = $('.customer').attr('id');
+                var cart_id = $('#cart_id').html();
+
+
+                var product = {
+                    id: $('#product-info').attr('data-id'),
+                    name: $('#name').text(),
+                    description: $('#description').text(),
+                    price: $('#price').text(),
+                }
+
+                console.log(id, user_id, cart_id, product)
+
+                    $.ajax({
+                        type: "POST",
+                        url: "private/process.php",
+                        dataType: "json",
+                        data: {id: id, user_id: user_id, cart_id: cart_id, product: product},
+                    }).done(function(data) {
+
+                        if(!data.success) {
+
+                                $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
+
+                            } else {
+
+                                $('#cart-message').html('<div class="alert alert-success">' + data.message + '</div>');
+
+                            }
+                    });
+
+                });
+
         // $('#search').submit(function(e){
 
         //     e.preventDefault(); 

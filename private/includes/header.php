@@ -27,7 +27,7 @@
                 });
             </script>
 
-            <style>
+            <!-- <style>
                 .cf:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
                 * html .cf { zoom: 1; }
                 *:first-child+html .cf { zoom: 1; }
@@ -159,7 +159,7 @@
                 * Socialite
                 */
 
-                .socialite { display: block; float: left; height: 35px; }
+                .socialite { display: block; float: left; height: 35px; } -->
             </style>
     </head>
 

@@ -31,8 +31,9 @@
         } else {
       
           $admin = $site->find_admin($username);
-      
-          if ($admin['username'] !== $username) {
+
+      // print_r($admin);
+          if (empty($admin)) {
             $errors['username'] = 'This username does not exist, man!';
           } else {
             if (empty($password)) {
@@ -579,6 +580,26 @@
         $customer = new Customer($db);
 
         $customer->login_customer($username, $password);
+
+      break;
+
+      case 'add-cart':
+
+        $user_id = $_POST['user_id'];
+        $cart_id = $_POST['cart_id'];
+        $product = $_POST['product'];
+
+        print_r($_POST);
+
+        $cart_item = new CartItem($db);
+
+        // if ($cart_item->exists($user_id)) {
+        //   $cart_item->update($product, $user_id);
+        //   echo 'updated';
+        // } else {
+          $cart_item->create($product, $user_id, $cart_id);
+        //   echo 'created';
+        // }
 
       break;
 
