@@ -32,7 +32,8 @@
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                     
-                    // print_r(json_decode($row['product']));
+                    // echo '<pre>';
+                    // print_r($row);
 
                     $row_decoded = json_decode($row['product']);
 
@@ -43,7 +44,8 @@
                         "id" => $row_decoded->id,
                         "name" => $row_decoded->name,
                         "description" => html_entity_decode($row_decoded->description),
-                        "price" => $row_decoded->price
+                        "price" => $row_decoded->price,
+                        "quantity" => $row['quantity']
                     );
               
                     array_push($products_arr, $product_item);
@@ -57,35 +59,157 @@
                 }
         }
 
-        public function create($products, $user_id, $cart_id) {
+        public function create($products, $user_id, $cart_id, $quantity) {
 
-            // $products_col = [];
+            // echo '<pre>';
+            // print_r($products);
 
-            
+            $product_id = $products['id'];
 
-            // foreach ($products as $product) {
-            //     $products_col[] = $product;
+            $stmt = $this->conn->prepare('SELECT * FROM cart_items WHERE product_id=:product_id AND cart_id=:cart_id');
+            $stmt->bindValue(":product_id", $product_id);
+            $stmt->bindValue(":cart_id", $cart_id);
+
+            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+            $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // echo '<pre>';
+            // print_r($rows);
+
+            if (!empty($rows)) {
+
+                $quantity = $quantity + $rows['quantity'];
+
+                $stmt = $this->conn->prepare('UPDATE cart_items SET quantity = :quantity WHERE product_id=:product_id AND cart_id=:cart_id');
+                $stmt->bindValue(":quantity", $quantity);
+                $stmt->bindValue(":product_id", $product_id);
+                $stmt->bindValue(":cart_id", $cart_id);
+
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                $data['success'] = true;
+                
+                $data['message'] = 'Success! Your Item has been updated!';
+
+            } else {
+
+                // $success = false;
+
+            // if ($success) {
+
+                $product = json_encode($products);
+
+                try {
+
+                $stmt = $this->conn->prepare('INSERT INTO cart_items (product_id, product, quantity, cart_id) VALUES (?, ?, ?, ?)' );
+                $stmt->bindParam(1, $product_id);
+                $stmt->bindParam(2, $product);
+                $stmt->bindParam(3, $quantity);
+                $stmt->bindParam(4, $cart_id);
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                $data['success'] = true;
+                
+                $data['message'] = 'Success! Your Item has been added!';
+                
+
+                } catch (Exception $e) {
+
+                    return $e->getMessage();
+
+                    $data['success'] = false;
+                    
+                    $data['message'] = 'There was an issue!';
+
+                }
             // }
 
-            // array_push($products_col, $products);
-
-            // print_r($products);
-            $product = json_encode($products);
-            echo $product;
-
-
-            try {
-
-            $stmt = $this->conn->prepare('INSERT INTO cart_items (product, cart_id) VALUES (?, ?)' );
-            $stmt->bindParam(1, $product);
-            $stmt->bindParam(2, $cart_id);
-            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
-            
-
-            } catch (Exception $e) {
-
-                return $e->getMessage();
             }
+
+            echo json_encode($data);
+
+        }
+
+        public function delete($product_id, $cart_id, $quantity) {
+
+            // echo $product_id . " " . $cart_id . " " . $quantity;
+
+            $stmt = $this->conn->prepare('SELECT * FROM cart_items WHERE product_id=:product_id AND cart_id=:cart_id');
+            $stmt->bindValue(":product_id", $product_id);
+            $stmt->bindValue(":cart_id", $cart_id);
+
+            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+            $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // echo '<pre>';
+            // print_r($rows);
+
+            $price_decode = json_decode($rows['product']);
+
+            // echo '<pre>';
+            // print_r($price_decode);
+
+            $price = substr($price_decode->price, 1) * $quantity;
+
+            // echo $price;
+
+            if (!empty($rows)) {
+
+                // echo $quantity;
+
+                $new_quantity = $rows['quantity'] - 1;
+
+                // echo '<br/>hello' . $new_quantity;
+
+                $stmt = $this->conn->prepare('UPDATE cart_items SET quantity = :new_quantity WHERE product_id=:product_id AND cart_id=:cart_id');
+                $stmt->bindValue(":new_quantity", $new_quantity);
+                $stmt->bindValue(":product_id", $product_id);
+                $stmt->bindValue(":cart_id", $cart_id);
+
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                $data['quantity'] = $new_quantity;
+
+                $data['price'] = $price;
+
+                $data['id'] = $product_id;
+
+                $data['success'] = true;
+                
+                $data['message'] = 'Success! Your Item has been updated!';
+
+            } else {
+                // $success = false;
+
+                // if ($success) {
+                    try {
+
+                        $stmt = $this->conn->prepare('DELETE FROM cart_items WHERE product_id = ? AND cart_id = ? LIMIT 1' );
+                        $stmt->bindParam(1, $product_id);
+                        $stmt->bindParam(2, $cart_id);
+                        $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+            
+                        $data['id'] = $product_id;
+                        $data['success'] = true;
+            
+                        $data['message'] = 'Success! Item has been removed!';
+                        
+            
+                        } catch (Exception $e) {
+            
+                            return $e->getMessage();
+            
+                            $data['message'] = 'There was an error with your form. Please try again.';
+            
+                            $data['success'] = false;
+            
+                        }
+                // }   
+            }
+
+            echo json_encode($data);
 
         }
 

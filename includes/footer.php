@@ -287,7 +287,7 @@
                 var id = $(this).attr('id');
                 var user_id = $('.customer').attr('id');
                 var cart_id = $('#cart_id').html();
-
+                var quantity = $('#quantity option:selected').text();
 
                 var product = {
                     id: $('#product-info').attr('data-id'),
@@ -296,13 +296,13 @@
                     price: $('#price').text(),
                 }
 
-                console.log(id, user_id, cart_id, product)
+                console.log(id, user_id, cart_id, product, quantity);
 
                     $.ajax({
                         type: "POST",
                         url: "private/process.php",
                         dataType: "json",
-                        data: {id: id, user_id: user_id, cart_id: cart_id, product: product},
+                        data: {id: id, user_id: user_id, cart_id: cart_id, product: product, quantity: quantity},
                     }).done(function(data) {
 
                         if(!data.success) {
@@ -353,6 +353,53 @@
         //     });
 
         // });
+
+
+
+        $(".remove-item").on("click", function(e){
+        e.preventDefault();
+
+        console.log('an item deletion has been tried');
+            
+            var formId = $(this).attr('data-action');
+            var product_id = $(this).attr('data-id');
+            var cart_id = $('#cart_id').text();
+            var quantity = $(this).attr('data-quantity');
+
+        console.log(formId, product_id, cart_id);
+
+    
+            $.ajax({
+                type: "POST",
+                url: "private/process.php",
+                dataType: "json",
+                data: {product_id:product_id, id:formId, cart_id: cart_id, quantity: quantity},
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    console.log('Project did not delete!');
+
+                } else {
+                    
+                    console.log('Project deleted!');
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    $('.product-name[data-id="' + data.id + '"]').find('.product-quantity').text(data.quantity);
+                    $('.product-name[data-id="' + data.id + '"]').find('.price').text(data.price);
+                    $('.product-name[data-id="' + data.id + '"]').find('.remove-item').attr('data-quantity', data.quantity);
+
+                    if(data.quantity == 0) {
+                        $('.product-name[data-id="' + data.id + '"]').remove();
+                    }
+                }
+            
+        });
+
+    });
 
     </script>
     <script id="__bs_script__">//<![CDATA[

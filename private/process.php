@@ -588,8 +588,9 @@
         $user_id = $_POST['user_id'];
         $cart_id = $_POST['cart_id'];
         $product = $_POST['product'];
+        $quantity = $_POST['quantity'];
 
-        print_r($_POST);
+        // print_r($_POST);
 
         $cart_item = new CartItem($db);
 
@@ -597,9 +598,22 @@
         //   $cart_item->update($product, $user_id);
         //   echo 'updated';
         // } else {
-          $cart_item->create($product, $user_id, $cart_id);
+          $cart_item->create($product, $user_id, $cart_id, $quantity);
         //   echo 'created';
         // }
+
+      break;
+
+      case 'remove-item':
+
+        $product_id = $_POST['product_id'];
+        $cart_id = $_POST['cart_id'];
+        $quantity = $_POST['quantity'];
+
+        $cart_item = new CartItem($db);
+
+        $cart_item->delete($product_id, $cart_id, $quantity);
+
 
       break;
 

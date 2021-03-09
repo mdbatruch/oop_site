@@ -107,8 +107,9 @@
     </div>
 </header>
 <main id="cart">
-<div class="container-fluid">
+<div class="container pt-2 pb-2">
         <div class="row">
+        <div id="form-message"></div>
             <?php 
 
             if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && empty($items)) {
@@ -121,31 +122,17 @@
                     // }
             } else if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($items)) {
                 
-                // $cart = $cart_item->get_cart($_SESSION['id'], $cart_id);
-
-                // $products = json_decode($cart['products']);
-
-                // echo '<pre>';
-                // print_r($products);
-
-                // print_r($_SESSION);
-                //     $total=0;
-                //     $item_count=0;
-                    // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    //     print_r($row);
-                
-                //         $sub_total=$price*$quantity;
-                
-                //         echo "<div class='cart-row'>";
-                //             echo "<div class='col-md-8'>";
-                //                 // product name -->
                 foreach ($products as $product) {
-                    echo "<div class='product-name m-b-10px'>";
+
+                    $price = substr($product['price'], 1) * $product['quantity'];
+
+                    echo "<div class='product-name m-b-10px' data-id='" . $product['id'] . "'>";
                         echo "<h4>" .  $product['name'] . "</h4>";
                         echo "<p>" .  $product['description'] . "</p>";
-                        echo "<p>" .  $product['price'] . "</p>";
+                        echo "<p>Quantity: <span class='product-quantity'>" .  $product['quantity'] . "</span></p>";
+                        echo "<p>Price: $<span class='price'>" .  $price . "</span></p>";
+                        echo "<button class='btn btn-danger remove-item' data-action='remove-item' data-id='" . $product['id'] . "' data-quantity='" . $product['quantity'] . "'>Remove from Cart</button>";
                     echo "</div>";
-                    // echo 'test';
                 }
                 
                 //                 // update quantity

@@ -64,6 +64,14 @@
                 <div id="name"><?= $chosen['name']; ?></div>
                 <div id="description"><?= $chosen['description']; ?></div>
                 <div id="price"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>
+                <div class="count">
+                Quantity
+                    <select name="" id="quantity">
+                        <?php for ($i = 0; $i < 11; $i++) : ?>
+                            <option value="<?= $i; ?>"><?= $i; ?></option>
+                        <?php endfor; ?>
+                    </select>
+                </div>
             </div>
             <div id="add-cart" data-id="<?= $chosen['id']; ?>" class='btn btn-primary w-100-pct add-cart'>Add to Cart</div>
             <div id="cart-message"></div>
