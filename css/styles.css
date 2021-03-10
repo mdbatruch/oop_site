@@ -8,3 +8,7 @@ body {
     background: #ff0; }
     body main .product-id {
       display: none; }
+    body main .cart-totals .quantity-total .cart-count-bottom {
+      display: block; }
+    body main .cart-totals .sub-total #sub-total {
+      display: block; }

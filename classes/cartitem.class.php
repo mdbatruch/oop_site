@@ -131,6 +131,89 @@
 
         }
 
+        public function increase($product_id, $cart_id, $quantity) {
+            $stmt = $this->conn->prepare('SELECT * FROM cart_items WHERE product_id=:product_id AND cart_id=:cart_id');
+            $stmt->bindValue(":product_id", $product_id);
+            $stmt->bindValue(":cart_id", $cart_id);
+
+            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+            $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // echo '<pre>';
+            // print_r($rows);
+
+            if (!empty($rows)) {
+
+                $new_quantity = $rows['quantity'] + 1;
+
+                $price_decode = json_decode($rows['product']);
+            
+                $price = substr($price_decode->price, 1) * $new_quantity;
+
+                try {
+                    $stmt = $this->conn->prepare('UPDATE cart_items SET quantity = :new_quantity WHERE product_id=:product_id AND cart_id=:cart_id');
+                    $stmt->bindValue(":new_quantity", $new_quantity);
+                    $stmt->bindValue(":product_id", $product_id);
+                    $stmt->bindValue(":cart_id", $cart_id);
+
+                    $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                    $data['quantity'] = $new_quantity;
+
+                    $data['price'] = $price;
+
+                    $data['id'] = $product_id;
+
+                    $data['success'] = true;
+                    
+                    $data['message'] = 'Success! Your Cart has been updated!';
+
+                } catch (Exception $e) {
+            
+                    return $e->getMessage();
+    
+                    $data['message'] = 'There was an error with your form. Please try again.';
+    
+                    $data['success'] = false;
+    
+                }
+
+            }
+
+            echo json_encode($data);
+
+        }
+
+        public function delete_cart_item($product_id, $cart_id) {
+
+            try {
+
+                $stmt = $this->conn->prepare('DELETE FROM cart_items WHERE product_id = ? AND cart_id = ? LIMIT 1' );
+                $stmt->bindParam(1, $product_id);
+                $stmt->bindParam(2, $cart_id);
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+    
+                $data['id'] = $product_id;
+
+                $data['success'] = true;
+    
+                $data['message'] = 'Success! Item has been removed!';
+                
+    
+                } catch (Exception $e) {
+    
+                    return $e->getMessage();
+    
+                    $data['message'] = 'There was an error with your form. Please try again.';
+    
+                    $data['success'] = false;
+    
+                }
+
+            echo json_encode($data);
+        }
+
         public function delete($product_id, $cart_id, $quantity) {
 
             // echo $product_id . " " . $cart_id . " " . $quantity;
@@ -151,15 +234,17 @@
             // echo '<pre>';
             // print_r($price_decode);
 
-            $price = substr($price_decode->price, 1) * $quantity;
+            $new_quantity = $rows['quantity'] - 1;
+
+            $price = substr($price_decode->price, 1) * $new_quantity;
 
             // echo $price;
 
-            if (!empty($rows)) {
+            if (!empty($rows) && $rows['quantity'] > 0 && $new_quantity > 0) {
 
                 // echo $quantity;
 
-                $new_quantity = $rows['quantity'] - 1;
+                // $new_quantity = $rows['quantity'] - 1;
 
                 // echo '<br/>hello' . $new_quantity;
 
@@ -178,7 +263,7 @@
 
                 $data['success'] = true;
                 
-                $data['message'] = 'Success! Your Item has been updated!';
+                $data['message'] = 'Success! Your Cart has been updated!';
 
             } else {
                 // $success = false;
@@ -192,6 +277,9 @@
                         $stmt->execute() or die(print_r($stmt->errorInfo(), true));
             
                         $data['id'] = $product_id;
+                        
+                        $data['quantity'] = $new_quantity;
+
                         $data['success'] = true;
             
                         $data['message'] = 'Success! Item has been removed!';

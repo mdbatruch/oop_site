@@ -7,5 +7,17 @@ body {
         .product-id {
             display: none;
         }
+        .cart-totals {
+            .quantity-total {
+                .cart-count-bottom {
+                    display: block;
+                }
+            }
+            .sub-total {
+                #sub-total {
+                    display: block;
+                }
+            }
+        }
     }
 }

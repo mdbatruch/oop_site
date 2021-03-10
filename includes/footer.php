@@ -380,21 +380,124 @@
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    console.log('Project did not delete!');
+                    console.log('Item did not delete!');
 
                 } else {
                     
-                    console.log('Project deleted!');
+                    console.log('Item deleted!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
                     $('.product-name[data-id="' + data.id + '"]').find('.product-quantity').text(data.quantity);
                     $('.product-name[data-id="' + data.id + '"]').find('.price').text(data.price);
                     $('.product-name[data-id="' + data.id + '"]').find('.remove-item').attr('data-quantity', data.quantity);
+                    $('.product-name[data-id="' + data.id + '"]').find('.add-item').attr('data-quantity', data.quantity);
 
                     if(data.quantity == 0) {
                         $('.product-name[data-id="' + data.id + '"]').remove();
                     }
+
+                    // reevaluate sub total and cart count
+
+                    evaluateCartCount();
+
+                    evaluateSubTotal();
+
+                }
+            
+        });
+
+    });
+
+    $(".add-item").on("click", function(e){
+        e.preventDefault();
+
+        console.log('an item additon from the cart has been tried');
+            
+            var formId = $(this).attr('data-action');
+            var product_id = $(this).attr('data-id');
+            var cart_id = $('#cart_id').text();
+            var quantity = $(this).attr('data-quantity');
+
+        console.log(formId, product_id, cart_id, quantity);
+
+    
+            $.ajax({
+                type: "POST",
+                url: "private/process.php",
+                dataType: "json",
+                data: {product_id:product_id, id:formId, cart_id: cart_id, quantity: quantity},
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    console.log('Item did not add!');
+
+                } else {
+                    
+                    console.log('Item Addedd!');
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    $('.product-name[data-id="' + data.id + '"]').find('.product-quantity').text(data.quantity);
+                    $('.product-name[data-id="' + data.id + '"]').find('.price').text(data.price);
+                    $('.product-name[data-id="' + data.id + '"]').find('.remove-item').attr('data-quantity', data.quantity);
+                    $('.product-name[data-id="' + data.id + '"]').find('.add-item').attr('data-quantity', data.quantity);
+
+                    // reevaluate sub total and cart count
+
+                    evaluateCartCount();
+
+                    evaluateSubTotal();
+
+                }
+            
+        });
+
+    });
+
+    $(".remove-item-full").on("click", function(e){
+        e.preventDefault();
+
+        console.log('an item deletion has been tried');
+            
+            var formId = $(this).attr('data-action');
+            var product_id = $(this).attr('data-id');
+            var cart_id = $('#cart_id').text();
+            var quantity = $(this).attr('data-quantity');
+
+        console.log(formId, product_id, cart_id);
+
+    
+            $.ajax({
+                type: "POST",
+                url: "private/process.php",
+                dataType: "json",
+                data: {product_id:product_id, id:formId, cart_id: cart_id},
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    console.log('Item did not delete!');
+
+                } else {
+                    
+                    console.log('Item deleted!');
+
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    
+                    $('.product-name[data-id="' + data.id + '"]').remove();
+
+                    // reevaluate sub total and cart count
+
+                    evaluateCartCount();
+
+                    evaluateSubTotal();
+
                 }
             
         });

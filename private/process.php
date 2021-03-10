@@ -610,9 +610,43 @@
         $cart_id = $_POST['cart_id'];
         $quantity = $_POST['quantity'];
 
+        // echo '<pre>';
+        // print_r($_POST);
+
         $cart_item = new CartItem($db);
 
         $cart_item->delete($product_id, $cart_id, $quantity);
+
+
+      break;
+
+      case 'add-item':
+
+        $product_id = $_POST['product_id'];
+        $cart_id = $_POST['cart_id'];
+        $quantity = $_POST['quantity'];
+
+        // echo '<pre>';
+        // print_r($_POST);
+
+        $cart_item = new CartItem($db);
+
+        $cart_item->increase($product_id, $cart_id, $quantity);
+
+
+      break;
+
+      case 'remove-item-full':
+
+        $product_id = $_POST['product_id'];
+        $cart_id = $_POST['cart_id'];
+
+        // echo '<pre>';
+        // print_r($_POST);
+
+        $cart_item = new CartItem($db);
+
+        $cart_item->delete_cart_item($product_id, $cart_id);
 
 
       break;

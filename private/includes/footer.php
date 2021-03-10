@@ -429,7 +429,7 @@
     $("#edit-page").on("submit", function(e){
         e.preventDefault();
 
-        console.log('a pageedit has been tried');
+        console.log('a page edit has been tried');
 
             tinyMCE.triggerSave();
             

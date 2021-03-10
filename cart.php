@@ -63,28 +63,23 @@
         <div id="cart_id" style="display: none;"><?= $items['id']; ?></div>
             <div class="customer">
             <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
-                <a href="<?= root_url_private('customer/index.php'); ?>">
-                    View Your Account,
-                    <?= $_SESSION['username']; ?>
-                </a>
+                <div class="col">
+                    <a href="<?= root_url_private('customer/index.php'); ?>">
+                        View Your Account,
+                        <?= $_SESSION['username']; ?>
+                    </a>
+                </div>
             <?php else :?>
-                <a href="customer.php">
-                    Sign In/Register
-                </a>
+                <div class="col">
+                    <a href="customer.php">
+                        Sign In/Register
+                    </a>
+                </div>
             <?php endif; ?>
             </div>
-            <div class="cart">
+            <div class="col cart">
                 <a href="cart.php">
-                    <?php
-                    // count products in cart
-                    // $cart_item->user_id=1; // default to user with ID "1" for now
-                    // $cart_count=$cart_item->count();
-                    ?>
-                    Cart <span class="badge" id="comparison-count">
-                        <?php 
-                            // echo $cart_count; 
-                        ?>
-                    </span>
+                    Cart <span class="cart-count"></span>
                 </a>
             </div>
             <div id="navigation" style="width: 100%;">
@@ -107,7 +102,7 @@
     </div>
 </header>
 <main id="cart">
-<div class="container pt-2 pb-2">
+<div class="container-fluid">
         <div class="row">
         <div id="form-message"></div>
             <?php 
@@ -126,12 +121,20 @@
 
                     $price = substr($product['price'], 1) * $product['quantity'];
 
-                    echo "<div class='product-name m-b-10px' data-id='" . $product['id'] . "'>";
-                        echo "<h4>" .  $product['name'] . "</h4>";
-                        echo "<p>" .  $product['description'] . "</p>";
-                        echo "<p>Quantity: <span class='product-quantity'>" .  $product['quantity'] . "</span></p>";
-                        echo "<p>Price: $<span class='price'>" .  $price . "</span></p>";
-                        echo "<button class='btn btn-danger remove-item' data-action='remove-item' data-id='" . $product['id'] . "' data-quantity='" . $product['quantity'] . "'>Remove from Cart</button>";
+                    echo "<div class='product-name col col-sm-12 my-2' data-id='" . $product['id'] . "'>";
+                        echo "<div class='row'>";
+                            echo "<div class='col col-md-10'>";
+                                echo "<h4>" .  $product['name'] . "</h4>";
+                                echo "<p>" .  $product['description'] . "</p>";
+                                echo "<p>Quantity: <span class='product-quantity'>" .  $product['quantity'] . "</span></p>";
+                                echo "<p>Price: $<span class='price'>" .  $price . "</span></p>";
+                                echo "<button class='btn btn-success add-item' data-action='add-item' data-id='" . $product['id'] . "' data-quantity='" . $product['quantity'] . "'>Increase Quantity</button>";
+                                echo "<button class='btn btn-danger remove-item' data-action='remove-item' data-id='" . $product['id'] . "' data-quantity='" . $product['quantity'] . "'>Reduce Quantity</button>";
+                            echo "</div>";
+                            echo "<div class='col col-md-2 my-5'>";
+                            echo "<button class='btn btn-danger remove-item-full' data-action='remove-item-full' data-id='" . $product['id'] . "'>Remove Item from Cart</button>";
+                            echo "</div>";      
+                        echo "</div>";
                     echo "</div>";
                 }
                 
@@ -190,6 +193,17 @@
             }
             ?>
         </div>
+        <div class="row justify-content-end cart-totals">
+            <div class="col col-md-8"></div>
+            <div class="col col-sm col-md-2 quantity-total text-left">
+                Quantity
+                <span class="cart-count-bottom"></span>
+            </div>
+            <div class="col col-sm col-md-2 sub-total text-left">
+                Sub Total
+                <span id="sub-total"></span>
+            </div>
+        </div>
     </div>
 </main>
 <footer class="container">
@@ -197,3 +211,11 @@
         <?php $site->addFooter(); ?>
     </div>
 </footer>
+
+<script>
+"use strict";
+    (function ($) {
+            evaluateCartCount();
+            evaluateSubTotal();
+    })(jQuery);
+</script>
