@@ -278,6 +278,58 @@
 
             });
 
+            // add products on product page
+            $('.add-cart-products').click(function(e){
+
+                var user_id = $('.customer').attr('id');
+                var cart_id = $('#cart_id').html();
+                var id = $(this).attr('data-action');
+
+                var product = {
+                    id: $(this).attr('data-id'),
+                    name: $(this).parent().siblings('.product-link').find('.name').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.description').text().replace(/\s+/g, ' ').trim(),
+                    price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
+                }
+                
+                console.log(id, user_id, cart_id, product);
+
+                $.ajax({
+                        type: "POST",
+                        url: "private/process.php",
+                        dataType: "json",
+                        data: {id: id, user_id: user_id, cart_id: cart_id, product: product},
+                    }).done(function(data) {
+
+                        if(!data.success) {
+
+                                $('#cart-message-' + data.id).html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                            } else {
+
+                                $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                                // if (data.new_item) {
+                                    // update cart count in header on browser side
+                                    var cartText = $('.cart-count').text();
+                                    var oldCount = cartText.slice(1,-1);
+
+                                    var newCount = parseFloat(oldCount) + 1;
+                                    var newCount = "(" + newCount + ")"; 
+
+                                    $('.cart-count').text(newCount);
+                                // } 
+                                
+                                // else {
+                                //     $('.cart-count').text("(" + data.quantity + ")");
+                                // }
+
+                            }
+                    });
+
+
+            });
+
             $('#add-cart').click(function(e){
 
                 e.preventDefault(); 

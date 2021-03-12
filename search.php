@@ -28,21 +28,9 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <div id="navigation" style="width: 100%;">
-                <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <?php $site->addNav(); ?>
-                </div>
-                <form id="search" class="form-inline my-2 my-lg-0" method="GET">
-                    <?php $q = isset($_GET['q']) ? $_GET['q'] : ''; ?>
-                    <input class="search-term form-control mr-sm-2" type="search" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Search">
-                    <button class="btn my-2 my-sm-0 btn-outline-secondary" type="submit">Search</button>
-                </form>
-                </nav>
-            </div>
+            <?php
+                include('components/header-cart.php'); 
+            ?>
         </div>
     </div>
 </header>

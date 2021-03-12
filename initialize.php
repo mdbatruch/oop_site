@@ -37,3 +37,4 @@
     $site = new Site($db);
 
     $session = new Session;
+    // $product = new Product($db);

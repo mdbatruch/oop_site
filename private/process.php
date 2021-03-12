@@ -651,6 +651,27 @@
 
       break;
 
+      case 'add-cart-products':
+
+        $product_id = $_POST['product']['id'];
+        $product = $_POST['product'];
+        $cart_id = $_POST['cart_id'];
+
+        if (empty($_POST['quantity'])) {
+          $quantity = 1;
+        }
+
+        // echo '<pre>';
+        // print_r($_POST);
+
+        // echo $quantity;
+        $cart_item = new CartItem($db);
+
+        $cart_item->increase($product_id, $cart_id, $quantity, $product);
+
+
+      break;
+
     }
 
 ?>

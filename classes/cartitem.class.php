@@ -59,6 +59,29 @@
                 }
         }
 
+        public function getCartCount($cart_id, $user_id) {
+
+            try {
+                $stmt = $this->conn->prepare("SELECT * from cart_items WHERE cart_id=:cart_id");
+
+                $stmt->bindParam(":cart_id", $cart_id);
+
+                $stmt->execute();
+
+                $count = 0;
+
+                while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $count += $rows['quantity'];
+                }
+
+                return $count;
+            } catch (Exception $e) {
+    
+                return $e->getMessage();
+            }
+                
+        }
+
         public function create($products, $user_id, $cart_id, $quantity) {
 
             // echo '<pre>';
@@ -131,7 +154,7 @@
 
         }
 
-        public function increase($product_id, $cart_id, $quantity) {
+        public function increase($product_id, $cart_id, $quantity, $product = null) {
             $stmt = $this->conn->prepare('SELECT * FROM cart_items WHERE product_id=:product_id AND cart_id=:cart_id');
             $stmt->bindValue(":product_id", $product_id);
             $stmt->bindValue(":cart_id", $cart_id);
@@ -160,7 +183,7 @@
                     $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
                     $data['quantity'] = $new_quantity;
-
+                    // $data['new_item'] = false;
                     $data['price'] = $price;
 
                     $data['id'] = $product_id;
@@ -168,6 +191,42 @@
                     $data['success'] = true;
                     
                     $data['message'] = 'Success! Your Cart has been updated!';
+
+                } catch (Exception $e) {
+            
+                    return $e->getMessage();
+    
+                    $data['message'] = 'There was an error with your form. Please try again.';
+    
+                    $data['success'] = false;
+    
+                }
+
+            } else {
+
+                try {
+                    
+                    $product = json_encode($product);
+                    // $new_quantity = $rows['quantity'] + 1;
+
+                    $stmt = $this->conn->prepare('INSERT INTO cart_items (product_id, product, quantity, cart_id) VALUES (?, ?, ?, ?)' );
+                    
+                    $stmt->bindParam(1, $product_id);
+                    $stmt->bindParam(2, $product);
+                    $stmt->bindParam(3, $quantity);
+                    $stmt->bindParam(4, $cart_id);
+
+                    $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                    // $data['quantity'] = $new_quantity;
+
+                    // $data['new_item'] = true;
+
+                    $data['id'] = $product_id;
+
+                    $data['success'] = true;
+                    
+                    $data['message'] = 'Success! Your Item has been added to the cart!';
 
                 } catch (Exception $e) {
             
