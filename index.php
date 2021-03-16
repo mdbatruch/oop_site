@@ -11,6 +11,10 @@
     } else {
         $id=1;
     }
+
+    if ($_GET['id'] == 0 || $_GET['id'] == null) {
+        header('Location: index.php?id=1');
+    }
     
 
      //     //Process all pages in one pass
@@ -38,6 +42,22 @@
     $site->setPage($page);
 
     $gallery = $site->findSliderByPageId($id);
+
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
+
+        $cart_item = new CartItem($db);
+
+        if (isset($_SESSION['id'])) {
+            $items = $cart_item->get_cart($_SESSION['id']);
+            $cart_id = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+        }
+
+        $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
+
+    } else {
+        $count = 0;
+        $items = null;
+    }
 
     //  $page->render_nav();
     // echo '<pre>';
@@ -69,10 +89,10 @@
 
     //  $page->content = $description;
 
-    $cart_item = new CartItem($db);
+    // $cart_item = new CartItem($db);
     // echo '<pre>';
     // print_r($_SESSION);
-    $count = $cart_item->getCartCount(2, $_SESSION['id']);
+    // $count = $cart_item->getCartCount(2, $_SESSION['id']);
 
     // echo '<pre>';
     // print_r($count);
@@ -81,9 +101,7 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <?php
-                include('components/header-cart.php'); 
-            ?>
+            <?php $site->addCartHeader($site, $count, $items, $db); ?>
         </div>
     </div>
 </header>

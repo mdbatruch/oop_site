@@ -111,6 +111,8 @@
 
                 $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
+                $data['quantity'] = $quantity;
+
                 $data['success'] = true;
                 
                 $data['message'] = 'Success! Your Item has been updated!';

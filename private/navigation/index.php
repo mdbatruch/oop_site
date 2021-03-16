@@ -76,10 +76,12 @@
             </div>
         </div>
         <div class="row nav-sort">
-            <?php $site->addEditNav(); ?>
+            <div class="col col-md-6">
+                <?php $site->addEditNav(); ?>
+            </div>
         </div>
-        <div class="row">
-            <button type="button" class="save-navigation" data-id="">Save Navigation</button>
+        <div class="row nav-save">
+            <button type="button" id="save-navigation" class="save-navigation btn btn-secondary mt-2 mb-2" data-id="">Save Navigation</button>
         </div>
     </div>
 </main>

@@ -5,6 +5,9 @@ header("Content-Type: application/json; charset=UTF-8");
   
 include_once '../classes/database.class.php';
 include_once '../classes/product.class.php';
+
+//  error_reporting(E_ALL);
+//     ini_set('display_errors', 1);
   
 $database = new Database();
 $db = $database->getConnection();
@@ -13,7 +16,7 @@ $product = new Product($db);
   
 $stmt = $product->read();
 $num = $stmt->rowCount();
-  
+
 if($num>0){
   
     $products_arr=array();

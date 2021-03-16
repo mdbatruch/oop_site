@@ -16,7 +16,7 @@ class Product{
         $this->conn = $db;
     }
 
-    function read($from_record_num, $records_per_page){
+    function read(){
  
         // select all products query
         $query = "SELECT
@@ -24,16 +24,10 @@ class Product{
                 FROM
                     " . $this->table_name . "
                 ORDER BY
-                    created DESC
-                LIMIT
-                    ?, ?";
+                    created DESC";
      
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
-     
-        // bind limit clause variables
-        $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
-        $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
      
         // execute query
         $stmt->execute();
@@ -60,7 +54,7 @@ class Product{
         
     }
 
-    public function readOne($id){
+    public function readOne(){
  
         // query to select single record
         $query = "SELECT
@@ -74,9 +68,43 @@ class Product{
      
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
-     
+
         // sanitize
-        $this->id=htmlspecialchars(strip_tags($id));
+        $this->id=htmlspecialchars(strip_tags($this->id));
+     
+        // bind product id value
+        $stmt->bindParam(1, $this->id);
+     
+        // execute query
+        $stmt->execute();
+     
+        // get row values
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+        $this->name = $row['name'];
+        $this->price = $row['price'];
+        $this->description = $row['description'];
+        // $this->category_id = $row['category_id'];
+        // $this->category_name = $row['category_name'];
+    }
+
+    public function getProduct($id){
+ 
+        // query to select single record
+        $query = "SELECT
+                    id, name, description, price
+                FROM
+                    " . $this->table_name . "
+                WHERE
+                    id = ?
+                LIMIT
+                    0,1";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // sanitize
+        $id=htmlspecialchars(strip_tags($id));
      
         // bind product id value
         $stmt->bindParam(1, $id);

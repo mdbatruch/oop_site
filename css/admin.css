@@ -1,7 +1,3 @@
-header nav #main-navigation li a {
-  display: inline-block;
-  text-transform: capitalize; }
-
 body main .nav-sort ol#main-navigation .nav-item {
   background: #333; }
   body main .nav-sort ol#main-navigation .nav-item > a {
@@ -31,15 +27,3 @@ body main .nav-sort ol#main-navigation .nav-item {
     body main .nav-sort ol#main-navigation .nav-item ol.sub-nav a {
       background: #666;
       color: #fff; }
-
-body {
-  background-color: #f00;
-  height: 500px; }
-  body main {
-    background: #ff0; }
-    body main .product-id {
-      display: none; }
-    body main .cart-totals .quantity-total .cart-count-bottom {
-      display: block; }
-    body main .cart-totals .sub-total #sub-total {
-      display: block; }

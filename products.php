@@ -11,15 +11,21 @@
     // print_r($count);
     $stmt = $product->read(0, $count);
 
-    $cart_item = new CartItem($db);
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
-    if (isset($_SESSION['id'])) {
-        $items = $cart_item->get_cart($_SESSION['id']);
-        $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+        $cart_item = new CartItem($db);
+
+        if (isset($_SESSION['id'])) {
+            $items = $cart_item->get_cart($_SESSION['id']);
+            $cart_id = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+        }
+
+        $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
+
+    } else {
+        $count = 0;
+        $items = null;
     }
-
-    // $num = $stmt->rowCount();
- 
 
     // echo '<pre>';
     // print_r($products);
@@ -28,9 +34,7 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <?php
-                include('components/header-cart.php'); 
-            ?>
+         <?php $site->addCartHeader($site, $count, $items, $db); ?>
         </div>
     </div>
 </header>

@@ -26,6 +26,10 @@
             $this->page->render();
         }
 
+        public function addCartHeader($site, $count, $items, $db) {
+            include('components/header-cart.php'); 
+        }
+
         public function addHeader() {
             require_once("includes/header.php");
         }
@@ -75,7 +79,7 @@
                 foreach($items as $item) {
 
                     $result = isset($item['children']) ? 'dropdown' : '';
-                    echo '<li class="nav-item dd-item ' . $result . ' data-name="' . $item['name'] . '" data-order="' . $item['order'] . '">';
+                    echo '<li class="nav-item dd-item ' . $result . '" data-name="' . $item['name'] . '" data-order="' . $item['order'] . '">';
                         echo '<a class="nav-link dd-handle" href="index.php?id=' . $item['id'] . '">' . $item['name'] . '</a>';
 
                         if (isset($item['children'])) {
@@ -92,6 +96,7 @@
                         }
                     echo '</li>';
                 }
+                echo '<li class="nav-item dd-item" data-name="products"><a class="nav-link dd-handle" href="products.php">Products</a></li>';
             echo '</ul>';
 
         }

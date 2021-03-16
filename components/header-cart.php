@@ -1,15 +1,3 @@
-<?php 
-    $cart_item = new CartItem($db);
-    $count = $cart_item->getCartCount(2, $_SESSION['id']);
-
-    // echo '<pre>';
-    // print_r($_SESSION);
-
-    if (isset($_SESSION['id'])) {
-        $items = $cart_item->get_cart($_SESSION['id']);
-        $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
-    }
-?>
 <div id="cart_id" style="display: none;"><?= $items['id']; ?></div>
     <div class="customer" id="<?= $_SESSION['id']; ?>">
     <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>

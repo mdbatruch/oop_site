@@ -1,0 +1,42 @@
+body {
+    main {
+        .nav-sort {
+            ol#main-navigation {
+                .nav-item {
+                    background: #333;
+                    > a {
+                        color: #fff;
+                        padding-left: 10px;
+                    }
+                    button {
+                        display: inline-block;
+                        font-weight: 400;
+                        text-align: center;
+                        vertical-align: middle;
+                        user-select: none;
+                        background-color: transparent;
+                        border: 1px solid transparent;
+                        padding: .375rem .75rem;
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        border-radius: .25rem;
+                        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                        color: #212529;
+                        background-color: #ffc107;
+                        border-color: #ffc107;
+                    }
+                    ol.sub-nav {
+                        background: #666;
+                        margin-left: 20px;
+                        padding-left: 20px;
+                        color: #fff;
+                        a {
+                            background: #666;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

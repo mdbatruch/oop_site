@@ -350,6 +350,9 @@
 
                 console.log(id, user_id, cart_id, product, quantity);
 
+                if (quantity == 0) {
+                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Please enter a Quantity!</div>');
+                } else {
                     $.ajax({
                         type: "POST",
                         url: "private/process.php",
@@ -363,10 +366,20 @@
 
                             } else {
 
+                                var cartText = $('.cart-count').text();
+                                var oldCount = cartText.slice(1,-1);
+
+                                var newCount = parseFloat(oldCount) + parseFloat(quantity);
+
+                                var newCount = "(" + newCount + ")"; 
+
+                                $('.cart-count').text(newCount);
+
                                 $('#cart-message').html('<div class="alert alert-success">' + data.message + '</div>');
 
                             }
                     });
+                }
 
                 });
 

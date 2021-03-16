@@ -24,12 +24,12 @@
 
         // updateOutput($('#nestable').data('output', $('#nestable-output')));
 
-            $(".save-navigation").on("click", function(e){
+            $("#save-navigation").on("click", function(e){
                 e.preventDefault();
 
                 console.log('a nav edit has been tried');
                     
-                    var button = $(this).attr('class');
+                    var button = $(this).attr('id');
                     var nav_name = $("ol.navbar-nav").attr('id');
                     var nav_container = $("ol.navbar-nav").contents();
 
