@@ -37,6 +37,13 @@
 
                     $row_decoded = json_decode($row['product']);
 
+                    // echo '<pre>';
+                    // print_r($row_decoded);
+
+                    if(empty($row_decoded->image)) {
+                        $row_decoded->image = 'Missing.jpg';
+                    }
+
                     // echo $row_decoded->id;
                     extract($row);
               
@@ -44,6 +51,7 @@
                         "id" => $row_decoded->id,
                         "name" => $row_decoded->name,
                         "description" => html_entity_decode($row_decoded->description),
+                        "image" => $row_decoded->image,
                         "price" => $row_decoded->price,
                         "quantity" => $row['quantity']
                     );

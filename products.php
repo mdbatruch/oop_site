@@ -41,49 +41,47 @@
 <main>
 <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                Products Page
+            <div class="col-12 mb-4 mt-4 ml-3">
+                <h3>Products Page</h3>
             </div>
             <p>
             <?php 
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
                     extract($row);
                     ?>
-                    <div class='col-md-4 mb-2'>
-                
-                        <div class='product-id'><?= "{$id}" ?></div>
-                
-                        <a href='product.php?id=<?= $id ?>' class='product-link'>
-                
-                            <div class='name mb-1'>
-                                <?= "{$name}"  ?>
+                <div class='col-md-4 mb-2'>
+                    <div class="container-fluid">
+                        <div class="row">
+                        <div class="col-10 img-container">
+                            <div class='product-id'><?= "{$id}" ?></div>
+                            <div class="image">
+                                <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $row['name'] . ' Image'; ?>" class="rounded img-fluid img-thumbnail">
                             </div>
-                        </a>
-                
-                        <div class='mb-1 description'>
-                            <?= "{$description}"; ?>
                         </div>
-
-                        <div class='mb-1 price'>
-                           <?= "$" . number_format($price, 2, '.', ','); ?>
-                        </div>
-            
+                        <div class="col-12">
+                            <a href='product.php?id=<?= $id ?>' class='product-link'>
+                        
+                                <div class='name mb-1'>
+                                    <?= "{$name}"  ?>
+                                </div>
+                            </a>
                     
-                        <div class='mb-1'>
-                            <!-- // cart item settings
-                            // $cart_item->user_id=1; // we default to a user with ID "1" for now
-                            // $cart_item->product_id=$id; -->
-            
-                            <!-- // if product was already added in the cart
-                            // if($cart_item->exists()){ -->
-                            <!-- <a href='cart.php' class='btn btn-success w-100-pct'> -->
-                                    <!-- Update Cart -->
-                            <!-- </a> -->
-                            <div data-id="<?= $id ?>" data-action="add-cart-products" class='btn btn-primary add-cart-products'>Add to Cart</div>
-                            <div id="cart-message-<?= $id; ?>"></div>
+                            <div class='mb-1 description'>
+                                <?= "{$description}"; ?>
+                            </div>
+
+                            <div class='mb-1 price'>
+                                <?= "$" . number_format($price, 2, '.', ','); ?>
+                            </div>
+                        
+                            <div class='mb-1'>
+                                <div data-id="<?= $id ?>" data-action="add-cart-products" class='btn btn-primary add-cart-products'>Add to Cart</div>
+                                <div id="cart-message-<?= $id; ?>"></div>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                
+                </div>
           <?php 
           // include_once "paging.php";
             endwhile;    ?>

@@ -53,82 +53,37 @@
                         echo "</div>";
                     // }
             } else if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($products)) {
-                
+                ?>
+                <?php
                 foreach ($products as $product) {
-
-                    $price = substr($product['price'], 1) * $product['quantity'];
-
-                    echo "<div class='product-name col col-sm-12 my-2' data-id='" . $product['id'] . "'>";
-                        echo "<div class='row'>";
-                            echo "<div class='col col-md-10'>";
-                                echo "<h4>" .  $product['name'] . "</h4>";
-                                echo "<p>" .  $product['description'] . "</p>";
-                                echo "<p>Quantity: <span class='product-quantity'>" .  $product['quantity'] . "</span></p>";
-                                echo "<p>Price: $<span class='price'>" .  $price . "</span></p>";
-                                echo "<button class='btn btn-success add-item' data-action='add-item' data-id='" . $product['id'] . "' data-quantity='" . $product['quantity'] . "'>Increase Quantity</button>";
-                                echo "<button class='btn btn-danger remove-item' data-action='remove-item' data-id='" . $product['id'] . "' data-quantity='" . $product['quantity'] . "'>Reduce Quantity</button>";
-                            echo "</div>";
-                            echo "<div class='col col-md-2 my-5'>";
-                            echo "<button class='btn btn-danger remove-item-full' data-action='remove-item-full' data-id='" . $product['id'] . "'>Remove Item from Cart</button>";
-                            echo "</div>";      
-                        echo "</div>";
-                    echo "</div>";
-                }
-                
-                //                 // update quantity
-                //                 echo "<form class='update-quantity-form'>";
-                //                     echo "<div class='product-id' style='display:none;'>{$id}</div>";
-                //                     echo "<div class='input-group'>";
-                //                         echo "<input type='number' name='quantity' value='{$quantity}' class='form-control cart-quantity' min='1' />";
-                //                             echo "<span class='input-group-btn'>";
-                //                                 echo "<button class='btn btn-default update-quantity' type='submit'>Update</button>";
-                //                             echo "</span>";
-                //                     echo "</div>";
-                //                 echo "</form>";
-                
-                //                 // delete from cart
-                //                 echo "<a href='remove_from_cart.php?id={$id}' class='btn btn-default'>";
-                //                     echo "Delete";
-                //                 echo "</a>";
-                //             echo "</div>";
-                
-                //             echo "<div class='col-md-4'>";
-                //                 echo "<h4>$" . number_format($price, 2, '.', ',') . "</h4>";
-                //             echo "</div>";
-                //         echo "</div>";
-                
-                //         $item_count += $quantity;
-                //         $total+=$sub_total; -->
-                // }
-                
-                    //  echo "<div class='col-md-8'></div>";
-                //     echo "<div class='col-md-4'>";
-                //         echo "<div class='cart-row'>";
-                //             echo "<h4 class='m-b-10px'>Total ({$item_count} items)</h4>";
-                //             echo "<h4>$" . number_format($total, 2, '.', ',') . "</h4>";
-                //             echo "<a href='checkout.php' class='btn btn-success m-b-10px'>";
-                //                 echo "<span class='glyphicon glyphicon-shopping-cart'></span> Proceed to Checkout";
-                //             echo "</a>";
-                //         echo "</div>";
-                //     echo "</div>";
-                
-                // }
-                
-                // else{
-                //     echo "<div class='col-md-12'>";
-                //         echo "<div class='alert alert-danger'>";
-                //             echo "No products found in your cart!";
-                //         echo "</div>";
-                //     echo "</div>";
-                // } -->
+                        $price = substr($product['price'], 1) * $product['quantity']; ?>
+                    <div class='product-name col col-sm-12 my-2' data-id='<?= $product['id'] ?>' >
+                        <div class='row'>
+                            <div class='col col-md-2'>
+                                    <img src="<?= root_url('images/' . $product['image']); ?>" alt="<?= $product['name'] . ' Image'; ?>" class="img-fluid img-thumbnail">
+                            </div>
+                            <div class='col col-md-8'>
+                                <h4><?= $product['name']; ?></h4>
+                                <p><?=  $product['description']; ?></p>
+                                <p>Quantity: <span class='product-quantity'><?= $product['quantity'] ?></span></p>
+                                <p>Price: $<span class='price'><?= $price; ?></span></p>
+                                <button class='btn btn-success add-item' data-action='add-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>Increase Quantity</button>
+                                <button class='btn btn-danger remove-item' data-action='remove-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>Reduce Quantity</button>
+                            </div>
+                            <div class='col col-md-2 my-5'>
+                            <button class='btn btn-danger remove-item-full' data-action='remove-item-full' data-id='<?= $product['id']; ?>'>Remove Item from Cart</button>
+                            </div>    
+                        </div>
+                    </div>
+             <?php   } 
             } else {
-                echo "<div class='col-md-12'>";
-                    echo "<div class='alert alert-danger'>";
-                        echo "Your Cart is empty, please sign in or register";
-                    echo "</div>";
-                echo "</div>";
-            }
-            ?>
+                ?>
+                <div class='col-md-12'>
+                    <div class='alert alert-danger'>
+                        Your Cart is empty, please sign in or register
+                    </div>
+                </div>
+        <?php  } ?>
         </div>
         <div class="row justify-content-end cart-totals">
             <div class="col col-md-8"></div>

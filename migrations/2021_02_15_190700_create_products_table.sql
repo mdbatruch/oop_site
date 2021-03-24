@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
-  `description` text NOT NULL,
+  `description` longtext NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `category_id` int(11) NOT NULL,
   `created` datetime NOT NULL,

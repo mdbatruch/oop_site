@@ -20,7 +20,7 @@ class Product{
  
         // select all products query
         $query = "SELECT
-                    id, name, description, price 
+                    id, name, description, image, price 
                 FROM
                     " . $this->table_name . "
                 ORDER BY
@@ -92,7 +92,7 @@ class Product{
  
         // query to select single record
         $query = "SELECT
-                    id, name, description, price
+                    id, name, description, image, price
                 FROM
                     " . $this->table_name . "
                 WHERE

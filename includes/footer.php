@@ -284,11 +284,13 @@
                 var user_id = $('.customer').attr('id');
                 var cart_id = $('#cart_id').html();
                 var id = $(this).attr('data-action');
+                var image = $(this).parent().parent().siblings('.img-container').find('.img-thumbnail').attr('src').split("/");
 
                 var product = {
                     id: $(this).attr('data-id'),
                     name: $(this).parent().siblings('.product-link').find('.name').text().replace(/\s+/g, ' ').trim(),
                     description: $(this).parent().siblings('.description').text().replace(/\s+/g, ' ').trim(),
+                    image: image[image.length - 1],
                     price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
                 }
                 
@@ -340,11 +342,13 @@
                 var user_id = $('.customer').attr('id');
                 var cart_id = $('#cart_id').html();
                 var quantity = $('#quantity option:selected').text();
+                var image = $('#product-image').attr('src').split("/");
 
                 var product = {
                     id: $('#product-info').attr('data-id'),
                     name: $('#name').text(),
                     description: $('#description').text(),
+                    image: image[image.length - 1],
                     price: $('#price').text(),
                 }
 
