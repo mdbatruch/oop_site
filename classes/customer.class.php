@@ -1,6 +1,8 @@
 <?php
 
-class Customer {
+require_once('cart.class.php');
+
+class Customer extends Cart {
   
     private $conn;
     private $table_name = "customers";
@@ -89,9 +91,34 @@ class Customer {
                     $stmt->bindParam(5, $username);
                     $stmt->bindParam(6, $password);
         
-                    $stmt->execute();
-        
+                    $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                    // get newly created customer id for creating cart and redirecting to account
+                    $stmtId = $this->conn->prepare('SELECT id FROM customers WHERE username=:username');
+                    $stmtId->bindParam(":username", $username);
+                    $stmtId->execute();
+
+                    $customerId = $stmtId->fetch(PDO::FETCH_ASSOC);
+
+                    // create cart for customer
+                    $cart = new Cart($this->conn);
+
+                    $cart->createCart($customerId['id']);
+
+                    // echo '<pre>';
+                    // print_r($customerId);
+
                     $data['success'] = true;
+
+                    session_regenerate_id();
+
+                    $_SESSION['username'] = $username;
+                    $_SESSION['id'] = $customerId['id'];
+                    $_SESSION['account'] = 'Customer';
+                    $_SESSION['last_login'] = time();
+                    $login_time = date('D-M-d-Y g:i A', $_SESSION['last_login']);
+
+                    $data['redirect'] = 'private/customer/index.php?id=' . $customerId['id'];
         
                     $data['message'] = 'Success! Your Account was created!';
         
@@ -153,7 +180,7 @@ class Customer {
                         //protects against session fixation attacks. Regenerates id everytime you log in.
                         session_regenerate_id();
 
-                        $data['redirect'] = 'private/customer/index.php?id=' . $customer_exists['id'];;
+                        $data['redirect'] = 'private/customer/index.php?id=' . $customer_exists['id'];
                         $data['success'] = true;
                         $data['message'] = 'Success! Logging into your account now.';
 

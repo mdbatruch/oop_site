@@ -3,6 +3,11 @@ body {
     height: 500px;
     main {
         background: #ff0;
+        #products {
+            h3 {
+                margin-left: 1rem;
+            }
+        }
         .product-id {
             display: none;
         }

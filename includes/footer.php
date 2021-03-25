@@ -221,6 +221,8 @@
 
                         $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
 
+                        $(location).attr('href', data.redirect);
+
                     }
             });
         }

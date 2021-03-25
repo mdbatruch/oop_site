@@ -37,6 +37,8 @@ body {
   height: 500px; }
   body main {
     background: #ff0; }
+    body main #products h3 {
+      margin-left: 1rem; }
     body main .product-id {
       display: none; }
     body main .cart-totals .quantity-total .cart-count-bottom {

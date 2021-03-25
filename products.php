@@ -39,12 +39,11 @@
     </div>
 </header>
 <main>
-<div class="container-fluid">
+<div id="products" class="container-fluid">
         <div class="row">
-            <div class="col-12 mb-4 mt-4 ml-3">
+            <div class="col-12 mb-4 mt-4">
                 <h3>Products Page</h3>
             </div>
-            <p>
             <?php 
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
                     extract($row);
@@ -85,7 +84,6 @@
           <?php 
           // include_once "paging.php";
             endwhile;    ?>
-            </p>
         </div>
     </div>
 </main>

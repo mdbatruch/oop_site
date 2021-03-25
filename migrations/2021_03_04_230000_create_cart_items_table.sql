@@ -1,7 +1,7 @@
 CREATE TABLE cart_items (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   product_id int(11) NOT NULL,
-  product varchar(255) NOT NULL,
+  product LONGTEXT NOT NULL,
   quantity int(11) NOT NULL,
   cart_id int(11) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
