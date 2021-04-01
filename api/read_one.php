@@ -18,7 +18,8 @@ $db = $database->getConnection();
   
 $product = new Product($db);
   
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+// $product->id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->name = isset($_GET['name']) ? $_GET['name'] : die();
   
 $product->readOne();
   
@@ -29,6 +30,7 @@ if($product->name!=null){
         "name" => $product->name,
         "description" => $product->description,
         "price" => $product->price,
+        "image" => $product->image,
         "category_id" => $product->category_id,
         "category_name" => $product->category_name
   

@@ -58,11 +58,11 @@ class Product{
  
         // query to select single record
         $query = "SELECT
-                    id, name, description, price
+                    id, name, description, image, price
                 FROM
                     " . $this->table_name . "
                 WHERE
-                    id = ?
+                    name = ?
                 LIMIT
                     0,1";
      
@@ -70,10 +70,12 @@ class Product{
         $stmt = $this->conn->prepare( $query );
 
         // sanitize
-        $this->id=htmlspecialchars(strip_tags($this->id));
+        // $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->name=htmlspecialchars(strip_tags($this->name));
      
         // bind product id value
-        $stmt->bindParam(1, $this->id);
+        // $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(1, $this->name);
      
         // execute query
         $stmt->execute();
@@ -81,8 +83,10 @@ class Product{
         // get row values
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
      
+        $this->id = $row['id'];
         $this->name = $row['name'];
         $this->price = $row['price'];
+        $this->image = $row['image'];
         $this->description = $row['description'];
         // $this->category_id = $row['category_id'];
         // $this->category_name = $row['category_name'];
