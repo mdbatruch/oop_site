@@ -10,6 +10,8 @@
 
     $image = !empty($chosen['image']) ? $chosen['image'] : 'missing.jpg';
 
+    $categories = Category::getCategories($db);
+
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
         $cart_item = new CartItem($db);
@@ -17,6 +19,7 @@
         if (isset($_SESSION['id'])) {
             $items = $cart_item->get_cart($_SESSION['id']);
             $cart_id = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
         }
 
         $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
@@ -25,6 +28,22 @@
         $count = 0;
         $items = null;
     }
+
+    foreach ($categories as $category) {
+        if ($chosen['category_id'] == $category['id']) {
+            // $category = $category['name'];
+
+            if(!isset($chosen['category_name'])) {
+                $chosen['category_name'] = '';
+            }
+
+            $chosen['category_name'] = $category['name'];
+        }
+    }
+
+    $category_search = strtolower($chosen['category_name']);
+
+    $category_search = preg_replace('/\s+/', '+', $category_search);
 
     // echo '<pre>';
     // print_r($chosen);
@@ -55,6 +74,12 @@
                         <div class="col-md-8">
                             <h2 id="name"><?= $chosen['name']; ?></h2>
                             <div id="description"><?= $chosen['description']; ?></div>
+                            <div class="categories">
+                                <div>Categories:</div>
+                                <h5>
+                                    <a href="products.php?category=<?= $category_search; ?>"><?= $chosen['category_name']; ?></a>
+                                </h5>
+                            </div>
                             <div id="price" class="mb-2 mt-2"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>
                             <div class="count mb-2 mt-2">
                                 Quantity

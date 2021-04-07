@@ -7,9 +7,30 @@ body {
             h3 {
                 margin-left: 1rem;
             }
+            h5 {
+                &.filter-title {
+                    margin-left: 15px;
+                }
+            }
+            ul {
+                &.filters {
+                    li {
+                        list-style: none;
+                    }
+                }
+            }
         }
         .product-id {
             display: none;
+        }
+        #product-info {
+            .categories {
+                > div {
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    margin: 10px 0px 0px 0px;
+                }
+            }
         }
         .cart-totals {
             .quantity-total {

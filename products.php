@@ -11,6 +11,8 @@
     // print_r($count);
     $stmt = $product->read(0, $count);
 
+    $categories = Category::getCategories($db);
+
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
         $cart_item = new CartItem($db);
@@ -27,8 +29,21 @@
         $items = null;
     }
 
+    $category_filter = '';
+
+    if (isset($_GET['category'])) {
+
+        $filter_name = ucwords(preg_replace('/[^a-zA-Z0-9\']/', ' ', $_GET['category']));
+
+        foreach ($categories as $category) {
+            if ($category['name'] == $filter_name) {
+                $category_filter = $category['id'];
+            }
+        }
+    }
+
     // echo '<pre>';
-    // print_r($products);
+    // print_r($categories);
 
 ?>
 <header>
@@ -43,10 +58,17 @@
         <div class="row">
             <div class="col-12 mb-4 mt-4">
                 <h3>Products Page</h3>
+                <?php if (isset($_GET['category'])) : ?>
+                    <h5 class="filter-title">Filters</h5>
+                    <ul class="filters">
+                        <li><?= $filter_name; ?></li>
+                    </ul>
+                <?php endif; ?>
             </div>
             <?php 
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
                     extract($row);
+                        if (($row['category_id'] == $category_filter) || (!isset($_GET['category']))) :
                     ?>
                 <div class='col-md-4 mb-2'>
                     <div class="container-fluid">
@@ -83,6 +105,7 @@
                 </div>
           <?php 
           // include_once "paging.php";
+                endif;
             endwhile;    ?>
         </div>
     </div>

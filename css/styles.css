@@ -39,8 +39,16 @@ body {
     background: #ff0; }
     body main #products h3 {
       margin-left: 1rem; }
+    body main #products h5.filter-title {
+      margin-left: 15px; }
+    body main #products ul.filters li {
+      list-style: none; }
     body main .product-id {
       display: none; }
+    body main #product-info .categories > div {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 10px 0px 0px 0px; }
     body main .cart-totals .quantity-total .cart-count-bottom {
       display: block; }
     body main .cart-totals .sub-total #sub-total {

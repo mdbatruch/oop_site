@@ -30,8 +30,7 @@ if($num>0){
             "name" => $name,
             "description" => html_entity_decode($description),
             "price" => $price,
-            "category_id" => $category_id,
-            "category_name" => $category_name
+            "category_id" => $category_id
         );
   
         array_push($products_arr["records"], $product_item);
