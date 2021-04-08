@@ -77,7 +77,7 @@
                             <div class="categories">
                                 <div>Categories:</div>
                                 <h5>
-                                    <a href="products.php?category=<?= $category_search; ?>"><?= $chosen['category_name']; ?></a>
+                                    <a href="products.php?page=1&category=<?= $category_search; ?>"><?= $chosen['category_name']; ?></a>
                                 </h5>
                             </div>
                             <div id="price" class="mb-2 mt-2"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>

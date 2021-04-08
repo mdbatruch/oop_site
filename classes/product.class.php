@@ -16,19 +16,51 @@ class Product{
         $this->conn = $db;
     }
 
-    function read(){
+    function read($limit = null, $offset = null){
  
         // select all products query
-        $query = "SELECT
-                    id, name, description, image, price, category_id 
-                FROM
-                    " . $this->table_name . "
-                ORDER BY
-                    created DESC";
+        // $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC";
+        $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC LIMIT " . $limit . " OFFSET " . $offset;
      
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
      
+        // execute query
+        $stmt->execute();
+     
+        // return values
+        return $stmt;
+    }
+
+    function categoryCount($category_id) {
+
+        $query = "SELECT count(*) FROM " . $this->table_name . " WHERE category_id = ?";
+
+        $stmt = $this->conn->prepare( $query );
+        $stmt->bindParam(1, $category_id);
+
+        // execute query
+        $stmt->execute();
+     
+        // get row value
+        $rows = $stmt->fetch(PDO::FETCH_NUM);
+     
+        // return count
+        // echo '<pre>';
+        // print_r($rows);
+        return $rows[0];
+    }
+
+    function readByCategory($limit = null, $offset = null, $category){
+ 
+        // select all products query
+        // $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC";
+        $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " WHERE category_id = ? ORDER BY created DESC LIMIT " . $limit . " OFFSET " . $offset;
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+        $stmt->bindParam(1, $category);
+
         // execute query
         $stmt->execute();
      

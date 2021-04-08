@@ -6,10 +6,22 @@
 
     $product = new Product($db);
 
-    $count = $product->count();
+    $product_count = $product->count();
 
-    // print_r($count);
-    $stmt = $product->read(0, $count);
+    $current_page = $_GET['page'] ?? 1;
+    $per_page = 9;
+    // $pagination = new Pagination($current_page, $per_page, $product_count);
+
+    $url = root_url('products.php');
+
+
+
+    // $stmt = $product->read($per_page, $pagination->offset());
+
+    // echo '<pre>';
+    // print_r($stmt);
+    // $stmt = $product->read(0, $product_count);
+
 
     $categories = Category::getCategories($db);
 
@@ -40,8 +52,25 @@
                 $category_filter = $category['id'];
             }
         }
+
+        // echo $category_filter;
+
+        $cat_count = $product->categoryCount($category_filter);
+
+        $pagination = new Pagination($current_page, $per_page, $cat_count);
+        $stmt = $product->readByCategory($per_page, $pagination->offset(), $category_filter);
+        // $stmt = $product->readByCategory($per_page, '', $category_filter);
+
+        // echo '<pre>';
+        // print_r($stmt);
+
+    } else {
+        $_GET['category'] = null;
+        $pagination = new Pagination($current_page, $per_page, $product_count);
+        $stmt = $product->read($per_page, $pagination->offset());
     }
 
+    // echo $category_filter;
     // echo '<pre>';
     // print_r($categories);
 
@@ -65,8 +94,10 @@
                     </ul>
                 <?php endif; ?>
             </div>
-            <?php 
+            <?php
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                    // echo '<pre>';
+                    // print_r($row);
                     extract($row);
                         if (($row['category_id'] == $category_filter) || (!isset($_GET['category']))) :
                     ?>
@@ -103,10 +134,15 @@
                         </div>
                     </div>
                 </div>
-          <?php 
-          // include_once "paging.php";
+            <?php
                 endif;
-            endwhile;    ?>
+                endwhile;
+            ?>
+        </div>
+        <div class="row">
+            <div class="container-fluid">
+                <?= $pagination->page_links($url, $_GET['category']); ?>
+            </div>
         </div>
     </div>
 </main>
