@@ -17,7 +17,7 @@
     // $gallery = Site::find_by_id($id);
     $gallery = $site->find_by_id($id);
 
-    include('../includes/header.php');
+    $site->addPrivateHeader();
 
     $pages = $site->find_all_pages();
 
@@ -107,4 +107,8 @@
         </div>
     </div>
 </main>
-<?php include('../includes/footer.php'); ?>
+<?php 
+
+    $site->addPrivateFooter();
+
+?>

@@ -34,8 +34,28 @@
             require_once("includes/header.php");
         }
 
+        public function addPrivateHeader() {
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            include "$private/includes/header.php";
+        }
+
         public function addFooter() {
             require_once("includes/footer.php");
+        }
+
+        public function addPrivateFooter() {
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            include "$private/includes/footer.php";
+        }
+        
+        public function addPrivateNav() {
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            include "$private/includes/navigation.php";
+        }
+
+        public function addPrivateCustomerNav() {
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            include "$private/includes/customer/navigation.php";
         }
 
         public function addEditNav() {

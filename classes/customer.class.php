@@ -80,16 +80,18 @@ class Customer extends Cart {
 
                 try {
 
+                    $avatar = 'empty.png';
 
-                    $stmt = $this->conn->prepare('INSERT INTO customers (first_name, last_name, email, address, username, hashed_password)
-                                        VALUES (?, ?, ?, ?, ?, ?)');
+                    $stmt = $this->conn->prepare('INSERT INTO customers (first_name, last_name, email, avatar, address, username, hashed_password)
+                                        VALUES (?, ?, ?, ?, ?, ?, ?)');
                     
                     $stmt->bindParam(1, $firstName);
                     $stmt->bindParam(2, $lastName);
                     $stmt->bindParam(3, $email);
-                    $stmt->bindParam(4, $address);
-                    $stmt->bindParam(5, $username);
-                    $stmt->bindParam(6, $password);
+                    $stmt->bindParam(4, $avatar);
+                    $stmt->bindParam(5, $address);
+                    $stmt->bindParam(6, $username);
+                    $stmt->bindParam(7, $password);
         
                     $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
@@ -208,7 +210,7 @@ class Customer extends Cart {
     static public function view_customer_info($id, $db) {
 
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $db->prepare("SELECT id, first_name, last_name, address, username FROM customers WHERE id=:id");
+        $stmt = $db->prepare("SELECT id, first_name, last_name, avatar, address, username FROM customers WHERE id=:id");
         $stmt->bindParam(":id", $id);
 
         $stmt->execute();

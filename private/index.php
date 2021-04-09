@@ -14,7 +14,7 @@
 
     // echo $session->username;
 
-    include('includes/header.php');
+    $site->addPrivateHeader();
 
 ?>
 
@@ -47,4 +47,8 @@
         </div>
     </div>
 </main>
-<?php include('includes/footer.php'); ?>
+<?php 
+
+    $site->addPrivateFooter();
+
+?>

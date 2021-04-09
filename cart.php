@@ -63,7 +63,9 @@
                                     <img src="<?= root_url('images/' . $product['image']); ?>" alt="<?= $product['name'] . ' Image'; ?>" class="img-fluid img-thumbnail">
                             </div>
                             <div class='col col-md-8'>
-                                <h4><?= $product['name']; ?></h4>
+                                <a href="<?= root_url('product.php?id=' . $product["id"]); ?>">
+                                    <h4><?= $product['name']; ?></h4>
+                                </a>
                                 <p><?=  $product['description']; ?></p>
                                 <p>Quantity: <span class='product-quantity'><?= $product['quantity'] ?></span></p>
                                 <p>Price: $<span class='price'><?= $price; ?></span></p>

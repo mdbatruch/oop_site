@@ -14,19 +14,14 @@
     // echo '<pre>';
     // print_r($profile);
 
+    $site->addPrivateHeader();
+
 ?>
 
-<header id="customer-header" class="container">
+<header id="customer-header" class="container-fluid">
     <div class="row">
         <div id="customer-navigation">
-            <ul>
-                <li>
-                    <a href="<?php echo root_url_private('/customer/index.php?id=' . $_SESSION['id']); ?>" class="button">Back to Dashboard</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
-                </li>
-            </ul>
+            <?= $site->addPrivateCustomerNav(); ?>
         </div>
     </div>
 </header>
@@ -42,6 +37,6 @@
 </main>
 <?php 
 
-// include('includes/footer.php'); 
+    $site->addPrivateFooter();
 
 ?>

@@ -15,7 +15,7 @@
     
     $galleries = $site->find_all_galleries();
 
-    include('../includes/header.php');
+    $site->addPrivateHeader();
 ?>
 
 
@@ -100,4 +100,8 @@
     </div>
 </main>
 
-<?php include('../includes/footer.php'); ?>
+<?php 
+
+    $site->addPrivateFooter();
+
+?>

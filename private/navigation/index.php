@@ -22,7 +22,7 @@
     // echo '<pre>';
     // print_r($pages);
 
-    include('../includes/header.php');
+    $site->addPrivateHeader();
 ?>
 
 <style>
@@ -86,4 +86,8 @@
     </div>
 </main>
 
-<?php include('../includes/footer.php'); ?>
+<?php 
+
+    $site->addPrivateFooter();
+
+?>

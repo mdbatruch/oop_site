@@ -32,6 +32,13 @@ body main .nav-sort ol#main-navigation .nav-item {
       background: #666;
       color: #fff; }
 
+body #customer-header {
+  background-color: #343a40; }
+
+body .customer-container img {
+  max-width: 300px;
+  border-radius: 50% !important; }
+
 body {
   background-color: #f00;
   height: 500px; }

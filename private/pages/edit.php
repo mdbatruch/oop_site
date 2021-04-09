@@ -22,7 +22,7 @@
     // echo '<pre>';
     // print_r($page);
 
-    include('../includes/header.php');
+    $site->addPrivateHeader();
     
 ?>
 <header id="admin-header" class="container">
@@ -86,4 +86,8 @@
         </div>
     </div>
 </main>
-<?php include('../includes/footer.php'); ?>
+<?php 
+
+    $site->addPrivateFooter();
+
+?>

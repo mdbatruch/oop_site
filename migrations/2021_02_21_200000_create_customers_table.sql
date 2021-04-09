@@ -3,6 +3,7 @@ CREATE TABLE customers (
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
+  avatar varchar(255),
   address TEXT NOT NULL,
   username VARCHAR(255) NOT NULL,
   hashed_password VARCHAR(255) NOT NULL,

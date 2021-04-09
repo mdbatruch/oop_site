@@ -1,0 +1,6 @@
+body #customer-header {
+  background-color: #343a40; }
+
+body .customer-container img {
+  max-width: 300px;
+  border-radius: 50% !important; }

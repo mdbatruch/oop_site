@@ -113,12 +113,14 @@
         <?php endif; ?>
         </div>
         <div class="row">
+            <?php if ($page->isHome()) : ?>
             <div class="col-12 text-center mt-4">
                 <h3>Search for a Product</h3>
                 <p>
                     <div id="root"></div>
                 </p>
             </div>
+            <?php endif; ?>
             <div class="col-12">
                 <p>
                     <?php $site->render(); ?>
