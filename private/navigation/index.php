@@ -22,7 +22,9 @@
     // echo '<pre>';
     // print_r($pages);
 
-    $site->addPrivateHeader();
+    $title = 'Edit Main Navigation';
+
+    $site->addPrivateHeader($title);
 ?>
 
 <style>
@@ -53,18 +55,9 @@
 
 
 
-<header id="admin-header" class="container">
+<header id="admin-header" class="container-fluid">
     <div class="row">
-        <div id="admin-navigation">
-            <ul>
-                <li>
-                    <a href="<?php echo root_url_private('index.php'); ?>" class="button">Dashboard</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
-                </li>
-            </ul>
-        </div>
+        <?= $site->addPrivateAdminNav($title); ?>
     </div>
 </header>
 <main>

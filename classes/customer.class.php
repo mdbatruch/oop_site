@@ -160,7 +160,7 @@ class Customer extends Cart {
 
                     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    $stmt = $this->conn->prepare("SELECT id, username, hashed_password FROM customers WHERE username=:username");
+                    $stmt = $this->conn->prepare("SELECT id, avatar, username, hashed_password FROM customers WHERE username=:username");
                     
                     $stmt->bindParam(":username", $username);
 
@@ -189,6 +189,7 @@ class Customer extends Cart {
                         // set this instances' properties and session variables with the given values from the form submission and validation from database
                         $_SESSION['username'] = $customer_exists['username'];
                         $_SESSION['id'] = $customer_exists['id'];
+                        $_SESSION['avatar'] = $customer_exists['avatar'];
                         $_SESSION['account'] = 'Customer';
                         $_SESSION['last_login'] = time();
                         $login_time = date('D-M-d-Y g:i A', $_SESSION['last_login']);

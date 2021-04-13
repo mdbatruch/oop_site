@@ -12,7 +12,9 @@
         header( 'location: index.php?id=' . $_SESSION['id']);
     }
 
-    $site->addPrivateHeader();
+    $title = 'Customer Dashboard';
+
+    $site->addPrivateHeader($title);
 
 ?>
 

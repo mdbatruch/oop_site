@@ -1,5 +1,40 @@
 body {
+    #admin-header {
+        background-color: #343a40;
+        #admin-navigation {
+            ul.navbar-nav {
+                li {
+                    position: relative;
+                    a {
+                        display: inline-block;
+                    }
+                    ul.dropdown-menu {
+                        left: 0;
+                        li {
+                            a {
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     main {
+        li {
+            &.page {
+                list-style-type: none;
+                .btn-info {
+                    display: inline-block;
+                }
+                .delete {
+                    display: inline-block;
+                }
+            }
+            &.gallery {
+                list-style-type: none;
+            }
+        }
         .nav-sort {
             ol#main-navigation {
                 .nav-item {

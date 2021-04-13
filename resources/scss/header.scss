@@ -1,4 +1,12 @@
 header {
+    .cart, .logout {
+        line-height: 2;
+    }
+    .account-name {
+        img {
+            width: 40px;
+        }
+    }
     nav {
         #main-navigation {
             li a {

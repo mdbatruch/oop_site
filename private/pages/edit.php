@@ -22,24 +22,14 @@
     // echo '<pre>';
     // print_r($page);
 
-    $site->addPrivateHeader();
+    $title = 'Edit Page';
+
+    $site->addPrivateHeader($title);
     
 ?>
-<header id="admin-header" class="container">
+<header id="admin-header" class="container-fluid">
     <div class="row">
-        <div id="admin-navigation">
-            <ul>
-                <li>
-                    <a href="<?php echo root_url_private('index.php'); ?>" class="button">Dashboard</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url_private('pages/index.php'); ?>" class="button">Pages List</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
-                </li>
-            </ul>
-        </div>
+        <?= $site->addPrivateAdminNav($title); ?>
     </div>
 </header>
 <main>
@@ -48,7 +38,7 @@
             <div class="col-12">
                 <div class="edit-page">
                     <form id="edit-page" method="post">
-                        <h2>Edit Page</h2>
+                        <h2>Edit '<?= ucfirst($page['page']); ?>'</h2>
                         <dl>
                             <label>Page Name</label>
                             <dd>

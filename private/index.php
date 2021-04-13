@@ -14,28 +14,15 @@
 
     // echo $session->username;
 
-    $site->addPrivateHeader();
+    $title = 'Dashboard';
+
+    $site->addPrivateHeader($title);
 
 ?>
 
-<header id="admin-header" class="container">
+<header id="admin-header" class="container-fluid">
     <div class="row">
-        <div id="admin-navigation">
-            <ul>
-                <li>
-                    <a href="<?php echo root_url_private('pages/index.php'); ?>" class="button">Pages</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url_private('galleries/index.php'); ?>" class="button">Galleries</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url_private('navigation/index.php'); ?>" class="button">Navigation</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
-                </li>
-            </ul>
-        </div>
+        <?= $site->addPrivateAdminNav($title); ?>
     </div>
 </header>
 <main>

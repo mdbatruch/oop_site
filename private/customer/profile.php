@@ -16,7 +16,9 @@
 
 //  include('../includes/header.php');
 
- $site->addPrivateHeader();
+ $title = 'Customer Profile';
+
+ $site->addPrivateHeader($title);
 
 ?>
 

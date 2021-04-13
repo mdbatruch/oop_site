@@ -1,7 +1,11 @@
 <div id="cart_id" style="display: none;"><?= $items['id']; ?></div>
     <div class="customer col-md-3" id="<?= $_SESSION['id']; ?>">
-    <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
+    <?php 
+    // echo '<pre>';
+    // print_r($_SESSION);
+    if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
         <div class="account-name">
+            <img src="<?= root_url('uploads/' . $_SESSION['avatar']); ?>" alt="<?= $_SESSION['username']; ?> Picture" class="img-fluid">
             <a href="<?= root_url_private('customer/index.php'); ?>">
                 View Your Account,
                 <?= $_SESSION['username']; ?>

@@ -15,29 +15,16 @@
     
     $galleries = $site->find_all_galleries();
 
-    $site->addPrivateHeader();
+    $title = 'Gallery List';
+
+    $site->addPrivateHeader($title);
 ?>
 
 
 
-<header id="admin-header" class="container">
+<header id="admin-header" class="container-fluid">
     <div class="row">
-        <div id="admin-navigation">
-            <ul>
-                <li>
-                    <a href="<?php echo root_url_private('index.php'); ?>" class="button">Dashboard</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url_private('pages/new.php'); ?>" class="button">Create a New Page</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url_private('galleries/new.php'); ?>" class="button">Create a New Gallery</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
-                </li>
-            </ul>
-        </div>
+        <?= $site->addPrivateAdminNav($title); ?>
     </div>
 </header>
 <main>
@@ -72,13 +59,15 @@
                             Featured On <?= $page_assoc['title']; ?>
                         <?php endif; ?>
                     </div>
-                        <a class="edit-<?= $name; ?>" href="<?php echo root_url_private('/galleries/edit.php?id=' . $gallery_id); ?>">
+                        <a class="edit-<?= $name; ?> btn btn-info" href="<?php echo root_url_private('/galleries/edit.php?id=' . $gallery_id); ?>">
                             Edit
                         </a>
-                        <?php foreach($slides as $slide) : ?>
-                            <img src="<?php echo root_url('uploads/' . $slide); ?>" height="50px" width="50px" />
-                        <?php endforeach; ?>
-                        <div class="delete-gallery" data-id="<?= $gallery_id; ?>">Delete</div>
+                        <div class="delete-gallery btn btn-danger" data-id="<?= $gallery_id; ?>">Delete</div>
+                        <div class="slides mt-2 mb-2">
+                            <?php foreach($slides as $slide) : ?>
+                                <img src="<?php echo root_url('uploads/' . $slide); ?>" height="50px" width="50px" />
+                            <?php endforeach; ?>
+                        </div>
                     </li>
                 <?php endforeach; ?>
             </ul>

@@ -1,3 +1,9 @@
+header .cart, header .logout {
+  line-height: 2; }
+
+header .account-name img {
+  width: 40px; }
+
 header nav #main-navigation li a {
   display: inline-block;
   text-transform: capitalize; }

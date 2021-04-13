@@ -14,7 +14,9 @@
     // echo '<pre>';
     // print_r($profile);
 
-    $site->addPrivateHeader();
+    $title = 'Customer Orders';
+
+    $site->addPrivateHeader($title);
 
 ?>
 

@@ -17,27 +17,17 @@
     // echo '<pre>';
     // print_r($pages);
 
-    $site->addPrivateHeader();
+    $title = 'Pages';
+
+    $site->addPrivateHeader($title);
 
 ?>
 
 
 
-<header id="admin-header" class="container">
+<header id="admin-header" class="container-fluid">
     <div class="row">
-        <div id="admin-navigation">
-            <ul>
-                <li>
-                    <a href="<?php echo root_url_private('index.php'); ?>" class="button">Dashboard</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url_private('pages/new.php'); ?>" class="button">Create a New Page</a>
-                </li>
-                <li>
-                    <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
-                </li>
-            </ul>
-        </div>
+        <?= $site->addPrivateAdminNav($title); ?>
     </div>
 </header>
 <main>
@@ -55,13 +45,15 @@
                     $page_id = $page['id'];
                     ?>
                     <li class="page">
-                        <a class="<?= $name; ?>" href="<?php echo root_url_private('/pages/index.php?id=' . $page_id); ?>">
-                            <?= $name; ?>
-                        </a>
-                        <a class="edit-<?= $name; ?>" href="<?php echo root_url_private('/pages/edit.php?id=' . $page_id); ?>">
+                        <h3>
+                            <a class="<?= $name; ?>" href="<?php echo root_url_private('/pages/index.php?id=' . $page_id); ?>">
+                                <?= $name; ?>
+                            </a>
+                        </h3>
+                        <a class="edit-<?= $name; ?> btn btn-info" href="<?php echo root_url_private('/pages/edit.php?id=' . $page_id); ?>">
                             Edit
                         </a>
-                        <div class="delete" data-id="<?= $page_id; ?>">Delete</div>
+                        <div class="delete btn btn-danger" data-id="<?= $page_id; ?>">Delete</div>
                     </li>
                 <?php endforeach; ?>
             </ul>

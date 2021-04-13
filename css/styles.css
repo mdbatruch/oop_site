@@ -1,6 +1,33 @@
+header .cart, header .logout {
+  line-height: 2; }
+
+header .account-name img {
+  width: 40px; }
+
 header nav #main-navigation li a {
   display: inline-block;
   text-transform: capitalize; }
+
+body #admin-header {
+  background-color: #343a40; }
+  body #admin-header #admin-navigation ul.navbar-nav li {
+    position: relative; }
+    body #admin-header #admin-navigation ul.navbar-nav li a {
+      display: inline-block; }
+    body #admin-header #admin-navigation ul.navbar-nav li ul.dropdown-menu {
+      left: 0; }
+      body #admin-header #admin-navigation ul.navbar-nav li ul.dropdown-menu li a {
+        color: #000; }
+
+body main li.page {
+  list-style-type: none; }
+  body main li.page .btn-info {
+    display: inline-block; }
+  body main li.page .delete {
+    display: inline-block; }
+
+body main li.gallery {
+  list-style-type: none; }
 
 body main .nav-sort ol#main-navigation .nav-item {
   background: #333; }
