@@ -1,7 +1,8 @@
     
     <script src="<?php echo root_url('js/lightbox-plus-jquery.min.js'); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="<?php echo root_url('js/bootstrap.js'); ?>"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="<?php echo root_url('js/checkout.js'); ?>"></script>
 
     <script type="text/javascript">
 
@@ -459,13 +460,13 @@
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    $('.product-name[data-id="' + data.id + '"]').find('.product-quantity').text(data.quantity);
-                    $('.product-name[data-id="' + data.id + '"]').find('.price').text(data.price);
-                    $('.product-name[data-id="' + data.id + '"]').find('.remove-item').attr('data-quantity', data.quantity);
-                    $('.product-name[data-id="' + data.id + '"]').find('.add-item').attr('data-quantity', data.quantity);
+                    $('.product[data-id="' + data.id + '"]').find('.product-quantity').text(data.quantity);
+                    $('.product[data-id="' + data.id + '"]').find('.price').text(data.price);
+                    $('.product[data-id="' + data.id + '"]').find('.remove-item').attr('data-quantity', data.quantity);
+                    $('.product[data-id="' + data.id + '"]').find('.add-item').attr('data-quantity', data.quantity);
 
                     if(data.quantity == 0) {
-                        $('.product-name[data-id="' + data.id + '"]').remove();
+                        $('.product[data-id="' + data.id + '"]').remove();
                     }
 
                     // reevaluate sub total and cart count
@@ -508,14 +509,14 @@
 
                 } else {
                     
-                    console.log('Item Addedd!');
+                    console.log('Item Added!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    $('.product-name[data-id="' + data.id + '"]').find('.product-quantity').text(data.quantity);
-                    $('.product-name[data-id="' + data.id + '"]').find('.price').text(data.price);
-                    $('.product-name[data-id="' + data.id + '"]').find('.remove-item').attr('data-quantity', data.quantity);
-                    $('.product-name[data-id="' + data.id + '"]').find('.add-item').attr('data-quantity', data.quantity);
+                    $('.product[data-id="' + data.id + '"]').find('.product-quantity').text(data.quantity);
+                    $('.product[data-id="' + data.id + '"]').find('.price').text(data.price);
+                    $('.product[data-id="' + data.id + '"]').find('.remove-item').attr('data-quantity', data.quantity);
+                    $('.product[data-id="' + data.id + '"]').find('.add-item').attr('data-quantity', data.quantity);
 
                     // reevaluate sub total and cart count
 
@@ -561,7 +562,7 @@
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                     
-                    $('.product-name[data-id="' + data.id + '"]').remove();
+                    $('.product[data-id="' + data.id + '"]').remove();
 
                     // reevaluate sub total and cart count
 

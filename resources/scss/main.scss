@@ -3,6 +3,7 @@ body {
     height: 500px;
     main {
         background: #ff0;
+        min-height: calc(100vh - 90px);
         #products {
             h3 {
                 margin-left: 1rem;
@@ -42,6 +43,23 @@ body {
                 #sub-total {
                     display: block;
                 }
+            }
+        }
+        .cart-container {
+            position: sticky;
+            top: 30%;
+            table {
+                &.cart-summary {
+                    width: 100%;
+                }
+            }
+        }
+        .quantity-total {
+            > div {
+                margin: 5px 0px;
+            }
+            #sub-total, #hst-total, #total {
+                float: right;
             }
         }
     }

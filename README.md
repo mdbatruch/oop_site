@@ -5,7 +5,7 @@ These are the files for a custom built Website CMS and a Shopping Cart Portion w
 ## Changelog
 
 ## v1
-* Initial build with Database setup with Database Classes. Add Email option with PHPMailer library, both DB and SMTP creentials set in env file. Add Page and Site Classes with initialization file, creating a new site Instance on server start and starting new session with the Session Class. With Session Class included, added login option with browser and server side validation through AJAX/PHP. Admin Dashboard included with new and edit page option.
+* Initial build with Database setup with Database Classes. Add Email option with PHPMailer library, both DB and SMTP credentials set in env file. Add Page and Site Classes with initialization file, creating a new site Instance on server start and starting new session with the Session Class. With Session Class included, added login option with browser and server side validation through AJAX/PHP. Admin Dashboard included with new and edit page option.
 
 ## v1.1
 * Added Slider Gallery Feature for the Admin, enabling to set to existing site pages, enabled/disable option, upload images, change title and description.

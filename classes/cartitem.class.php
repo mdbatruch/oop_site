@@ -538,6 +538,19 @@
 
         }
 
+        static function clearCart($cart_id, $db) {
+            try {
+
+                $stmt = $db->prepare('DELETE FROM cart_items WHERE cart_id=:cart_id');
+                $stmt->bindParam(":cart_id", $cart_id);
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                } catch (Exception $e) {
+    
+                    return $e->getMessage();
+                }
+        }
+
         // public function count(){
  
         //     // query to count existing cart item

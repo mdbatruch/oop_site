@@ -9,6 +9,7 @@
 
 
     require('../initialize.php');
+    require_once('../init.php');
 
     $data = [];
     $errors = [];
@@ -665,11 +666,36 @@
         // echo '<pre>';
         // print_r($_POST);
 
-        // echo $quantity;
         $cart_item = new CartItem($db);
 
         $cart_item->increase($product_id, $cart_id, $quantity, $product);
 
+
+      break;
+
+      case 'order':
+
+        // echo '<pre>';
+        // print_r($_POST);
+
+        // $token  = $_POST['token'];
+        
+        $order = new Order($db);
+
+        $order->createOrder($_POST);
+
+
+        // $customer = \Stripe\Customer::create([
+        //     'name' => $name,
+        //     'email' => $email,
+        //     'source'  => $token,
+        // ]);
+
+        // $charge = \Stripe\Charge::create([
+        //     'customer' => $customer->id,
+        //     'amount'   => 5000,
+        //     'currency' => 'usd',
+        // ]);
 
       break;
 

@@ -2,7 +2,8 @@ body {
   background-color: #f00;
   height: 500px; }
   body main {
-    background: #ff0; }
+    background: #ff0;
+    min-height: calc(100vh - 90px); }
     body main #products h3 {
       margin-left: 1rem; }
     body main #products h5.filter-title {
@@ -19,3 +20,12 @@ body {
       display: block; }
     body main .cart-totals .sub-total #sub-total {
       display: block; }
+    body main .cart-container {
+      position: sticky;
+      top: 30%; }
+      body main .cart-container table.cart-summary {
+        width: 100%; }
+    body main .quantity-total > div {
+      margin: 5px 0px; }
+    body main .quantity-total #sub-total, body main .quantity-total #hst-total, body main .quantity-total #total {
+      float: right; }

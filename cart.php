@@ -57,7 +57,7 @@
                 <?php
                 foreach ($products as $product) {
                         $price = substr($product['price'], 1) * $product['quantity']; ?>
-                    <div class='product-name col col-sm-12 my-2' data-id='<?= $product['id'] ?>' >
+                    <div class='product col col-sm-12 my-2' data-id='<?= $product['id'] ?>' >
                         <div class='row'>
                             <div class='col col-md-2'>
                                     <img src="<?= root_url('images/' . $product['image']); ?>" alt="<?= $product['name'] . ' Image'; ?>" class="img-fluid img-thumbnail">
@@ -96,6 +96,11 @@
             <div class="col col-sm col-md-2 sub-total text-left">
                 Sub Total
                 <span id="sub-total"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col min-12 text-right">
+                <a href="<?= root_url('checkout.php'); ?>">Checkout >></a>
             </div>
         </div>
     </div>

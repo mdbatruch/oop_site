@@ -12,7 +12,8 @@
 
     define("SITE_ROOT", $_SERVER['HTTP_HOST'] . '/oop_site');
     define("SITE_ROOT_PRIVATE", $_SERVER['HTTP_HOST'] . '/oop_site/private');
-
+    define("CONFIRMATION", $_SERVER['HTTP_HOST'] . '/oop_site/confirmation.php');
+    
     require_once('functions.php');
 
     // load in class definitions all in one time

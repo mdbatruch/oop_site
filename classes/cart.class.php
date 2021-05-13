@@ -26,6 +26,23 @@
                 }
         }
 
+        static function getCartId($user_id, $db) {
+            try {
+
+                $stmt = $db->prepare('SELECT * FROM carts WHERE user_id=:user_id');
+                $stmt->bindParam(":user_id", $user_id);
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                $id = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                return $id;
+
+                } catch (Exception $e) {
+    
+                    return $e->getMessage();
+                }
+        }
+
     }
 
 ?>
