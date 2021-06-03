@@ -194,6 +194,15 @@ class Customer extends Cart {
                         $_SESSION['last_login'] = time();
                         $login_time = date('D-M-d-Y g:i A', $_SESSION['last_login']);
 
+
+                        $_SESSION['orders'] = [];
+                        
+                        $orders = Order::fetchOrders($customer_exists['id'], $this->conn);
+
+                        foreach($orders as $order) {
+                            $_SESSION['orders'][] = $order['id'];
+                        }
+
                     }
         
                 } catch (Exception $e) {

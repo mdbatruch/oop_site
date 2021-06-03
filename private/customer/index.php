@@ -4,6 +4,7 @@
 
     global $session;
 
+    // echo '<pre>';
     // print_r($_SESSION);
 
     if (!$session->is_logged_in_as_customer($_SESSION['account'])) {

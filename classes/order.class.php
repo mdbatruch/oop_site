@@ -58,6 +58,8 @@
             $card_details = $order['card_details'];
             $card_details = json_encode($card_details);
 
+            $data = [];
+
             // echo '<pre>';
             // print_r($order);
 
@@ -74,22 +76,70 @@
                 $stmt->bindParam(6, $amount);
                 $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
+                // get order id for success page
+                $order = $this->conn->lastInsertId();
+
+                $data['order'] = (int)$order;
+
+                // echo 'The ID of the last inserted row was: ' . $order;
+                // echo '<pre>';
+                    // print_r($user_id);
                 // Clear Cart Here
                 $cart_id = Cart::getCartId($customer_id, $this->conn);
 
-                    // echo '<pre>';
-                    // print_r($user_id);
 
                 CartItem::clearCart($cart_id['id'], $this->conn);
 
                 // header("Location: ../confirmation.php", true, 301);
 
-                return true;
+
+                // echo '<pre>';
+                // print_r($order);
+                echo json_encode($data['order']);
 
                 } catch (Exception $e) {
     
                     return $e->getMessage();
                 }
+        }
+
+        static function fetchOrderbyId($order, $db) {
+
+            try {
+
+                $orders = [];
+
+                $stmt = $db->prepare('SELECT * FROM orders WHERE id = ?');
+                $stmt->bindParam(1, $order);
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    extract($row);
+
+                    // print_r($row);
+              
+                    $order_item=array(
+                        "id" => $row['id'],
+                        "customer_id" => $customer_id,
+                        "contact_details" => $contact_details,
+                        "shipping_address" => $shipping_address,
+                        "products" => json_decode($products),
+                        "card_info" => $card_info,
+                        "amount" => $amount,
+                        "created_at" => $created_at
+                    );
+              
+                    array_push($orders, $order_item);
+                }
+              
+
+                return $orders;
+
+                } catch (Exception $e) {
+    
+                    return $e->getMessage();
+                }
+
         }
 
         static function fetchOrders($order, $db) {

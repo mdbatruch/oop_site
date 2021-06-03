@@ -154,6 +154,23 @@ class Product{
         return $row;
     }
 
+    static public function getProductImage($name, $db){
+        try {
+            $stmt = $db->prepare('SELECT image FROM products WHERE name = ?');
+            $stmt->bindParam(1, $name);
+            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+        
+            // get row values
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            return $row; 
+        
+        } catch (Exception $e) {
+        
+            return $e->getMessage();
+        }
+    }
+
     public function update(){
   
         $stmt = $this->conn->prepare("UPDATE " . $this->table_name . " SET name = :name, price = :price, description = :description, category_id = :category_id WHERE id = :id");

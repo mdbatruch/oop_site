@@ -362,8 +362,10 @@ function stripeResponseHandler(status, response) {
                 async: false,
                 data: {id, customer_id, contact_details, delivery_address, card_details, order, amount, token},
             }).done(function(data){
-
-                window.location.href = 'confirmation.php';
+                console.log(data);
+                // console.log(data.order);
+                // let order_num = parseFloat(data);
+                window.location.href = 'confirmation.php?order=' + data;
             
         });
 
