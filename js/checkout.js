@@ -6,9 +6,10 @@
         var count = 1;
 
         $(".next").click(function(){
+
             if(animating) return false;
             animating = true;
-            
+
             current_fs = $(this).parent();
             next_fs = $(this).parent().next();
             count++;
@@ -38,6 +39,7 @@
                 var province_value = $('.step-3 .province-confirm span');
                 var postal_value = $('.step-3 .postal-confirm span');
 
+
                 $(name).text(first_name + " " + last_name);
                 $(phone_value).text(phone);
                 $(email_value).text(email);
@@ -46,6 +48,7 @@
                 $(city_value).text(city);
                 $(province_value).text(province);
                 $(postal_value).text(postal);
+
 
             } else if (count == 3) {
 
@@ -62,8 +65,13 @@
                 var cart_value = $('.step-3 .amount-confirm span');
                 $(cart_value).text(cart_total);
             }
-            
-            //show the next fieldset
+
+            // alert(name);
+            // if (first_name == '') {
+            //     $('#first_name').after('<h1>Enter a name</h1>');
+            // } else {
+                console.log('next clicked');
+                //show the next fieldset
             next_fs.show(); 
             //hide the current fieldset with style
             current_fs.animate({opacity: 0}, {
@@ -90,6 +98,9 @@
                 //this comes from the custom easing plugin
                 easing: 'easeInOutBack'
             });
+                
+            // }
+            
         });
 
         $(".previous").click(function(){

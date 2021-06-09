@@ -8,6 +8,15 @@
 
     $action = isset($_GET['action']) ? $_GET['action'] : "";
 
+    if (empty($_SESSION)) {
+        header('Location: cart.php');
+    }
+    // if ($count == 0 ) {
+
+    //     echo $count;
+    //     // header('Location: cart.php');
+    // }
+
     $product = new Product($db);
     // $product_image = new ProductImage($db);
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
@@ -23,6 +32,10 @@
         }
 
         $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
+
+        if ($count == 0) {
+            header('Location: cart.php');
+        }
 
     } else {
         $count = 0;

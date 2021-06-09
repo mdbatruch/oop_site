@@ -475,6 +475,12 @@
 
                     evaluateSubTotal();
 
+                    if ($('.cart-count-bottom').text() == 0) {
+                        $('#form-message').html('');
+                        $('#form-message').after('<div class="col-md-12"><div class="alert alert-danger">No products found in your cart!</div></div>');
+                        $('.checkout').remove();
+                    }
+
                 }
             
         });

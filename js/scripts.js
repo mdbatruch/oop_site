@@ -25,6 +25,7 @@ function evaluateCartCount() {
 
     $('.cart-count').text('(' + total + ')');
     $('.cart-count-bottom').text(total);
+
 }
 
 function calculateHST() {

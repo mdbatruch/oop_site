@@ -181,6 +181,67 @@
 
         }
 
+        static function fetchAllOrders($db, $limit = null, $offset = null) {
+
+            try {
+
+                $orders = [];
+
+                // $stmt = $db->prepare('SELECT * FROM orders');
+
+                $query = "SELECT *  FROM orders LIMIT " . $limit . " OFFSET " . $offset;
+                
+                $stmt = $db->prepare($query);
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    extract($row);
+
+                    // print_r($row);
+              
+                    $order_item=array(
+                        "id" => $row['id'],
+                        "customer_id" => $customer_id,
+                        "contact_details" => $contact_details,
+                        "shipping_address" => $shipping_address,
+                        "products" => json_decode($products),
+                        "card_info" => $card_info,
+                        "amount" => $amount,
+                        "created_at" => $created_at
+                    );
+              
+                    array_push($orders, $order_item);
+                }
+              
+
+                return $orders;
+
+                } catch (Exception $e) {
+    
+                    return $e->getMessage();
+                }
+
+        }
+
+        static function fetchAllOrdersCount($db) {
+
+            try {
+
+                $stmt = $db->prepare('SELECT count(*) FROM orders');
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                $rows = $stmt->fetch(PDO::FETCH_NUM);
+            
+                return $rows[0];
+
+                } catch (Exception $e) {
+    
+                    return $e->getMessage();
+                }
+        }
+
+        
+
     }
 
 ?>

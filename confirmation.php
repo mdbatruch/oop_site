@@ -4,6 +4,10 @@
 
     $order = Order::fetchOrderbyId($_GET['order'], $db);
 
+    if (empty($_SESSION)) {
+        header('Location: cart.php');
+    }
+
     //  echo '<pre>';
     // print_r($_SESSION);
 

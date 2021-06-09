@@ -98,11 +98,13 @@
                 <span id="sub-total"></span>
             </div>
         </div>
-        <div class="row">
+        <?php if ($count >= 1 ) :?>
+        <div class="row checkout">
             <div class="col min-12 text-right">
                 <a href="<?= root_url('checkout.php'); ?>">Checkout >></a>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </main>
 <footer class="container">
