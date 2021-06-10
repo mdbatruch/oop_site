@@ -6,7 +6,10 @@
 
     $order = Order::fetchOrderbyId($_GET['index'], $db);
 
-    $customer = Customer::view_customer_info($order[0]['id'], $db);
+    $customer = Customer::view_customer_info($order[0]['customer_id'], $db);
+
+    // echo '<pre>';
+    // print_r($customer);
 
     // echo $order_count;
 
@@ -17,7 +20,6 @@
     $title = 'Orders';
 
     $site->addPrivateHeader($title);
-
     // echo '<pre>';
     // print_r($customer);
 
@@ -33,7 +35,7 @@
 <main>
     <div class="container">
     <div class="row">
-        <h2>Customer Order Description for <?= $customer['username']; ?></h2>
+        <h2>Customer Order Description for <a href="../customers/customer.php?id=<?= $customer['id']; ?>" target="_blank"><?= $customer['username']; ?></a></h2>
     </div>
     <div class="row">
         <a href="<?= root_url_private('orders/index.php'); ?>"><< Back to Order List</a>

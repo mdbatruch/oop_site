@@ -46,6 +46,22 @@
             return $link;
         }
 
+        public function previous_extra_link($url="") {
+            $link = "";
+            if ($this->previous_page() != false) {
+            $link = "<a href=\"{$url}&page={$this->previous_page()}\">&laquo; Previous</a>";
+            }
+            return $link;
+        }
+
+        public function next_extra_link($url="") {
+            $link = "";
+            if ($this->next_page() != false) {
+            $link = "<a href=\"{$url}&page={$this->next_page()}\">Next &raquo;</a>";
+            }
+            return $link;
+        }
+
         public function number_links($url="") {
 
             $output = "";
@@ -55,6 +71,20 @@
                   $output .= "<span class=\"selected\">{$i}</span>";
                 } else {
                   $output .= "<a href=\"{$url}?page={$i}\">{$i}</a>";
+                }
+              }
+            return $output;
+        }
+
+        public function number_extra_links($url="") {
+
+            $output = "";
+
+            for ($i=1; $i <= $this->total_pages(); $i++) {
+                if($i == $this->current_page) {
+                  $output .= "<span class=\"selected\">{$i}</span>";
+                } else {
+                  $output .= "<a href=\"{$url}&page={$i}\">{$i}</a>";
                 }
               }
             return $output;
@@ -87,6 +117,39 @@
                 $output .= $this->previous_link($url);
                 $output .= $this->number_links($url);
                 $output .= $this->next_link($url);
+                $output .= "</div>";
+            }
+
+            return $output;
+        }
+
+        public function page_extra_links($url, $category = false) {
+
+            $output = "";
+
+            if (isset($_GET['category'])) {
+                // echo $this->total_count;
+                echo '<div class="pagination">';
+                    if (isset($this->previous_link)) {
+                        echo "<a href=\"{$url}&page={$this->previous_page()}&category={$_GET['category']}\">&laquo; Previous</a>";
+                    }
+                    for ($i=1; $i <= $this->total_pages(); $i++) {
+                        if($i == $this->current_page) {
+                          $output .= "<span class=\"selected\">{$i}</span>";
+                        } else {
+                          $output .= "<a href=\"{$url}&page={$i}&category={$_GET['category']}\">{$i}</a>";
+                        }
+                      }
+                      if (isset($this->next_link)) {
+                        echo "<a href=\"{$url}&page={$this->next_page()}&category={$_GET['category']}\">Next &raquo;</a>";
+                      }
+                echo "</div>";
+
+            } else if ($this->total_pages() > 1) {
+                $output .= "<div class=\"pagination\">";
+                $output .= $this->previous_extra_link($url);
+                $output .= $this->number_extra_links($url);
+                $output .= $this->next_extra_link($url);
                 $output .= "</div>";
             }
 

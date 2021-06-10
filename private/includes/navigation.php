@@ -36,6 +36,9 @@
                     <a href="<?php echo root_url_private('navigation/index.php'); ?>" class="button nav-link">Navigation</a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?php echo root_url_private('customers/index.php'); ?>" class="button nav-link">Customers</a>
+                </li>
+                <li class="nav-item">
                     <a href="<?php echo root_url_private('orders/index.php'); ?>" class="button nav-link">Orders</a>
                 </li>
                 <li class="nav-item">

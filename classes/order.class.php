@@ -142,14 +142,16 @@
 
         }
 
-        static function fetchOrders($order, $db) {
+        static function fetchOrders($id, $limit = null, $offset = null, $db) {
 
             try {
 
                 $orders = [];
 
-                $stmt = $db->prepare('SELECT * FROM orders WHERE customer_id = ?');
-                $stmt->bindParam(1, $order);
+                $query = "SELECT *  FROM orders WHERE customer_id = ? LIMIT " . $limit . " OFFSET " . $offset;
+
+                $stmt = $db->prepare($query);
+                $stmt->bindParam(1, $id);
                 $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -228,6 +230,24 @@
             try {
 
                 $stmt = $db->prepare('SELECT count(*) FROM orders');
+                $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                $rows = $stmt->fetch(PDO::FETCH_NUM);
+            
+                return $rows[0];
+
+                } catch (Exception $e) {
+    
+                    return $e->getMessage();
+                }
+        }
+
+        static function fetchOrderCountById($customer_id, $db) {
+
+            try {
+
+                $stmt = $db->prepare('SELECT count(*) FROM orders WHERE customer_id = ?');
+                $stmt->bindParam(1, $customer_id);
                 $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
                 $rows = $stmt->fetch(PDO::FETCH_NUM);

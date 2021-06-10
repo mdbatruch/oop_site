@@ -219,8 +219,10 @@ class Customer extends Cart {
 
     static public function view_customer_info($id, $db) {
 
+        try {
+
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $db->prepare("SELECT id, first_name, last_name, avatar, address, username FROM customers WHERE id=:id");
+        $stmt = $db->prepare("SELECT id, first_name, last_name, avatar, email, address, username, created_at FROM customers WHERE id=:id");
         $stmt->bindParam(":id", $id);
 
         $stmt->execute();
@@ -228,6 +230,68 @@ class Customer extends Cart {
         $profile = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $profile;
+
+        } catch (Exception $e) {
+        
+            return $e->getMessage();
+        }
+    }
+
+    static public function fetchAllCustomers($db, $limit = null, $offset = null) {
+
+        try {
+
+            $customers = [];
+
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $query = "SELECT *  FROM customers LIMIT " . $limit . " OFFSET " . $offset;
+
+            $stmt = $db->prepare($query);
+
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                extract($row);
+
+          
+                $customer=array(
+                    "id" => $row['id'],
+                    "first_name" => $first_name,
+                    "last_name" => $last_name,
+                    "email" => $email,
+                    "avatar" => $avatar,
+                    "address" => $address,
+                    "username" => $username,
+                    "created_at" => $created_at
+                );
+          
+                array_push($customers, $customer);
+            }
+
+            return $customers;
+
+        } catch (Exception $e) {
+        
+            return $e->getMessage();
+        }
+    }
+
+    static function fetchAllCustomersCount($db) {
+
+        try {
+
+            $stmt = $db->prepare('SELECT count(*) FROM customers');
+            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+            $rows = $stmt->fetch(PDO::FETCH_NUM);
+        
+            return $rows[0];
+
+            } catch (Exception $e) {
+
+                return $e->getMessage();
+            }
     }
 }
 ?>

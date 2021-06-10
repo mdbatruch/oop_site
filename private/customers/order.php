@@ -3,16 +3,13 @@
     require('../../initialize.php');
 
     global $session;
-    // // echo '<pre>';
-    // // print_r($session);
 
-    // $stmt = $product->read($per_page, $pagination->offset());
+    $order = Order::fetchOrderbyId($_GET['index'], $db);
 
-    $order_count = Order::fetchAllOrdersCount($db);
+    $customer = Customer::view_customer_info($order[0]['customer_id'], $db);
 
-    $current_page = $_GET['page'] ?? 1;
-
-    $page_count = 5;
+    // echo '<pre>';
+    // print_r($customer);
 
     // echo $order_count;
 
@@ -23,23 +20,8 @@
     $title = 'Orders';
 
     $site->addPrivateHeader($title);
-
-    $pagination = new Pagination($current_page, $page_count, $order_count);
-
-    $orders = Order::fetchAllOrders($db, $page_count, $pagination->offset());
-
-    $url = root_url_private('orders/index.php');
-
-    // start pagination limit
-    $pagination_limit = $current_page * $page_count;
-
-    if (!($pagination_limit - $order_count <= $page_count)) {
-        header( 'location: index.php' );
-    } 
-    // end pagination limit
-
     // echo '<pre>';
-    // print_r($orders);
+    // print_r($customer);
 
 ?>
 
@@ -53,21 +35,23 @@
 <main>
     <div class="container">
     <div class="row">
-        <h2>Complete Customer Order List</h2>
+        <h2>Order Description for <?= $customer['username']; ?></h2>
+    </div>
+    <div class="row">
+        <a href="customer.php?id=<?= $customer['id']; ?>"><< Back to Customer Profile</a>
     </div>
         <div class="row">
         <table>
                 <tbody>
-                    <?php foreach($orders as $order) : ?>
                         <tr>
                             <td>
-                                <a href="order.php?index=<?= $order['id']; ?>" target="_blank">Order Id: <?= $order['id']; ?></a>
+                                Order Id: <?= $order[0]['id']; ?>
                             </td>
                             <td>
                                 Shipping Details:
-                                <?php $contact = json_decode($order['contact_details']);
-                                      $shipping = json_decode($order['shipping_address']);
-                                      $card = json_decode($order['card_info']);
+                                <?php $contact = json_decode($order[0]['contact_details']);
+                                      $shipping = json_decode($order[0]['shipping_address']);
+                                      $card = json_decode($order[0]['card_info']);
                                 ?>
                                 <span><?= $contact->name; ?></span>
                                 <span><?= $contact->phone; ?></span>
@@ -79,31 +63,25 @@
                                 <span><?= $shipping->postal; ?></span>
                             </td>
                             <td>Products: 
-                                <?php foreach($order['products'] as $product) : ?>
+                                <?php foreach($order[0]['products'] as $product) : ?>
                                     <span style="display: block;"><?= $product->item_name; ?> $<?= $product->item_price; ?> Quantity: <?= $product->item_quantity; ?></span>
                                 <?php endforeach; ?>
                             </td>
-                            <td>Amount: <?= $order['amount']; ?></td>
+                            <td>Amount: <?= $order[0]['amount']; ?></td>
                             <td>
                                 Card Used:
                                 <span><?= $card->card_type; ?></span>
                                 <span>Ending with: <?= $card->card_hash; ?></span>
                             </td>
                             <td>Ordered: 
-                                <?php $order_date = $order['created_at']; 
+                                <?php $order_date = $order[0]['created_at']; 
                                       $date = new DateTime($order_date);
                                       echo $date->format('l F j g:h a');
                                 ?>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
                 <tbody>
             </table>
-        </div>
-        <div class="row">
-            <div class="container-fluid">
-                <?= $pagination->page_links($url, $current_page); ?>
-            </div>
         </div>
     </div>
 </main>
