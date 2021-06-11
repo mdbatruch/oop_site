@@ -197,7 +197,9 @@ class Customer extends Cart {
 
                         $_SESSION['orders'] = [];
                         
-                        $orders = Order::fetchOrders($customer_exists['id'], $this->conn);
+                        $orderCount = Order::fetchOrderCountById($customer_exists['id'], $this->conn);
+
+                        $orders = Order::fetchOrders($customer_exists['id'], $orderCount, 0, $this->conn);
 
                         foreach($orders as $order) {
                             $_SESSION['orders'][] = $order['id'];

@@ -11,6 +11,7 @@
 
     <script type="text/javascript">
         $(function  () {
+
             // $("ol.navbar-nav").sortable();
 
         $('.nav-sort').nestable({

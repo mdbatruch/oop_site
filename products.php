@@ -43,6 +43,11 @@
 
     $category_filter = '';
 
+    $categories = Category::getCategories($db);
+
+    // echo '<pre>';
+    // print_r($categories);
+
     if (isset($_GET['category'])) {
 
         $filter_name = ucwords(preg_replace('/[^a-zA-Z0-9\']/', ' ', $_GET['category']));
@@ -52,8 +57,6 @@
                 $category_filter = $category['id'];
             }
         }
-
-        // echo $category_filter;
 
         $cat_count = $product->categoryCount($category_filter);
 
@@ -85,21 +88,33 @@
 <main>
 <div id="products" class="container-fluid">
         <div class="row">
-            <div class="col-12 mb-4 mt-4">
+            <div class="col-10 mb-4 mt-4">
                 <h3>Products Page</h3>
                 <?php if (isset($_GET['category'])) : ?>
                     <h5 class="filter-title">Filters</h5>
                     <ul class="filters">
                         <li><?= $filter_name; ?></li>
                     </ul>
+                    <button type="button" id="clear-category" class="btn btn-danger" data-dismiss="alert" aria-label="Close">Remove Category Filter</button>
                 <?php endif; ?>
+                <form>Sort By Category:
+                    <select id="categories">
+                        <option value="">Select Category</option>
+                        <?php foreach ($categories as $category) : ?>
+                            <option value="<?= $category['id']; ?>" <?= $_GET['category'] == $category['name'] ? 'selected="selected"' : '';?>><?= $category['name']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </form>
             </div>
             <?php
+                            
+                $loopExecuted = false;
+
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
-                    // echo '<pre>';
-                    // print_r($row);
+
                     extract($row);
-                        if (($row['category_id'] == $category_filter) || (!isset($_GET['category']))) :
+
+                      if (($row['category_id'] == $category_filter) || (!isset($_GET['category']))) :
                     ?>
                 <div class='col-md-4 mb-2'>
                     <div class="container-fluid">
@@ -135,9 +150,22 @@
                     </div>
                 </div>
             <?php
-                endif;
+
+            endif;
+
+            $loopExecuted = true;
+
                 endwhile;
             ?>
+            <?php if (!$loopExecuted) : ?>
+                <div class='col-md-4 mb-2'>
+                    <div class="container-fluid">
+                        <div class="row">
+                            No Products Found!
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="row">
             <div class="container-fluid">

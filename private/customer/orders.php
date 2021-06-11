@@ -9,6 +9,12 @@
         header( 'location: ../../customer.php?timedout=true' );
     }
 
+    $current_page = $_GET['page'] ?? 1;
+
+    $page_count = 10;
+
+    $order_count = Order::fetchOrderCountById($_GET['id'], $db);
+
     $profile = Customer::view_customer_info($_SESSION['id'], $db);
 
     // echo '<pre>';
@@ -18,7 +24,20 @@
 
     $site->addPrivateHeader($title);
 
-    $orders = Order::fetchOrders($_SESSION['id'], $db);
+    $pagination = new Pagination($current_page, $page_count, $order_count);
+
+    $orders = Order::fetchOrders($_GET['id'], $page_count, $pagination->offset(), $db);
+
+    // start pagination limit
+    $pagination_limit = $current_page * $page_count;
+
+    if (!($pagination_limit - $order_count <= $page_count)) {
+        header( 'location: orders.php?id=' . $_GET['id']);
+    } 
+
+    // end pagination limit
+
+    $url = root_url_private('customer/orders.php?id=' . $_GET['id']);
 
     // echo '<pre>';
     // print_r($orders);
@@ -38,7 +57,7 @@
             <table>
                 <thead>
                     <tr>
-                        Hello <?= ucfirst($_SESSION['username']); ?>, here is your Order history</thead>
+                        Hello <?= ucfirst($_SESSION['username']); ?>, here are your Orders</thead>
                     </tr>
                     <tbody>
                         <?php foreach($orders as $order) : ?>
@@ -80,6 +99,11 @@
                         <?php endforeach; ?>
                     <tbody>
             </table>
+        </div>
+        <div class="row">
+            <div class="container-fluid">
+                <?= $pagination->page_extra_links($url, $current_page); ?>
+            </div>
         </div>
     </div>
 </main>

@@ -6,6 +6,40 @@
 
     <script type="text/javascript">
 
+
+        $("#clear-category").on("click", function(e){
+
+            e.preventDefault();
+
+            $url = window.location.href.split('?')[0];
+
+            window.location.href = $url;
+        });
+
+        $(document).on("change","select#categories",function(){
+            var category_list = $('#categories');
+            
+            $("option[value=" + this.value + "]", this)
+                .attr("selected", true).siblings()
+                .removeAttr("selected");
+
+                var chosen = $(category_list).children('option:selected').text();
+
+                console.log(chosen);
+
+                if (window.location.href.indexOf("?category") > -1 || window.location.href.indexOf("?page") > -1) {
+
+                    $url = window.location.href.split('?')[0];
+
+                    window.location.href = $url + '?category=' + chosen;
+
+                } else {
+                    window.location.href = window.location.href + '?category=' + chosen;
+                }
+
+            });
+        
+
         $("#login").on("submit", function(e){
 
             e.preventDefault();
@@ -268,6 +302,9 @@
                             $('#login-form-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
 
                         } else {
+
+                            console.log(data);
+                            console.log('success!')
 
                             $('#login-username-error').html('');
                             $('#login-password-error').html('');
