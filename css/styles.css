@@ -1,3 +1,14 @@
+header .admin-bar {
+  background-color: #6f42c1;
+  color: #fff;
+  font-weight: 700;
+  top: 0;
+  z-index: 10;
+  width: 100%; }
+  header .admin-bar a {
+    color: #fff;
+    font-weight: 500; }
+
 header .cart, header .logout {
   line-height: 2; }
 
@@ -320,7 +331,7 @@ select.demoSelectBox {
 
 body {
   background-color: #f00;
-  height: 500px; }
+  height: auto; }
   body main {
     background: #ff0;
     min-height: calc(100vh - 90px); }

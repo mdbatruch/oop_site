@@ -6,6 +6,26 @@
 
     $product = new Product($db);
 
+    // make sure product id exists and if not, return to products page
+    $stmt = $product->getAllProducts();
+
+    $product_exists = false;
+
+    foreach($stmt as $id) {
+        if ($_GET['id'] == $id) {
+            $product_exists = true;
+        }
+    }
+
+    if (!$product_exists) {
+        header( 'location: products.php');
+    }
+
+    // end product id check
+
+    // echo '<pre>';
+    // print_r($stmt);
+
     $chosen = $product->getProduct($_GET['id']);
 
     $image = !empty($chosen['image']) ? $chosen['image'] : 'missing.jpg';
@@ -50,10 +70,15 @@
 
     // $price = settype($chosen['price'], "integer");
 ?>
-<header>
-    <div class="container-fluid">
+<header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
+    <div class="container-fluid p-0">
         <div class="row">
-            <?php $site->addCartHeader($site, $count, $items, $db); ?>
+            <?php 
+                if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
+                    $site->addAdminBar($site);
+                } else {
+                    $site->addCartHeader($site, $count, $items, $db);
+                } ?>
         </div>
     </div>
 </header>

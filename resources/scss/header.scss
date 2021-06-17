@@ -1,4 +1,17 @@
 header {
+    .admin-bar {
+        background-color: #6f42c1;
+        color: #fff;
+        font-weight: 700;
+        top: 0;
+        // position: fixed;
+        z-index: 10;
+        width: 100%;
+        a {
+            color: #fff;
+            font-weight: 500;
+        }
+    }
     .cart, .logout {
         line-height: 2;
     }

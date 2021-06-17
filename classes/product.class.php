@@ -32,6 +32,36 @@ class Product{
         return $stmt;
     }
 
+    public function getAllProducts(){
+
+        $products = [];
+
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ 
+        // select all products query
+        $query = "SELECT *  FROM products ORDER BY created DESC";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+     
+        // execute query
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+
+      
+            $product = $row['id'];
+      
+            array_push($products, $product);
+        }
+
+        return $products;
+     
+        // return values
+        return $stmt;
+    }
+
     function categoryCount($category_id) {
 
         $query = "SELECT count(*) FROM " . $this->table_name . " WHERE category_id = ?";

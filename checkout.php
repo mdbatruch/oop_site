@@ -237,9 +237,11 @@
         // var valid = cardValidation();
 
         // if(valid == true) {
-            console.log('its cool');
+            console.log('processing order');
 
             $("#submit-btn").hide();
+            $('input:button.previous').hide();
+            $("#loader").show();
             $( "#loader" ).css("display", "inline-block");
             Stripe.createToken({
                 number: $('#card-number').val(),

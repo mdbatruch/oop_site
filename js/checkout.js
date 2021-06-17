@@ -21,7 +21,8 @@
             var city = $('#city').val();
             var province = $('#province').val();
             var postal = $('#postal').val();
-            var payment_method = $('#card-type-picker').val();
+            // var payment_method = $('#card-type-picker').val();
+            var payment_method = $('#card-type-picker option:selected').text();
             var card_number_method = $('#card-number').val();
             var card_holder = $('#card-holder-name').val();
             var cvc = $('#cvc').val();
@@ -154,6 +155,10 @@
                     $('#card_number_warning').html('<div class="alert alert-danger mt-3 input-alert-error">Please enter a Card Number<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     var card_number_valid = false;
                     errors.push(card_number_valid);
+                } else if (card_number_method.length != 16 || !/^[0-9]+$/.test(card_number_method)) {
+                    $('#card_number_warning').html('<div class="alert alert-danger mt-3 input-alert-error">Please enter a Valid Card Number<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    var card_number_valid = false;
+                    errors.push(card_number_valid);
                 } else {
                     $('#card_number_warning').html('');
                     var card_number_valid = true;
@@ -163,6 +168,10 @@
                 if (cvc == '') {
                     $('#cvc_warning').html('<div class="alert alert-danger mt-3 input-alert-error">Please enter a CVC number<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     var cvc_valid = false;
+                    errors.push(cvc_valid);
+                } else if (cvc.length != 3 || !/^[0-9]+$/.test(cvc)) {
+                    $('#cvc_warning').html('<div class="alert alert-danger mt-3 input-alert-error">Please enter a valid CVC number<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    var cvc_valid = true;
                     errors.push(cvc_valid);
                 } else {
                     $('#cvc_warning').html('');

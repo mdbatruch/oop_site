@@ -2,46 +2,14 @@
     
     require('initialize.php');
 
-    // $page = new Page("Welcome to my site!", $db);
+    $title = '404';
+
+    $description = 'Page does not exist';
 
     $pages = $site->find_all_pages();
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-    } else {
-        $id=1;
-    }
-
-    if ($_GET['id'] == 0 || $_GET['id'] == null) {
-        header('Location: index.php?id=1');
-    }
-    
-
-     //     //Process all pages in one pass
-     foreach($pages as $row) {
-        //Logic to match the requested page id
-        // echo $row['id'];
-        if($row['id'] == $id) {
-            //Requested Page
-            $page = $row['page'];
-            $title = $row['title'];
-            $subtitle = $row['subtitle'];
-            $description = $row['description'];
-            
-            break;
-
-        }
-        // else {
-        //     echo 'not working';
-        // }
-
-    }
-
-
     $page = new Page($title, $description, $db);
     $site->setPage($page);
-
-    $gallery = $site->findSliderByPageId($id);
 
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
@@ -59,43 +27,7 @@
         $items = null;
     }
 
-    //  $page->render_nav();
-    // echo '<pre>';
-    // print_r($page);
-
-    // try {
-
-    // $stmt = $db->prepare("SELECT id, page, title, subtitle FROM pages");
-    // $stmt->execute();
-    // $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // echo '<pre>';
-    // print_r($pages);
-
-    // $page_name = basename(__FILE__, '.php');
-
-    // $page_id = '';
-
-    // echo $page_id;
-    
-    // $nav = array();
-        $site->addHeader();
-
-    // } 
-    
-    // catch(PDOException $e) {
-    //     echo "Error: " . $e->getMessage();
-    // }
-
-    //  $page->content = $description;
-
-    // $cart_item = new CartItem($db);
-    // echo '<pre>';
-    // print_r($_SESSION);
-    // $count = $cart_item->getCartCount(2, $_SESSION['id']);
-
-    // echo '<pre>';
-    // print_r($count);
+    $site->addHeader();
 
 ?>
 <header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
@@ -113,24 +45,7 @@
 <main>
 <div class="container-fluid">
         <div class="row">
-        <?php if ($gallery) :?>
-                <?= $site->addSlider(); ?>
-        <?php endif; ?>
-        </div>
-        <div class="row">
-            <?php if ($page->isHome()) : ?>
-            <div class="col-12 text-center mt-4">
-                <h3>Search for a Product</h3>
-                <p>
-                    <div id="root"></div>
-                </p>
-            </div>
-            <?php endif; ?>
-            <div class="col-12">
-                <p>
-                    <?php $site->render(); ?>
-                </p>
-            </div>
+                Page not found!
         </div>
     </div>
 </main>

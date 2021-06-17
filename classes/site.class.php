@@ -30,6 +30,10 @@
             include('components/header-cart.php'); 
         }
 
+        public function addAdminBar($site) {
+            include('components/admin-bar.php'); 
+        }
+
         public function addHeader() {
             require_once("includes/header.php");
         }

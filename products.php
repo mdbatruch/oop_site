@@ -78,10 +78,15 @@
     // print_r($categories);
 
 ?>
-<header>
-    <div class="container-fluid">
+<header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
+    <div class="container-fluid p-0">
         <div class="row">
-         <?php $site->addCartHeader($site, $count, $items, $db); ?>
+            <?php 
+                if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
+                    $site->addAdminBar($site);
+                } else {
+                    $site->addCartHeader($site, $count, $items, $db);
+                } ?>
         </div>
     </div>
 </header>

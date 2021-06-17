@@ -1,6 +1,6 @@
 body {
   background-color: #f00;
-  height: 500px; }
+  height: auto; }
   body main {
     background: #ff0;
     min-height: calc(100vh - 90px); }

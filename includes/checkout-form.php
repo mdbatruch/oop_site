@@ -131,7 +131,10 @@
         >
 
     <div id="loader">
-        <img alt="loader" src="LoaderIcon.gif">
+        <button class="btn btn-primary" type="button" disabled>
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          Processing your Order...
+        </button>
     </div>
     <input type='hidden' name='amount' value='0.5'> <input type='hidden'
                         name='currency_code' value='CAD'> <input type='hidden'
