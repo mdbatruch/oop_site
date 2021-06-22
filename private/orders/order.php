@@ -4,7 +4,7 @@
 
     global $session;
 
-    $order = Order::fetchOrderbyId($_GET['index'], $db);
+    $order = Order::fetchOrderbyId($_GET['id'], $db);
 
     $customer = Customer::view_customer_info($order[0]['customer_id'], $db);
 

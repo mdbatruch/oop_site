@@ -348,7 +348,7 @@
                     
                     var admin = true;
 
-                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart, create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart. Create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                 }
 
                 if (customer || admin) {
@@ -425,7 +425,7 @@
                     var customer = false;
                     var admin = true;
 
-                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart, create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart. Create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                 }
 
                 if (!admin) {
