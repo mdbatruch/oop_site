@@ -62,7 +62,9 @@
                     <tbody>
                         <?php foreach($orders as $order) : ?>
                         <tr>
-                            <td>Order Id: <?= $order['id']; ?></td>
+                            <td>
+                                <a href="order.php?index=<?= $order['id']; ?>" target="_blank">Order Id: <?= $order['id']; ?></a>
+                            </td>
                             <td>
                                 Shipping Details:
                                 <?php $contact = json_decode($order['contact_details']);

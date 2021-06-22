@@ -26,6 +26,7 @@ if(
     $product->name = $data->name;
     $product->price = $data->price;
     $product->description = $data->description;
+    $product->image = $data->image;
     $product->category_id = $data->category_id;
     $product->created = date('Y-m-d H:i:s');
   

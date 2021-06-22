@@ -14,7 +14,7 @@ $db = $database->getConnection();
   
 $product = new Product($db);
   
-$stmt = $product->read();
+$stmt = $product->readAll();
 $num = $stmt->rowCount();
 
 if($num>0){

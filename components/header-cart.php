@@ -1,5 +1,5 @@
-<div id="cart_id" style="display: none;"><?= $items['id']; ?></div>
-    <div class="customer col-md-3" id="<?= $_SESSION['id']; ?>">
+<div id="cart_id" style="display: none;"><?= isset($_SESSION['account']) ? $items['id'] : null; ?></div>
+    <div class="customer col-md-3" id="<?= isset($_SESSION['account']) ? $_SESSION['id'] : 'no-customer' ; ?>">
     <?php 
     // echo '<pre>';
     // print_r($_SESSION);

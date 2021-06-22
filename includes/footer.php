@@ -321,6 +321,9 @@
             // add products on product page
             $('.add-cart-products').click(function(e){
 
+                var customer = true;
+                var admin = false;
+
                 var user_id = $('.customer').attr('id');
                 var cart_id = $('#cart_id').html();
                 var id = $(this).attr('data-action');
@@ -336,38 +339,54 @@
                 
                 console.log(id, user_id, cart_id, product);
 
-                $.ajax({
-                        type: "POST",
-                        url: "private/process.php",
-                        dataType: "json",
-                        data: {id: id, user_id: user_id, cart_id: cart_id, product: product},
-                    }).done(function(data) {
+                if (user_id == 'no-customer') {
+                    var customer = false;
+                    
+                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">You must register or login to add items to your cart!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    
+                } else if (user_id == undefined) {
+                    
+                    var admin = true;
 
-                        if(!data.success) {
+                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart, create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                }
 
-                                $('#cart-message-' + data.id).html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                if (customer || admin) {
 
-                            } else {
+                    $.ajax({
+                            type: "POST",
+                            url: "private/process.php",
+                            dataType: "json",
+                            data: {id: id, user_id: user_id, cart_id: cart_id, product: product},
+                        }).done(function(data) {
 
-                                $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                            if(!data.success) {
 
-                                // if (data.new_item) {
-                                    // update cart count in header on browser side
-                                    var cartText = $('.cart-count').text();
-                                    var oldCount = cartText.slice(1,-1);
+                                    $('#cart-message-' + data.id).html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                                    var newCount = parseFloat(oldCount) + 1;
-                                    var newCount = "(" + newCount + ")"; 
+                                } else {
 
-                                    $('.cart-count').text(newCount);
-                                // } 
-                                
-                                // else {
-                                //     $('.cart-count').text("(" + data.quantity + ")");
-                                // }
+                                    $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                            }
-                    });
+                                    // if (data.new_item) {
+                                        // update cart count in header on browser side
+                                        var cartText = $('.cart-count').text();
+                                        var oldCount = cartText.slice(1,-1);
+
+                                        var newCount = parseFloat(oldCount) + 1;
+                                        var newCount = "(" + newCount + ")"; 
+
+                                        $('.cart-count').text(newCount);
+                                    // } 
+                                    
+                                    // else {
+                                    //     $('.cart-count').text("(" + data.quantity + ")");
+                                    // }
+
+                                }
+                        });
+
+                }
 
 
             });
@@ -377,6 +396,9 @@
                 e.preventDefault(); 
 
                 console.log('cart addition has been attempted');
+
+                var customer = true;
+                var admin = false;
 
                 var id = $(this).attr('id');
                 var user_id = $('.customer').attr('id');
@@ -394,35 +416,53 @@
 
                 console.log(id, user_id, cart_id, product, quantity);
 
-                if (quantity == 0) {
-                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Please enter a Quantity!</div>');
-                } else {
-                    $.ajax({
-                        type: "POST",
-                        url: "private/process.php",
-                        dataType: "json",
-                        data: {id: id, user_id: user_id, cart_id: cart_id, product: product, quantity: quantity},
-                    }).done(function(data) {
+                if (user_id == 'no-customer') {
+                    var customer = false;
+                    
+                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">You must register or login to add items to your cart!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    
+                } else if (user_id == undefined) {
+                    var customer = false;
+                    var admin = true;
 
-                        if(!data.success) {
+                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart, create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                }
 
-                                $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
+                if (!admin) {
 
-                            } else {
+                    if (customer) {
 
-                                var cartText = $('.cart-count').text();
-                                var oldCount = cartText.slice(1,-1);
+                        if (quantity == 0) {
+                            $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Please enter a Quantity!</div>');
+                        } else {
+                            $.ajax({
+                                type: "POST",
+                                url: "private/process.php",
+                                dataType: "json",
+                                data: {id: id, user_id: user_id, cart_id: cart_id, product: product, quantity: quantity},
+                            }).done(function(data) {
 
-                                var newCount = parseFloat(oldCount) + parseFloat(quantity);
+                                if(!data.success) {
 
-                                var newCount = "(" + newCount + ")"; 
+                                        $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
 
-                                $('.cart-count').text(newCount);
+                                    } else {
 
-                                $('#cart-message').html('<div class="alert alert-success">' + data.message + '</div>');
+                                        var cartText = $('.cart-count').text();
+                                        var oldCount = cartText.slice(1,-1);
 
-                            }
-                    });
+                                        var newCount = parseFloat(oldCount) + parseFloat(quantity);
+
+                                        var newCount = "(" + newCount + ")"; 
+
+                                        $('.cart-count').text(newCount);
+
+                                        $('#cart-message').html('<div class="alert alert-success">' + data.message + '</div>');
+
+                                    }
+                            });
+                        }
+                    }
                 }
 
                 });
