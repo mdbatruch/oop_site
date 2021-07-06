@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-8 cart">
         <a href="cart.php">
-            Cart <span class="cart-count"><?= '(' . $count . ')' ?></span>
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="cart-count"><?= '(' . $count . ')' ?></span>
         </a>
     </div>
     <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>

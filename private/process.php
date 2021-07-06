@@ -7,6 +7,8 @@
       die( header( 'location: index.php' ) );
   }
 
+  $stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/stripe.ini');
+
 
     require('../initialize.php');
     require_once('../init.php');
@@ -680,7 +682,7 @@
 
         // $token  = $_POST['token'];
         
-        $order = new Order($db);
+        $order = new Order($db, $stripe['secret_key']);
 
         $order->createOrder($_POST);
 

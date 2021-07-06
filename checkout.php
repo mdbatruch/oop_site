@@ -352,16 +352,16 @@ function stripeResponseHandler(status, response) {
 
         var card_type = $('.step-3 .payment-confirm span').text();
 
-        if (card_type == '002') {
-            var card = 'MasterCard';
-        } else if (card_type == '001') {
-            var card = 'VISA';
-        } else {
-            var card = '';
-        }
+        // if (card_type == '002') {
+        //     var card = 'MasterCard';
+        // } else if (card_type == '001') {
+        //     var card = 'VISA';
+        // } else {
+        //     var card = '';
+        // }
 
         var card_details = {
-            card_type: card,
+            card_type: card_type,
             card_hash: $('.step-3 .card-number-confirm span').text()
         }
 

@@ -2,6 +2,21 @@
     
     require('initialize.php');
 
+    require_once('init.php');
+
+    // $stripe = new \Stripe\StripeClient(
+    //     'sk_test_51Ify6DG2sTnL7IR6UspKIhpVHN8woamS5qEhRCmDlQKWgXHouELLe6uCB6DqsmgXsX8JXcQRvU04VETwaa3cC6ow00oxYq5SCg'
+    //   );
+
+    //   $stripe_amount = ltrim('$456', '$');
+
+    // $stripe->charges->create([
+    //     'amount' => $stripe_amount,
+    //     'currency' => 'cad',
+    //     'source' => 'tok_1J7u8pG2sTnL7IR6KyP76cFs',
+    //     'description' => 'Order Charge for you',
+    //   ]);
+
     $site->addHeader();
 
     $product = new Product($db);

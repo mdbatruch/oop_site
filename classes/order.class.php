@@ -9,8 +9,11 @@
         public $order;
         public $created;
 
-        public function __construct($db){
+        private $stripe_secret;
+
+        public function __construct($db, $stripe){
             $this->conn = $db;
+            $this->stripe_secret = $stripe;
         }
 
         public function createOrder($order) {
@@ -64,8 +67,82 @@
             // print_r($order);
 
             $amount = $order['amount'];
+            $stripe_amount = ltrim($order['amount'], '$');
 
             try {
+
+                $stripe = new \Stripe\StripeClient(
+                    $this->stripe_secret
+                );
+
+                // check if existing customer
+                $exists = $stripe->customers->all(['email' => $order['contact_details']['email']]);
+
+                // if no existing customer, then create a new customer 
+
+                if (empty($exists['data'])) {
+                
+                  $stripe->customers->create([
+                    'name' => $order['contact_details']['name'],
+                    'email' => $order['contact_details']['email'],
+                    'phone' => $order['contact_details']['phone'],
+                    'address' => ['city' => $order['delivery_address']['city'], 'line1' => $order['delivery_address']['street'], 'postal_code' => $order['delivery_address']['postal'], 'state' => $order['delivery_address']['province']]
+                  ]);
+
+                }
+
+                // echo $exists['data'][0]['id'];
+
+                // echo $exists['data'][0]['name'];
+
+                // echo '<pre>';
+                // print_r($exists['data'][0]['id']);
+
+                // exit;
+
+                //remove decimal values from price
+                $stripe_amount = str_replace('.', '', $stripe_amount);
+
+                $stripe->charges->create([
+                    'amount' => $stripe_amount,
+                    'currency' => 'cad',
+                    'source' => $order['token'],
+                    // 'customer' => 'cus_Jnur0E6MFKH4sB',
+                    'description' => 'Order Charge for ' . $exists['data'][0]['name'],
+                ]);
+
+                // $stripe->charges->create([
+                //     'amount' => 2000,
+                //     'currency' => 'cad',
+                //     'source' => 'tok_mastercard',
+                //     'description' => 'My First Test Charge (created for API docs)',
+                //   ]);
+
+
+                //   $stripe->orders->create([
+                //     'currency' => 'cad',
+                //     'email' => $order['contact_details']['email'],
+                //     'items' => [
+                //       [
+                //         'type' => 'sku',
+                //         'parent' => 'price_1J64rIG2sTnL7IR6h0OijRys',
+                //         'quantity' => '12',
+                //         'amount' => '400'
+                //       ],
+                //     ],
+                //     'shipping' => [
+                //       'name' => $order['contact_details']['name'],
+                //       'address' => [
+                //         'line1' => $order['delivery_address']['street'],
+                //         'city' => $order['delivery_address']['city'],
+                //         'state' => $order['delivery_address']['province'],
+                //         'country' => 'Canada',
+                //         'postal_code' => $order['delivery_address']['postal'],
+                //       ],
+                //     ],
+                //   ]);
+
+                // exit;
 
                 $stmt = $this->conn->prepare('INSERT INTO orders (customer_id, contact_details, shipping_address, products, card_info, amount) VALUES (?,?,?,?,?,?)');
                 $stmt->bindParam(1, $customer_id);
