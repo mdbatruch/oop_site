@@ -2,15 +2,7 @@
     
     require('../../initialize.php');
 
-    require_once('../../init.php');
-
-    $stripe = new \Stripe\StripeClient(
-        'sk_test_51Ify6DG2sTnL7IR6UspKIhpVHN8woamS5qEhRCmDlQKWgXHouELLe6uCB6DqsmgXsX8JXcQRvU04VETwaa3cC6ow00oxYq5SCg'
-      );
-      $stripe->customers->create([
-        'name' => 'Test Customer',
-        'address' => ['city' => 'Toronto', 'country' => 'Canada']
-      ]);
+    // require_once('../../init.php');
 
     global $session;
     // // echo '<pre>';
