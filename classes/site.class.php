@@ -5,16 +5,13 @@
         private $nav;
         private $page;
         private $conn;
-        // static protected $connect;
 
-        public function __construct($db) {
+        private $site_path;
 
-            // $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/db.ini');
-
-            // $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
-            // self::$connect = new PDO($dsn, 'root', 'root');
+        public function __construct($db, $site_path) {
 
             $this->conn = $db;
+            $this->path = $site_path;
 
         }
 
@@ -39,7 +36,7 @@
         }
 
         public function addPrivateHeader($title) {
-            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path . '/private');
             include "$private/includes/header.php";
         }
 
@@ -48,22 +45,22 @@
         }
 
         public function addPrivateFooter() {
-            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path . '/private');
             include "$private/includes/footer.php";
         }
         
         public function addPrivateNav() {
-            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] . $this->path . '/private');
             include "$private/includes/navigation.php";
         }
 
         public function addPrivateAdminNav($title) {
-            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] . $this->path . '/private');
             include "$private/includes/navigation.php";
         }
 
         public function addPrivateCustomerNav() {
-            $private = realpath($_SERVER['DOCUMENT_ROOT'] . '/oop_site/private');
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] . $this->path . '/private');
             include "$private/includes/customer/navigation.php";
         }
 

@@ -4,7 +4,6 @@
     error_reporting(E_ALL);
     
     // home page url
-    // $home_url="http://localhost:3000/oop_site/api/";
     $home_url= 'http://' . 'SITE_ROOT' . "api/";
     
     // page given in URL parameter, default page is one

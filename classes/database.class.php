@@ -10,25 +10,18 @@
         static protected $port;
         static protected $table_name = "";
         static protected $columns = [];
+
+        private $site_path;
+
         public $errors = [];
 
-        public function __construct() {
-
-            // $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini');
-            
-            // $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/db.ini');
-
-            // $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
-            // $this->conn = new PDO($dsn, 'root', 'root');
-
-            // return $this->conn;
-
-            // $pages = self::find_all_pages();
-
+        public function __construct($site_path) {
+            $this->path = $site_path;
         }
 
         public function getConnection() {
-            $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/db.ini');
+            
+            $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $this->path . '/.env/db.ini');
 
             $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
             $this->conn = new PDO($dsn, 'root', 'root');

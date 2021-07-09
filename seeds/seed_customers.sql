@@ -1,0 +1,6 @@
+INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `avatar`, `address`, `username`, `hashed_password`, `created_at`, `last_updated`) VALUES
+(1, 'Frasier', 'Crane', 'frasier@seattle.com', 'empty.png', 'Seattle, WA', 'frasier', 'ec494a77cbc0229d3d10dd41080dce85', '2020-06-01 00:35:07', '2020-06-01 00:35:07'),
+(2, 'Oswald', 'Cobblepot', 'penguin@lounge.com', 'empty.png', 'Gotham City, MA', 'penguin', 'ec494a77cbc0229d3d10dd41080dce85', '2020-06-01 00:35:07', '2020-06-01 00:35:07'),
+(3, 'Patrick', 'Star', 'patrick@bikinibottom.com', 'empty.png', 'Bikini Bottom', 'patrick', 'ec494a77cbc0229d3d10dd41080dce85', '2020-06-01 00:35:07', '2020-06-01 00:35:07'),
+(4, 'John', 'Johnson', 'john@johnson.com', 'empty.png', '123 Fake St.', 'johnson', 'ec494a77cbc0229d3d10dd41080dce85', '2020-06-01 00:35:07', '2020-06-01 00:35:07'),
+(5, 'Kenny', 'Hotz', 'kenny@kvs.com', 'empty.png', 'Sherbourne St. Toronto', 'kenneth', 'ec494a77cbc0229d3d10dd41080dce85', '2020-06-01 00:35:07', '2020-06-01 00:35:07');

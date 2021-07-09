@@ -12,18 +12,8 @@
 
     $current_page = $_GET['page'] ?? 1;
     $per_page = 9;
-    // $pagination = new Pagination($current_page, $per_page, $product_count);
-
+    
     $url = root_url('products.php');
-
-
-
-    // $stmt = $product->read($per_page, $pagination->offset());
-
-    // echo '<pre>';
-    // print_r($stmt);
-    // $stmt = $product->read(0, $product_count);
-
 
     $categories = Category::getCategories($db);
 

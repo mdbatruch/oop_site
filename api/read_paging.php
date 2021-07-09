@@ -6,10 +6,12 @@ include_once '../core.php';
 include_once '../classes/database.class.php';
 include_once '../classes/utilities.class.php';
 include_once '../classes/product.class.php';
+
+require('../initialize.php');
   
 $utilities = new Utilities();
   
-$database = new Database();
+$database = new Database($site_path);
 $db = $database->getConnection();
   
 $product = new Product($db);

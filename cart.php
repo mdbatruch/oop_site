@@ -6,6 +6,10 @@
 
     $action = isset($_GET['action']) ? $_GET['action'] : "";
 
+    if (isset($_SESSION['account']) &&  ($_SESSION['account'] == 'Administrator')) {
+        header('Location: index.php');
+    }
+
     $product = new Product($db);
     // $product_image = new ProductImage($db);
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {

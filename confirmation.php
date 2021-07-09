@@ -8,10 +8,9 @@
         header('Location: cart.php');
     }
 
-    //  echo '<pre>';
-    // print_r($_SESSION);
-
-    // $_SESSION['orders'][] = $_GET['order'];
+    if ($_SESSION['account'] == 'Administrator') {
+        header('Location: index.php');
+    }
 
     // this needs more work to prevent users from revisiting success page
 

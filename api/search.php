@@ -7,7 +7,9 @@ include_once '../core.php';
 include_once '../classes/database.class.php';
 include_once '../classes/product.class.php';
   
-$database = new Database();
+require('../initialize.php');
+
+$database = new Database($site_path);
 $db = $database->getConnection();
   
 $product = new Product($db);

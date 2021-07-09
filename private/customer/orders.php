@@ -59,47 +59,55 @@
                     <tr>
                         Hello <?= ucfirst($_SESSION['username']); ?>, here are your Orders</thead>
                     </tr>
+                    <?php if (!empty($orders)) : ?>
                     <tbody>
-                        <?php foreach($orders as $order) : ?>
+                            <?php foreach($orders as $order) : ?>
+                            <tr>
+                                <td>
+                                    <a href="order.php?index=<?= $order['id']; ?>" target="_blank">Order Id: <?= $order['id']; ?></a>
+                                </td>
+                                <td>
+                                    Shipping Details:
+                                    <?php $contact = json_decode($order['contact_details']);
+                                        $shipping = json_decode($order['shipping_address']);
+                                        $card = json_decode($order['card_info']);
+                                    ?>
+                                    <span><?= $contact->name; ?></span>
+                                    <span><?= $contact->phone; ?></span>
+                                    <span><?= $contact->email; ?></span>
+                                    <span><?= $shipping->street; ?></span>
+                                    <span><?= $shipping->suite; ?></span>
+                                    <span><?= $shipping->city; ?></span>
+                                    <span><?= $shipping->province; ?></span>
+                                    <span><?= $shipping->postal; ?></span>
+                                </td>
+                                <td>Products: 
+                                    <?php foreach($order['products'] as $product) : ?>
+                                        <span style="display: block;"><?= $product->item_name; ?> $<?= $product->item_price; ?> Quantity: <?= $product->item_quantity; ?></span>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td>Amount: <?= $order['amount']; ?></td>
+                                <td>
+                                    Card Used:
+                                    <span><?= $card->card_type; ?></span>
+                                    <span>Ending with: <?= $card->card_hash; ?></span>
+                                </td>
+                                <td>Ordered: 
+                                    <?php $order_date = $order['created_at']; 
+                                        $date = new DateTime($order_date);
+                                        echo $date->format('l F j g:h a');
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                    <tbody>
+                    <?php else: ?>
                         <tr>
                             <td>
-                                <a href="order.php?index=<?= $order['id']; ?>" target="_blank">Order Id: <?= $order['id']; ?></a>
-                            </td>
-                            <td>
-                                Shipping Details:
-                                <?php $contact = json_decode($order['contact_details']);
-                                      $shipping = json_decode($order['shipping_address']);
-                                      $card = json_decode($order['card_info']);
-                                ?>
-                                <span><?= $contact->name; ?></span>
-                                <span><?= $contact->phone; ?></span>
-                                <span><?= $contact->email; ?></span>
-                                <span><?= $shipping->street; ?></span>
-                                <span><?= $shipping->suite; ?></span>
-                                <span><?= $shipping->city; ?></span>
-                                <span><?= $shipping->province; ?></span>
-                                <span><?= $shipping->postal; ?></span>
-                            </td>
-                            <td>Products: 
-                                <?php foreach($order['products'] as $product) : ?>
-                                    <span style="display: block;"><?= $product->item_name; ?> $<?= $product->item_price; ?> Quantity: <?= $product->item_quantity; ?></span>
-                                <?php endforeach; ?>
-                            </td>
-                            <td>Amount: <?= $order['amount']; ?></td>
-                            <td>
-                                Card Used:
-                                <span><?= $card->card_type; ?></span>
-                                <span>Ending with: <?= $card->card_hash; ?></span>
-                            </td>
-                            <td>Ordered: 
-                                <?php $order_date = $order['created_at']; 
-                                      $date = new DateTime($order_date);
-                                      echo $date->format('l F j g:h a');
-                                ?>
+                                <br/>Your order list is empty!
                             </td>
                         </tr>
-                        <?php endforeach; ?>
-                    <tbody>
+                    <?php endif; ?>
             </table>
         </div>
         <div class="row">

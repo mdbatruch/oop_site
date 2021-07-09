@@ -240,7 +240,7 @@ require __DIR__ . '/lib/Service/OAuthService.php';
 require __DIR__ . '/lib/Webhook.php';
 require __DIR__ . '/lib/WebhookSignature.php';
 
-$stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/stripe.ini');
+$stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $site_path . '/.env/stripe.ini');
 
 \Stripe\Stripe::setApiKey($stripe['secret_key']);
 \Stripe\Stripe::setVerifySslCerts(false);

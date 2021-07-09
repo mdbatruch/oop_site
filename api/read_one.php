@@ -9,21 +9,23 @@ header('Content-Type: application/json');
 include_once '../classes/database.class.php';
 include_once '../classes/product.class.php';
 
+require('../initialize.php');
+
  error_reporting(E_ALL);
     ini_set('display_errors', 1);
   
   
-$database = new Database();
+$database = new Database($site_path);
 $db = $database->getConnection();
   
 $product = new Product($db);
   
 // $product->id = isset($_GET['id']) ? $_GET['id'] : die();
-$product->name = isset($_GET['name']) ? $_GET['name'] : die();
+$product->id = isset($_GET['id']) ? $_GET['id'] : die();
   
 $product->readOne();
   
-if($product->name!=null){
+if($product->id!=null){
 
     $product_arr = array(
         "id" =>  $product->id,

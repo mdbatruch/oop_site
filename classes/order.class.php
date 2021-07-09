@@ -89,14 +89,15 @@
                     'address' => ['city' => $order['delivery_address']['city'], 'line1' => $order['delivery_address']['street'], 'postal_code' => $order['delivery_address']['postal'], 'state' => $order['delivery_address']['province']]
                   ]);
 
+                  $name = $order['contact_details']['name'];
+
+                } else {
+                    $name = $exists['data'][0]['name'];
                 }
 
                 // echo $exists['data'][0]['id'];
 
                 // echo $exists['data'][0]['name'];
-
-                // echo '<pre>';
-                // print_r($exists['data'][0]['id']);
 
                 // exit;
 
@@ -107,16 +108,9 @@
                     'amount' => $stripe_amount,
                     'currency' => 'cad',
                     'source' => $order['token'],
-                    // 'customer' => 'cus_Jnur0E6MFKH4sB',
-                    'description' => 'Order Charge for ' . $exists['data'][0]['name'],
+                    // 'customer' => 'customer_id',
+                    'description' => 'Order Charge for ' . $name,
                 ]);
-
-                // $stripe->charges->create([
-                //     'amount' => 2000,
-                //     'currency' => 'cad',
-                //     'source' => 'tok_mastercard',
-                //     'description' => 'My First Test Charge (created for API docs)',
-                //   ]);
 
 
                 //   $stripe->orders->create([
@@ -160,14 +154,13 @@
 
                 // echo 'The ID of the last inserted row was: ' . $order;
                 // echo '<pre>';
-                    // print_r($user_id);
+                // print_r($user_id);
+
                 // Clear Cart Here
                 $cart_id = Cart::getCartId($customer_id, $this->conn);
 
 
                 CartItem::clearCart($cart_id['id'], $this->conn);
-
-                // header("Location: ../confirmation.php", true, 301);
 
 
                 // echo '<pre>';

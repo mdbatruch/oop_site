@@ -6,10 +6,12 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once '../classes/database.class.php';
 include_once '../classes/product.class.php';
 
-//  error_reporting(E_ALL);
-//     ini_set('display_errors', 1);
+require('../initialize.php');
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
   
-$database = new Database();
+$database = new Database($site_path);
 $db = $database->getConnection();
   
 $product = new Product($db);

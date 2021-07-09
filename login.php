@@ -20,7 +20,7 @@
     <div class="row">
         <div id="content" class="login-page col-12 col-md-8 offset-md-4">
             <form id="login" method="post">
-            <img class="icon" src="<?php echo root_url('images/icon.svg');?>" alt="Mike Batruch Icon">
+            <img class="icon" src="<?php echo root_url('images/icon.svg');?>" alt="Login Icon">
               <h1>Login</h1>
               <div class="form-container">
                   <div id="form-message"></div>

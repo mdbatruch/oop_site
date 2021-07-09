@@ -10,12 +10,9 @@
 
     if (empty($_SESSION)) {
         header('Location: cart.php');
+    } else if ($_SESSION['account'] == 'Administrator') {
+        header('Location: index.php');
     }
-    // if ($count == 0 ) {
-
-    //     echo $count;
-    //     // header('Location: cart.php');
-    // }
 
     $product = new Product($db);
     // $product_image = new ProductImage($db);

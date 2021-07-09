@@ -17,15 +17,17 @@ class Email {
     private $attachment;
     public $errors = [];
     public $data = [];
+    private $site_path;
 
-    public function __construct($name, $email, $attachment, $message){
+    public function __construct($name, $email, $attachment, $message, $site_path){
         
         $this->name = $name;
         $this->email = $email;
         $this->message = $message;
         $this->attachment = $attachment;
+        $this->path = $site_path;
 
-        $smtp = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/smtp.ini');
+        $smtp = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $this->path . '/.env/smtp.ini');
 
         $this->username = $smtp['username'];
         $this->password = $smtp['password'];
@@ -107,11 +109,9 @@ class Email {
             $mail->IsSMTP();
             $mail->SMTPDebug = 0;
             $mail->Host = $this->host;
-            // $mail->Host = 'dsadad';
             $mail->SMTPAuth = true;
             $mail->Username = $this->username;
             $mail->Password = $this->password;
-            // $mail->Password = "Gff";
             $mail->SMTPSecure = $this->secure;
             $mail->Port = $this->port;
             $mail->From = $this->from;

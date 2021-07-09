@@ -7,11 +7,11 @@
       die( header( 'location: index.php' ) );
   }
 
-  $stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/oop_site/.env/stripe.ini');
-
 
     require('../initialize.php');
     require_once('../init.php');
+
+    $stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $site_path . '/.env/stripe.ini');
 
     $data = [];
     $errors = [];
@@ -125,7 +125,7 @@
             $attachment = $_FILES['file'];
         }
 
-        $email = new Email($name, $email, $attachment, $message);
+        $email = new Email($name, $email, $attachment, $message, $site_path);
         
         $email->Send();
 
@@ -677,27 +677,9 @@
 
       case 'order':
 
-        // echo '<pre>';
-        // print_r($_POST);
-
-        // $token  = $_POST['token'];
-        
         $order = new Order($db, $stripe['secret_key']);
 
         $order->createOrder($_POST);
-
-
-        // $customer = \Stripe\Customer::create([
-        //     'name' => $name,
-        //     'email' => $email,
-        //     'source'  => $token,
-        // ]);
-
-        // $charge = \Stripe\Charge::create([
-        //     'customer' => $customer->id,
-        //     'amount'   => 5000,
-        //     'currency' => 'usd',
-        // ]);
 
       break;
 

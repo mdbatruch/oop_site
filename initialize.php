@@ -1,18 +1,15 @@
 <?php 
 
-    ob_start(); // turn on output buffering
+    ob_start();
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    // $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini');
+    $site_path = '/oop_site';
 
-    // echo '<pre>';
-    // print_r($db);
-
-    define("SITE_ROOT", $_SERVER['HTTP_HOST'] . '/oop_site');
-    define("SITE_ROOT_PRIVATE", $_SERVER['HTTP_HOST'] . '/oop_site/private');
-    define("CONFIRMATION", $_SERVER['HTTP_HOST'] . '/oop_site/confirmation.php');
+    define("SITE_ROOT", $_SERVER['HTTP_HOST'] . $site_path);
+    define("SITE_ROOT_PRIVATE", $_SERVER['HTTP_HOST'] . $site_path . '/private');
+    define("CONFIRMATION", $_SERVER['HTTP_HOST'] . $site_path . '/confirmation.php');
     
     require_once('functions.php');
 
@@ -30,12 +27,9 @@
     }
     spl_autoload_register('my_autoload');
 
-    $database = new Database();
+    $database = new Database($site_path);
     $db = $database->getConnection();
 
-    // include_once 'classes/database.class.php';
-
-    $site = new Site($db);
+    $site = new Site($db, $site_path);
 
     $session = new Session;
-    // $product = new Product($db);

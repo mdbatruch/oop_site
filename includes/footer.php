@@ -112,7 +112,10 @@
 
             console.log('contact has been attempted');
 
-            var formId = $('form').attr('id');
+            // var formId = $('form').attr('id');
+
+            // hardcode form value to prevent overlap with search bar
+            var formId = 'contact';
             var name = $('#name').val();
             var email = $('#email').val();
             var file_data = $('#attachment').prop('files')[0];
@@ -167,7 +170,7 @@
 
                         $('#form-message').html('<div class="alert alert-success">' + data.notice + '</div>');
 
-                        $('#contact-form').trigger("reset");
+                        $('#contact').trigger("reset");
                     }
             });
         });
