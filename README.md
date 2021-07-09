@@ -93,6 +93,6 @@ GETTING STARTED
 
 * To run Sass and BrowserSync preprocessor, cd into resources directory and run **npm install** command to install node modules. Replace proxy url with your site's directory in gulpfile.js on line 17. After installation run **gulp** to watch any changes to sass files. You may need to refresh browser to begin seeing changes, you'll be on port 3000.
 
-* Replace site_path variable in initialize.php according to your site's path on line 8. ** This is very important, otherwise the site will throw errors! **
+* Replace site_path variable in initialize.php according to your site's path on line 8. **This is very important, otherwise the site will throw errors!**
 
 * Replace 404 path in .htaccess file according to your site's path on line 1.
