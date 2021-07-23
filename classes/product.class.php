@@ -45,7 +45,7 @@ class Product{
                 FROM
                     " . $this->table_name . "
                 WHERE
-                    id = ?
+                    name = ?
                 LIMIT
                     0,1";
      
@@ -54,11 +54,11 @@ class Product{
 
         // sanitize
         // $this->id=htmlspecialchars(strip_tags($this->id));
-        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->id=htmlspecialchars(strip_tags($this->name));
      
         // bind product id value
         // $stmt->bindParam(1, $this->id);
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(1, $this->name);
      
         // execute query
         $stmt->execute();

@@ -21,11 +21,12 @@ $db = $database->getConnection();
 $product = new Product($db);
   
 // $product->id = isset($_GET['id']) ? $_GET['id'] : die();
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+// $product->id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->name = isset($_GET['name']) ? $_GET['name'] : die();
   
 $product->readOne();
   
-if($product->id!=null){
+if($product->name!=null){
 
     $product_arr = array(
         "id" =>  $product->id,
