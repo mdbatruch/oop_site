@@ -1,9 +1,33 @@
+@import "colors.scss";
+
 body {
     background-color: #f00;
     height: auto;
     main {
         background: #ff0;
         min-height: calc(100vh - 90px);
+        .shop-by {
+            h3 {
+                text-transform: uppercase;
+                padding: 12px 0px;
+            }
+            .set {
+                .img-container {
+                    background-position: 50% 50%;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    min-height: 250px;
+                }
+                strong {
+                    color: $white;
+                    background-color: $black;
+                    padding: 20px 40px;
+                    display: flex;
+                    text-align: center;
+                    justify-content: center;
+                }
+            }
+        }
         #products {
             h3 {
                 margin-left: 1rem;

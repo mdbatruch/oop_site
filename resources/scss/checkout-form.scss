@@ -16,14 +16,13 @@
 	margin: 0 10%;
 	position: relative;
 
-    .info {
+    .info { 
         text-align: left;
         font-weight: 700;
         span {
             font-weight: 400;
         }
     }
-
 }
 /*Hide all except first fieldset*/
 #order fieldset:not(:first-of-type) {

@@ -1,0 +1,38 @@
+@import 'colors.scss';
+
+footer {
+    background-color: $black;
+    color: $white;
+    .column {
+        h4 {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                background-color: $white;
+                width: 40%;
+                height: 2px;
+            }
+        }
+        ul {
+            padding-left: 0;
+            li {
+                list-style-type: none;
+                line-height: 2;
+            }
+        }
+        a {
+            text-decoration: none;
+            color: $white;
+        }
+        &:last-child {
+            h4 {
+                &:after {
+                    width: 20%;
+                }
+            }
+        }
+    }
+}

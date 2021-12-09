@@ -1,4 +1,12 @@
+@import "colors";
+
 body {
+    header {
+        background-color: $black;
+        a {
+            color: $white;
+        }
+    }
     #customer-header {
         background-color: #343a40;
     }

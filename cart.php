@@ -111,10 +111,8 @@
         <?php endif; ?>
     </div>
 </main>
-<footer class="container">
-    <div class="row">
-        <?php $site->addFooter(); ?>
-    </div>
+<footer class="pt-4 pb-4">
+    <?php $site->addFooter(); ?>
 </footer>
 
 <script>
