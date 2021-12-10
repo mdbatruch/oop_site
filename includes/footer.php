@@ -54,8 +54,10 @@
     
     <script src="<?php echo root_url('js/lightbox-plus-jquery.min.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
     <script src="<?php echo root_url('js/bootstrap.js'); ?>"></script>
     <script src="<?php echo root_url('js/checkout.js'); ?>"></script>
+    <script src="<?php echo root_url('js/carousel.js'); ?>"></script>
 
     <script type="text/javascript">
 

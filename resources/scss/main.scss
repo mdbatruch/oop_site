@@ -12,19 +12,165 @@ body {
                 padding: 12px 0px;
             }
             .set {
+                position: relative;
                 .img-container {
                     background-position: 50% 50%;
                     background-repeat: no-repeat;
                     background-size: cover;
                     min-height: 250px;
+                    position: relative;
+                    &:before {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        right: 0;
+                        position: absolute;
+                        background: rgba(100,100,100,0.5);
+                    }
                 }
                 strong {
                     color: $white;
                     background-color: $black;
                     padding: 20px 40px;
+                    text-transform: uppercase;
                     display: flex;
                     text-align: center;
                     justify-content: center;
+                    position: absolute;
+                    bottom: calc(50% - 44px);
+                    left: calc(50% - 87px);
+                }
+            }
+        }
+        .featured-products {
+            position: relative;
+            h3 {
+                text-transform: uppercase;
+            }
+            .controls {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                position: absolute;
+                left: 0;
+                width: 100%;    
+                top: 50%;
+                transform: translatey(-50%);
+                display: flex;
+                align-items: center;    
+                justify-content: space-between;
+                z-index: 50;
+                &:focus {
+                    outline: none;
+                }
+            
+                li {
+                    :hover {
+                        cursor: pointer;        
+                    }
+                    &.prev {
+                        position: relative;
+                        left: 10px;
+                        @media(min-width: 600px) {
+                            left: -50px;
+                        }
+                    }
+                    &.next {
+                        position: relative;
+                        right: 10px;
+                        @media(min-width: 600px) {
+                            right: -50px;
+                        }
+                    }
+                }
+                i {
+                    font-size: 3rem;
+                }
+            }
+            .featured-info {
+                text-align: center;
+                @media(min-width: 600px) {
+                    text-align: left;
+                }
+            }
+        }
+        .latest-releases {
+            h3 {
+                text-transform: uppercase;
+            }
+            .btn {
+                border-radius: 0px;
+            }
+        }
+        .promos {
+            position: relative;
+            .controls {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                position: absolute;
+                left: 0;
+                width: 100%;    
+                top: 50%;
+                transform: translatey(-50%);
+                display: flex;
+                align-items: center;    
+                justify-content: space-between;
+                z-index: 50;
+                &:focus {
+                    outline: none;
+                }
+            
+                li {
+                    :hover {
+                        cursor: pointer;        
+                    }
+                    &.prev {
+                        position: relative;
+                        left: 10px;
+                    }
+                    &.next {
+                        position: relative;
+                        right: 10px;
+                    }
+                }
+                svg {
+                    fill: $white;
+                    color: $white;
+                }
+            }
+            .tns-nav {
+                position: absolute;
+                bottom: 40px;
+                z-index: 50;
+                left: calc(50% - 40px);
+                button {
+                    width: 30px;
+                    border: none;
+                    padding: 2px;
+                    margin: 0px 5px;
+                    background-color: $lightgray;
+                    &.tns-nav-active {
+                        background-color: $white;
+                    }
+                }
+            }
+            .promo {
+                position: relative;
+                .promo-info {
+                    background-color: $black;
+                    right: 40px;
+                    bottom: 0;
+                    color: $white;
+                    text-align: center;
+                    padding: 50px 20px 30px;
+                    @media(min-width: 768px) {
+                        background-color: $black-overlay;
+                        position: absolute;
+                        max-width: 400px;
+                        text-align: right;
+                    }
                 }
             }
         }

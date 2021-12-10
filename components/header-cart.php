@@ -20,7 +20,7 @@
                     </a>
                 </div>
             <?php else :?>
-                <div class="col sign-in">
+                <div class="col pr-0 sign-in">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg> 
@@ -42,7 +42,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div id="navigation" style="width: 100%;">
+                <div id="navigation" class="d-flex h-100" style="width: 100%;">
                     <nav class="navbar navbar-expand-sm navbar-light bg-white pl-0">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
@@ -62,13 +62,15 @@
             <div class="col-md-4 pt-2 pb-2 logo-container d-flex justify-content-center">
                 <img src="<?= root_url('images/CastleGames.png'); ?>" alt="Castle Games" class="img-fluid w-25">
             </div>
-            <div class="col-md-4 d-flex justify-content-end cart">
-                <a href="cart.php">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                </svg> 
-                Cart <span class="cart-count"><?= $count ?> / $0.00 CAD</span>
-                </a>
+            <div class="col-md-4 d-flex justify-content-end align-self-center cart">
+                <div class="d-flex h-100">
+                    <a href="cart.php">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                    </svg> 
+                    Cart <span class="cart-count"><?= $count ?> / $0.00 CAD</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
