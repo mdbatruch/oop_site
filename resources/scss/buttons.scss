@@ -1,0 +1,15 @@
+@import 'colors';
+
+body {
+    .btn-green {
+        background-color: $brand-green;
+        border-color: $brand-green;
+        color: $white;
+    }
+    
+    .btn-lightgrey {
+        background-color: $lightgrey;
+        border-color: $lightgrey;
+        color: $black;
+    }
+}

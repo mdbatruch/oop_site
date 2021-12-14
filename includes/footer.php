@@ -1,4 +1,4 @@
-    <div class="container">
+<div class="container">
         <div class="row">
             <div class="col-md-3 column">
                 <img src="<?= root_url('images/CastleGames-White.png'); ?>" alt="Castle Games" class="img-fluid w-50">
