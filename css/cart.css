@@ -13,6 +13,15 @@ body .btn-lightgrey {
   border-color: #d3d3d3;
   color: #000; }
 
+body .btn-black {
+  background-color: #000;
+  border-color: #000;
+  color: #fff; }
+  body .btn-black:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000; }
+
 #cart .cart-header {
   background-color: #000;
   border-top: 2px solid #d3d3d3;

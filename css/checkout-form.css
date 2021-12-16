@@ -4,66 +4,104 @@
   text-align: center;
   position: relative;
   max-width: none; }
-
-#order fieldset {
-  background: white;
-  border: 0 none;
-  border-radius: 3px;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  padding: 20px 30px;
-  box-sizing: border-box;
-  width: 80%;
-  margin: 0 10%;
-  position: relative; }
-  #order fieldset .info {
+  #order .ast {
+    color: #f00; }
+  #order label {
+    display: block; }
+  #order .fs-title {
+    font-size: 1.5rem;
+    color: #2C3E50;
+    margin-bottom: 10px; }
+  #order .fs-subtitle {
+    font-weight: normal;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px; }
+  #order fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    position: relative;
     text-align: left;
-    font-weight: 700; }
-    #order fieldset .info span {
-      font-weight: 400; }
+    white-space: nowrap; }
+    @media (min-width: 1030px) {
+      #order fieldset {
+        width: 80%;
+        margin: 0 10%; } }
+    #order fieldset input, #order fieldset textarea, #order fieldset select {
+      padding: 15px;
+      border: 1px solid #666;
+      border-radius: 0px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: montserrat;
+      color: #2C3E50;
+      font-size: 13px; }
+      #order fieldset input::placeholder, #order fieldset textarea::placeholder, #order fieldset select::placeholder {
+        font-style: italic;
+        color: #A0A0A0; }
+    @media (min-width: 1030px) {
+      #order fieldset .form-inner-container.form-address-other {
+        flex-direction: row !important; }
+        #order fieldset .form-inner-container.form-address-other .form-field {
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: 200px; }
+          #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) {
+            padding: 0px 20px;
+            flex-shrink: 2; }
+            #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select {
+              max-width: 200px; } }
+    #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select {
+      height: 50px;
+      border-radius: 0px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">\a 							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>\a 						  </svg>');
+      background-repeat: no-repeat;
+      background-position-x: 95%;
+      background-position-y: 12px;
+      padding: 0px 10px; }
+    #order fieldset .form-inner-container.half {
+      flex-direction: column; }
+      @media (min-width: 1030px) {
+        #order fieldset .form-inner-container.half {
+          flex-direction: row; }
+          #order fieldset .form-inner-container.half .form-field:first-child {
+            padding-right: 20px; } }
+    #order fieldset .form-field {
+      white-space: normal;
+      vertical-align: top;
+      flex: 1; }
+    #order fieldset .info {
+      text-align: left;
+      font-weight: 700; }
+      #order fieldset .info span {
+        font-weight: 400; }
 
 /*Hide all except first fieldset*/
 #order fieldset:not(:first-of-type) {
   display: none; }
 
-/*inputs*/
-#order input, #order textarea {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: montserrat;
-  color: #2C3E50;
-  font-size: 13px; }
-
 /*buttons*/
 #order .action-button {
-  width: 100px;
-  background: #27AE60;
+  width: 100%;
+  background: #000;
   font-weight: bold;
   color: white;
   border: 0 none;
   border-radius: 1px;
   cursor: pointer;
   padding: 10px 5px;
-  margin: 10px 5px; }
+  margin: 10px 5px;
+  text-transform: uppercase; }
 
 #order .action-button:hover, #order .action-button:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60; }
-
-/*headings*/
-.fs-title {
-  font-size: 15px;
-  text-transform: uppercase;
-  color: #2C3E50;
-  margin-bottom: 10px; }
-
-.fs-subtitle {
-  font-weight: normal;
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 20px; }
 
 /*progressbar*/
 #progressbar {
@@ -72,29 +110,42 @@
   /*CSS counters to number the steps*/
   counter-reset: step; }
 
-#progressbar li {
-  list-style-type: none;
-  color: black;
-  text-transform: uppercase;
-  font-size: 12px;
-  width: 33.33%;
-  float: left;
-  position: relative;
-  line-height: 1.75; }
-
-#progressbar li:before {
-  content: counter(step);
-  counter-increment: step;
-  width: 20px;
-  line-height: 20px;
-  display: block;
-  font-size: 10px;
-  color: #333;
-  background: white;
-  border-radius: 3px;
-  margin: 0 auto 5px auto;
-  position: absolute;
-  left: 25%; }
+#progressbar {
+  margin: 40px 10%;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column; }
+  @media (min-width: 1030px) {
+    #progressbar {
+      flex-direction: row; } }
+  #progressbar li {
+    list-style-type: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    float: left;
+    position: relative;
+    line-height: 3;
+    border-bottom: 2px solid #A0A0A0;
+    flex: 1; }
+    #progressbar li.active {
+      border-bottom: 2px solid #000; }
+    #progressbar li:before {
+      content: counter(step);
+      counter-increment: step;
+      width: 30px;
+      height: 30px;
+      line-height: 20px;
+      display: block;
+      font-size: 1rem;
+      color: #333;
+      background: white;
+      border-radius: 25px;
+      margin: 0 auto 5px auto;
+      position: absolute;
+      left: 20px;
+      padding-top: 4px;
+      top: 3px; }
 
 /*progressbar connectors*/
 #progressbar li:after {

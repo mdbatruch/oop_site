@@ -146,16 +146,3 @@ body {
       font-weight: bold;
       font-size: 1.2rem;
       margin: 10px 0px 0px 0px; }
-    body main .cart-totals .quantity-total .cart-count-bottom {
-      display: block; }
-    body main .cart-totals .sub-total #sub-total {
-      display: block; }
-    body main .cart-container {
-      position: sticky;
-      top: 30%; }
-      body main .cart-container table.cart-summary {
-        width: 100%; }
-    body main .quantity-total > div {
-      margin: 5px 0px; }
-    body main .quantity-total #sub-total, body main .quantity-total #hst-total, body main .quantity-total #total {
-      float: right; }

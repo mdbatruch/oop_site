@@ -1,0 +1,85 @@
+@import 'colors';
+@import 'extends';
+
+#cart-checkout {
+    .return-to-cart {
+        text-align: center;
+        width: 80%;
+        margin: 40px 10%;
+        @media(min-width: 1030px) {
+            text-align: left;
+        }
+        .btn {
+            @extend %btn-format;
+            svg {
+                position: relative;
+                bottom: 2px;
+                right: 10px;
+            }
+        }
+    }
+    .cart-totals {
+        .quantity-total {
+            .cart-count-bottom {
+                display: block;
+            }
+        }
+        .sub-total {
+            #sub-total {
+                display: block;
+            }
+        }
+    }
+    .cart-container {
+        @media(min-width: 1030px) {
+            position: sticky;
+            top: 0;
+        }
+        .cart-summary-title {
+            border-bottom: 2px solid $lightgrey;
+        }
+        div {
+            &.cart-summary {
+                width: 100%;
+                margin: 20px 0px;
+                .product { 
+                    margin: 20px 0px;
+                    > div {
+                        flex: 1;
+                        &.product-order-info {
+                            flex-grow: 2;
+                           > * {
+                                display: block;
+                                text-decoration: none;
+                                color: $black;
+                            }
+                            a {
+                                font-weight: bold;
+                            }
+                            span {
+                                &.dollar-sign {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .quantity-total {
+        border-top: 2px solid $lightgrey;
+        padding-top: 20px;
+        flex-direction: column;
+        > div {
+            margin: 5px 0px;
+            justify-content: space-between;
+            &.total {
+                border-top: 2px solid $lightgrey;
+                font-weight: bold;
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+        }
+    }
+}

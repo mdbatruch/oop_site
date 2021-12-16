@@ -106,16 +106,6 @@
                             <div class='col col-12 col-md-2'>
                                 <p>$<span class='price'><?= $price; ?></span></p>
                             </div>
-                            <div class='col col-md-8 d-none'>
-                                <a href="<?= root_url('product.php?id=' . $product["id"]); ?>">
-                                    <h4><?= $product['name']; ?></h4>
-                                </a>
-                                <p><?=  $product['description']; ?></p>
-                                <p>Price: $<span class='price'><?= $price; ?></span></p>
-                                <button class='btn btn-success add-item' data-action='add-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>+</button>
-                                    <p><span class='product-quantity'><?= $product['quantity'] ?></span></p>
-                                <button class='btn btn-danger remove-item' data-action='remove-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>-</button>
-                            </div>
                             <div class='col col-md-2 px-4 delete-product-cart'>
                                 <button class='btn remove-item-full' data-action='remove-item-full' data-id='<?= $product['id']; ?>'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

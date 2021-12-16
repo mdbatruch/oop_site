@@ -12,4 +12,14 @@ body {
         border-color: $lightgrey;
         color: $black;
     }
+    .btn-black {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+        &:hover {
+            background-color: $white;
+            border-color: $white;
+            color: $black;
+        }
+    }
 }

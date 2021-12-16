@@ -50,18 +50,26 @@
         </div>
     </div>
 </header>
-<main id="cart">
-<div class="container-fluid">
-        <div class="row">
-            <div class="col min-12 text-right">
-                <a href="<?= root_url('cart.php'); ?>"><< Return to Cart</a>
-            </div>
-        </div>
+<main id="cart-checkout">
+    <div class="container-fluid">
         <div class="row">
         <div id="form-message"></div>
             <div class="col-md-8">
+            <!-- <div class="container">
+                <div class="row"> -->
+                    <div class="col min-12 medium-4 text-right return-to-cart">
+                    <a href="<?= root_url('cart.php'); ?>" class="btn btn-black mx-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                        </svg> 
+                        Return to Cart
+                    </a>
+                </div>
+                <!-- </div>
+            </div> -->
             <div id="stripe-public" data-public-key="<?= $stripe['public_key']; ?>"></div>
             <?php $site->addCheckoutForm(); ?>
+
 
             <?php $on = false; if ($on) :?>
             <?php if(!empty($successMessage)) { ?>
@@ -157,41 +165,45 @@
                     // }
             } else if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($products)) {
                 ?>
-                <div class="col min-12 col-md-4">
-                    <div class="cart-container">
-                    <h4>Cart Summary</h4>
-                        <table class="cart-summary">
-                            <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Qty</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                        <?php
-                            foreach ($products as $product) {
-                                $price = substr($product['price'], 1) * $product['quantity']; ?>
-                            <tr class='product col col-sm-12 my-2' data-id='<?= $product['id'] ?>' >
-                                <td>
-                                    <a class="product-name" href="<?= root_url('product.php?id=' . $product["id"]); ?>">
-                                        <?= $product['name']; ?>
-                                    </a>
-                                </td>
-                                <td><span class='product-quantity'><?= $product['quantity'] ?></span></td>
-                                <td>$<span class='price'><?= $price; ?></span></td>
-                            </tr>
-                    <?php   } ?>
-                    </table>
-                    <div class="quantity-total">
-                        <div class="col min-12 subtotal pl-0">
-                            Sub Total
+                <div class="col min-12 col-md-4 bg-light">
+                    <div class="cart-container my-4">
+                        <div class="cart-summary-title">
+                            <h4>Order Summary</h4> <div id="item-total"></div>
+                        </div>
+                        <div class="cart-summary">
+                            <?php
+                                foreach ($products as $product) {
+                                    $price = substr($product['price'], 1) * $product['quantity']; ?>
+
+                                    <div class="product d-flex">
+                                        <div class="img-container">
+                                            <img src="<?= root_url('images/' . $product['image']); ?>" alt="" class="img-fluid">
+                                        </div>
+                                        <div class="product-order-info px-4">
+                                            <a class="product-name" href="<?= root_url('product.php?id=' . $product["id"]); ?>">
+                                                <?= $product['name']; ?>
+                                            </a>
+                                            <div class="product-price"></div>
+                                            <div class="quantity-container">
+                                                QTY: <span class='product-quantity'><?= $product['quantity'] ?></span>
+                                            </div>
+                                            <div class="price-container">
+                                                <span class="dollar-sign">$</span><span class='price'><?= $price; ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php   } ?>
+                        </div>
+                    <div class="quantity-total d-flex">
+                        <div class="subtotal pl-0 d-flex">
+                            Subtotal
                             <span id="sub-total"></span>
                         </div>
-                        <div class="col min-12 hst-total pl-0">
-                            HST (13%)
+                        <div class="hst-total pl-0 d-flex">
+                            HST 13%
                             <span id="hst-total"></span>
                         </div>
-                        <div class="col min-12 total pl-0">
+                        <div class="total pl-0 d-flex">
                             Total
                             <span id="total"></span>
                         </div>
@@ -209,10 +221,8 @@
         </div>
     </div>
 </main>
-<footer class="container">
-    <div class="row">
-        <?php $site->addFooter(); ?>
-    </div>
+<footer class="pt-4 pb-4">
+    <?php $site->addFooter(); ?>
 </footer>
 
 <script>

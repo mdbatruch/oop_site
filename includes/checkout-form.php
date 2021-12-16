@@ -1,47 +1,86 @@
 <form id="order" method="post">
   <ul id="progressbar">
-    <li class="active">Delivery</li>
-    <li>Billing</li>
+    <li class="active">Customer Info</li>
+    <li>Shipping &amp; Billing</li>
     <li>Review</li>
   </ul>
   <fieldset class="step-1">
-    <h2 class="fs-title">Enter your Name and Shipping Address</h2>
-    <h3 class="fs-subtitle">Enter Contact Details</h3>
-      <input type="text" id="first_name" name="first_name" placeholder="First Name" />
-      <div id="first_name_warning" class="warning"></div>
-      <input type="text" id="last_name" name="last_name" placeholder="Last Name" />
-      <div id="last_name_warning" class="warning"></div>
-      <input type="text" id="phone" name="phone" placeholder="Phone Number" />
-      <div id="phone_warning" class="warning"></div>
-      <input type="email" id="email" name="email" placeholder="Email Address" />
-      <div id="email_warning" class="warning"></div>
-    <h3 class="fs-subtitle">Enter Delivery Address</h3>
-      <input type="text" id="street" name="street_name_number" placeholder="Street Name and Number" />
-      <div id="street_warning" class="warning"></div>
-      <input type="text" id="suite" name="street_name_number" placeholder="Suite or Apartment Number (optional)" />
-      <input type="text" id="city" name="city" placeholder="City" />
-      <div id="city_warning" class="warning"></div>
-      <label for="province">Province</label>
-        <select name="province" id="province" class="province">
-          <option value="">Select a Province</option>
-          <option value="AB" class="province-value">Alberta
-          </option><option value="BC" class="province-value">British Columbia
-          </option><option value="MB" class="province-value">Manitoba
-          </option><option value="NB" class="province-value">New Brunswick
-          </option><option value="NL" class="province-value">Newfoundland and Labrador
-          </option><option value="NT" class="province-value">Northwest Territories
-          </option><option value="NS" class="province-value">Nova Scotia
-          </option><option value="NU" class="province-value">Nunavut
-          </option><option value="ON" class="province-value">Ontario
-          </option><option value="PE" class="province-value">Prince Edward Island
-          </option><option value="QC" class="province-value">Quebec
-          </option><option value="SK" class="province-value">Saskatchewan
-          </option><option value="YT" class="province-value">Yukon Territory
-          </option>
-        </select>
-      <div id="province_warning" class="warning"></div>
-      <input type="text" id="postal" name="postal" placeholder="Postal Code" />
-      <div id="postal_warning" class="warning"></div>
+    <h2 class="fs-title">Customer Information</h2>
+    <h3 class="fs-subtitle d-none"></h3>
+    <div class="customer-information">
+      <div class="form-inner-container form-name d-flex half">
+        <div class="form-field half">
+            <label for="first_name">First Name <span class="ast">*</span></label>
+            <input type="text" id="first_name" name="first_name" />
+            <div id="first_name_warning" class="warning"></div>
+        </div>
+        <div class="form-field half">
+            <label for="last_name">Last Name <span class="ast">*</span></label>
+            <input type="text" id="last_name" class="half" name="last_name" />
+            <div id="last_name_warning" class="warning"></div>
+        </div>
+      </div>
+      <div class="form-inner-container form-contact d-flex half">
+        <div class="form-field half">
+            <label for="phone">Phone <span class="ast">*</span></label>
+          <input type="text" id="phone" class="half" name="phone" />
+          <div id="phone_warning" class="warning"></div>
+        </div>
+        <div class="form-field half">
+            <label for="email">Email <span class="ast">*</span></label>
+          <input type="email" id="email" class="half" name="email" />
+          <div id="email_warning" class="warning"></div>
+        </div>
+      </div>
+    </div>
+    <div class="delivery-information">
+    <h2 class="fs-title">Delivery Information</h2>
+    <h3 class="fs-subtitle">Enter your delivery address</h3>
+    <div class="form-inner-container form-address d-flex flex-column">
+      <div class="form-field">
+          <label for="street">Street <span class="ast">*</span></label>
+          <input type="text" id="street" name="street_name_number" placeholder="Street Name and Number" />
+          <div id="street_warning" class="warning"></div>
+      </div>
+      <div class="form-field">
+          <label for="suite" class="d-none">Suite <span class="ast">*</span></label>
+          <input type="text" id="suite" name="street_name_number" placeholder="Suite or Apartment Number (optional)" />
+      </div>
+    </div>
+    <div class="form-inner-container form-address-other d-flex flex-column">
+      <div class="form-field">
+          <label for="city">City <span class="ast">*</span></label>
+          <input type="text" id="city" name="city" />
+          <div id="city_warning" class="warning"></div>
+      </div>
+      <div class="form-field">
+          <label for="province">Province <span class="ast">*</span></label>
+            <select name="province" id="province" class="province">
+              <option value=""></option>
+              <option value="AB" class="province-value">Alberta
+              </option><option value="BC" class="province-value">British Columbia
+              </option><option value="MB" class="province-value">Manitoba
+              </option><option value="NB" class="province-value">New Brunswick
+              </option><option value="NL" class="province-value">Newfoundland and Labrador
+              </option><option value="NT" class="province-value">Northwest Territories
+              </option><option value="NS" class="province-value">Nova Scotia
+              </option><option value="NU" class="province-value">Nunavut
+              </option><option value="ON" class="province-value">Ontario
+              </option><option value="PE" class="province-value">Prince Edward Island
+              </option><option value="QC" class="province-value">Quebec
+              </option><option value="SK" class="province-value">Saskatchewan
+              </option><option value="YT" class="province-value">Yukon Territory
+              </option>
+            </select>
+          <div id="province_warning" class="warning"></div>
+      </div>
+      <div class="form-field">
+          <label for="postal">Postal Code <span class="ast">*</span></label>
+          <input type="text" id="postal" name="postal" />
+          <div id="postal_warning" class="warning"></div>
+      </div>
+    </div>
+    </div>
       <!-- <div class="next-container"> -->
         <input type="button" name="next" class="next action-button" value="Next" />
       <!-- </div> -->
