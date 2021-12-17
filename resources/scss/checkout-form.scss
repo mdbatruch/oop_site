@@ -16,6 +16,16 @@
 		font-size: 1.5rem;
 		color: $darkgrey;
 		margin-bottom: 10px;
+		.inner-title {
+			text-transform: uppercase;
+			color: $black;
+			font-size: 1rem;
+			margin-left: 15px;
+			svg {
+				position: relative;
+				bottom: 2px;
+			}
+		}
 	}
 	.fs-subtitle {
 		font-weight: normal;
@@ -100,6 +110,42 @@
 					}
 				}
 			}
+			&.form-card {
+				flex-wrap: wrap;
+				> div {
+					@media(min-width: 1030px) and (max-width: 1399px) {
+						&.card-container {
+							flex: 0 0 75%;
+						}
+						&.card-type {
+							flex: 0 0 25%;
+						}
+						&.month-year {
+							flex: 0 0 50%;
+							padding-right: 20px;
+						}
+						&.cvc {
+							flex: 0 0 50%;
+						}
+					}
+					@media(min-width: 1400px) {
+						&.card-container {
+							flex: 0 0 50%;
+						}
+						&.card-type {
+							flex: 0 0 20%;
+							padding-right: 20px;
+						}
+						&.month-year {
+							flex: 0 0 15%;
+							padding-right: 20px;
+						}
+						&.cvc {
+							flex: 0 0 15%;
+						}
+					}
+				}
+			}
 		}
 
 		.form-field {
@@ -117,6 +163,7 @@
 		.info { 
 			text-align: left;
 			font-weight: 700;
+			padding-left: 0px;
 			span {
 				font-weight: 400;
 			}

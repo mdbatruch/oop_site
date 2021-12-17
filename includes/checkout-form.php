@@ -81,35 +81,94 @@
       </div>
     </div>
     </div>
-      <!-- <div class="next-container"> -->
-        <input type="button" name="next" class="next action-button" value="Next" />
-      <!-- </div> -->
+    <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset class="step-2">
-    <h2 class="fs-title">Select a Payment Method</h2>
-    <h3 class="fs-subtitle">Secure Card Payment</h3>
-      <div class="field-row">
-        <label>Card Type</label>
-        <select id="card-type-picker" name="card_type" class="test-billing-card-type error" aria-describedby="card-type-picker-error" aria-invalid="true">
-          <option value="">Select a card type</option>
-          <option value="001">Visa</option>
-          <option value="002">MasterCard</option>
-        </select>
-        <div id="card_type_warning" class="warning"></div>
-      </div>  
-      <div class="field-row">
-          <label>Card Holder Name</label> <span id="card-holder-name-info"
-              class="info"></span><br> <input type="text" id="card-holder-name"
-              name="name" class="demoInputBox">
-          <div id="card_holder_name_warning" class="warning"></div>
+    <h2 class="fs-title">Billing Information 
+      <span class="inner-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+          <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+        </svg>
+        Secured Checkout
+      </span>
+    </h2>
+    <h3 class="fs-subtitle">Enter your contact information</h3>
+    <div class="card-information">
+      <div class="form-inner-container form-card d-flex half">
+        <div class="form-field half card-container">
+            <label for="credit_number">Credit Card Number <span class="ast">*</span></label>
+            <span id="card-number-info"
+              class="info"></span> 
+              <input type="text" id="card-number"
+              name="card-number">
+          <div id="card_number_warning" class="warning"></div>
+        </div>
+        <div class="form-field half card-type">
+          <label for="card-type-picker">Card Type</label>
+            <select id="card-type-picker" name="card_type" class="test-billing-card-type error" aria-describedby="card-type-picker-error" aria-invalid="true">
+              <option value="">Select a card type</option>
+              <option value="001">Visa</option>
+              <option value="002">MasterCard</option>
+            </select>
+          <div id="card_type_warning" class="warning"></div>
+        </div>
+        <div class="form-field half month-year">
+            <label>Expiry Date</label> 
+            <span id="userEmail-info" class="info d-none"></span>
+            <!-- <input type="text" id="month-year" name="month-year" placeholder="MM/YY" /> -->
+            <select name="month" id="month" class="demoSelectBox">
+                  <option value="08">08</option>
+                  <option value="09">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+              </select> 
+              <select name="year" id="year" class="demoSelectBox">
+                  <option value="21">2021</option>
+                  <option value="22">2022</option>
+                  <option value="23">2023</option>
+                  <option value="24">2024</option>
+                  <option value="25">2025</option>
+                  <option value="26">2026</option>
+                  <option value="27">2027</option>
+                  <option value="28">2028</option>
+                  <option value="29">2029</option>
+                  <option value="30">2030</option>
+              </select>
+        </div>
+        <div class="form-field half cvc">
+            <label for="cvv-info">CVC</label> 
+            <span id="cvv-info" class="info d-none"></span>
+            <input type="text" name="cvc" id="cvc"
+                class="cvv-input" placeholder="3 or 4 Digits">
+            <div id="cvc_warning" class="warning"></div>
+        </div>
+        <div class="form-field half">
+          <div class="field-row">
+              <label for="card-holder-name-info">Name on Credit Card <span class="ast">*</span></label> 
+              <span id="card-holder-name-info"
+                  class="info"></span>
+                  <input type="text" id="card-holder-name"
+                  name="name">
+              <div id="card_holder_name_warning" class="warning"></div>
+          </div>
+        </div>
       </div>
-      <div class="field-row">
+    </div>
+    <div class="billing-information">
+      <div class="form-inner-container form-billing-address d-flex half">
+        
+      </div>
+    </div>
+
+
+      <!-- <div class="field-row d-none">
           <label>Card Number</label> <span id="card-number-info"
               class="info"></span><br> <input type="text" id="card-number"
               name="card-number" class="demoInputBox">
           <div id="card_number_warning" class="warning"></div>
-      </div>
-      <div class="field-row">
+      </div> -->
+      <!-- <div class="field-row d-none">
           <div class="contact-row column-right">
               <label>Expiry Month / Year</label> <span id="userEmail-info"
                   class="info"></span><br> <select name="month" id="month"
@@ -133,13 +192,13 @@
                   <option value="30">2030</option>
               </select>
           </div>
-          <div class="contact-row cvv-box">
+          <div class="contact-row cvv-box d-none">
               <label>CVC</label> <span id="cvv-info" class="info"></span><br>
               <input type="text" name="cvc" id="cvc"
                   class="demoInputBox cvv-input">
               <div id="cvc_warning" class="warning"></div>
           </div>
-      </div>
+      </div> -->
       <input type="button" name="previous" class="previous action-button" value="Previous" />
       <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>

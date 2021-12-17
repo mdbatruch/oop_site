@@ -12,6 +12,14 @@
     font-size: 1.5rem;
     color: #2C3E50;
     margin-bottom: 10px; }
+    #order .fs-title .inner-title {
+      text-transform: uppercase;
+      color: #000;
+      font-size: 1rem;
+      margin-left: 15px; }
+      #order .fs-title .inner-title svg {
+        position: relative;
+        bottom: 2px; }
   #order .fs-subtitle {
     font-weight: normal;
     font-size: 1rem;
@@ -73,13 +81,37 @@
           flex-direction: row; }
           #order fieldset .form-inner-container.half .form-field:first-child {
             padding-right: 20px; } }
+    #order fieldset .form-inner-container.form-card {
+      flex-wrap: wrap; }
+      @media (min-width: 1030px) and (max-width: 1399px) {
+        #order fieldset .form-inner-container.form-card > div.card-container {
+          flex: 0 0 75%; }
+        #order fieldset .form-inner-container.form-card > div.card-type {
+          flex: 0 0 25%; }
+        #order fieldset .form-inner-container.form-card > div.month-year {
+          flex: 0 0 50%;
+          padding-right: 20px; }
+        #order fieldset .form-inner-container.form-card > div.cvc {
+          flex: 0 0 50%; } }
+      @media (min-width: 1400px) {
+        #order fieldset .form-inner-container.form-card > div.card-container {
+          flex: 0 0 50%; }
+        #order fieldset .form-inner-container.form-card > div.card-type {
+          flex: 0 0 20%;
+          padding-right: 20px; }
+        #order fieldset .form-inner-container.form-card > div.month-year {
+          flex: 0 0 15%;
+          padding-right: 20px; }
+        #order fieldset .form-inner-container.form-card > div.cvc {
+          flex: 0 0 15%; } }
     #order fieldset .form-field {
       white-space: normal;
       vertical-align: top;
       flex: 1; }
     #order fieldset .info {
       text-align: left;
-      font-weight: 700; }
+      font-weight: 700;
+      padding-left: 0px; }
       #order fieldset .info span {
         font-weight: 400; }
 
