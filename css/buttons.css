@@ -9,10 +9,10 @@ body .btn-lightgrey {
   color: #000; }
 
 body .btn-black {
-  background-color: #000;
-  border-color: #000;
-  color: #fff; }
+  background-color: #000 !important;
+  border-color: #000 !important;
+  color: #fff !important; }
   body .btn-black:hover {
-    background-color: #fff;
+    background-color: #fff !important;
     border-color: #fff;
-    color: #000; }
+    color: #000 !important; }

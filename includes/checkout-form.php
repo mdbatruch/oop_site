@@ -81,7 +81,9 @@
       </div>
     </div>
     </div>
-    <input type="button" name="next" class="next action-button" value="Next" />
+    <div class="steps-container-1 d-flex">
+      <input type="button" name="next" class="next action-button" value="Next" />
+    </div>
   </fieldset>
   <fieldset class="step-2">
     <h2 class="fs-title">Billing Information 
@@ -156,77 +158,136 @@
       </div>
     </div>
     <div class="billing-information">
-      <div class="form-inner-container form-billing-address d-flex half">
-        
+      <div class="form-inner-container form-billing-address part-1 d-flex flex-column">
+        <div class="form-field">
+            <label for="billing-street">Address <span class="ast">*</span></label>
+            <input type="text" id="billing-street" name="billing-street_name_number" placeholder="Street Name and Number" />
+            <div id="billing_street_warning" class="warning"></div>
+        </div>
+        <div class="form-field">
+            <label for="billing-suite" class="d-none">Suite <span class="ast">*</span></label>
+            <input type="text" id="billing-suite" name="billing_street_name_number" placeholder="Suite or Apartment Number (optional)" />
+        </div>
+      </div>
+      <div class="form-inner-container form-billing-address part-2 d-flex half">
+        <div class="form-field third">
+            <div class="field-row">
+                <label for="billing-town-info">Town / City <span class="ast">*</span></label> 
+                <span id="billing-town-info"
+                    class="info"></span>
+                    <input type="text" id="billing-town-name"
+                    name="billing-town">
+                <div id="billing_town_name_warning" class="warning"></div>
+            </div>
+          </div>
+          <div class="form-field third">
+            <div class="field-row">
+                <label for="billing-province-info">Province <span class="ast">*</span></label> 
+                    <select name="billing-province-info" id="billing-province-info" class="province">
+                    <option value=""></option>
+                    <option value="AB" class="province-value">Alberta
+                    </option><option value="BC" class="province-value">British Columbia
+                    </option><option value="MB" class="province-value">Manitoba
+                    </option><option value="NB" class="province-value">New Brunswick
+                    </option><option value="NL" class="province-value">Newfoundland and Labrador
+                    </option><option value="NT" class="province-value">Northwest Territories
+                    </option><option value="NS" class="province-value">Nova Scotia
+                    </option><option value="NU" class="province-value">Nunavut
+                    </option><option value="ON" class="province-value">Ontario
+                    </option><option value="PE" class="province-value">Prince Edward Island
+                    </option><option value="QC" class="province-value">Quebec
+                    </option><option value="SK" class="province-value">Saskatchewan
+                    </option><option value="YT" class="province-value">Yukon Territory
+                    </option>
+                  </select>
+                <div id="billing_province_name_warning" class="warning"></div>
+            </div>
+          </div>
+          <div class="form-field third">
+            <div class="field-row">
+                <label for="billing-postal-info">Postal Code <span class="ast">*</span></label> 
+                <span id="billing-postal-info"
+                    class="info"></span>
+                    <input type="text" id="billing-postal-name"
+                    name="billing-postal">
+                <div id="billing_postal_name_warning" class="warning"></div>
+            </div>
+          </div>
       </div>
     </div>
-
-
-      <!-- <div class="field-row d-none">
-          <label>Card Number</label> <span id="card-number-info"
-              class="info"></span><br> <input type="text" id="card-number"
-              name="card-number" class="demoInputBox">
-          <div id="card_number_warning" class="warning"></div>
-      </div> -->
-      <!-- <div class="field-row d-none">
-          <div class="contact-row column-right">
-              <label>Expiry Month / Year</label> <span id="userEmail-info"
-                  class="info"></span><br> <select name="month" id="month"
-                  class="demoSelectBox">
-                  <option value="08">08</option>
-                  <option value="09">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-              </select> <select name="year" id="year"
-                  class="demoSelectBox">
-                  <option value="21">2021</option>
-                  <option value="22">2022</option>
-                  <option value="23">2023</option>
-                  <option value="24">2024</option>
-                  <option value="25">2025</option>
-                  <option value="26">2026</option>
-                  <option value="27">2027</option>
-                  <option value="28">2028</option>
-                  <option value="29">2029</option>
-                  <option value="30">2030</option>
-              </select>
+    <div class="shipping-information mt-4">
+      <h2 class="fs-title">Shipping Information</h2>
+      <div class="form-inner-container form-shipping-information  d-flex flex-column">
+          <div class="form-field first">
+              <input type="checkbox" id="different-address" name="different-address" value="yes">
+              <label for="different-address"> Ship to different address?</label>
           </div>
-          <div class="contact-row cvv-box d-none">
-              <label>CVC</label> <span id="cvv-info" class="info"></span><br>
-              <input type="text" name="cvc" id="cvc"
-                  class="demoInputBox cvv-input">
-              <div id="cvc_warning" class="warning"></div>
+          <div class="form-field mt-4">
+          <h5>Select a Shipping Option:</h5>
+            <div class="shipping-option d-flex">
+              <div class="form-field p-2">
+                  <label for="standard-shipping" class="mb-2 d-flex">Standard Shipping <div class="shipping-price">Free</div></label>
+                  <input type="radio" id="standard-shipping" name="standard-shipping" value="standard" checked>
+                  <span>
+                    Free for orders over $80 CAD<br/>
+                    Typically arrives between 5-10 business days.
+                  </span>
+              </div>
+              <div class="form-field p-2">
+                  <label for="express-shipping" class="mb-2 d-flex">Express Shipping <div class="shipping-price">$25.00</div></label>
+                  <input type="radio" id="express-shipping" name="express-shipping" value="express-shipping">
+                  <span>
+                    Typically arrives between 1-3 business days.<br/>
+                    Shipped by Canada Post
+                  </span>
+              </div>
+            </div>
           </div>
-      </div> -->
-      <input type="button" name="previous" class="previous action-button" value="Previous" />
-      <input type="button" name="next" class="next action-button" value="Next" />
+          <div class="form-field mt-4">
+            <label for="order-notes">Order Notes (Optional)</label>
+            <input type="text" id="order-notes" name="order-notes" placeholder="Notes about your order, e.g. special notes for your delivery" />
+          </div>
+      </div>
+    </div>
+      <div class="steps-container-2 d-flex">
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <input type="button" name="next" class="next action-button" value="Next" />
+      </div>
   </fieldset>
   <fieldset class="step-3">
-    <h2 class="fs-title">Review Your Order</h2>
-    <h3 class="fs-subtitle">Make sure everything is in order</h3>
+    <h2 class="fs-title">Review Your Information</h2>
+    <div class="steps-container-3 return d-flex">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+    </svg>
+    <input type="button" name="previous" class="previous action-button" value='Edit Billing and Shipping' />
+    </div>
     <div class="info">
-      <legend>Contact Details:</legend>
+      <legend>Account Information</legend>
         <div class="name-confirm">Name: <span></span></div>
         <div class="phone-confirm">Phone: <span></span></div>
         <div class="email-confirm">Email: <span></span></div>
-      <legend>Address:</legend>
         <div class="street-confirm">Street Name and Number: <span></span></div>
         <div class="suite-confirm">Suite: <span></span></div>
         <div class="city-confirm">City: <span></span></div>
         <div class="province-confirm">Province: <span></span></div>
         <div class="postal-confirm">Postal Code: <span></span></div>
-      <legend>Payment Method:</legend>
+      <legend>Shipping Method</legend>
+        <div class="method-confirm"><span></span></div>
+      <legend>Order Notes:</legend>
+        <div class="notes-confirm"><span></span></div>
+      <legend>Billing Details</legend>
+      <legend>Payment Details</legend>
         <div class="payment-confirm">Card Type: <span></span></div>
         <div class="card-number-confirm">Card Number: <span></span></div>
       <legend>Order Total:</legend>
         <div class="amount-confirm"><span></span></div>
     </div>
-
-    <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="submit" name="pay_now" value="Place Order and Confirm Payment"
-        id="submit-btn" class="btnAction"
-        >
+    <div class="steps-container-3 complete d-flex">
+      <input type="submit" name="pay_now" value="Place Order"
+          id="submit-btn" class="btnAction btn btn-black mx-2"
+          >
+    </div>
 
     <div id="loader">
         <button class="btn btn-primary" type="button" disabled>

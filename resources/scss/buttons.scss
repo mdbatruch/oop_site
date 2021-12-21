@@ -13,13 +13,13 @@ body {
         color: $black;
     }
     .btn-black {
-        background-color: $black;
-        border-color: $black;
-        color: $white;
+        background-color: $black !important;
+        border-color: $black !important;
+        color: $white !important;
         &:hover {
-            background-color: $white;
-            border-color: $white;
-            color: $black;
+            background-color: $white !important;
+            border-color: $white ;
+            color: $black !important;
         }
     }
 }

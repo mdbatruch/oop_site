@@ -149,13 +149,13 @@ body .btn-lightgrey {
   color: #000; }
 
 body .btn-black {
-  background-color: #000;
-  border-color: #000;
-  color: #fff; }
+  background-color: #000 !important;
+  border-color: #000 !important;
+  color: #fff !important; }
   body .btn-black:hover {
-    background-color: #fff;
+    background-color: #fff !important;
     border-color: #fff;
-    color: #000; }
+    color: #000 !important; }
 
 #cart .cart-header {
   background-color: #000;
@@ -367,19 +367,21 @@ body .btn-black {
       #order fieldset input::placeholder, #order fieldset textarea::placeholder, #order fieldset select::placeholder {
         font-style: italic;
         color: #A0A0A0; }
+      #order fieldset input[type="checkbox"], #order fieldset textarea[type="checkbox"], #order fieldset select[type="checkbox"] {
+        width: auto; }
     @media (min-width: 1030px) {
-      #order fieldset .form-inner-container.form-address-other {
+      #order fieldset .form-inner-container.form-address-other, #order fieldset .form-inner-container.form-billing-address.part-2 {
         flex-direction: row !important; }
-        #order fieldset .form-inner-container.form-address-other .form-field {
+        #order fieldset .form-inner-container.form-address-other .form-field, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field {
           flex-grow: 1;
           flex-shrink: 1;
           flex-basis: 200px; }
-          #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) {
+          #order fieldset .form-inner-container.form-address-other .form-field:first-child, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:first-child {
+            padding-right: 0px; }
+          #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2), #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) {
             padding: 0px 20px;
-            flex-shrink: 2; }
-            #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select {
-              max-width: 200px; } }
-    #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select {
+            flex-shrink: 2; } }
+    #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) select {
       height: 50px;
       border-radius: 0px;
       -webkit-appearance: none;
@@ -390,6 +392,43 @@ body .btn-black {
       background-position-x: 95%;
       background-position-y: 12px;
       padding: 0px 10px; }
+    #order fieldset .form-inner-container.form-shipping-information .form-field.first label {
+      display: inline-block; }
+    #order fieldset .form-inner-container.form-shipping-information .shipping-option {
+      flex-direction: column; }
+      @media (min-width: 1030px) {
+        #order fieldset .form-inner-container.form-shipping-information .shipping-option {
+          flex-direction: row; } }
+      #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field {
+        outline: 1px solid #666;
+        position: relative;
+        cursor: pointer;
+        margin: 10px 0px; }
+        @media (min-width: 1030px) {
+          #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field {
+            margin: 0px;
+            padding: 1rem 2rem !important; } }
+        @media (min-width: 1030px) {
+          #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field:first-child {
+            margin-right: 20px; } }
+        #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field.active {
+          outline: 2px solid #00adf2; }
+        #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field label {
+          font-weight: 600;
+          font-size: 1.2rem;
+          justify-content: space-between; }
+        #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field input[type="radio"] {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          right: 0;
+          margin-bottom: 0;
+          bottom: 0;
+          visibility: hidden; }
+        #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field span {
+          color: #A0A0A0; }
+        #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field .shipping-price {
+          text-transform: uppercase; }
     #order fieldset .form-inner-container.half {
       flex-direction: column; }
       @media (min-width: 1030px) {
@@ -430,6 +469,18 @@ body .btn-black {
       padding-left: 0px; }
       #order fieldset .info span {
         font-weight: 400; }
+  #order .step-3 svg {
+    position: relative;
+    top: 11px; }
+  #order .step-3 input[type="button"].previous {
+    text-align: left;
+    background-color: transparent;
+    color: #000;
+    text-transform: inherit;
+    margin: 0;
+    width: auto; }
+  #order .step-3 input[type="submit"] {
+    text-transform: uppercase; }
 
 /*Hide all except first fieldset*/
 #order fieldset:not(:first-of-type) {
@@ -591,10 +642,7 @@ select.demoSelectBox {
   padding-left: 5px; }
 
 .btnAction {
-  background-color: #586ada;
   padding: 10px 40px;
-  color: #FFF;
-  border: #5263cc 1px solid;
   border-radius: 4px;
   cursor: pointer; }
 

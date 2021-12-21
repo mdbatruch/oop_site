@@ -62,20 +62,26 @@
 				font-style: italic;
 				color: $grey-A0;
 			}
+		&[type="checkbox"] {
+			width: auto;	
+		}
 		}
 		.form-inner-container {
-			&.form-address-other {
+			&.form-address-other, &.form-billing-address.part-2 {
 				@media(min-width: 1030px) {
 					flex-direction: row !important;
 					.form-field {
 						flex-grow: 1;
 						flex-shrink: 1;
 						flex-basis: 200px;
+						&:first-child {
+							padding-right: 0px;
+						}
 						&:nth-child(2) {
 							padding: 0px 20px;
 							flex-shrink: 2;
 							select {
-								max-width: 200px
+								// max-width: 200px
 							}
 						}	
 					}
@@ -95,6 +101,59 @@
 							background-position-x: 95%;
 							background-position-y: 12px;
 							padding: 0px 10px;
+						}
+					}
+				}
+			}
+			&.form-shipping-information {
+				.form-field {
+					&.first {
+						label {
+							display: inline-block;
+						}
+					}
+				}
+				.shipping-option {
+					flex-direction: column;
+					@media(min-width: 1030px) {
+						flex-direction: row;
+					}
+					> .form-field {
+						outline: 1px solid $grey;
+						position: relative;
+						cursor: pointer;
+						margin: 10px 0px;
+						@media(min-width: 1030px) {
+							margin: 0px;
+							padding: 1rem 2rem !important;
+						}
+						&:first-child {
+							@media(min-width: 1030px) {
+								margin-right: 20px;
+							}
+						}
+						&.active {
+							outline: 2px solid $bright-blue;
+						}
+						label {
+							font-weight: 600;
+							font-size: 1.2rem;
+							justify-content: space-between;
+						}
+						input[type="radio"] {
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							right: 0;
+							margin-bottom: 0;
+							bottom: 0;
+							visibility: hidden;
+						}
+						span {
+							color: $grey-A0;
+						}
+						.shipping-price {
+							text-transform: uppercase;
 						}
 					}
 				}
@@ -167,6 +226,28 @@
 			span {
 				font-weight: 400;
 			}
+		}
+		.steps-container-2 {
+
+		}
+	}
+	.step-3 {
+		svg {
+			position: relative;
+			top: 11px;
+		}
+		input[type="button"] {
+			&.previous {
+				text-align: left;
+				background-color: transparent;
+				color: #000;
+				text-transform: inherit;
+				margin: 0;
+				width: auto;
+			}
+		}
+		input[type="submit"] {
+			text-transform: uppercase;
 		}
 	}
 }

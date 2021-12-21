@@ -203,8 +203,8 @@
                 if(animating) return false;
                 animating = true;
 
-                current_fs = $(this).parent();
-                next_fs = $(this).parent().next();
+                current_fs = $(this).parents('fieldset');
+                next_fs = $(this).parents('fieldset').next();
                 count++;
                 
                 //activate next step on progressbar using the index of next_fs
@@ -247,19 +247,20 @@
                     step: function(now, mx) {
                         //as the opacity of current_fs reduces to 0 - stored in "now"
                         //1. scale current_fs down to 80%
-                        scale = 1 - (1 - now) * 0.2;
+                        // scale = 1 - (1 - now) * 0.2;
+                        scale = 1;
                         //2. bring next_fs from the right(50%)
                         left = (now * 50)+"%";
                         //3. increase opacity of next_fs to 1 as it moves in
                         opacity = 1 - now;
                         current_fs.css({
                     'transform': 'scale('+scale+')',
-                    'position': 'absolute'
+                    'position': 'realtive'
                 });
                         // next_fs.css({'left': left, 'opacity': opacity});
                         next_fs.css({'opacity': opacity});
                     }, 
-                    duration: 800, 
+                    duration: 100, 
                     complete: function(){
                         current_fs.hide();
                         animating = false;
@@ -279,8 +280,8 @@
             
             count--;
 
-            current_fs = $(this).parent();
-            previous_fs = $(this).parent().prev();
+            current_fs = $(this).parents('fieldset');
+            previous_fs = $(this).parents('fieldset').prev();
 
             if (count == 2) {
                 // alert('going back to step 2');
@@ -319,4 +320,11 @@
         $(".submit").click(function(){
             return false;
         })
+
+        $(".shipping-option .form-field").click(function(){
+            $(this).toggleClass('active');
+
+            $(this).siblings().removeClass('active');
+        })
+
 })(jQuery);
