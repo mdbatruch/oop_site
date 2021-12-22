@@ -148,10 +148,7 @@
         <div class="form-field half">
           <div class="field-row">
               <label for="card-holder-name-info">Name on Credit Card <span class="ast">*</span></label> 
-              <span id="card-holder-name-info"
-                  class="info"></span>
-                  <input type="text" id="card-holder-name"
-                  name="name">
+              <input type="text" id="card-holder-name" name="name">
               <div id="card_holder_name_warning" class="warning"></div>
           </div>
         </div>
@@ -160,30 +157,27 @@
     <div class="billing-information">
       <div class="form-inner-container form-billing-address part-1 d-flex flex-column">
         <div class="form-field">
-            <label for="billing-street">Address <span class="ast">*</span></label>
-            <input type="text" id="billing-street" name="billing-street_name_number" placeholder="Street Name and Number" />
-            <div id="billing_street_warning" class="warning"></div>
+            <label for="billing-address">Address <span class="ast">*</span></label>
+            <input type="text" id="billing-address" name="billing-address" placeholder="Street Name and Number" />
+            <div id="billing_address_warning" class="warning"></div>
         </div>
         <div class="form-field">
             <label for="billing-suite" class="d-none">Suite <span class="ast">*</span></label>
-            <input type="text" id="billing-suite" name="billing_street_name_number" placeholder="Suite or Apartment Number (optional)" />
+            <input type="text" id="billing-suite" name="billing_suite_name_number" placeholder="Suite or Apartment Number (optional)" />
         </div>
       </div>
       <div class="form-inner-container form-billing-address part-2 d-flex half">
         <div class="form-field third">
             <div class="field-row">
-                <label for="billing-town-info">Town / City <span class="ast">*</span></label> 
-                <span id="billing-town-info"
-                    class="info"></span>
-                    <input type="text" id="billing-town-name"
-                    name="billing-town">
-                <div id="billing_town_name_warning" class="warning"></div>
+                <label for="billing-town">Town / City <span class="ast">*</span></label> 
+                <input type="text" id="billing-town" name="billing-town">
+                <div id="billing_town_warning" class="warning"></div>
             </div>
           </div>
           <div class="form-field third">
             <div class="field-row">
-                <label for="billing-province-info">Province <span class="ast">*</span></label> 
-                    <select name="billing-province-info" id="billing-province-info" class="province">
+                <label for="billing-province">Province <span class="ast">*</span></label> 
+                    <select name="billing-province-info" id="billing-province" class="province">
                     <option value=""></option>
                     <option value="AB" class="province-value">Alberta
                     </option><option value="BC" class="province-value">British Columbia
@@ -200,17 +194,14 @@
                     </option><option value="YT" class="province-value">Yukon Territory
                     </option>
                   </select>
-                <div id="billing_province_name_warning" class="warning"></div>
+                <div id="billing_province_warning" class="warning"></div>
             </div>
           </div>
           <div class="form-field third">
             <div class="field-row">
-                <label for="billing-postal-info">Postal Code <span class="ast">*</span></label> 
-                <span id="billing-postal-info"
-                    class="info"></span>
-                    <input type="text" id="billing-postal-name"
-                    name="billing-postal">
-                <div id="billing_postal_name_warning" class="warning"></div>
+                <label for="billing-postal">Postal Code <span class="ast">*</span></label> 
+                <input type="text" id="billing-postal" name="billing-postal">
+                <div id="billing_postal_warning" class="warning"></div>
             </div>
           </div>
       </div>
@@ -218,13 +209,13 @@
     <div class="shipping-information mt-4">
       <h2 class="fs-title">Shipping Information</h2>
       <div class="form-inner-container form-shipping-information  d-flex flex-column">
-          <div class="form-field first">
+          <div class="form-field first d-none">
               <input type="checkbox" id="different-address" name="different-address" value="yes">
               <label for="different-address"> Ship to different address?</label>
           </div>
           <div class="form-field mt-4">
           <h5>Select a Shipping Option:</h5>
-            <div class="shipping-option d-flex">
+            <div id="shipping-option" class="shipping-option d-flex">
               <div class="form-field p-2">
                   <label for="standard-shipping" class="mb-2 d-flex">Standard Shipping <div class="shipping-price">Free</div></label>
                   <input type="radio" id="standard-shipping" name="standard-shipping" value="standard" checked>
@@ -242,6 +233,7 @@
                   </span>
               </div>
             </div>
+            <div id="shipping_option_warning" class="warning"></div>
           </div>
           <div class="form-field mt-4">
             <label for="order-notes">Order Notes (Optional)</label>
@@ -250,8 +242,8 @@
       </div>
     </div>
       <div class="steps-container-2 d-flex">
-        <input type="button" name="previous" class="previous action-button" value="Previous" />
-        <input type="button" name="next" class="next action-button" value="Next" />
+        <input type="button" name="previous" class="previous action-button me-2" value="Previous" />
+        <input type="button" name="next" class="next action-button ms-2" value="Next" />
       </div>
   </fieldset>
   <fieldset class="step-3">
@@ -262,30 +254,51 @@
     </svg>
     <input type="button" name="previous" class="previous action-button" value='Edit Billing and Shipping' />
     </div>
-    <div class="info">
-      <legend>Account Information</legend>
-        <div class="name-confirm">Name: <span></span></div>
-        <div class="phone-confirm">Phone: <span></span></div>
-        <div class="email-confirm">Email: <span></span></div>
-        <div class="street-confirm">Street Name and Number: <span></span></div>
-        <div class="suite-confirm">Suite: <span></span></div>
-        <div class="city-confirm">City: <span></span></div>
-        <div class="province-confirm">Province: <span></span></div>
-        <div class="postal-confirm">Postal Code: <span></span></div>
-      <legend>Shipping Method</legend>
-        <div class="method-confirm"><span></span></div>
-      <legend>Order Notes:</legend>
-        <div class="notes-confirm"><span></span></div>
-      <legend>Billing Details</legend>
-      <legend>Payment Details</legend>
-        <div class="payment-confirm">Card Type: <span></span></div>
-        <div class="card-number-confirm">Card Number: <span></span></div>
-      <legend>Order Total:</legend>
-        <div class="amount-confirm"><span></span></div>
+    <div class="form-inner-container form-info info container mb-4">
+    <div class="row">
+      <div class="form-info-field col-12 col-lg-6 col-xxl-4 mt-4">
+        <legend>Account Information:</legend>
+          <div class="name-confirm"><span></span></div>
+          <div class="phone-confirm"><span></span></div>
+          <div class="email-confirm"><span></span></div>
+          <div class="street-confirm"><span></span></div>
+          <div class="suite-confirm"><span></span></div>
+          <div class="city-confirm"><span></span></div>
+          <div class="province-confirm"><span></span></div>
+          <div class="postal-confirm"><span></span></div>
+      </div>
+      <div class="form-info-field col-12 col-lg-6 col-xxl-4 mt-4">
+        <legend>Shipping Method:</legend>
+          <div class="shipping-method-confirm"><span></span></div>
+      </div>
+      <div class="form-info-field col-12 col-lg-6 col-xxl-4 mt-4">
+        <legend>Order Notes:</legend>
+          <div class="notes-confirm"><span></span></div>
+      </div>
+      <div class="form-info-field col-12 col-lg-6 col-xxl-4 mt-4">
+        <legend>Billing Details:</legend>
+        <div class="payment-name-confirm"><span></span></div>
+        <div class="payment-address-confirm"><span></span></div>
+        <div class="payment-town-confirm"><span></span></div>
+        <div class="payment-province-confirm"><span></span></div>
+        <div class="payment-postal-confirm"><span></span></div>
+      </div>
+      <div class="form-info-field col-12 col-lg-6 col-xxl-4 mt-4">
+        <legend>Payment Details:</legend>
+          <div class="payment-name-confirm"><span></span></div>
+          <div class="card-number-confirm"><span></span></div>
+          <div class="expiry-date-confirm"><span class="month"></span>/<span class="year"></span></div>
+          <div class="payment-confirm"><span></span></div>
+      </div>
+      <div class="form-info-field col-12 col-lg-6 col-xxl-4 mt-4">
+        <legend>Order Total:</legend>
+          <div class="amount-confirm"><span></span></div>
+      </div>
+    </div>
     </div>
     <div class="steps-container-3 complete d-flex">
       <input type="submit" name="pay_now" value="Place Order"
-          id="submit-btn" class="btnAction btn btn-black mx-2"
+          id="submit-btn" class="btnAction btn btn-black"
           >
     </div>
 

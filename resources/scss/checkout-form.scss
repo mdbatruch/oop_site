@@ -55,9 +55,9 @@
 			margin-bottom: 10px;
 			width: 100%;
 			box-sizing: border-box;
-			font-family: montserrat;
 			color: #2C3E50;
 			font-size: 13px;
+			font-weight: 600;
 			&::placeholder {
 				font-style: italic;
 				color: $grey-A0;
@@ -225,6 +225,7 @@
 			padding-left: 0px;
 			span {
 				font-weight: 400;
+				white-space: pre-line;
 			}
 		}
 		.steps-container-2 {
@@ -249,6 +250,9 @@
 		input[type="submit"] {
 			text-transform: uppercase;
 		}
+		legend {
+			font-size: calc(0.75rem + 0.3vw);
+		}
 	}
 }
 /*Hide all except first fieldset*/
@@ -266,11 +270,13 @@
 	border-radius: 1px;
 	cursor: pointer;
 	padding: 10px 5px;
-	margin: 10px 5px;
+	margin: 10px 0px;
 	text-transform: uppercase;
-}
-#order .action-button:hover, #order .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	&:hover {
+		color: lighten($black, 20%) !important;
+	}
 }
 
 /*progressbar*/

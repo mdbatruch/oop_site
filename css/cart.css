@@ -3,24 +3,24 @@
   text-transform: uppercase;
   padding: 10px 50px; }
 
-body .btn-green {
-  background-color: #197b30;
-  border-color: #197b30;
-  color: #fff; }
-
-body .btn-lightgrey {
-  background-color: #d3d3d3;
-  border-color: #d3d3d3;
-  color: #000; }
-
-body .btn-black {
-  background-color: #000 !important;
-  border-color: #000 !important;
-  color: #fff !important; }
-  body .btn-black:hover {
-    background-color: #fff !important;
-    border-color: #fff;
-    color: #000 !important; }
+body .btn {
+  font-weight: 600; }
+  body .btn.btn-green {
+    background-color: #197b30;
+    border-color: #197b30;
+    color: #fff; }
+  body .btn.btn-lightgrey {
+    background-color: #d3d3d3;
+    border-color: #d3d3d3;
+    color: #000; }
+  body .btn.btn-black {
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important; }
+    body .btn.btn-black:hover {
+      background-color: #fff !important;
+      border-color: #fff;
+      color: #000 !important; }
 
 #cart .cart-header {
   background-color: #000;

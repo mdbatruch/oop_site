@@ -1,3 +1,5 @@
+@import 'colors.scss';
+
 #frmStripePayment {
     max-width: 300px;
     padding: 25px;
@@ -66,7 +68,7 @@ select.demoSelectBox {
 
 .info {
     font-size: .8em;
-    color: #FF6600;
+    color: $black;
     letter-spacing: 2px;
     padding-left: 5px;
 }

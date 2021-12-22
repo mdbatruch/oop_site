@@ -102,10 +102,10 @@
 </header>
 <main id="cart">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col">
+        <div class="d-flex justify-content-center">
+            <div class="confirmation-container">
                 Congrats <?= $name['first_name']; ?>, Your order has been sent!
-                <div class="col-med-6">
+                <div>
                     Order Number: <?= $order[0]['id']; ?>
                     Order Date: <?= $date; ?>
                     Order Details:
@@ -155,17 +155,15 @@
                         <?= $order[0]['amount']; ?>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <a href="<?php echo root_url('index.php'); ?>" class="button nav-link">Back to Homepage</a>
-                <a href="<?php echo root_url('products.php'); ?>" class="button nav-link">Continue Shopping</a>
-                <a href="<?php echo root_url_private('customer/orders.php?id=' . $customer); ?>" class="button nav-link">View your Orders</a>
+                <div class="links">
+                <a href="<?php echo root_url('index.php'); ?>" class="btn btn-black mx-2">Back to Homepage</a>
+                <a href="<?php echo root_url('products.php'); ?>" class="btn btn-black mx-2">Continue Shopping</a>
+                <a href="<?php echo root_url_private('customer/orders.php?id=' . $customer); ?>" class="btn btn-black mx-2">View your Orders</a>
+                </div>
             </div>
         </div>
     </div>
 </main>
-<footer class="container">
-    <div class="row">
-        <?php $site->addFooter(); ?>
-    </div>
+<footer class="pt-4 pb-4">
+    <?php $site->addFooter(); ?>
 </footer>

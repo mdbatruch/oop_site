@@ -45,9 +45,9 @@
       margin-bottom: 10px;
       width: 100%;
       box-sizing: border-box;
-      font-family: montserrat;
       color: #2C3E50;
-      font-size: 13px; }
+      font-size: 13px;
+      font-weight: 600; }
       #order fieldset input::placeholder, #order fieldset textarea::placeholder, #order fieldset select::placeholder {
         font-style: italic;
         color: #A0A0A0; }
@@ -152,7 +152,8 @@
       font-weight: 700;
       padding-left: 0px; }
       #order fieldset .info span {
-        font-weight: 400; }
+        font-weight: 400;
+        white-space: pre-line; }
   #order .step-3 svg {
     position: relative;
     top: 11px; }
@@ -165,6 +166,8 @@
     width: auto; }
   #order .step-3 input[type="submit"] {
     text-transform: uppercase; }
+  #order .step-3 legend {
+    font-size: calc(0.75rem + 0.3vw); }
 
 /*Hide all except first fieldset*/
 #order fieldset:not(:first-of-type) {
@@ -180,11 +183,12 @@
   border-radius: 1px;
   cursor: pointer;
   padding: 10px 5px;
-  margin: 10px 5px;
-  text-transform: uppercase; }
-
-#order .action-button:hover, #order .action-button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60; }
+  margin: 10px 0px;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease; }
+  #order .action-button:hover {
+    color: #333333 !important; }
 
 /*progressbar*/
 #progressbar {
