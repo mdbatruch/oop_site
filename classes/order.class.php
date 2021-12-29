@@ -18,36 +18,9 @@
 
         public function createOrder($order) {
 
-            // $profile = [];
-            // $shipping_address = [];
-            // $card_info = [];
-
             $id = $order['id'];
 
             $customer_id = $order['customer_id'];
-
-            // $name = $order['contact_details']['name'];
-            // $email  = $order['contact_details']['email'];
-            // $phone = $order['contact_details']['phone'];
-            // array_push($profile, $name, $email, $phone);
-            // print_r($profile);
-
-            // $street = $order['delivery_address']['street'];
-            // $suite = $order['delivery_address']['suite'];
-            // $city = $order['delivery_address']['city'];
-            // $province = $order['delivery_address']['province'];
-            // $postal = $order['delivery_address']['postal'];
-            // array_push($shipping_address, $street, $suite, $city, $province, $postal);
-
-            // $shipping_address = json_encode($shipping_address);
-            // print_r($shipping_address);
-
-            // $card_type = $order['card_details']['card_type'];
-            // $card_hash = $order['card_details']['card_hash'];
-
-            // array_push($card_info, $card_type, $card_hash);
-
-            // print_r($card_info);
 
             $products = $order['order'];
             $products = json_encode($products);
@@ -58,16 +31,22 @@
             $delivery_address = $order['delivery_address'];
             $delivery_address = json_encode($delivery_address);
 
+            $billing_address = $order['billing_address'];
+            $billing_address = json_encode($billing_address);
+
+            $shipping_information = $order['shipping_information'];
+            $shipping_information = json_encode($shipping_information);
+
             $card_details = $order['card_details'];
             $card_details = json_encode($card_details);
 
-            $data = [];
-
-            // echo '<pre>';
-            // print_r($order);
+            $taxes_subtotals = $order['taxes_subtotals'];
+            $taxes_subtotals = json_encode($taxes_subtotals);
 
             $amount = $order['amount'];
             $stripe_amount = ltrim($order['amount'], '$');
+
+            $data = [];
 
             try {
 
@@ -94,12 +73,6 @@
                 } else {
                     $name = $exists['data'][0]['name'];
                 }
-
-                // echo $exists['data'][0]['id'];
-
-                // echo $exists['data'][0]['name'];
-
-                // exit;
 
                 //remove decimal values from price
                 $stripe_amount = str_replace('.', '', $stripe_amount);
@@ -138,13 +111,16 @@
 
                 // exit;
 
-                $stmt = $this->conn->prepare('INSERT INTO orders (customer_id, contact_details, shipping_address, products, card_info, amount) VALUES (?,?,?,?,?,?)');
+                $stmt = $this->conn->prepare('INSERT INTO orders (customer_id, contact_details, shipping_address, billing_address, shipping_information, products, card_info, taxes_subtotals, amount) VALUES (?,?,?,?,?,?,?,?,?)');
                 $stmt->bindParam(1, $customer_id);
                 $stmt->bindParam(2, $contact);
                 $stmt->bindParam(3, $delivery_address);
-                $stmt->bindParam(4, $products);
-                $stmt->bindParam(5, $card_details);
-                $stmt->bindParam(6, $amount);
+                $stmt->bindParam(4, $billing_address);
+                $stmt->bindParam(5, $shipping_information);
+                $stmt->bindParam(6, $products);
+                $stmt->bindParam(7, $card_details);
+                $stmt->bindParam(8, $taxes_subtotals);
+                $stmt->bindParam(9, $amount);
                 $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
                 // get order id for success page
@@ -152,19 +128,11 @@
 
                 $data['order'] = (int)$order;
 
-                // echo 'The ID of the last inserted row was: ' . $order;
-                // echo '<pre>';
-                // print_r($user_id);
-
                 // Clear Cart Here
                 $cart_id = Cart::getCartId($customer_id, $this->conn);
 
-
                 CartItem::clearCart($cart_id['id'], $this->conn);
 
-
-                // echo '<pre>';
-                // print_r($order);
                 echo json_encode($data['order']);
 
                 } catch (Exception $e) {
@@ -193,8 +161,11 @@
                         "customer_id" => $customer_id,
                         "contact_details" => $contact_details,
                         "shipping_address" => $shipping_address,
+                        "billing_address" => $billing_address,
+                        "shipping_information" => $shipping_information,
                         "products" => json_decode($products),
                         "card_info" => $card_info,
+                        "taxes_subtotals" => $taxes_subtotals,
                         "amount" => $amount,
                         "created_at" => $created_at
                     );

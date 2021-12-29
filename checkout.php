@@ -235,11 +235,6 @@
     $("#order").submit(function(e){
         e.preventDefault();
 
-        // alert('order-submitted');
-
-        // var valid = cardValidation();
-
-        // if(valid == true) {
             console.log('processing order');
 
             $("#submit-btn").hide();
@@ -253,62 +248,14 @@
                 exp_year: $('#year').val()
             }, stripeResponseHandler);
 
-            // this
-            // stripeResponseHandler(0,0);
-
             //submit from callback
             return false;
-
-        // } else {
-        //     console.log('its not');
-        // }
-
-        // console.log(first_name, last_name, phone, email);
-
-        // stripePay(event);
 
     });
 </script>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
-// function cardValidation () {
-//     var valid = true;
-//     var name = $('#name').val();
-//     var email = $('#email').val();
-//     var cardNumber = $('#card-number').val();
-//     var month = $('#month').val();
-//     var year = $('#year').val();
-//     var cvc = $('#cvc').val();
-
-//     $("#error-message").html("").hide();
-
-//     if (name.trim() == "") {
-//         valid = false;
-//     }
-//     if (email.trim() == "") {
-//     	   valid = false;
-//     }
-//     if (cardNumber.trim() == "") {
-//     	   valid = false;
-//     }
-
-//     if (month.trim() == "") {
-//     	    valid = false;
-//     }
-//     if (year.trim() == "") {
-//         valid = false;
-//     }
-//     if (cvc.trim() == "") {
-//         valid = false;
-//     }
-
-//     if(valid == false) {
-//         $("#error-message").html("All Fields are required").show();
-//     }
-
-//     return valid;
-// }
 
 //set your publishable key
 Stripe.setPublishableKey("<?= $stripe['public_key']; ?>");
@@ -353,6 +300,42 @@ function stripeResponseHandler(status, response) {
             postal: $('#postal').val()
         }
 
+        var billing_address = {
+            street: $('#billing-address').val(),
+            suite: $('#billing-suite').val(),
+            city: $('#billing-town').val(),
+            province: $('#billing-province').val(),
+            postal: $('#billing-postal').val()
+        }
+
+        var option_name = $('#shipping-option .active span.shipping-name').text();
+        var option_price = $('#shipping-option .active div.shipping-price').text();
+        var option = $('#shipping-option .active span.option-description').text();
+        var option_clean = $.trim(option);
+
+        var notes = $('#order-notes').val();
+
+        if (notes == '') {
+            var notes = 'None';
+        } else {
+            var notes = $('#order-notes').val();
+        }
+
+        var shipping_information = {
+            name: option_name,
+            option: option_clean,
+            price: option_price,
+            order_info: notes,
+        }
+
+        var subtotal = $('#sub-total').text();
+        var hst = $('#hst-total').text();
+
+        var taxes_subtotals = {
+            subtotal: subtotal,
+            hst: hst,
+        }
+
         var card_type = $('.step-3 .payment-confirm span').text();
 
         // if (card_type == '002') {
@@ -363,7 +346,11 @@ function stripeResponseHandler(status, response) {
         //     var card = '';
         // }
 
+        var expiry = $('#month').val() + '/' + $('#year').val();
+
         var card_details = {
+            card_name: $('#card-holder-name').val(),
+            card_expiry: expiry,
             card_type: card_type,
             card_hash: $('.step-3 .card-number-confirm span').text()
         }
@@ -372,13 +359,13 @@ function stripeResponseHandler(status, response) {
 
         var order = getCheckoutItems();
 
-        console.log(id, customer_id, contact_details, delivery_address, card_details, order, amount, token);
+        console.log(id, customer_id, contact_details, delivery_address, billing_address, shipping_information, card_details, order, taxes_subtotals, amount, token);
 
         $.ajax({
                 type: "POST",
                 url: "private/process.php",
                 async: false,
-                data: {id, customer_id, contact_details, delivery_address, card_details, order, amount, token},
+                data: {id, customer_id, contact_details, delivery_address, billing_address, shipping_information, card_details, order, taxes_subtotals, amount, token},
             }).done(function(data){
                 console.log(data);
                 // console.log(data.order);

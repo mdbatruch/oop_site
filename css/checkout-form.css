@@ -111,6 +111,8 @@
           visibility: hidden; }
         #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field span {
           color: #A0A0A0; }
+          #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field span.shipping-name {
+            color: #000; }
         #order fieldset .form-inner-container.form-shipping-information .shipping-option > .form-field .shipping-price {
           text-transform: uppercase; }
     #order fieldset .form-inner-container.half {
@@ -212,11 +214,12 @@
     font-size: 0.8rem;
     float: left;
     position: relative;
-    line-height: 3;
     border-bottom: 2px solid #A0A0A0;
-    flex: 1; }
+    flex: 1;
+    padding: 10px; }
     #progressbar li.active {
-      border-bottom: 2px solid #000; }
+      border-bottom: 2px solid #000;
+      text-align: center; }
     #progressbar li:before {
       content: counter(step);
       counter-increment: step;

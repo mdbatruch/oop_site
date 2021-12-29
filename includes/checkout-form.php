@@ -217,17 +217,17 @@
           <h5>Select a Shipping Option:</h5>
             <div id="shipping-option" class="shipping-option d-flex">
               <div class="form-field p-2">
-                  <label for="standard-shipping" class="mb-2 d-flex">Standard Shipping <div class="shipping-price">Free</div></label>
+                  <label for="standard-shipping" class="mb-2 d-flex"><span class="shipping-name">Standard Shipping </span> <div class="shipping-price">Free</div></label>
                   <input type="radio" id="standard-shipping" name="standard-shipping" value="standard" checked>
-                  <span>
+                  <span class="option-description">
                     Free for orders over $80 CAD<br/>
                     Typically arrives between 5-10 business days.
                   </span>
               </div>
               <div class="form-field p-2">
-                  <label for="express-shipping" class="mb-2 d-flex">Express Shipping <div class="shipping-price">$25.00</div></label>
+                  <label for="express-shipping" class="mb-2 d-flex"><span class="shipping-name">Express Shipping </span> <div class="shipping-price">$25.00</div></label>
                   <input type="radio" id="express-shipping" name="express-shipping" value="express-shipping">
-                  <span>
+                  <span class="option-description">
                     Typically arrives between 1-3 business days.<br/>
                     Shipped by Canada Post
                   </span>

@@ -151,6 +151,9 @@
 						}
 						span {
 							color: $grey-A0;
+							&.shipping-name {
+								color: $black;
+							}
 						}
 						.shipping-price {
 							text-transform: uppercase;
@@ -302,11 +305,12 @@
 		font-size: 0.8rem;
 		float: left;
 		position: relative;
-		line-height: 3;
 		border-bottom: 2px solid $grey-A0;
 		flex: 1;
+		padding: 10px;
 		&.active {
 			border-bottom: 2px solid $black;
+			text-align: center;
 		}
 		&:before {
 			content: counter(step);
