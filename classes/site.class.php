@@ -23,7 +23,7 @@
             $this->page->render();
         }
 
-        public function addCartHeader($site, $count, $items, $db) {
+        public function addCartHeader($site, $count, $items, $subtotal, $db) {
             include('components/header-cart.php'); 
         }
 

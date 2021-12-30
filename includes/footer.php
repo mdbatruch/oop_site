@@ -426,26 +426,19 @@
 
                                     $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                                    // if (data.new_item) {
                                         // update cart count in header on browser side
                                         var cartText = $('.cart-count').text();
-                                        var oldCount = cartText.slice(1,-1);
 
-                                        var newCount = parseFloat(oldCount) + 1;
-                                        var newCount = "(" + newCount + ")"; 
+                                        var newCount = parseFloat(cartText) + 1;
 
                                         $('.cart-count').text(newCount);
-                                    // } 
-                                    
-                                    // else {
-                                    //     $('.cart-count').text("(" + data.quantity + ")");
-                                    // }
 
                                 }
                         });
 
                 }
 
+               // subtotal function here
 
             });
 
@@ -507,11 +500,11 @@
                                     } else {
 
                                         var cartText = $('.cart-count').text();
-                                        var oldCount = cartText.slice(1,-1);
 
-                                        var newCount = parseFloat(oldCount) + parseFloat(quantity);
+                                        // var oldCount = cartText.slice(1,-1);
 
-                                        var newCount = "(" + newCount + ")"; 
+                                        // var newCount = parseFloat(oldCount) + parseFloat(quantity);
+                                        var newCount = parseFloat(cartText) + parseFloat(quantity);
 
                                         $('.cart-count').text(newCount);
 
@@ -522,6 +515,8 @@
                         }
                     }
                 }
+
+                //subtotal function here
 
                 });
 
@@ -611,9 +606,7 @@
                     evaluateSubTotal();
 
                     if ($('.cart-count-bottom').text() == 0) {
-                        $('#form-message').html('');
-                        $('#form-message').after('<div class="col-md-12"><div class="alert alert-danger">No products found in your cart!</div></div>');
-                        $('.checkout').remove();
+                        window.location.href = 'cart.php';
                     }
 
                 }

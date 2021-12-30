@@ -23,9 +23,6 @@
 
     // end product id check
 
-    // echo '<pre>';
-    // print_r($stmt);
-
     $chosen = $product->getProduct($_GET['id']);
 
     $image = !empty($chosen['image']) ? $chosen['image'] : 'missing.jpg';
@@ -51,7 +48,6 @@
 
     foreach ($categories as $category) {
         if ($chosen['category_id'] == $category['id']) {
-            // $category = $category['name'];
 
             if(!isset($chosen['category_name'])) {
                 $chosen['category_name'] = '';
@@ -65,10 +61,8 @@
 
     $category_search = preg_replace('/\s+/', '+', $category_search);
 
-    // echo '<pre>';
-    // print_r($chosen);
+    $subtotal = '';
 
-    // $price = settype($chosen['price'], "integer");
 ?>
 <header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
     <div class="container-fluid p-0">
@@ -77,7 +71,7 @@
                 if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
                     $site->addAdminBar($site);
                 } else {
-                    $site->addCartHeader($site, $count, $items, $db);
+                    $site->addCartHeader($site, $count, $items, $subtotal, $db);
                 } ?>
         </div>
     </div>

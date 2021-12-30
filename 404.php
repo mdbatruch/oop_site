@@ -37,7 +37,7 @@
                 if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
                     $site->addAdminBar($site);
                 } else {
-                    $site->addCartHeader($site, $count, $items, $db);
+                    $site->addCartHeader($site, $count, $items, $subtotal, $db);
                 } ?>
         </div>
     </div>

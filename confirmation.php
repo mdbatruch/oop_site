@@ -67,7 +67,7 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <?php $site->addCartHeader($site, $count, $items, $db); ?>
+            <?php $site->addCartHeader($site, $count, $items, $subtotal, $db); ?>
         </div>
     </div>
 </header>
@@ -176,14 +176,15 @@
                             </div>
                         </div>
                         <?php foreach($order[0]['products'] as $product) :
-                            $image = Product::getProductImage($product->item_name, $db); ?>
+                            $image = Product::getProductImage($product->item_name, $db);
+                            ?>
                             <div class='product col col-12 col-sm-6 col-md-12 my-2' data-id='<?= $products['id']; ?>' >
                                 <div class='row'>
                                     <div class='col col-12 col-md-6 product-title'>
                                     <div class="img-container">
                                         <img src="images/<?= $image['image']; ?>" alt="<?= $product->item_name; ?>" class="rounded img-fluid img-thumbnail">
                                     </div>
-                                    <a href="<?= root_url('product.php?id=' . $product->id); ?>" class="product-title-link pt-3">
+                                    <a href="<?= root_url('product.php?id=' . $product->item_id); ?>" class="product-title-link pt-3">
                                         <h5><?= $product->item_name; ?></h5>
                                     </a>
                                     </div>
@@ -191,6 +192,7 @@
                                         <?= $product->item_quantity; ?>
                                     </div>
                                     <div class='col col-12 col-md-2 d-flex text-center'>
+                                        <?= $product->item_individual_price; ?>
                                     </div>
                                     <div class='col col-12 col-md-2'>
                                         <p>$<span class='price'><?= $product->item_price; ?></span></p>

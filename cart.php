@@ -11,11 +11,8 @@
     }
 
     $product = new Product($db);
-    // $product_image = new ProductImage($db);
-    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
-        // echo '<pre>';
-        // print_r($_SESSION);
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
         $cart_item = new CartItem($db);
 
@@ -31,6 +28,8 @@
         $items = null;
     }
 
+    $subtotal = '';
+
     // echo '<pre>';
     // print_r($products);
 
@@ -38,7 +37,7 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <?php $site->addCartHeader($site, $count, $items, $db); ?>
+            <?php $site->addCartHeader($site, $count, $items, $subtotal, $db); ?>
         </div>
     </div>
 </header>
@@ -55,17 +54,7 @@
     <div class="container py-4">
     <div class="row">
         <div id="form-message"></div>
-            <?php
-            if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && empty($products)) {
-                    // if ($cart_count < 1 ) {
-                        echo "<div class='col-md-12'>";
-                            echo "<div class='alert alert-danger'>";
-                                echo "No products found in your cart!";
-                            echo "</div>";
-                        echo "</div>";
-                    // }
-            } else if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($products)) {
-                ?>
+            <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($products)) { ?>
                 <div class="col col-sm-12 subtotal-title my-4">
                     <div class="row">
                         <div class='col col-md-4'>
@@ -94,12 +83,12 @@
                                     </a>
                             </div>
                             <div class='col col-12 col-md-2'>
-                                
+                                <?= $product['price']; ?>
                             </div>
                             <div class='col col-12 col-md-2 d-flex text-center adjust-quantity'>
                                 <div class="adjust-container d-flex">
                                 <button class='btn remove-item' data-action='remove-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>-</button>
-                                    <p><span class='product-quantity'><?= $product['quantity'] ?></span></p>
+                                    <p><span class='product-quantity'><?= $product['quantity']; ?></span></p>
                                 <button class='btn add-item' data-action='add-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>+</button>
                                 </div>
                             </div>
@@ -129,7 +118,7 @@
                         You will find a lot of interesting products in our "Products" page.</p>
                     </div>
                     <div>
-                        <a href="/" class="btn btn-dark">Return to Shop</a>
+                        <a href="<?= root_url('/'); ?>" class="btn btn-dark">Return to Shop</a>
                     </div>
                 </div>
         <?php  } ?>
@@ -142,7 +131,7 @@
             </div>
             <div class="col col-sm col-md-4 sub-total text-left">
                 <p>Cart Subtotal:</p>
-                <span id="sub-total"></span>
+                $<span id="sub-total"></span>
                 <p>Shipping calculated at checkout</p>
             </div>
             <div class="col col-md-8 text-end">

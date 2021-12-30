@@ -24,6 +24,21 @@
         if (isset($_SESSION['id'])) {
             $items = $cart_item->get_cart($_SESSION['id']);
             $cart_id = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            // echo '<pre>';
+            // print_r($products);
+
+            $subtotal = '';
+
+            foreach ($products as $product_item) {
+                $product_item['price'] = substr($product_item['price'], 1);
+
+                $total = $product_item['price'] * $product_item['quantity'];
+                
+                $subtotal = intval($subtotal) + intval($total);
+            }
         }
 
         $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
@@ -36,9 +51,6 @@
     $category_filter = '';
 
     $categories = Category::getCategories($db);
-
-    // echo '<pre>';
-    // print_r($categories);
 
     if (isset($_GET['category'])) {
 
@@ -54,20 +66,12 @@
 
         $pagination = new Pagination($current_page, $per_page, $cat_count);
         $stmt = $product->readByCategory($per_page, $pagination->offset(), $category_filter);
-        // $stmt = $product->readByCategory($per_page, '', $category_filter);
-
-        // echo '<pre>';
-        // print_r($stmt);
 
     } else {
         $_GET['category'] = null;
         $pagination = new Pagination($current_page, $per_page, $product_count);
         $stmt = $product->read($per_page, $pagination->offset());
     }
-
-    // echo $category_filter;
-    // echo '<pre>';
-    // print_r($categories);
 
 ?>
 <header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
@@ -77,7 +81,7 @@
                 if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
                     $site->addAdminBar($site);
                 } else {
-                    $site->addCartHeader($site, $count, $items, $db);
+                    $site->addCartHeader($site, $count, $items, $subtotal, $db);
                 } ?>
         </div>
     </div>

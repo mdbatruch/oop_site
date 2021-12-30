@@ -46,7 +46,7 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <?php $site->addCartHeader($site, $count, $items, $db); ?>
+            <?php $site->addCartHeader($site, $count, $items, $subtotal, $db); ?>
         </div>
     </div>
 </header>
@@ -175,11 +175,11 @@
                                         <div class="img-container">
                                             <img src="<?= root_url('images/' . $product['image']); ?>" alt="" class="img-fluid">
                                         </div>
-                                        <div class="product-order-info px-4">
+                                        <div class="product-order-info px-4" data-id="<?= $product['id']; ?>">
                                             <a class="product-name" href="<?= root_url('product.php?id=' . $product["id"]); ?>">
                                                 <?= $product['name']; ?>
                                             </a>
-                                            <div class="product-price"></div>
+                                            <div class="product-price d-none"><?= $product['price'] ?></div>
                                             <div class="quantity-container">
                                                 QTY: <span class='product-quantity'><?= $product['quantity'] ?></span>
                                             </div>

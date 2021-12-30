@@ -5,6 +5,8 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
+    date_default_timezone_set('America/Toronto');
+
     $site_path = '/oop_site';
 
     define("SITE_ROOT", $_SERVER['HTTP_HOST'] . $site_path);

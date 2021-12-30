@@ -44,7 +44,7 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <?php $site->addCartHeader($site, $count, $items, $db); ?>
+            <?php $site->addCartHeader($site, $count, $items, $subtotal, $db); ?>
         </div>
     </div>
 </header>
