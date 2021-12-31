@@ -35,7 +35,21 @@
 
         if (isset($_SESSION['id'])) {
             $items = $cart_item->get_cart($_SESSION['id']);
-            $cart_id = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+            $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            $subtotal = '';
+
+            if ($products) {
+                foreach ($products as $product_item) {
+                    $product_item['price'] = substr($product_item['price'], 1);
+
+                    $total = $product_item['price'] * $product_item['quantity'];
+                    
+                    $subtotal = intval($subtotal) + intval($total);
+                }
+            } else {
+                $subtotal = 0;
+            }
 
         }
 
@@ -60,8 +74,6 @@
     $category_search = strtolower($chosen['category_name']);
 
     $category_search = preg_replace('/\s+/', '+', $category_search);
-
-    $subtotal = '';
 
 ?>
 <header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
@@ -99,7 +111,7 @@
                                     <a href="products.php?page=1&category=<?= $category_search; ?>"><?= $chosen['category_name']; ?></a>
                                 </h5>
                             </div>
-                            <div id="price" class="mb-2 mt-2"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>
+                            <div id="price" class="mb-2 mt-2" data-price="<?= $chosen['price']; ?>"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>
                             <div class="count mb-2 mt-2">
                                 Quantity
                                 <select name="" id="quantity">
@@ -117,8 +129,6 @@
         </div>
     </div>
 </main>
-<footer class="container">
-    <div class="row">
-        <?php $site->addFooter(); ?>
-    </div>
+<footer class="pt-4 pb-4">
+    <?php $site->addFooter(); ?>
 </footer>

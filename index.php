@@ -2,8 +2,6 @@
     
     require('initialize.php');
 
-    // $page = new Page("Welcome to my site!", $db);
-
     $pages = $site->find_all_pages();
 
     if (isset($_GET['id'])) {
@@ -17,10 +15,8 @@
     }
     
 
-     //     //Process all pages in one pass
+    // Process all pages in one pass
      foreach($pages as $row) {
-        //Logic to match the requested page id
-        // echo $row['id'];
         if($row['id'] == $id) {
             //Requested Page
             $page = $row['page'];
@@ -31,9 +27,6 @@
             break;
 
         }
-        // else {
-        //     echo 'not working';
-        // }
 
     }
 
@@ -49,7 +42,21 @@
 
         if (isset($_SESSION['id'])) {
             $items = $cart_item->get_cart($_SESSION['id']);
-            $cart_id = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+            $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            $subtotal = '';
+
+            if ($products) {
+                foreach ($products as $product_item) {
+                    $product_item['price'] = substr($product_item['price'], 1);
+
+                    $total = $product_item['price'] * $product_item['quantity'];
+                    
+                    $subtotal = intval($subtotal) + intval($total);
+                }
+            } else {
+                $subtotal = 0;
+            }
         }
 
         $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
@@ -59,43 +66,8 @@
         $items = null;
     }
 
-    //  $page->render_nav();
-    // echo '<pre>';
-    // print_r($page);
-
-    // try {
-
-    // $stmt = $db->prepare("SELECT id, page, title, subtitle FROM pages");
-    // $stmt->execute();
-    // $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // echo '<pre>';
-    // print_r($pages);
-
-    // $page_name = basename(__FILE__, '.php');
-
-    // $page_id = '';
-
-    // echo $page_id;
     
-    // $nav = array();
-        $site->addHeader();
-
-    // } 
-    
-    // catch(PDOException $e) {
-    //     echo "Error: " . $e->getMessage();
-    // }
-
-    //  $page->content = $description;
-
-    // $cart_item = new CartItem($db);
-    // echo '<pre>';
-    // print_r($_SESSION);
-    // $count = $cart_item->getCartCount(2, $_SESSION['id']);
-
-    // echo '<pre>';
-    // print_r($count);
+    $site->addHeader();
 
 ?>
 <header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>

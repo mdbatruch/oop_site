@@ -24,8 +24,12 @@ body .btn {
 
 #cart .cart-header {
   background-color: #000;
-  border-top: 2px solid #d3d3d3;
   padding: 50px 0px; }
+  #cart .cart-header > div .link-container {
+    flex-direction: column; }
+    @media (min-width: 768px) {
+      #cart .cart-header > div .link-container {
+        flex-direction: row; } }
   #cart .cart-header h3 {
     text-transform: uppercase;
     color: #fff;

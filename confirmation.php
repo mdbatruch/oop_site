@@ -51,6 +51,19 @@
         if (isset($_SESSION['id'])) {
             $items = $cart_item->get_cart($_SESSION['id']);
             $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+            $subtotal = '';
+
+            if ($products) {
+                foreach ($products as $product_item) {
+                    $product_item['price'] = substr($product_item['price'], 1);
+
+                    $total = $product_item['price'] * $product_item['quantity'];
+                    
+                    $subtotal = intval($subtotal) + intval($total);
+                }
+            } else {
+                $subtotal = 0;
+            }
         }
 
         $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
@@ -182,7 +195,7 @@
                                 <div class='row'>
                                     <div class='col col-12 col-md-6 product-title'>
                                     <div class="img-container">
-                                        <img src="images/<?= $image['image']; ?>" alt="<?= $product->item_name; ?>" class="rounded img-fluid img-thumbnail">
+                                        <img src="<?= !empty($image['image']) ? root_url('images/' . $image['image']) : root_url('images/missing.jpg'); ?>" alt="<?= $product->item_name; ?>" class="rounded img-fluid img-thumbnail">
                                     </div>
                                     <a href="<?= root_url('product.php?id=' . $product->item_id); ?>" class="product-title-link pt-3">
                                         <h5><?= $product->item_name; ?></h5>

@@ -9,8 +9,17 @@ function evaluateSubTotal() {
         // alert(total);
     });
 
-    $('#sub-total').text(total);
+    $('#sub-total').text('$' + total);
     $('.cart-total').text(total);
+}
+
+
+function evaluateProductSubTotal(amount) {
+
+    var current_subtotal = $('.cart-total').text();
+    var newtotal = parseFloat(current_subtotal) + parseFloat(amount);
+
+    $('.cart-total').text(newtotal);
 }
 
 function evaluateCartCount() {

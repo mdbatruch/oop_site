@@ -5,8 +5,16 @@
 #cart {
     .cart-header {
         background-color: $black;
-        border-top: 2px solid $lightgrey;
+        // border-top: 2px solid $lightgrey;
         padding: 50px 0px;
+        > div {
+            .link-container {
+                flex-direction: column;
+                @media(min-width: 768px) {
+                    flex-direction: row;
+                }
+            }
+        }
         h3 {
             text-transform: uppercase;
             color: $white;

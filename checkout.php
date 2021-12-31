@@ -15,17 +15,16 @@
     }
 
     $product = new Product($db);
-    // $product_image = new ProductImage($db);
-    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
-        // echo '<pre>';
-        // print_r($_SESSION);
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
         $cart_item = new CartItem($db);
 
         if (isset($_SESSION['id'])) {
             $items = $cart_item->get_cart($_SESSION['id']);
             $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            $subtotal = '';
         }
 
         $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
@@ -38,9 +37,6 @@
         $count = 0;
         $items = null;
     }
-
-    // echo '<pre>';
-    // print_r($products);
 
 ?>
 <header>
@@ -149,17 +145,7 @@
                 </form>
             <?php endif; ?>
         </div>
-            <?php 
-
-            if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && empty($products)) {
-                    // if ($cart_count < 1 ) {
-                        echo "<div class='col-md-12'>";
-                            echo "<div class='alert alert-danger'>";
-                                echo "No products found in your cart!";
-                            echo "</div>";
-                        echo "</div>";
-                    // }
-            } else if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($products)) {
+            <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($products)) {
                 ?>
                 <div class="col min-12 col-md-4 bg-light">
                     <div class="cart-container my-4">
@@ -207,13 +193,8 @@
                 </div>
             </div>
             <?php } else {
-                ?>
-                <div class='col-md-12'>
-                    <div class='alert alert-danger'>
-                        Your Cart is empty, please sign in or register
-                    </div>
-                </div>
-        <?php  } ?>
+                $site->addEmptyCart();
+            } ?>
         </div>
     </div>
 </main>

@@ -68,6 +68,10 @@
             require_once("includes/checkout-form.php");
         }
 
+        public function addEmptyCart() {
+            include('components/cart/cart-empty.php'); 
+        }
+
         public function addEditNav() {
 
             $items = self::find_nav_by_title('main-navigation');

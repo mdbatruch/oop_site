@@ -43,11 +43,13 @@
 </header>
 <main id="cart">
 <div class="container-fluid">
-    <div class="row d-flex cart-header justify-content-center">
-        <div class="col-md-6 text-center">
+    <div class="row cart-header justify-content-center">
+        <div class="col-md-8 col-xl-6 text-center">
             <h3>View Your Cart</h3>
-            <a href="/" class="btn btn-lightgrey mx-2">Back to Homepage</a>
-            <a href="/products" class="btn btn-green mx-2">Continue Shopping</a>
+            <div class="link-container d-flex justify-content-evenly">
+                <a href="<?= root_url('/'); ?>" class="btn btn-lightgrey py-3 my-2">Back to Homepage</a>
+                <a href="<?= root_url('products.php'); ?>" class="btn btn-green py-3 my-2">Continue Shopping</a>
+            </div>
         </div>
     </div>
     </div>
@@ -105,23 +107,9 @@
                         </div>
                     </div>
              <?php   } 
-            } else {
-                ?>
-                <div class='col-md-12 py-5 empty-cart-container'>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-x" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708z"/>
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                        </svg>
-                        <h4>Your Cart is currently <b>empty.</b></h4>
-                        <p>Before proceeding to checkout you must add some products to your shopping cart.
-                        You will find a lot of interesting products in our "Products" page.</p>
-                    </div>
-                    <div>
-                        <a href="<?= root_url('/'); ?>" class="btn btn-dark">Return to Shop</a>
-                    </div>
-                </div>
-        <?php  } ?>
+            } else { 
+                $site->addEmptyCart();
+            } ?>
         </div>
         <?php if ($count >= 1 ) :?>
         <div class="row justify-content-end cart-totals">
@@ -131,7 +119,7 @@
             </div>
             <div class="col col-sm col-md-4 sub-total text-left">
                 <p>Cart Subtotal:</p>
-                $<span id="sub-total"></span>
+                <span id="sub-total"></span>
                 <p>Shipping calculated at checkout</p>
             </div>
             <div class="col col-md-8 text-end">

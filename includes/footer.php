@@ -387,6 +387,8 @@
                 var id = $(this).attr('data-action');
                 var image = $(this).parent().parent().siblings('.img-container').find('.img-thumbnail').attr('src').split("/");
 
+                var product_price_unformatted = $(this).parent().siblings('.price').attr('data-price');
+
                 var product = {
                     id: $(this).attr('data-id'),
                     name: $(this).parent().siblings('.product-link').find('.name').text().replace(/\s+/g, ' ').trim(),
@@ -438,7 +440,7 @@
 
                 }
 
-               // subtotal function here
+               evaluateProductSubTotal(product_price_unformatted);
 
             });
 
@@ -457,6 +459,8 @@
                 var quantity = $('#quantity option:selected').text();
                 var image = $('#product-image').attr('src').split("/");
 
+                var product_price_unformatted = $('#price').attr('data-price');
+
                 var product = {
                     id: $('#product-info').attr('data-id'),
                     name: $('#name').text(),
@@ -464,6 +468,10 @@
                     image: image[image.length - 1],
                     price: $('#price').text(),
                 }
+
+                var amount = parseFloat(product_price_unformatted) *  parseFloat(quantity);
+
+                console.log(product_price_unformatted);
 
                 console.log(id, user_id, cart_id, product, quantity);
 
@@ -501,9 +509,6 @@
 
                                         var cartText = $('.cart-count').text();
 
-                                        // var oldCount = cartText.slice(1,-1);
-
-                                        // var newCount = parseFloat(oldCount) + parseFloat(quantity);
                                         var newCount = parseFloat(cartText) + parseFloat(quantity);
 
                                         $('.cart-count').text(newCount);
@@ -516,7 +521,7 @@
                     }
                 }
 
-                //subtotal function here
+                evaluateProductSubTotal(amount);
 
                 });
 
@@ -699,10 +704,13 @@
                     $('.product[data-id="' + data.id + '"]').remove();
 
                     // reevaluate sub total and cart count
-
                     evaluateCartCount();
 
                     evaluateSubTotal();
+
+                    if ($('.cart-count-bottom').text() == 0) {
+                        window.location.href = 'cart.php';
+                    }
 
                 }
             

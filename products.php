@@ -23,21 +23,21 @@
 
         if (isset($_SESSION['id'])) {
             $items = $cart_item->get_cart($_SESSION['id']);
-            $cart_id = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
 
             $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
 
-            // echo '<pre>';
-            // print_r($products);
-
             $subtotal = '';
 
-            foreach ($products as $product_item) {
-                $product_item['price'] = substr($product_item['price'], 1);
+            if ($products) {
+                foreach ($products as $product_item) {
+                    $product_item['price'] = substr($product_item['price'], 1);
 
-                $total = $product_item['price'] * $product_item['quantity'];
-                
-                $subtotal = intval($subtotal) + intval($total);
+                    $total = $product_item['price'] * $product_item['quantity'];
+                    
+                    $subtotal = intval($subtotal) + intval($total);
+                }
+            } else {
+                $subtotal = 0;
             }
         }
 
@@ -138,7 +138,7 @@
                                 <?= "{$description}"; ?>
                             </div>
 
-                            <div class='mb-1 price'>
+                            <div class='mb-1 price' data-price="<?= $price; ?>">
                                 <?= "$" . number_format($price, 2, '.', ','); ?>
                             </div>
                         
@@ -175,8 +175,6 @@
         </div>
     </div>
 </main>
-<footer class="container">
-    <div class="row">
-        <?php $site->addFooter(); ?>
-    </div>
+<footer class="pt-4 pb-4">
+    <?php $site->addFooter(); ?>
 </footer>
