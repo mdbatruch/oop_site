@@ -135,7 +135,7 @@
                             </a>
                     
                             <div class='mb-1 description'>
-                                <?= "{$description}"; ?>
+                                <?= nl2br("{$description}"); ?>
                             </div>
 
                             <div class='mb-1 price' data-price="<?= $price; ?>">

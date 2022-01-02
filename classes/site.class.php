@@ -27,6 +27,10 @@
             include('components/header-cart.php'); 
         }
 
+        public function addBreadcrumbs($page = '', $product) {
+            require_once("includes/breadcrumbs.php");
+        }
+
         public function addAdminBar($site) {
             include('components/admin-bar.php'); 
         }

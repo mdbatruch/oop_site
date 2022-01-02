@@ -61,6 +61,13 @@
 
     <script type="text/javascript">
 
+        $("#product-image").on("click", function(e) {
+
+            e.preventDefault();
+            $('#modal').modal('toggle');
+
+        });
+
 
         $("#clear-category").on("click", function(e){
 
@@ -367,7 +374,7 @@
                             $('#login-username-error').html('');
                             $('#login-password-error').html('');
 
-                            $('#login-form-message').html('<div class="alert alert-success">' + data.message + '</div>');
+                            $('#login-form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
                             $(location).attr('href', data.redirect);
 
@@ -402,13 +409,13 @@
                 if (user_id == 'no-customer') {
                     var customer = false;
                     
-                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">You must register or login to add items to your cart!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">You must register or login to add items to your cart!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     
                 } else if (user_id == undefined) {
                     
                     var admin = true;
 
-                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart. Create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart. Create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 }
 
                 if (customer || admin) {
@@ -422,11 +429,11 @@
 
                             if(!data.success) {
 
-                                    $('#cart-message-' + data.id).html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                                    $('#cart-message-' + data.id).html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
                                 } else {
 
-                                    $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                                    $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
                                         // update cart count in header on browser side
                                         var cartText = $('.cart-count').text();
@@ -478,13 +485,13 @@
                 if (user_id == 'no-customer') {
                     var customer = false;
                     
-                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">You must register or login to add items to your cart!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">You must register or login to add items to your cart!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     
                 } else if (user_id == undefined) {
                     var customer = false;
                     var admin = true;
 
-                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart. Create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart. Create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 }
 
                 if (!admin) {
@@ -503,7 +510,7 @@
 
                                 if(!data.success) {
 
-                                        $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
+                                        $('#cart-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
                                     } else {
 
@@ -513,7 +520,7 @@
 
                                         $('.cart-count').text(newCount);
 
-                                        $('#cart-message').html('<div class="alert alert-success">' + data.message + '</div>');
+                                        $('#cart-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
                                     }
                             });

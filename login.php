@@ -3,7 +3,7 @@
   require('initialize.php');
 
   include('includes/header.php');
-
+  
   global $session;
 
   if (isset($_SESSION['account']) && $session->is_logged_in_as_admin($_SESSION['account'])) {
@@ -16,6 +16,7 @@
 //  }
 
 ?>
+
 <div class="container">
     <div class="row">
         <div id="content" class="login-page col-12 col-md-8 offset-md-4">

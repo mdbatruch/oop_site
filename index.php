@@ -36,6 +36,8 @@
 
     $gallery = $site->findSliderByPageId($id);
 
+    $subtotal = 0;
+
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
         $cart_item = new CartItem($db);
