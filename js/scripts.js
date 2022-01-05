@@ -110,3 +110,49 @@ function orderTotal() {
     $('#total').text('$' + finalTotal);
 
 }
+
+function toggleProductGalleryImages() {
+    var image = $('.image-gallery img');
+    var main = $('.image img');
+
+    var carousel_item = $('.carousel-item');
+
+    console.log(main);
+    $.each(image, function(index, val) {
+        
+        var src = $(this).attr('src');
+
+        // get the images order number
+        var order = $(this).attr('data-order');
+
+        console.log(src);
+
+        // when you click on side image
+        $(this).on('click', function(){
+        
+        // replace featured image
+        $(main).attr('src', src);
+
+        // add active opacity class
+        $(this).addClass('active');
+
+        $(this).siblings().removeClass('active');
+
+        console.log(order);
+           
+           // loop through carousel items and find the carousel item with the same order number
+           $.each(carousel_item, function(index, val) {
+            
+             var carousel_order = $(this).attr('data-order')
+
+               console.log(carousel_order + ' carousel');
+                if (carousel_order == order) {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+                }
+           });
+
+        });
+
+    });
+}

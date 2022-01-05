@@ -55,6 +55,9 @@ These are the files for a custom built Website CMS and a Shopping Cart Portion w
 ## v1.8.5
 * Create customer in Stripe API when checkout is completed, only create when customer does not exist. Create and post test charge with entered card from checkout.
 
+## v1.8.6
+* Add Billing Address informaton and Shipping options for checkout. Add Product image gallery for individual product pages.
+
 ## Usage
 
 To install the application, clone the files and keep DB, SMTP and Stripe credentials in seperate .ini files outside of Site Root in the following format, replacing the placeholder values with your server settings:

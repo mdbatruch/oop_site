@@ -157,7 +157,7 @@ class Product{
  
         // select all products query
         // $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC";
-        $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC LIMIT " . $limit . " OFFSET " . $offset;
+        $query = "SELECT id, name, description, image, product_gallery, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC LIMIT " . $limit . " OFFSET " . $offset;
      
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
@@ -238,14 +238,7 @@ class Product{
     public function getProduct($id){
  
         // query to select single record
-        $query = "SELECT
-                    id, name, description, image, price, category_id
-                FROM
-                    " . $this->table_name . "
-                WHERE
-                    id = ?
-                LIMIT
-                    0,1";
+        $query = "SELECT id, name, description, image, product_gallery, price, category_id FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
      
         // prepare query statement
         $stmt = $this->conn->prepare( $query );

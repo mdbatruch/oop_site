@@ -1,5 +1,12 @@
 @import "colors";
 
+
+#products {
+    .product-container {
+        flex-direction: column;
+    }
+}
+
 #ind-product {
     .breadcrumbs {
         align-items: center;
@@ -11,14 +18,67 @@
             }
         }
     }
-    .image {
-        img {
-            cursor: zoom-in;
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease;
-            &:hover {
-                filter: brightness(90%);
-                -webkit-filter: brightness(90%);
+    .image-main-container {
+        flex-direction: column;
+        @media(min-width: 768px) {
+            flex-direction: row;
+        }
+        .image-gallery {
+            flex-direction: row;
+            order: 2;
+            overflow: scroll;
+            width: 100%;
+            // display: none !important;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            @media(min-width: 768px) {
+                flex-direction: column;
+                overflow: initial;
+                img {
+                    margin: 0.5rem 0rem;
+                    &:first-child {
+                        margin-top: 0px;
+                    }
+                }
+            }
+            @media(min-width: 1030px) {
+                order: 1;
+                width: 50%;
+                display: flex !important;
+                padding-right: 2rem;
+            }
+            img {
+                margin-right: 1rem;
+                cursor: pointer;
+                transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                @media(max-width: 767px) {
+                    width: 50%;
+                }
+                &:hover {
+                    filter: brightness(90%);
+                    -webkit-filter: brightness(90%);
+                }
+                &.active {
+                    opacity: 0.8;
+                }
+            }
+        }
+        .image {
+            order: 1;
+            margin-bottom: 2rem;
+            @media(min-width: 768px) {
+                order: 2;
+            }
+            img {
+                cursor: zoom-in;
+                transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                &:hover {
+                    filter: brightness(90%);
+                    -webkit-filter: brightness(90%);
+                }
             }
         }
     }

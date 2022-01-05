@@ -96,7 +96,7 @@
 
             if (isset($_GET['category'])) {
                 // echo $this->total_count;
-                echo '<div class="pagination">';
+                echo '<div class="pagination d-block text-center">';
                     if (isset($this->previous_link)) {
                         echo "<a href=\"{$url}?page={$this->previous_page()}&category={$_GET['category']}\">&laquo; Previous</a>";
                     }
@@ -113,7 +113,7 @@
                 echo "</div>";
 
             } else if ($this->total_pages() > 1) {
-                $output .= "<div class=\"pagination\">";
+                $output .= "<div class=\"pagination d-block text-center\">";
                 $output .= $this->previous_link($url);
                 $output .= $this->number_links($url);
                 $output .= $this->next_link($url);
@@ -129,7 +129,7 @@
 
             if (isset($_GET['category'])) {
                 // echo $this->total_count;
-                echo '<div class="pagination">';
+                echo '<div class="pagination d-block text-center">';
                     if (isset($this->previous_link)) {
                         echo "<a href=\"{$url}&page={$this->previous_page()}&category={$_GET['category']}\">&laquo; Previous</a>";
                     }
@@ -146,7 +146,7 @@
                 echo "</div>";
 
             } else if ($this->total_pages() > 1) {
-                $output .= "<div class=\"pagination\">";
+                $output .= "<div class=\"pagination d-block text-center\">";
                 $output .= $this->previous_extra_link($url);
                 $output .= $this->number_extra_links($url);
                 $output .= $this->next_extra_link($url);

@@ -61,6 +61,9 @@
 
     <script type="text/javascript">
 
+    // leave here for now for product page
+    toggleProductGalleryImages();
+
         $("#product-image").on("click", function(e) {
 
             e.preventDefault();

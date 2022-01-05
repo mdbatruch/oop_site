@@ -12,7 +12,7 @@ global $site;
     $slides = json_decode($gallery['slides']);
 
     // echo '<pre>';
-    // print_r($gallery);
+    // print_r($slides);
 ?>
 
 <?php if ($gallery['active']) : ?>

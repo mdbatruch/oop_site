@@ -27,6 +27,8 @@
 
     $chosen = $product->getProduct($_GET['id']);
 
+    $galleries = json_decode($chosen['product_gallery']);
+
     $image = !empty($chosen['image']) ? $chosen['image'] : 'missing.jpg';
 
     $categories = Category::getCategories($db);
@@ -102,12 +104,22 @@
             </div>
             <div id="product-info" data-id="<?= $chosen['id']; ?>" class='col-12 product-info'>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6 d-flex image-main-container">
+                        <?php $gallery = ['WargRiders.jpeg', 'Wargriders2.jpeg', 'Wargriders3.jpeg', 'Wargriders4.jpeg']; ?>
+                        <div class="image-gallery d-flex">
+                            <?php 
+                                $count = 0;
+                                foreach ($galleries as $singleimage) : 
+                                $count++;
+                            ?>
+                                <img class="d-block img-fluid border" src="<?= !empty($singleimage) ? root_url('images/' . $singleimage) : root_url('images/missing.jpg'); ?>" data-order=<?= $count; ?>>
+                            <?php endforeach; ?>
+                        </div>
                         <div class="image">
                             <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $chosen['name'] . ' Image'; ?>" id="product-image" class="border img-fluid">
                         </div>
                         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -116,14 +128,13 @@
                                 </div>
                                 <div class="modal-body">
                                 <div id="product-gallery" class="carousel slide" data-ride="carousel">
-                                    <?php $gallery = ['WargRiders.jpeg', 'Wargriders2.jpeg', 'Wargriders3.jpeg', 'Wargriders4.jpeg']; ?>
                                     <div class="carousel-inner">
                                         <?php 
                                             $count = 0;
-                                            foreach ($gallery as $singleimage) : 
+                                            foreach ($galleries as $singleimage) : 
                                             $count++;
                                         ?>
-                                            <div class="carousel-item <?= $count == 1 ? 'active' : ''; ?>">
+                                            <div class="carousel-item <?= $count == 1 ? 'active' : ''; ?>" data-order=<?= $count; ?>>
                                                 <img class="d-block w-100" src="<?= !empty($singleimage) ? root_url('images/' . $singleimage) : root_url('images/missing.jpg'); ?>">
                                             </div>
                                         <?php endforeach; ?>
@@ -145,7 +156,7 @@
                         </div>
                     </div>
                     </div>
-                    <div class="col-md-8 info-container">
+                    <div class="col-md-6 info-container">
                         <h2 id="name"><?= $chosen['name']; ?></h2>
                         <div id="price" class="" data-price="<?= $chosen['price']; ?>"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>
                         <div id="description" class="my-2"><?= nl2br($chosen['description']); ?></div>

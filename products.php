@@ -87,26 +87,28 @@
     </div>
 </header>
 <main>
-<div id="products" class="container-fluid">
-        <div class="row">
-            <div class="col-10 mb-4 mt-4">
-                <h3>Products Page</h3>
-                <?php if (isset($_GET['category'])) : ?>
-                    <h5 class="filter-title">Filters</h5>
-                    <ul class="filters">
-                        <li><?= $filter_name; ?></li>
-                    </ul>
-                    <button type="button" id="clear-category" class="btn btn-danger" data-dismiss="alert" aria-label="Close">Remove Category Filter</button>
-                <?php endif; ?>
-                <form>Sort By Category:
-                    <select id="categories">
-                        <option value="">Select Category</option>
-                        <?php foreach ($categories as $category) : ?>
-                            <option value="<?= $category['id']; ?>" <?= $_GET['category'] == $category['name'] ? 'selected="selected"' : '';?>><?= $category['name']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </form>
-            </div>
+<div id="products" class="container">
+    <div class="row d-none">
+        <div class="col-10 mb-4 mt-4">
+            <h3>Products Page</h3>
+            <?php if (isset($_GET['category'])) : ?>
+                <h5 class="filter-title">Filters</h5>
+                <ul class="filters">
+                    <li><?= $filter_name; ?></li>
+                </ul>
+                <button type="button" id="clear-category" class="btn btn-danger" data-dismiss="alert" aria-label="Close">Remove Category Filter</button>
+            <?php endif; ?>
+            <form>Sort By Category:
+                <select id="categories">
+                    <option value="">Select Category</option>
+                    <?php foreach ($categories as $category) : ?>
+                        <option value="<?= $category['id']; ?>" <?= $_GET['category'] == $category['name'] ? 'selected="selected"' : '';?>><?= $category['name']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </form>
+        </div>  
+    </div>  
+    <div class="row row-cols-2 row-cols-lg-5 py-4">
             <?php
                             
                 $loopExecuted = false;
@@ -117,38 +119,30 @@
 
                       if (($row['category_id'] == $category_filter) || (!isset($_GET['category']))) :
                     ?>
-                <div class='col-md-4 mb-2'>
-                    <div class="container-fluid">
-                        <div class="row">
-                        <div class="col-10 img-container">
-                            <div class='product-id'><?= "{$id}" ?></div>
-                            <div class="image">
-                                <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $row['name'] . ' Image'; ?>" class="rounded img-fluid img-thumbnail">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <a href='product.php?id=<?= $id ?>' class='product-link'>
-                        
-                                <div class='name mb-1'>
-                                    <?= "{$name}"  ?>
-                                </div>
-                            </a>
-                    
-                            <div class='mb-1 description'>
-                                <?= nl2br("{$description}"); ?>
-                            </div>
-
-                            <div class='mb-1 price' data-price="<?= $price; ?>">
-                                <?= "$" . number_format($price, 2, '.', ','); ?>
-                            </div>
-                        
-                            <div class='mb-1'>
-                                <div data-id="<?= $id ?>" data-action="add-cart-products" class='btn btn-primary add-cart-products'>Add to Cart</div>
-                                <div id="cart-message-<?= $id; ?>"></div>
-                            </div>
-                            </div>
+                <div class='col mb-2 d-flex product-container'>
+                    <div class="col-10 img-container">
+                        <div class='product-id'><?= "{$id}" ?></div>
+                        <div class="image">
+                            <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $row['name'] . ' Image'; ?>" class="img-fluid">
                         </div>
                     </div>
+                    <div class="col-12">
+                        <a href='product.php?id=<?= $id ?>' class='product-link'>
+                            <div class='name mb-1'>
+                                <?= "{$name}"  ?>
+                            </div>
+                        </a>
+                        <div class='mb-1 description d-none'>
+                            <?= nl2br("{$description}"); ?>
+                        </div>
+                        <div class='mb-1 price' data-price="<?= $price; ?>">
+                            <?= "$" . number_format($price, 2, '.', ','); ?>
+                        </div>
+                        <div class='mb-1'>
+                            <div data-id="<?= $id ?>" data-action="add-cart-products" class='btn btn-primary add-cart-products'>Add to Cart</div>
+                            <div id="cart-message-<?= $id; ?>"></div>
+                        </div>
+                        </div>
                 </div>
             <?php
 

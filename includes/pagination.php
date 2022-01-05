@@ -1,3 +1,3 @@
-<div class="pagination">
+<div class="pagination d-block">
     
 </div>
