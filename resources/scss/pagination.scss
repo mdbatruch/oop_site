@@ -1,0 +1,19 @@
+@import 'colors';
+
+body {
+    .pagination {
+        a, span {
+            svg {
+                background-color: $brand-green;
+                color: $white;
+                fill: $white;
+                border-radius: 50%;
+            }
+            &.disabled {
+                svg {
+                    background-color: $lightgrey;
+                }
+            }
+        }
+    }
+}

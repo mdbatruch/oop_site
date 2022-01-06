@@ -4,6 +4,75 @@
 #products {
     .product-container {
         flex-direction: column;
+        position: relative;
+        .title {
+            text-decoration: none;
+            color: $black;
+        }
+        .add-cart-products {
+            position: absolute;
+            top: 0;
+            right: calc(var(--bs-gutter-x) * .5);
+            &:hover {
+                .cart-icon, .arrow-right {
+                    opacity: 1;
+                    display: flex !important;
+                }
+            }
+            .cart-icon {
+                transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                opacity: 0;
+                font-size: 0.8rem;
+                align-items: center;
+            }
+            .arrow-right {
+                transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                opacity: 0;
+                height: 0px;
+                width: 0px;
+                right: 32px;
+                top: 10px;
+                position: absolute;
+                border-top: solid 8px transparent;
+                border-left: solid 8px black;
+                border-bottom: solid 8px transparent;
+            }
+            svg {
+                cursor: pointer;
+                transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                &.bi-cart-plus {
+                    &:hover {
+                        background-color: $brand-green;
+                        color: $white;
+                    }
+                }
+            }
+        }
+        svg {
+            cursor: pointer;
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            &.bi-zoom-in {
+                position: absolute;
+                right: calc(var(--bs-gutter-x) * .5);
+                top: 32px;
+                fill: $black;
+                color: $black;
+                &:hover {
+                    background-color: $brand-green;
+                    color: $white;
+                    fill: $white;
+                }
+            }
+        }
+    }
+    .back-to-top {
+        text-transform: uppercase;
+        text-decoration: underline;
+        cursor: pointer;
     }
 }
 

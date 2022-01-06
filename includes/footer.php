@@ -71,6 +71,13 @@
 
         });
 
+        $(".back-to-top").on("click", function(e) {
+
+            e.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 'fast');
+
+            });
+
 
         $("#clear-category").on("click", function(e){
 
@@ -395,7 +402,7 @@
                 var user_id = $('.customer').attr('id');
                 var cart_id = $('#cart_id').html();
                 var id = $(this).attr('data-action');
-                var image = $(this).parent().parent().siblings('.img-container').find('.img-thumbnail').attr('src').split("/");
+                var image = $(this).parent().parent().siblings('.img-container').find('.img-fluid').attr('src').split("/");
 
                 var product_price_unformatted = $(this).parent().siblings('.price').attr('data-price');
 

@@ -105,7 +105,6 @@
             <div id="product-info" data-id="<?= $chosen['id']; ?>" class='col-12 product-info'>
                 <div class="row">
                     <div class="col-md-6 d-flex image-main-container">
-                        <?php $gallery = ['WargRiders.jpeg', 'Wargriders2.jpeg', 'Wargriders3.jpeg', 'Wargriders4.jpeg']; ?>
                         <div class="image-gallery d-flex">
                             <?php 
                                 $count = 0;

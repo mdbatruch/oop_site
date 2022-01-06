@@ -676,7 +676,62 @@ body .customer-container img {
   border-radius: 50% !important; }
 
 #products .product-container {
-  flex-direction: column; }
+  flex-direction: column;
+  position: relative; }
+  #products .product-container .title {
+    text-decoration: none;
+    color: #000; }
+  #products .product-container .add-cart-products {
+    position: absolute;
+    top: 0;
+    right: calc(var(--bs-gutter-x) * .5); }
+    #products .product-container .add-cart-products:hover .cart-icon, #products .product-container .add-cart-products:hover .arrow-right {
+      opacity: 1;
+      display: flex !important; }
+    #products .product-container .add-cart-products .cart-icon {
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+      opacity: 0;
+      font-size: 0.8rem;
+      align-items: center; }
+    #products .product-container .add-cart-products .arrow-right {
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+      opacity: 0;
+      height: 0px;
+      width: 0px;
+      right: 32px;
+      top: 10px;
+      position: absolute;
+      border-top: solid 8px transparent;
+      border-left: solid 8px black;
+      border-bottom: solid 8px transparent; }
+    #products .product-container .add-cart-products svg {
+      cursor: pointer;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease; }
+      #products .product-container .add-cart-products svg.bi-cart-plus:hover {
+        background-color: #197b30;
+        color: #fff; }
+  #products .product-container svg {
+    cursor: pointer;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease; }
+    #products .product-container svg.bi-zoom-in {
+      position: absolute;
+      right: calc(var(--bs-gutter-x) * .5);
+      top: 32px;
+      fill: #000;
+      color: #000; }
+      #products .product-container svg.bi-zoom-in:hover {
+        background-color: #197b30;
+        color: #fff;
+        fill: #fff; }
+
+#products .back-to-top {
+  text-transform: uppercase;
+  text-decoration: underline;
+  cursor: pointer; }
 
 #ind-product .breadcrumbs {
   align-items: center; }
@@ -797,6 +852,15 @@ body .customer-container img {
         border-top: 2px solid #d3d3d3; } }
     #ind-product .delivery-returns > .row .copyright-disclaimer p {
       font-size: 0.85rem; }
+
+body .pagination a svg, body .pagination span svg {
+  background-color: #197b30;
+  color: #fff;
+  fill: #fff;
+  border-radius: 50%; }
+
+body .pagination a.disabled svg, body .pagination span.disabled svg {
+  background-color: #d3d3d3; }
 
 #frmStripePayment {
   max-width: 300px;
