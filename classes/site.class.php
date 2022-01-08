@@ -31,6 +31,10 @@
             require_once("includes/breadcrumbs.php");
         }
 
+        public function addProductsBreadcrumbs($page = '', $category = '') {
+            require_once("includes/products-breadcrumbs.php");
+        }
+
         public function addAdminBar($site) {
             include('components/admin-bar.php'); 
         }

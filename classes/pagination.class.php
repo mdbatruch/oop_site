@@ -46,18 +46,44 @@
             return ($prev > 0) ? $prev : false;
         }
 
+        public function previous_filter_link($url="", $filter) {
+          $link = "";
+          $chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left p-1" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          </svg>';
+          if ($this->previous_page() != false) {
+          $link = "<a class=\"previous\" href=\"{$url}?page={$this->previous_page()}&filter={$filter}\">{$chevron}</a>";
+          } else {
+            $link = "<span class=\"disabled\">{$chevron}</span>";
+          }
+          return $link;
+      }
+
         public function previous_link($url="") {
             $link = "";
             $chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left p-1" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
             </svg>';
             if ($this->previous_page() != false) {
-            $link = "<a href=\"{$url}?page={$this->previous_page()}\">{$chevron}</a>";
+            $link = "<a class=\"previous\" href=\"{$url}?page={$this->previous_page()}\">{$chevron}</a>";
             } else {
               $link = "<span class=\"disabled\">{$chevron}</span>";
             }
             return $link;
         }
+
+        public function next_filter_link($url="", $filter) {
+          $link = "";
+          $chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-right p-1" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>';
+          if ($this->next_page() != false) {
+          $link = "<a class=\"next\" href=\"{$url}?page={$this->next_page()}&filter={$filter}\">{$chevron}</a>";
+          } else {
+            $link = "<span class=\"disabled\">{$chevron}</span>";
+          }
+          return $link;
+      }
 
         public function next_link($url="") {
             $link = "";
@@ -65,7 +91,7 @@
               <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
             </svg>';
             if ($this->next_page() != false) {
-            $link = "<a href=\"{$url}?page={$this->next_page()}\">{$chevron}</a>";
+            $link = "<a class=\"next\" href=\"{$url}?page={$this->next_page()}\">{$chevron}</a>";
             } else {
               $link = "<span class=\"disabled\">{$chevron}</span>";
             }
@@ -116,7 +142,7 @@
             return $output;
         }
 
-        public function page_links($url, $category = false) {
+        public function page_links($url, $category = false, $filter = false) {
 
             $output = "";
 
@@ -138,8 +164,15 @@
                       }
                 echo "</div>";
 
+            } else if (isset($_GET['filter'])) {
+                $output .= "<div class=\"pagination d-flex text-center\">";
+                $output .= $this->previous_filter_link($url, $_GET['filter']);
+                $output .= '<div class="pagination-index mx-2">Page ' . $this->current_page . ' of ' . $this->total_pages() . '</div>';
+                $output .= $this->next_filter_link($url, $_GET['filter']);
+                $output .= "</div>";
+
             } else if ($this->total_pages() > 1) {
-                $output .= "<div class=\"pagination d-flex justify-content-center text-center my-4\">";
+                $output .= "<div class=\"pagination d-flex text-center\">";
                 $output .= $this->previous_link($url);
                 $output .= '<div class="pagination-index mx-2">Page ' . $this->current_page . ' of ' . $this->total_pages() . '</div>';
                 $output .= $this->next_link($url);

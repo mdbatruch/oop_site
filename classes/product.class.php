@@ -235,6 +235,67 @@ class Product{
         return $stmt;
     }
 
+    function getByNameAsc($limit = null, $offset = null, $category = null){
+ 
+        // select all products query
+        $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY name ASC LIMIT " . $limit . " OFFSET " . $offset;
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // execute query
+        $stmt->execute();
+     
+        // return values
+        return $stmt;
+    }
+
+    function getByNameDesc($limit = null, $offset = null, $category = null){
+ 
+        // select all products query
+        $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY name DESC LIMIT " . $limit . " OFFSET " . $offset;
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // execute query
+        $stmt->execute();
+     
+        // return values
+        return $stmt;
+    }
+
+
+    function getByHighest($limit = null, $offset = null, $category = null){
+ 
+        // select all products query
+        $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY price DESC LIMIT " . $limit . " OFFSET " . $offset;
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // execute query
+        $stmt->execute();
+     
+        // return values
+        return $stmt;
+    }
+
+    function getByLowest($limit = null, $offset = null, $category = null){
+ 
+        // select all products query
+        $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY price ASC LIMIT " . $limit . " OFFSET " . $offset;
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // execute query
+        $stmt->execute();
+     
+        // return values
+        return $stmt;
+    }
+
     public function getProduct($id){
  
         // query to select single record

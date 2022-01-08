@@ -2,6 +2,109 @@
 
 
 #products {
+    .top-products {
+        .top-products-inner {
+            flex-direction: column;
+            @media(min-width: 768px) {
+                flex-direction: row;
+            }
+            .breadcrumbs {
+                align-items: center;
+                .breadcrumbs-container {
+                    font-size: 0.9rem;
+                    a {
+                        text-decoration: none;
+                        color: $black;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+            .page-info {
+                align-items: center;
+                .filter-container {
+                    a {
+                        cursor: pointer;
+                        color: $black;
+                        text-decoration: none;
+                        font-weight: 600;
+                        letter-spacing: 0.25px;
+                    }
+                }
+            }
+            .pagination {
+                .disabled {
+                    display: none;
+                }
+                a {
+                    display: none;
+                }
+            }
+        }
+        .toggle-filters {
+            .card {
+                border: none;
+                border-radius: 0px;
+                background-color: $verylightgrey;
+                @media(min-width: 768px) {
+                    flex-direction: row;
+                }
+                .card-body {
+                    @media(min-width: 768px) {
+                        flex-direction: row;
+                    }
+                }
+                .close-inner {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    margin-top: 1rem;
+                    margin-right: 1rem;
+                    color: $black;
+                }
+                .sort {
+                    margin-left: 10%;
+                    @media(min-width: 768px) {
+                        width: 25%;
+                    }
+                    h5 {
+                        text-decoration: underline;
+                    }
+                    a {
+                        text-decoration: none;
+                        color: $black;
+                        text-transform: capitalize;
+                        transition: all 0.25s ease;
+                        -webkit-transition: all 0.25s ease;
+                        &:hover {
+                            color: $grey-999;
+                        }
+                    }
+                } 
+                .price {
+                    @media(min-width: 768px) {
+                        width: 25%;
+                    }
+                    h5 {
+                        text-decoration: underline;
+                    }
+                }
+                ul {
+                    li {
+                        list-style: none;
+                        padding: 5px 0px;
+                        span {
+                            cursor: pointer;
+                        }
+                        input[type="checkbox"] {
+                            &:before {
+                                background-color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     .product-container {
         flex-direction: column;
         position: relative;

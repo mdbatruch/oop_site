@@ -8,6 +8,8 @@
 
     $product = new Product($db);
 
+    $page = 'Products';
+
     $product_count = $product->count();
 
     $current_page = $_GET['page'] ?? 1;
@@ -67,6 +69,26 @@
         $pagination = new Pagination($current_page, $per_page, $cat_count);
         $stmt = $product->readByCategory($per_page, $pagination->offset(), $category_filter);
 
+    } else if (isset($_GET['filter'])) {
+
+        $filter = preg_replace('/[^a-zA-Z0-9\']/', ' ', $_GET['filter']);
+
+        $pagination = new Pagination($current_page, $per_page, $product_count);
+
+        switch($filter){
+            case 'highest':
+                $stmt = $product->getByHighest($per_page, $pagination->offset());
+            break;
+            case 'lowest':
+                $stmt = $product->getByLowest($per_page, $pagination->offset());
+            break;
+            case 'ascending':
+                $stmt = $product->getByNameAsc($per_page, $pagination->offset());
+            break;
+            case 'descending':
+                $stmt = $product->getByNameDesc($per_page, $pagination->offset());
+            break;
+        }
     } else {
         $_GET['category'] = null;
         $pagination = new Pagination($current_page, $per_page, $product_count);
@@ -107,7 +129,69 @@
                 </select>
             </form>
         </div>  
-    </div>  
+    </div>
+    <div class="row top-products">
+        <div class="container-fluid">
+            <div class="top-products-inner d-flex justify-content-between py-4">
+                <div class="breadcrumbs d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                    </svg>
+                    <?= $site->addProductsBreadcrumbs($page, ''); ?>
+                </div>
+                <div class="page-info d-flex">
+                    <div class="results pe-2">
+                        <?= $pagination->show_range(); ?>
+                    </div>
+                    | 
+                    <div class="pagination-top">
+                        <?= $pagination->page_links($url, ''); ?>
+                    </div>
+                    <div class="filter-container ms-4">
+                        <p class="mb-0">
+                            <a class="close-outer" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Filters
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="toggle-filters">
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body d-flex py-4">
+                        <a class="close-inner" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </a>
+                        <div class="sort me-4">
+                            <h5>Sort By</h5>
+                            <ul class="ps-0">
+                                <li><a href="<?= root_url('products.php?page=1&filter=lowest'); ?>">Price: Low to High</a></li>
+                                <li><a href="<?= root_url('products.php?page=1&filter=highest'); ?>">Price: High to Low</a></li>
+                                <li><a href="<?= root_url('products.php?page=1&filter=ascending'); ?>">Alphabetical A-Z</a></li>
+                                <li><a href="<?= root_url('products.php?page=1&filter=descending'); ?>">Alphabetical Z-A</a></li>
+                            </ul>
+                        </div>
+                        <div class="price me-4">
+                            <h5>Price</h5>
+                            <ul class="ps-0">
+                                <li> <input type="checkbox" class="me-2"> All</li>
+                                <li> <input type="checkbox" class="me-2"> $0.00 - $50.00</li>
+                                <li> <input type="checkbox" class="me-2"> $50.00 - $150.00</li>
+                                <li> <input type="checkbox" class="me-2"> $150.00 - $500.00</li>
+                                <li> <input type="checkbox" class="me-2"> $500.00 +</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row row-cols-2 row-cols-lg-5 py-4">
             <?php
                             
@@ -183,7 +267,9 @@
                 <div class="results">
                     <?= $pagination->show_range(); ?>
                 </div>
-                <?= $pagination->page_links($url, $_GET['category']); ?>
+                <div class="pagination justify-content-center my-4">
+                    <?= $pagination->page_links($url, ''); ?>
+                </div>
                 <div class="back-to-top-container mb-4">
                     <div class="back-to-top d-inline-block">
                         Back to Top
