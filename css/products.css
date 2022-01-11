@@ -127,6 +127,9 @@
   text-decoration: underline;
   cursor: pointer; }
 
+.category-search {
+  background-color: #000; }
+
 #ind-product .breadcrumbs {
   align-items: center; }
   #ind-product .breadcrumbs .breadcrumbs-container {

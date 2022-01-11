@@ -265,6 +265,24 @@ class Product{
         return $stmt;
     }
 
+    function getRange($limit = null, $offset = null, $from, $to = null){
+ 
+        // select all products query
+        // $query = "SELECT *  FROM " . $this->table_name . " WHERE price BETWEEN ? AND ? ORDER BY price ASC LIMIT " . $limit . " OFFSET " . $offset;
+        $query = "SELECT *  FROM " . $this->table_name . " WHERE price BETWEEN ? AND ? ORDER BY price ASC";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+        $stmt->bindParam(1, $from);
+        $stmt->bindParam(2, $to);
+
+        // execute query
+        $stmt->execute();
+     
+        // return values
+        return $stmt;
+    }
+
 
     function getByHighest($limit = null, $offset = null, $category = null){
  

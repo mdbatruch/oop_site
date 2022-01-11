@@ -64,6 +64,8 @@
     // leave here for now for product page
     toggleProductGalleryImages();
 
+    filterProductRange();
+
         $("#product-image").on("click", function(e) {
 
             e.preventDefault();

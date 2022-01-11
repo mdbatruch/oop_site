@@ -105,15 +105,17 @@
             <div id="product-info" data-id="<?= $chosen['id']; ?>" class='col-12 product-info'>
                 <div class="row">
                     <div class="col-md-6 d-flex image-main-container">
-                        <div class="image-gallery d-flex">
-                            <?php 
-                                $count = 0;
-                                foreach ($galleries as $singleimage) : 
-                                $count++;
-                            ?>
-                                <img class="d-block img-fluid border" src="<?= !empty($singleimage) ? root_url('images/' . $singleimage) : root_url('images/missing.jpg'); ?>" data-order=<?= $count; ?>>
-                            <?php endforeach; ?>
-                        </div>
+                        <?php if ($galleries) : ?>
+                            <div class="image-gallery d-flex">
+                                <?php 
+                                    $count = 0;
+                                    foreach ($galleries as $singleimage) : 
+                                    $count++;
+                                ?>
+                                    <img class="d-block img-fluid border" src="<?= !empty($singleimage) ? root_url('images/' . $singleimage) : root_url('images/missing.jpg'); ?>" data-order=<?= $count; ?>>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="image">
                             <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $chosen['name'] . ' Image'; ?>" id="product-image" class="border img-fluid">
                         </div>

@@ -156,3 +156,43 @@ function toggleProductGalleryImages() {
 
     });
 }
+
+function filterProductRange() {
+
+    var $_GET = {};
+
+        // get current url    
+        if(document.location.toString().indexOf('?') !== -1) {
+            var query = document.location
+                        .toString()
+                        // get the query string
+                        .replace(/^.*?\?/, '')
+                        // and remove any existing hash string
+                        .replace(/#.*$/, '')
+                        .split('&');
+
+            for(var i=0, l=query.length; i<l; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            $_GET[aux[0]] = aux[1];
+            }
+        }
+    
+    var input = $('.price input[type="checkbox"]');
+
+    $.each(input , function(index, val) {
+
+        let value = $(this).attr('value');
+
+        if ($_GET['range'] == $(this).attr('value')) {
+            $(this).prop('checked', true);
+        }
+        
+        $(this).on('click', function(){
+
+            $('.price input:checkbox').not(this).prop('checked', false);
+
+            window.location.href = 'products.php?range=' + value;
+        });
+
+    });
+}

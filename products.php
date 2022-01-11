@@ -89,10 +89,57 @@
                 $stmt = $product->getByNameDesc($per_page, $pagination->offset());
             break;
         }
+    } else if (isset($_GET['range'])) {
+
+        $range = trim($_GET['range']);
+
+        switch($range){
+            case 'all':
+                $stmt = $product->getRange($per_page, '', 0, 99999);
+
+                $count = $stmt->rowCount();
+
+                $pagination = new Pagination($current_page, $per_page, $count);
+            break;
+            
+            case '0-50':
+                $stmt = $product->getRange($per_page, '', 0, 50);
+
+                $count = $stmt->rowCount();
+
+                $pagination = new Pagination($current_page, $per_page, $count);
+            break;
+
+            case '50-150':
+                $stmt = $product->getRange($per_page, '', 50, 150);
+
+                $count = $stmt->rowCount();
+
+                $pagination = new Pagination($current_page, $per_page, $count);
+            break;
+
+            case '150-500':
+                $stmt = $product->getRange($per_page, '', 150, 500);
+
+                $count = $stmt->rowCount();
+
+                $pagination = new Pagination($current_page, $per_page, $count);
+
+            break;
+
+            case '500':
+                $stmt = $product->getRange($per_page, '', 500, 99999);
+
+                $count = $stmt->rowCount();
+
+                $pagination = new Pagination($current_page, $per_page, $count);
+            break;
+        }
     } else {
         $_GET['category'] = null;
         $pagination = new Pagination($current_page, $per_page, $product_count);
         $stmt = $product->read($per_page, $pagination->offset());
+
     }
 
 ?>
@@ -109,6 +156,9 @@
     </div>
 </header>
 <main>
+<?php if (isset($_GET['category'])) : ?>
+<?= $site->addCategorySearch($category); ?>
+<?php endif; ?>
 <div id="products" class="container">
     <div class="row d-none">
         <div class="col-10 mb-4 mt-4">
@@ -138,7 +188,11 @@
                         <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                         <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
                     </svg>
-                    <?= $site->addProductsBreadcrumbs($page, ''); ?>
+                    <?php if (isset($_GET['category'])) : ?>
+                        <?= $site->addProductsBreadcrumbs($page, $_GET['category']); ?>
+                    <?php else : ?>
+                        <?= $site->addProductsBreadcrumbs($page, ''); ?>
+                    <?php endif; ?>
                 </div>
                 <div class="page-info d-flex">
                     <div class="results pe-2">
@@ -180,11 +234,11 @@
                         <div class="price me-4">
                             <h5>Price</h5>
                             <ul class="ps-0">
-                                <li> <input type="checkbox" class="me-2"> All</li>
-                                <li> <input type="checkbox" class="me-2"> $0.00 - $50.00</li>
-                                <li> <input type="checkbox" class="me-2"> $50.00 - $150.00</li>
-                                <li> <input type="checkbox" class="me-2"> $150.00 - $500.00</li>
-                                <li> <input type="checkbox" class="me-2"> $500.00 +</li>
+                                <li> <input type="checkbox" class="me-2" value="all"> All</li>
+                                <li> <input type="checkbox" class="me-2" value="0-50"> $0.00 - $50.00</li>
+                                <li> <input type="checkbox" class="me-2" value="50-150"> $50.00 - $150.00</li>
+                                <li> <input type="checkbox" class="me-2" value="150-500"> $150.00 - $500.00</li>
+                                <li> <input type="checkbox" class="me-2" value="500+"> $500.00 +</li>
                             </ul>
                         </div>
                     </div>
@@ -268,7 +322,7 @@
                     <?= $pagination->show_range(); ?>
                 </div>
                 <div class="pagination justify-content-center my-4">
-                    <?= $pagination->page_links($url, ''); ?>
+                    <?= $pagination->page_links($url, '', '', ''); ?>
                 </div>
                 <div class="back-to-top-container mb-4">
                     <div class="back-to-top d-inline-block">
