@@ -1,3 +1,10 @@
+body main.admin-login > .container input, body main.admin-login > .container textarea {
+  width: 100%;
+  border-radius: 0px;
+  border: 1px solid #666;
+  background-color: #fff;
+  padding: 10px 20px; }
+
 body #admin-header {
   background-color: #343a40; }
   body #admin-header #admin-navigation ul.navbar-nav li {
@@ -48,3 +55,20 @@ body main .nav-sort ol#main-navigation .nav-item {
     body main .nav-sort ol#main-navigation .nav-item ol.sub-nav a {
       background: #666;
       color: #fff; }
+
+body main.admin-login {
+  align-items: center;
+  background-color: #293744; }
+  body main.admin-login > .container {
+    padding-top: 4rem;
+    padding-bottom: 4rem; }
+    body main.admin-login > .container .ast {
+      color: #f00;
+      margin-left: 5px; }
+    body main.admin-login > .container input[type="text"], body main.admin-login > .container input[type="email"] {
+      background-color: #fff !important; }
+    body main.admin-login > .container .btn {
+      text-transform: uppercase;
+      border-radius: 0px;
+      width: 220px;
+      padding: 10px 0px; }

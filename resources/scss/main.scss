@@ -5,7 +5,7 @@ body {
     height: auto;
     main {
         background: #ff0;
-        min-height: calc(100vh - 90px);
+        min-height: calc(100vh - 430px);
         .shop-by {
             h3 {
                 text-transform: uppercase;
@@ -200,6 +200,30 @@ body {
                     font-weight: bold;
                     font-size: 1.2rem;
                     margin: 10px 0px 0px 0px;
+                }
+            }
+        }
+        .category-search {
+            background-color: $black;
+            .inner {
+                flex-direction: column;
+                .App {
+                    margin: 10px auto;
+                    form {
+                        max-width: none;
+                        input[type="text"] {
+                            background-color: $black;
+                            color: $white;
+                            border: 2px solid $white;
+                            border-radius: 0px;
+                            padding: 10px 20px;
+                            width: 600px;
+                            max-width: 100%;
+                            &::placeholder {
+                                color: $white;
+                            }
+                        }
+                    }
                 }
             }
         }

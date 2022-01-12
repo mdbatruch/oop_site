@@ -1,0 +1,14 @@
+.not-found .inner-container {
+  padding-top: 4rem;
+  padding-bottom: 4rem; }
+  .not-found .inner-container h3 {
+    text-transform: uppercase; }
+  @media (min-width: 768px) {
+    .not-found .inner-container p {
+      width: 50%;
+      margin: 0 auto; } }
+  .not-found .inner-container .btn {
+    border-radius: 0px;
+    text-transform: uppercase;
+    width: 300px;
+    padding: 10px 0px; }

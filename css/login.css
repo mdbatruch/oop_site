@@ -1,0 +1,76 @@
+body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
+  height: 80%;
+  width: 100%;
+  max-width: none;
+  margin: auto;
+  align-items: center;
+  position: relative; }
+
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea {
+  width: 100%;
+  border-radius: 0px;
+  border: 1px solid #666;
+  background-color: #fff;
+  padding: 10px 20px; }
+
+body .login-registration > .container {
+  padding-top: 4rem;
+  padding-bottom: 4rem; }
+  body .login-registration > .container .login-container, body .login-registration > .container .register-container {
+    align-items: center; }
+    body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option {
+      display: none; }
+      @media (min-width: 768px) {
+        body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option {
+          border-right: 1px solid #d3d3d3; } }
+      @media (min-width: 768px) {
+        body .login-registration > .container .login-container .login-option p, body .login-registration > .container .register-container .login-option p {
+          width: 75%;
+          margin: 0 auto; } }
+      body .login-registration > .container .login-container .login-option .btn, body .login-registration > .container .register-container .login-option .btn {
+        text-transform: uppercase;
+        border-radius: 0px;
+        width: 220px;
+        padding: 10px 0px; }
+    @media (min-width: 768px) {
+      body .login-registration > .container .login-container .register-option p, body .login-registration > .container .register-container .register-option p {
+        width: 75%;
+        margin: 0 auto; } }
+    body .login-registration > .container .login-container .register-option .btn, body .login-registration > .container .register-container .register-option .btn {
+      text-transform: uppercase;
+      border-radius: 0px;
+      width: 220px;
+      padding: 10px 0px; }
+    @media (min-width: 768px) {
+      body .login-registration > .container .login-container form.customer-login, body .login-registration > .container .register-container form.customer-login {
+        border-right: 1px solid #d3d3d3; } }
+    body .login-registration > .container .login-container form.customer-register, body .login-registration > .container .register-container form.customer-register {
+      display: none; }
+      body .login-registration > .container .login-container form.customer-register .form-field-inner, body .login-registration > .container .register-container form.customer-register .form-field-inner {
+        flex-direction: column; }
+        @media (min-width: 1200px) {
+          body .login-registration > .container .login-container form.customer-register .form-field-inner, body .login-registration > .container .register-container form.customer-register .form-field-inner {
+            flex-direction: row; } }
+        body .login-registration > .container .login-container form.customer-register .form-field-inner > select, body .login-registration > .container .login-container form.customer-register .form-field-inner input, body .login-registration > .container .register-container form.customer-register .form-field-inner > select, body .login-registration > .container .register-container form.customer-register .form-field-inner input {
+          margin-bottom: 0.5rem; }
+        @media (min-width: 768px) {
+          body .login-registration > .container .login-container form.customer-register .form-field-inner #postal, body .login-registration > .container .register-container form.customer-register .form-field-inner #postal {
+            margin-right: 2rem; } }
+        body .login-registration > .container .login-container form.customer-register .form-field-inner #province, body .login-registration > .container .register-container form.customer-register .form-field-inner #province {
+          padding: 10px 20px;
+          color: #666; }
+          @media (min-width: 1200px) {
+            body .login-registration > .container .login-container form.customer-register .form-field-inner #province, body .login-registration > .container .register-container form.customer-register .form-field-inner #province {
+              margin-right: 2rem; } }
+    body .login-registration > .container .login-container form > div, body .login-registration > .container .register-container form > div {
+      margin: 0 auto; }
+      @media (max-width: 990px) {
+        body .login-registration > .container .login-container form > div, body .login-registration > .container .register-container form > div {
+          max-width: 300px; } }
+      body .login-registration > .container .login-container form > div .ast, body .login-registration > .container .register-container form > div .ast {
+        color: #f00;
+        margin-left: 5px; }
+      body .login-registration > .container .login-container form > div input[type="text"], body .login-registration > .container .login-container form > div input[type="email"], body .login-registration > .container .register-container form > div input[type="text"], body .login-registration > .container .register-container form > div input[type="email"] {
+        background-color: #fff !important; }
+      body .login-registration > .container .login-container form > div .btn, body .login-registration > .container .register-container form > div .btn {
+        text-transform: uppercase; }

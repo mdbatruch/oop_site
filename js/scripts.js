@@ -196,3 +196,37 @@ function filterProductRange() {
 
     });
 }
+
+function toggleLoginRegistration() {
+    var register = $('.register-option-button');
+    var register_form = $('#customer-register');
+    
+    var login = $('.login-option-button');
+    var login_form = $('#customer-login');
+
+    $(register).on('click', function(e) {
+
+        e.preventDefault();
+
+        $(this).parents('.register-option').addClass('d-none');
+        $(register_form).removeClass('d-none');
+        $(register_form).addClass('d-flex');
+
+        $(login_form).toggleClass('d-none');
+        $(login).parents('.login-option').removeClass('d-none');
+        $(login).parents('.login-option').addClass('d-flex');
+    });
+
+    $(login).on('click', function(e) {
+
+        e.preventDefault();
+
+        $(this).parents('.login-option').addClass('d-none');
+        $(login_form).removeClass('d-none');
+        $(login_form).addClass('d-flex');
+
+        $(register_form).addClass('d-none');
+        $(register).parents('.register-option').removeClass('d-none');
+        $(register).parents('.register-option').addClass('d-flex');
+    });
+}

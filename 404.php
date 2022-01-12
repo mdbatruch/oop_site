@@ -6,10 +6,15 @@
 
     $description = 'Page does not exist';
 
+    $term = explode('/', $_SERVER['REQUEST_URI']);
+    $term = end($term);
+
     $pages = $site->find_all_pages();
 
     $page = new Page($title, $description, $db);
     $site->setPage($page);
+
+    $subtotal = 0;
 
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
@@ -56,10 +61,19 @@
         </div>
     </div>
 </header>
-<main>
-<div class="container-fluid">
+<main class="not-found">
+    <?= $site->addCategorySearch($term); ?>
+    <div class="container-fluid">
         <div class="row">
-                Page not found!
+            <div class="col text-center inner-container">
+                <img src="<?= root_url('uploads/swords.png'); ?>" alt="Not Found" class="img-fluid">
+                <h3 class="my-4">That's a Miss.</h3>
+                <p class="my-4">
+                    Sorry, the page you are looking for does not exist or it may never have existed.
+                    Please try a new search or visit our Products page for other relevant items.
+                </p>
+                <a href="<?= root_url('products.php'); ?>" class="btn btn-black">Start Shopping</a>
+            </div>
         </div>
     </div>
 </main>

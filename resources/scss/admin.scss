@@ -1,3 +1,6 @@
+@import "colors";
+@import "extends";
+
 body {
     #admin-header {
         background-color: #343a40;
@@ -12,7 +15,7 @@ body {
                         left: 0;
                         li {
                             a {
-                                color: #000;
+                                color: $black;
                             }
                         }
                     }
@@ -40,7 +43,7 @@ body {
                 .nav-item {
                     background: #333;
                     > a {
-                        color: #fff;
+                        color: $white;
                         padding-left: 10px;
                     }
                     button {
@@ -70,6 +73,30 @@ body {
                             color: #fff;
                         }
                     }
+                }
+            }
+        }
+        &.admin-login {
+            align-items: center;
+            background-color: $mike-blue;
+            > .container {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+                .ast {
+                    color: $red;
+                    margin-left: 5px;
+                }
+                input, textarea {
+                    @extend %login-inputs;
+                }
+                input[type="text"], input[type="email"] {
+                    background-color: $white !important;
+                }
+                .btn {
+                    text-transform: uppercase;
+                    border-radius: 0px;
+                    width: 220px;
+                    padding: 10px 0px;
                 }
             }
         }

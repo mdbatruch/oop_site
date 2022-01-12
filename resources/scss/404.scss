@@ -1,0 +1,21 @@
+.not-found {
+    .inner-container {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        h3 {
+            text-transform: uppercase;
+        }
+        p {
+            @media (min-width: 768px) {
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+        .btn {
+            border-radius: 0px;
+            text-transform: uppercase;
+            width: 300px;
+            padding: 10px 0px;
+        }
+    }
+}

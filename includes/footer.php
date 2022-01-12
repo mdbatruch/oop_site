@@ -66,6 +66,9 @@
 
     filterProductRange();
 
+    // for login/register page
+    toggleLoginRegistration();
+
         $("#product-image").on("click", function(e) {
 
             e.preventDefault();

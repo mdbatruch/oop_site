@@ -1,5 +1,24 @@
+@import "colors";
+
 %btn-format {
     border-radius: 0px;
     text-transform: uppercase;
     padding: 10px 50px;
+  }
+
+  %login-border {
+    height: 80%;
+    width: 100%;
+    max-width: none;
+    margin: auto;
+    align-items: center;
+    position: relative;
+  }
+
+  %login-inputs {
+    width: 100%;
+    border-radius: 0px;
+    border: 1px solid $grey;
+    background-color: $white;
+    padding: 10px 20px;
   }

@@ -1,12 +1,10 @@
 <div class="container-fluid category-search text-white">
-    <?php if (isset($_GET['category'])) : ?>
-        <div class="row">
-            <div class="d-flex justify-content-center py-4">
-                <h4>
-                    Results for <?= ucwords($_GET['category']); ?>
-                </h4>
-                <div id="root"></div>
-            </div>
+    <div class="row">
+        <div class="d-flex text-center py-4 inner">
+            <h4>
+                Results for <?= isset($_GET['category']) ? ucwords($_GET['category']) : $value; ?>
+            </h4>
+            <div id="root"></div>
         </div>
-    <?php endif; ?>
+    </div>
 </div>

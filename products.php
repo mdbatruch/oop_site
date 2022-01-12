@@ -14,6 +14,8 @@
 
     $current_page = $_GET['page'] ?? 1;
     $per_page = 10;
+
+    $subtotal = 0;
     
     $url = root_url('products.php');
 
@@ -160,26 +162,6 @@
 <?= $site->addCategorySearch($category); ?>
 <?php endif; ?>
 <div id="products" class="container">
-    <div class="row d-none">
-        <div class="col-10 mb-4 mt-4">
-            <h3>Products Page</h3>
-            <?php if (isset($_GET['category'])) : ?>
-                <h5 class="filter-title">Filters</h5>
-                <ul class="filters">
-                    <li><?= $filter_name; ?></li>
-                </ul>
-                <button type="button" id="clear-category" class="btn btn-danger" data-dismiss="alert" aria-label="Close">Remove Category Filter</button>
-            <?php endif; ?>
-            <form>Sort By Category:
-                <select id="categories">
-                    <option value="">Select Category</option>
-                    <?php foreach ($categories as $category) : ?>
-                        <option value="<?= $category['id']; ?>" <?= $_GET['category'] == $category['name'] ? 'selected="selected"' : '';?>><?= $category['name']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </form>
-        </div>  
-    </div>
     <div class="row top-products">
         <div class="container-fluid">
             <div class="top-products-inner d-flex justify-content-between py-4">

@@ -23,7 +23,7 @@
             $this->page->render();
         }
 
-        public function addCategorySearch($category = '') {
+        public function addCategorySearch($value = '') {
             include('components/products/category-search.php'); 
         }
 

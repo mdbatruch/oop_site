@@ -8,6 +8,8 @@
 
     $page = 'Products';
 
+    $subtotal = 0;
+
     // make sure product id exists and if not, return to products page
     $stmt = $product->getAllProducts();
 

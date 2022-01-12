@@ -1,0 +1,98 @@
+@import "colors";
+@import "extends";
+
+body {
+    .login-registration {
+        > .container {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            .login-container, .register-container {
+                align-items: center;
+                .login-option {
+                    display: none;
+                    @extend %login-border;
+                    @media(min-width: 768px) {
+                        border-right: 1px solid $lightgrey;
+                    }
+                    p {
+                        @media(min-width: 768px) {
+                            width: 75%;
+                            margin: 0 auto;
+                        }
+                    }
+                    .btn {
+                        text-transform: uppercase;
+                        border-radius: 0px;
+                        width: 220px;
+                        padding: 10px 0px;
+                    }
+                }
+                .register-option {
+                    p {
+                        @media(min-width: 768px) {
+                            width: 75%;
+                            margin: 0 auto;
+                        }
+                    }
+                    .btn {
+                        text-transform: uppercase;
+                        border-radius: 0px;
+                        width: 220px;
+                        padding: 10px 0px;
+                    }
+                }
+                form {
+                    @extend %login-border;
+                    &.customer-login {
+                        @media(min-width: 768px) {
+                            border-right: 1px solid $lightgrey;
+                        }
+                    }
+                    &.customer-register {
+                        display: none;
+                        .form-field-inner {
+                            flex-direction: column;
+                            @media(min-width: 1200px) {
+                                flex-direction: row;
+                            }
+                            > select, input {
+                                margin-bottom: 0.5rem;
+                            }
+                            #postal {
+                                @media(min-width: 768px) {
+                                    margin-right: 2rem;
+                                }
+                            }
+                            #province {
+                                padding: 10px 20px;
+                                color: $grey;
+                                @media(min-width: 1200px) {
+                                    margin-right: 2rem;
+                                }
+                            }
+                        }
+                    }
+                    > div {
+                        margin: 0 auto;
+                        @media(max-width: 990px) {
+                            max-width: 300px;
+                        }
+                        .ast {
+                            color: $red;
+                            margin-left: 5px;
+                        }
+                        input, textarea {
+                            @extend %login-inputs;
+                        }
+                        input[type="text"], input[type="email"] {
+                            background-color: $white !important;
+                        }
+                        .btn {
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
