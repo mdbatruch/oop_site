@@ -69,6 +69,28 @@
     // for login/register page
     toggleLoginRegistration();
 
+
+    // move to function when complete
+    //home page pills tab temp location
+
+    var tab_content = $('#v-pills-tabContent');
+
+    $(".nav-pills a").mouseover( function() {
+        $(this).tab("show");
+    });
+
+    $(".nav-pills a, .tab-content .tab-pane.active.show").mouseleave( function() {
+        $(this).removeClass('active show');
+
+        $.each($(tab_content).children('.tab-pane'), function() {
+            if ($(this).hasClass('active show')) {
+                $(this).removeClass('active show');
+            }
+        });
+    });
+
+    //
+
         $("#product-image").on("click", function(e) {
 
             e.preventDefault();
@@ -262,26 +284,38 @@
         var first_name = $('#firstname').val();
         var last_name = $('#lastname').val();
         var email = $('#email').val();
-        var address = $('#address').val();
+        var street = $('#street').val();
+        var suite = $('#suite').val();
+        var city = $('#city').val();
+        var province = $('#province').val();
+        var postal = $('#postal').val();
+        var country = $('#country').val();
         var username = $('#username').val();
         var password = $('#password').val();
-        var password_validate = $('#confirm-password').val();
+        var p_validate = $('#confirm-password').val();
 
+        var address = {
+            street: street,
+            suite: suite,
+            city: city,
+            province: province,
+            postal: postal,
+            country: country
+        }
 
-        console.log(id, first_name, last_name, email, address, username);
+        console.log(id, first_name, last_name, email, street, suite, city, province, postal, country, username);
 
-        // data = {id:id, firstname: first_name, lastname: last_name, email: email, address: address, username: username};
+        // if (password !== password_validate) {
+        //     $('#confirm-password-error').html('<div class="alert alert-danger mt-3 input-alert-error">Passwords do not match, please try again<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        // } else 
+        
+        // {
 
-        // console.log(data);
-
-        if (password !== password_validate) {
-            $('#confirm-password-error').html('<div class="alert alert-danger mt-3 input-alert-error">Passwords do not match, please try again<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        } else {
             $.ajax({
                 type: "POST",
                 url: "private/process.php",
                 dataType: "json",
-                data: {id:id, firstname: first_name, lastname: last_name, email: email, address: address, username: username, password: password},
+                data: {id:id, firstname: first_name, lastname: last_name, email: email, address: address, username: username, password: password, p_validate: p_validate},
             }).done(function(data) {
 
                 if(!data.success) {
@@ -303,11 +337,36 @@
                                 $('#email-error').html('');
                             }
 
-                    if(data.errors.address) {
-                        $('#address-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.address + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                            } else {
-                                $('#address-error').html('');
-                            }
+                    if(data.errors.street) {
+                        $('#street-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.street + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        } else {
+                            $('#street-error').html('');
+                        }
+
+
+                    if(data.errors.city) {
+                        $('#city-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.city + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        } else {
+                            $('#city-error').html('');
+                        }
+
+                    if(data.errors.province) {
+                        $('#province-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.province + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        } else {
+                            $('#province-error').html('');
+                        }
+
+                    if(data.errors.postal) {
+                        $('#postal-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.postal + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        } else {
+                            $('#postal-error').html('');
+                        }
+
+                    if(data.errors.country) {
+                        $('#country-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.country + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        } else {
+                            $('#country-error').html('');
+                        }
 
                     if(data.errors.username) {
                         $('#username-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.username + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -319,6 +378,12 @@
                         $('#password-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.password + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                             } else {
                                 $('#password-error').html('');
+                            }
+
+                    if(data.errors.p_validate) {
+                        $('#confirm-password-error').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.p_validate + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#confirm-password-error').html('');
                             }
 
 
@@ -340,7 +405,7 @@
 
                     }
             });
-        }
+        // }
 
         });
 

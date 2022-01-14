@@ -76,6 +76,14 @@
             include "$private/includes/customer/navigation.php";
         }
 
+        public function addCustomerLoginForm() {
+            require_once("components/forms/customer-login-form.php");
+        }
+
+        public function addCustomerRegistrationForm() {
+            require_once("components/forms/customer-registration-form.php");
+        }
+
         public function addCheckoutForm() {
             require_once("includes/checkout-form.php");
         }

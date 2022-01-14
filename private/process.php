@@ -569,10 +569,11 @@
         $address = $_POST['address'];
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $p_validate = $_POST['p_validate'];
 
         $customer = new Customer($db);
 
-        $customer->create_customer($firstname, $lastname, $email, $address, $username, $password);
+        $customer->create_customer($firstname, $lastname, $email, $address, $username, $password, $p_validate);
 
       break;
 

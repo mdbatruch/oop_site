@@ -51,17 +51,17 @@ body .login-registration > .container {
         @media (min-width: 1200px) {
           body .login-registration > .container .login-container form.customer-register .form-field-inner, body .login-registration > .container .register-container form.customer-register .form-field-inner {
             flex-direction: row; } }
-        body .login-registration > .container .login-container form.customer-register .form-field-inner > select, body .login-registration > .container .login-container form.customer-register .form-field-inner input, body .login-registration > .container .register-container form.customer-register .form-field-inner > select, body .login-registration > .container .register-container form.customer-register .form-field-inner input {
+        body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container > select, body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container input, body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container > select, body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container input {
           margin-bottom: 0.5rem; }
-        @media (min-width: 768px) {
-          body .login-registration > .container .login-container form.customer-register .form-field-inner #postal, body .login-registration > .container .register-container form.customer-register .form-field-inner #postal {
+        @media (min-width: 1200px) {
+          body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container:first-child, body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container:first-child {
             margin-right: 2rem; } }
-        body .login-registration > .container .login-container form.customer-register .form-field-inner #province, body .login-registration > .container .register-container form.customer-register .form-field-inner #province {
+        body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container:first-child #province, body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container:first-child #province {
           padding: 10px 20px;
           color: #666; }
-          @media (min-width: 1200px) {
-            body .login-registration > .container .login-container form.customer-register .form-field-inner #province, body .login-registration > .container .register-container form.customer-register .form-field-inner #province {
-              margin-right: 2rem; } }
+        @media (min-width: 1200px) {
+          body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container:nth-child(2), body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container:nth-child(2) {
+            margin-right: 2rem; } }
     body .login-registration > .container .login-container form > div, body .login-registration > .container .register-container form > div {
       margin: 0 auto; }
       @media (max-width: 990px) {

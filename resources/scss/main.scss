@@ -43,6 +43,39 @@ body {
                 }
             }
         }
+        .browse-categories {
+            #root {
+                .App {
+                    margin: 0px;
+                    max-width: none;
+                    width: 100%;
+                    form {
+                        max-width: none;
+                    }
+                }
+            }
+            .nav {
+                a {
+                    text-transform: uppercase;
+                }
+            }
+            .tab-content {
+                z-index: 10;
+                @media(min-width: 768px) {
+                    position: absolute;
+                    width: 50%;
+                }
+                @media(min-width: 1200px) {
+                    width: 25%;
+                }
+                .tab-pane {
+                    background-color: rgba(25, 123, 48, 0.85);
+                }
+                p {
+                    color: $white;
+                }
+            }
+        }
         .featured-products {
             position: relative;
             h3 {

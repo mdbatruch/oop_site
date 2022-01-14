@@ -127,10 +127,6 @@
 
             } else {
 
-                // $success = false;
-
-            // if ($success) {
-
                 $product = json_encode($products);
 
                 try {
@@ -156,7 +152,6 @@
                     $data['message'] = 'There was an issue!';
 
                 }
-            // }
 
             }
 

@@ -16,8 +16,31 @@ class Customer extends Cart {
         $this->conn = $db;
     }
 
-    public function create_customer($firstName, $lastName, $email, $address, $username, $password) {
+    public function create_customer($firstName, $lastName, $email, $address, $username, $password, $p_validate) {
+        
+        if (empty($address['street'])) {
+            $errors['street'] = 'Street cannot be blank';
+        }
 
+        if (empty($address['city'])) {
+            $errors['city'] = 'City cannot be blank';
+        }
+
+        if (empty($address['postal'])) {
+            $errors['postal'] = 'Postal Code cannot be blank';
+        }
+
+        if (empty($address['province'])) {
+            $errors['province'] = 'Province cannot be blank';
+        }
+
+        if (empty($address['country'])) {
+            $errors['country'] = 'Country cannot be blank';
+        }
+
+        if (empty($firstName)) {
+            $errors['firstname'] = 'First name cannot be blank';
+          }
 
         if (empty($firstName)) {
             $errors['firstname'] = 'First name cannot be blank';
@@ -26,6 +49,8 @@ class Customer extends Cart {
         if (empty($lastName)) {
             $errors['lastname'] = 'Last name cannot be blank';
         }
+
+        $address = json_encode($address);
 
         if (empty($email)) {
             $errors['email'] = 'Email cannot be blank';
@@ -42,10 +67,6 @@ class Customer extends Cart {
                 $errors['email'] = 'There is already an account associated with this email. Please contact the administrator for assistance with your account.';
             }
 
-        }
-
-        if (empty($address)) {
-            $errors['address'] = 'Address cannot be blank';
         }
 
         if (empty($username)) {
@@ -65,6 +86,8 @@ class Customer extends Cart {
 
         if (empty($password)) {
             $errors['password'] = 'Password cannot be blank';
+        } else if ($password !== $p_validate) {
+            $errors['p_validate'] = 'Passwords do not match';
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
         }

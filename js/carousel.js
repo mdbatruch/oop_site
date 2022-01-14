@@ -39,3 +39,17 @@
     });
   
   })(jQuery);
+
+  (function ($) {
+
+    var slider = tns({
+      container: '.pills-promo-slider',
+      items: 1,
+      slideBy: 'page',
+      autoplay: false,
+      nav: true,
+      mouseDrag: true,
+      controlsContainer: "#pills-promos-controls",
+    });
+  
+  })(jQuery);

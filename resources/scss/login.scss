@@ -55,19 +55,23 @@ body {
                             @media(min-width: 1200px) {
                                 flex-direction: row;
                             }
-                            > select, input {
-                                margin-bottom: 0.5rem;
-                            }
-                            #postal {
-                                @media(min-width: 768px) {
-                                    margin-right: 2rem;
+                            .field-container {
+                                > select, input {
+                                    margin-bottom: 0.5rem;
                                 }
-                            }
-                            #province {
-                                padding: 10px 20px;
-                                color: $grey;
-                                @media(min-width: 1200px) {
-                                    margin-right: 2rem;
+                                &:first-child {
+                                    @media(min-width: 1200px) {
+                                        margin-right: 2rem;
+                                    }
+                                    #province {
+                                        padding: 10px 20px;
+                                        color: $grey;
+                                    }
+                                }
+                                &:nth-child(2) {
+                                    @media(min-width: 1200px) {
+                                        margin-right: 2rem;
+                                    }
                                 }
                             }
                         }

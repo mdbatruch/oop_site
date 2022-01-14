@@ -99,7 +99,7 @@
         <?php if ($page->isHome()) : ?>
             <?php 
             
-            include 'components/homepage/search-component.php';
+            include 'components/homepage/pill-component.php';
             include 'components/homepage/set-component.php'; 
             include 'components/homepage/featured-component.php';
             include 'components/homepage/single-banner-component.php';
