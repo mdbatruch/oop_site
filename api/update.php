@@ -37,7 +37,7 @@ if($product->update()){
     http_response_code(200);
   
     echo json_encode(array("message" => "Product was updated."));
-}
+} 
   
 else{
   

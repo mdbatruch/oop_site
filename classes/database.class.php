@@ -22,9 +22,9 @@
         public function getConnection() {
             
             $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $this->path . '/.env/db.ini');
-
+            
             $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
-            $this->conn = new PDO($dsn, 'root', 'root');
+            $this->conn = new PDO($dsn, 'root', '');
 
             return $this->conn;
         }

@@ -1,4 +1,4 @@
-<div class="row text-center promos mb-4">
+<div class="row text-center pill-promos-container">
     <ul class="controls" id="pills-promos-controls" aria-label="Carousel Navigation" tabindex="0">
         <li class="prev" data-controls="prev" aria-controls="customize" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -12,7 +12,7 @@
         </li>
     </ul>
     <div class="pills-promo-slider">
-        <div class="col-12 set mb-4 promo">
+        <div class="col-12 set promo">
             <img src="<?= root_url('uploads/mumak.jpeg'); ?>" alt="Mumak" class="img-fluid">  
             <div class="promo-info">
                 <h4>Welcome to Middle-earth™</h4>
@@ -22,7 +22,7 @@
                 <a href="#" class="btn btn-warning">Find out More</a>
             </div>
         </div>
-        <div class="col-12 set mb-4 promo">
+        <div class="col-12 set promo">
             <img src="<?= root_url('uploads/ravagers.jpeg'); ?>" alt="Ravagers of the North" class="img-fluid">  
             <div class="promo-info">
                 <h4>Reave and Ravage</h4>

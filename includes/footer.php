@@ -69,28 +69,6 @@
     // for login/register page
     toggleLoginRegistration();
 
-
-    // move to function when complete
-    //home page pills tab temp location
-
-    var tab_content = $('#v-pills-tabContent');
-
-    $(".nav-pills a").mouseover( function() {
-        $(this).tab("show");
-    });
-
-    $(".nav-pills a, .tab-content .tab-pane.active.show").mouseleave( function() {
-        $(this).removeClass('active show');
-
-        $.each($(tab_content).children('.tab-pane'), function() {
-            if ($(this).hasClass('active show')) {
-                $(this).removeClass('active show');
-            }
-        });
-    });
-
-    //
-
         $("#product-image").on("click", function(e) {
 
             e.preventDefault();

@@ -6,6 +6,10 @@ body {
     main {
         background: #ff0;
         min-height: calc(100vh - 430px);
+        .page-content {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
         .shop-by {
             h3 {
                 text-transform: uppercase;
@@ -44,32 +48,106 @@ body {
             }
         }
         .browse-categories {
+            @media(max-width: 1029px) {
+                display: none;
+            }
             #root {
+                position: relative;
+                z-index: 100;
                 .App {
                     margin: 0px;
                     max-width: none;
                     width: 100%;
                     form {
                         max-width: none;
+                        input[type="text"] {
+                            border-radius: 0px;
+                            padding: 3px;
+                            border: 1px solid $grey-999;
+                        }
+                        #container {
+                            .show {
+                                position: absolute;
+                                background-color: $white;
+                                width: 100%;
+                                padding: 20px;
+                            }
+                            ul {
+                                left: auto;
+                                max-width: none;
+                                width: 100%;
+                                li {
+                                    img {
+                                        max-width: 250px;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
             .nav {
+                justify-content: space-between;
+                height: 100%;
+                position: relative;
                 a {
                     text-transform: uppercase;
+                    background-color: $lightgrey;
+                    color: $black;
+                    border-radius: 0px;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-size: 0.85rem;
+                    @media(min-width: 1240px) {
+                        font-size: 16px;
+                    }
+                    &.nav-link-header {
+                        background-color: $black;
+                        &:hover {
+                            background-color: $black;
+                        }
+                    }
+                    &:hover, &.active {
+                        background-color: $brand-green;
+                        color: $white;
+                        .tab-pane { 
+                            display: block;
+                        }
+                    }
+                    svg {
+                        color: $white;
+                        fill: $white;
+                    }
+                    .tab-pane {
+                        position: absolute;
+                        left: 100%;
+                        z-index: 100;
+                        height: 100%;
+                        background-color: rgba(25, 123, 48, 0.85);
+                        width: 200%;
+                        top: 0;
+                        display: none;
+                        color: $white;
+                    }
                 }
             }
             .tab-content {
-                z-index: 10;
+                z-index: 75;
+                height: 100%;
                 @media(min-width: 768px) {
                     position: absolute;
                     width: 50%;
                 }
                 @media(min-width: 1200px) {
-                    width: 25%;
+                    width: 40%;
                 }
                 .tab-pane {
                     background-color: rgba(25, 123, 48, 0.85);
+                    position: relative;
+                    right: 12px;
+                    height: 100%;
                 }
                 p {
                     color: $white;
@@ -136,7 +214,7 @@ body {
                 border-radius: 0px;
             }
         }
-        .promos {
+        .promos, .pill-promos-container {
             position: relative;
             .controls {
                 margin: 0;
