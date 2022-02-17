@@ -19,7 +19,7 @@ body .btn {
     color: #fff !important; }
     body .btn.btn-black:hover {
       background-color: #fff !important;
-      border-color: #fff;
+      border-color: #fff !important;
       color: #000 !important; }
 
 #cart .cart-header {

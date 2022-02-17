@@ -12,6 +12,12 @@ body {
       padding: 12px 0px; }
     body main .shop-by .set {
       position: relative; }
+      @media (max-width: 1199px) {
+        body main .shop-by .set {
+          margin-bottom: 1rem; } }
+      @media (min-width: 767px) {
+        body main .shop-by .set:nth-child(4), body main .shop-by .set:last-child {
+          margin-bottom: 0; } }
       body main .shop-by .set .img-container {
         background-position: 50% 50%;
         background-repeat: no-repeat;
@@ -25,7 +31,7 @@ body {
           top: 0;
           right: 0;
           position: absolute;
-          background: rgba(100, 100, 100, 0.5); }
+          background: rgba(150, 150, 150, 0.5); }
       body main .shop-by .set strong {
         color: #fff;
         background-color: #000;
@@ -35,8 +41,13 @@ body {
         text-align: center;
         justify-content: center;
         position: absolute;
-        bottom: calc(50% - 44px);
-        left: calc(50% - 87px); }
+        transform: translateY(-50%);
+        top: 50%;
+        width: 200px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto; }
     @media (max-width: 1029px) {
       body main .browse-categories {
         display: none; } }
@@ -51,7 +62,7 @@ body {
           max-width: none; }
           body main .browse-categories #root .App form input[type="text"] {
             border-radius: 0px;
-            padding: 3px;
+            padding: 10px;
             border: 1px solid #999; }
           body main .browse-categories #root .App form #container .show {
             position: absolute;
@@ -68,10 +79,12 @@ body {
       justify-content: space-between;
       height: 100%;
       position: relative; }
-      body main .browse-categories .nav a {
+      body main .browse-categories .nav div.pill-link {
         text-transform: uppercase;
         background-color: #d3d3d3;
+        padding: 0.5rem 1rem;
         color: #000;
+        cursor: pointer;
         border-radius: 0px;
         flex: 1;
         display: flex;
@@ -79,30 +92,51 @@ body {
         justify-content: space-between;
         font-size: 0.85rem; }
         @media (min-width: 1240px) {
-          body main .browse-categories .nav a {
+          body main .browse-categories .nav div.pill-link {
             font-size: 16px; } }
-        body main .browse-categories .nav a.nav-link-header {
-          background-color: #000; }
-          body main .browse-categories .nav a.nav-link-header:hover {
+        body main .browse-categories .nav div.pill-link.nav-link-header {
+          background-color: #000;
+          line-height: 2.75; }
+          body main .browse-categories .nav div.pill-link.nav-link-header:hover {
             background-color: #000; }
-        body main .browse-categories .nav a:hover, body main .browse-categories .nav a.active {
+        body main .browse-categories .nav div.pill-link:hover, body main .browse-categories .nav div.pill-link.active {
           background-color: #197b30;
           color: #fff; }
-          body main .browse-categories .nav a:hover .tab-pane, body main .browse-categories .nav a.active .tab-pane {
+          body main .browse-categories .nav div.pill-link:hover .tab-pane, body main .browse-categories .nav div.pill-link.active .tab-pane {
             display: block; }
-        body main .browse-categories .nav a svg {
+        body main .browse-categories .nav div.pill-link svg {
           color: #fff;
           fill: #fff; }
-        body main .browse-categories .nav a .tab-pane {
+        body main .browse-categories .nav div.pill-link .tab-pane {
           position: absolute;
           left: 100%;
           z-index: 100;
           height: 100%;
-          background-color: rgba(25, 123, 48, 0.85);
-          width: 200%;
+          background-color: rgba(25, 123, 48, 0.75);
+          width: 125%;
           top: 0;
           display: none;
           color: #fff; }
+          body main .browse-categories .nav div.pill-link .tab-pane .category.menu {
+            padding-left: 0px; }
+            body main .browse-categories .nav div.pill-link .tab-pane .category.menu li {
+              list-style: none; }
+              body main .browse-categories .nav div.pill-link .tab-pane .category.menu li a {
+                color: #fff;
+                text-decoration: none;
+                text-transform: initial;
+                line-height: 2; }
+                body main .browse-categories .nav div.pill-link .tab-pane .category.menu li a.category-header {
+                  text-decoration: underline;
+                  font-size: 1.2rem; }
+            body main .browse-categories .nav div.pill-link .tab-pane .category.menu ul {
+              padding-left: 0px; }
+              body main .browse-categories .nav div.pill-link .tab-pane .category.menu ul li {
+                list-style: none; }
+                body main .browse-categories .nav div.pill-link .tab-pane .category.menu ul li a {
+                  color: #fff;
+                  text-decoration: none;
+                  text-transform: initial; }
     body main .browse-categories .tab-content {
       z-index: 75;
       height: 100%; }
@@ -121,9 +155,33 @@ body {
       body main .browse-categories .tab-content p {
         color: #fff; }
     body main .featured-products {
-      position: relative; }
+      position: relative;
+      margin-bottom: 3rem; }
       body main .featured-products h3 {
         text-transform: uppercase; }
+      body main .featured-products .tns-item {
+        position: relative; }
+        @media (min-width: 1200px) {
+          body main .featured-products .tns-item h4 {
+            font-size: 1.25rem; } }
+        body main .featured-products .tns-item img {
+          max-height: 300px; }
+        body main .featured-products .tns-item .price {
+          color: #A0A0A0;
+          font-weight: 700; }
+        body main .featured-products .tns-item a svg {
+          position: absolute;
+          right: calc(var(--bs-gutter-x) * .5);
+          top: 32px;
+          fill: #000;
+          color: #000;
+          cursor: pointer;
+          transition: all 0.5s ease;
+          -webkit-transition: all 0.5s ease; }
+          body main .featured-products .tns-item a svg:hover {
+            background-color: #197b30;
+            color: #fff;
+            fill: #fff; }
       body main .featured-products .controls {
         margin: 0;
         padding: 0;
@@ -153,8 +211,9 @@ body {
           @media (min-width: 600px) {
             body main .featured-products .controls li.next {
               right: -50px; } }
-        body main .featured-products .controls i {
-          font-size: 3rem; }
+        body main .featured-products .controls svg {
+          font-size: 3rem;
+          color: #d3d3d3; }
       body main .featured-products .featured-info {
         text-align: center; }
         @media (min-width: 600px) {
@@ -162,8 +221,20 @@ body {
             text-align: left; } }
     body main .latest-releases h3 {
       text-transform: uppercase; }
-    body main .latest-releases .btn {
-      border-radius: 0px; }
+    body main .latest-releases .set {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
+      body main .latest-releases .set .img-container {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 150px; }
+      body main .latest-releases .set .btn {
+        border-radius: 0px; }
+    body main .single-banner {
+      margin-bottom: 3rem;
+      justify-content: center; }
     body main .promos, body main .pill-promos-container {
       position: relative; }
       body main .promos .controls, body main .pill-promos-container .controls {
