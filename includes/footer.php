@@ -503,9 +503,8 @@
                                 }
                         });
 
+                    evaluateProductSubTotal(product_price_unformatted);
                 }
-
-               evaluateProductSubTotal(product_price_unformatted);
 
             });
 

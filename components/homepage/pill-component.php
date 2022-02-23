@@ -1,22 +1,25 @@
-<div class="browse-categories bd-categories-tabs">
+<div class="browse-categories bd-categories-tabs container pt-4">
   <div class="row">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-3">
-                <div class="nav">
-                    <div class="pill-link nav-link-header text-white w-100" id="#" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-title" aria-selected="false">
-                      Browse Category
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                      </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="col-9 px-0">
-                <div id="root"></div>
-            </div>
-        </div>
-    </div>
+      <div class="col-12">
+          <div class="row">
+              <div class="col-3">
+                  <div class="nav">
+                      <div class="pill-link nav-link-header text-white w-100" id="#" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-title" aria-selected="false">
+                        Browse Category
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-9 px-0">
+                  <div id="root"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row position-relative">
+    <div class="bg"></div>
     <div class="col-3">
       <div class="nav flex-column nav-pills" id="v-pills-tab">
         <div class="pill-link" id="v-pills-new-tab">
@@ -72,7 +75,7 @@
                     <ul class="sub-menu mt-4">
                       <li><a class="category-link" href="<?= root_url('products.php?page=1&category=minas+tirith'); ?>">Minas Tirith</a></li>
                       <li><a class="category-link" href="<?= root_url('products.php?page=1&category=rohan'); ?>">Rohan</a></li>
-                      <li><a class="category-link" href="<?= root_url('products.php?page=1&category=mirkwood'); ?>">Mirkwood</a></li>
+                      <li><a class="category-link" href="<?= root_url('products.php?page=1&category=the+fellowship'); ?>">The Fellowship</a></li>
                     </ul>
                 </li>
               </ul> 
@@ -93,6 +96,7 @@
                          <li><a class="category-link" href="<?= root_url('products.php?page=1&category=isengard'); ?>" target="_self">Isengard</a></li>
                         <li><a class="category-link" href="<?= root_url('products.php?page=1&category=mordor'); ?>">Mordor</a></li>
                         <li><a class="category-link" href="<?= root_url('products.php?page=1&category=moria'); ?>">Moria</a></li>
+                        <li><a class="category-link" href="<?= root_url('products.php?page=1&category=desolator+of+the+north'); ?>">Desolator of the North</a></li>
                        </ul>
                    </li>
                 </ul> 

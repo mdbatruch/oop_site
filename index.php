@@ -83,6 +83,15 @@
     </div>
 </header>
 <main class="<?= $page->isHome() ? 'home': '';?> pb-4">
+
+    <?php if ($page->isHome()) : ?>
+        <div class="container-fluid">
+            <?php 
+                include 'components/homepage/pill-component.php';
+            ?>
+        </div>
+    <?php endif; ?>
+
 <div class="container">
         <div class="row">
         <?php if ($gallery) :?>
@@ -98,8 +107,7 @@
         </div>
         <?php if ($page->isHome()) : ?>
             <?php 
-            
-            include 'components/homepage/pill-component.php';
+    
             include 'components/homepage/set-component.php'; 
             include 'components/homepage/featured-component.php';
             include 'components/homepage/single-banner-component.php';

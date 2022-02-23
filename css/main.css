@@ -1,15 +1,63 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Thin.ttf") format("opentype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Light.ttf") format("opentype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Medium.ttf") format("opentype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Bold.ttf") format("opentype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Black.ttf") format("opentype");
+  font-weight: 800;
+  font-style: normal; }
+
 body {
   background-color: #f00;
-  height: auto; }
+  height: auto;
+  font-family: "Roboto", sans-serif; }
   body main {
     background: #ff0;
     min-height: calc(100vh - 430px); }
     body main .page-content {
       padding-top: 20px;
       padding-bottom: 20px; }
+    body main .close {
+      float: right;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #000;
+      text-shadow: 0 1px 0 #fff;
+      opacity: .5;
+      border: none;
+      background: transparent; }
     body main .shop-by h3 {
       text-transform: uppercase;
-      padding: 12px 0px; }
+      padding: 12px 0px;
+      letter-spacing: 1.5px; }
     body main .shop-by .set {
       position: relative; }
       @media (max-width: 1199px) {
@@ -49,39 +97,39 @@ body {
         margin-left: auto;
         margin-right: auto; }
     @media (max-width: 1029px) {
-      body main .browse-categories {
+      body main .container-fluid .browse-categories {
         display: none; } }
-    body main .browse-categories #root {
+    body main .container-fluid .browse-categories #root {
       position: relative;
       z-index: 100; }
-      body main .browse-categories #root .App {
+      body main .container-fluid .browse-categories #root .App {
         margin: 0px;
         max-width: none;
         width: 100%; }
-        body main .browse-categories #root .App form {
+        body main .container-fluid .browse-categories #root .App form {
           max-width: none; }
-          body main .browse-categories #root .App form input[type="text"] {
+          body main .container-fluid .browse-categories #root .App form input[type="text"] {
             border-radius: 0px;
             padding: 10px;
             border: 1px solid #999; }
-          body main .browse-categories #root .App form #container .show {
+          body main .container-fluid .browse-categories #root .App form #container .show {
             position: absolute;
             background-color: #fff;
             width: 100%;
             padding: 20px; }
-          body main .browse-categories #root .App form #container ul {
+          body main .container-fluid .browse-categories #root .App form #container ul {
             left: auto;
             max-width: none;
             width: 100%; }
-            body main .browse-categories #root .App form #container ul li img {
+            body main .container-fluid .browse-categories #root .App form #container ul li img {
               max-width: 250px; }
-    body main .browse-categories .nav {
+    body main .container-fluid .browse-categories .nav {
       justify-content: space-between;
       height: 100%;
       position: relative; }
-      body main .browse-categories .nav div.pill-link {
+      body main .container-fluid .browse-categories .nav div.pill-link {
         text-transform: uppercase;
-        background-color: #d3d3d3;
+        background-color: #A0A0A0;
         padding: 0.5rem 1rem;
         color: #000;
         cursor: pointer;
@@ -92,22 +140,22 @@ body {
         justify-content: space-between;
         font-size: 0.85rem; }
         @media (min-width: 1240px) {
-          body main .browse-categories .nav div.pill-link {
+          body main .container-fluid .browse-categories .nav div.pill-link {
             font-size: 16px; } }
-        body main .browse-categories .nav div.pill-link.nav-link-header {
+        body main .container-fluid .browse-categories .nav div.pill-link.nav-link-header {
           background-color: #000;
           line-height: 2.75; }
-          body main .browse-categories .nav div.pill-link.nav-link-header:hover {
+          body main .container-fluid .browse-categories .nav div.pill-link.nav-link-header:hover {
             background-color: #000; }
-        body main .browse-categories .nav div.pill-link:hover, body main .browse-categories .nav div.pill-link.active {
+        body main .container-fluid .browse-categories .nav div.pill-link:hover, body main .container-fluid .browse-categories .nav div.pill-link.active {
           background-color: #197b30;
           color: #fff; }
-          body main .browse-categories .nav div.pill-link:hover .tab-pane, body main .browse-categories .nav div.pill-link.active .tab-pane {
+          body main .container-fluid .browse-categories .nav div.pill-link:hover .tab-pane, body main .container-fluid .browse-categories .nav div.pill-link.active .tab-pane {
             display: block; }
-        body main .browse-categories .nav div.pill-link svg {
+        body main .container-fluid .browse-categories .nav div.pill-link svg {
           color: #fff;
           fill: #fff; }
-        body main .browse-categories .nav div.pill-link .tab-pane {
+        body main .container-fluid .browse-categories .nav div.pill-link .tab-pane {
           position: absolute;
           left: 100%;
           z-index: 100;
@@ -117,71 +165,117 @@ body {
           top: 0;
           display: none;
           color: #fff; }
-          body main .browse-categories .nav div.pill-link .tab-pane .category.menu {
+          body main .container-fluid .browse-categories .nav div.pill-link .tab-pane .category.menu {
             padding-left: 0px; }
-            body main .browse-categories .nav div.pill-link .tab-pane .category.menu li {
+            body main .container-fluid .browse-categories .nav div.pill-link .tab-pane .category.menu li {
               list-style: none; }
-              body main .browse-categories .nav div.pill-link .tab-pane .category.menu li a {
+              body main .container-fluid .browse-categories .nav div.pill-link .tab-pane .category.menu li a {
                 color: #fff;
                 text-decoration: none;
                 text-transform: initial;
                 line-height: 2; }
-                body main .browse-categories .nav div.pill-link .tab-pane .category.menu li a.category-header {
+                body main .container-fluid .browse-categories .nav div.pill-link .tab-pane .category.menu li a.category-header {
                   text-decoration: underline;
                   font-size: 1.2rem; }
-            body main .browse-categories .nav div.pill-link .tab-pane .category.menu ul {
+            body main .container-fluid .browse-categories .nav div.pill-link .tab-pane .category.menu ul {
               padding-left: 0px; }
-              body main .browse-categories .nav div.pill-link .tab-pane .category.menu ul li {
+              body main .container-fluid .browse-categories .nav div.pill-link .tab-pane .category.menu ul li {
                 list-style: none; }
-                body main .browse-categories .nav div.pill-link .tab-pane .category.menu ul li a {
+                body main .container-fluid .browse-categories .nav div.pill-link .tab-pane .category.menu ul li a {
                   color: #fff;
                   text-decoration: none;
                   text-transform: initial; }
-    body main .browse-categories .tab-content {
+    body main .container-fluid .browse-categories .tab-content {
       z-index: 75;
       height: 100%; }
       @media (min-width: 768px) {
-        body main .browse-categories .tab-content {
+        body main .container-fluid .browse-categories .tab-content {
           position: absolute;
           width: 50%; } }
       @media (min-width: 1200px) {
-        body main .browse-categories .tab-content {
+        body main .container-fluid .browse-categories .tab-content {
           width: 40%; } }
-      body main .browse-categories .tab-content .tab-pane {
+      body main .container-fluid .browse-categories .tab-content .tab-pane {
         background-color: rgba(25, 123, 48, 0.85);
         position: relative;
         right: 12px;
         height: 100%; }
-      body main .browse-categories .tab-content p {
+      body main .container-fluid .browse-categories .tab-content p {
         color: #fff; }
+    body main .container-fluid .browse-categories .bg:after {
+      background-color: #d3d3d3;
+      transform: scaleX(1.5);
+      width: 100%;
+      height: 100%;
+      right: 0;
+      top: 0;
+      position: absolute;
+      content: ""; }
     body main .featured-products {
       position: relative;
       margin-bottom: 3rem; }
       body main .featured-products h3 {
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        letter-spacing: 1.5px; }
       body main .featured-products .tns-item {
         position: relative; }
         @media (min-width: 1200px) {
           body main .featured-products .tns-item h4 {
             font-size: 1.25rem; } }
         body main .featured-products .tns-item img {
-          max-height: 300px; }
+          max-height: 265px; }
         body main .featured-products .tns-item .price {
           color: #A0A0A0;
-          font-weight: 700; }
-        body main .featured-products .tns-item a svg {
+          font-weight: 700;
+          text-align: left; }
+        body main .featured-products .tns-item .add-cart-products {
           position: absolute;
-          right: calc(var(--bs-gutter-x) * .5);
-          top: 32px;
-          fill: #000;
-          color: #000;
-          cursor: pointer;
-          transition: all 0.5s ease;
-          -webkit-transition: all 0.5s ease; }
-          body main .featured-products .tns-item a svg:hover {
-            background-color: #197b30;
-            color: #fff;
-            fill: #fff; }
+          top: 0;
+          right: calc(var(--bs-gutter-x) * .5); }
+          body main .featured-products .tns-item .add-cart-products:hover .cart-icon, body main .featured-products .tns-item .add-cart-products:hover .arrow-right {
+            opacity: 1;
+            display: flex !important; }
+          body main .featured-products .tns-item .add-cart-products .cart-icon {
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            opacity: 0;
+            font-size: 0.8rem;
+            align-items: center; }
+          body main .featured-products .tns-item .add-cart-products .arrow-right {
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            opacity: 0;
+            height: 0px;
+            width: 0px;
+            right: 32px;
+            top: 10px;
+            position: absolute;
+            border-top: solid 8px transparent;
+            border-left: solid 8px black;
+            border-bottom: solid 8px transparent; }
+          body main .featured-products .tns-item .add-cart-products svg {
+            cursor: pointer;
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease; }
+            body main .featured-products .tns-item .add-cart-products svg.bi-cart-plus:hover {
+              background-color: #197b30;
+              color: #fff; }
+        body main .featured-products .tns-item a {
+          text-decoration: none;
+          color: #000; }
+          body main .featured-products .tns-item a svg {
+            position: absolute;
+            right: calc(var(--bs-gutter-x) * .5);
+            top: 32px;
+            fill: #000;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease; }
+            body main .featured-products .tns-item a svg:hover {
+              background-color: #197b30;
+              color: #fff;
+              fill: #fff; }
       body main .featured-products .controls {
         margin: 0;
         padding: 0;
@@ -220,7 +314,8 @@ body {
           body main .featured-products .featured-info {
             text-align: left; } }
     body main .latest-releases h3 {
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      letter-spacing: 1.5px; }
     body main .latest-releases .set {
       display: flex;
       flex-direction: column;

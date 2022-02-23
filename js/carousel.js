@@ -8,6 +8,7 @@
     slideBy: 'page',
     autoplay: false,
     nav: false,
+    loop: false,
     controlsContainer: "#customize-controls",
     responsive: {
         600: {
