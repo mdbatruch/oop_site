@@ -2,26 +2,29 @@
 @import "fonts";
 
 body {
-    background-color: #f00;
     height: auto;
     font-family: $roboto;
+    &.no-scroll {
+        overflow: hidden;
+        position: relative;
+        &:before {
+            content: "";
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            position: absolute;
+            z-index: 5;
+            transition: all 1s ease;
+        }
+    }
     main {
         background: #ff0;
         min-height: calc(100vh - 430px);
         .page-content {
             padding-top: 20px;
             padding-bottom: 20px;
-        }
-        .close {
-            float: right;
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 1;
-            color: $black;
-            text-shadow: 0 1px 0 $white;
-            opacity: .5;
-            border: none;
-            background: transparent;
         }
         .shop-by {
             h3 {
@@ -509,4 +512,16 @@ body {
             }
         }
     }
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: $black;
+    text-shadow: 0 1px 0 $white;
+    opacity: .5;
+    border: none;
+    background: transparent;
 }

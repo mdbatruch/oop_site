@@ -61,6 +61,9 @@
 
     <script type="text/javascript">
 
+
+    toggleCartMenu();
+
     // leave here for now for product page
     toggleProductGalleryImages();
 

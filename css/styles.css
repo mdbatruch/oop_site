@@ -48,9 +48,43 @@ header .row-first .sign-in {
 header .row-second {
   box-shadow: 0px 0px 15px 0px #000000;
   -webkit-box-shadow: 0px 0px 15px 0px #000000; }
-  header .row-second .cart a {
+  header .row-second .cart a.cart-toggle {
     color: #000;
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: pointer; }
+  header .row-second .cart-menu {
+    background: #fff;
+    border: 0;
+    display: block !important;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateX(100%);
+    z-index: 110;
+    width: calc(100% - 38px);
+    max-width: 420px; }
+    header .row-second .cart-menu.active {
+      transform: translateX(0);
+      transition: all .25s ease; }
+    header .row-second .cart-menu .header {
+      background-color: #666;
+      color: #fff;
+      justify-content: space-between;
+      text-transform: uppercase; }
+      header .row-second .cart-menu .header .close-button {
+        align-items: center; }
+        header .row-second .cart-menu .header .close-button .close {
+          color: #fff;
+          opacity: 1;
+          font-weight: 300;
+          position: relative;
+          bottom: 2px; }
+    header .row-second .cart-menu .link-container a {
+      border-radius: 0px;
+      width: 50%;
+      text-transform: uppercase; }
 
 header nav #main-navigation > li a {
   display: inline-block;
@@ -1278,25 +1312,27 @@ select.demoSelectBox {
   font-style: normal; }
 
 body {
-  background-color: #f00;
   height: auto;
   font-family: "Roboto", sans-serif; }
+  body.no-scroll {
+    overflow: hidden;
+    position: relative; }
+    body.no-scroll:before {
+      content: "";
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      z-index: 5;
+      transition: all 1s ease; }
   body main {
     background: #ff0;
     min-height: calc(100vh - 430px); }
     body main .page-content {
       padding-top: 20px;
       padding-bottom: 20px; }
-    body main .close {
-      float: right;
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 1;
-      color: #000;
-      text-shadow: 0 1px 0 #fff;
-      opacity: .5;
-      border: none;
-      background: transparent; }
     body main .shop-by h3 {
       text-transform: uppercase;
       padding: 12px 0px;
@@ -1659,3 +1695,14 @@ body {
               max-width: 100%; }
               body main .category-search .inner .App form input[type="text"]::placeholder {
                 color: #fff; }
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+  border: none;
+  background: transparent; }

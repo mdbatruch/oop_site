@@ -52,6 +52,10 @@
             include "$private/includes/header.php";
         }
 
+        public function addCartMenu() {
+            require_once("includes/cart-menu.php");
+        }
+
         public function addFooter() {
             require_once("includes/footer.php");
         }

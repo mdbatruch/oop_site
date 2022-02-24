@@ -35,25 +35,27 @@
   font-style: normal; }
 
 body {
-  background-color: #f00;
   height: auto;
   font-family: "Roboto", sans-serif; }
+  body.no-scroll {
+    overflow: hidden;
+    position: relative; }
+    body.no-scroll:before {
+      content: "";
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      z-index: 5;
+      transition: all 1s ease; }
   body main {
     background: #ff0;
     min-height: calc(100vh - 430px); }
     body main .page-content {
       padding-top: 20px;
       padding-bottom: 20px; }
-    body main .close {
-      float: right;
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 1;
-      color: #000;
-      text-shadow: 0 1px 0 #fff;
-      opacity: .5;
-      border: none;
-      background: transparent; }
     body main .shop-by h3 {
       text-transform: uppercase;
       padding: 12px 0px;
@@ -416,3 +418,14 @@ body {
               max-width: 100%; }
               body main .category-search .inner .App form input[type="text"]::placeholder {
                 color: #fff; }
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+  border: none;
+  background: transparent; }

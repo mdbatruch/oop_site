@@ -50,12 +50,6 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <?php $site->addNav(); ?>
                     </div>
-                    <!-- <form id="search" action="search.php" method="GET" class="form-inline my-2 my-lg-0">
-                        <php $q = isset($_GET['q']) ? $_GET['q'] : ''; ?>
-                        <input id="type-search" class="search-term form-control mr-sm-2" type="search" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Search">
-                        <button class="btn my-2 my-sm-0 btn-outline-secondary" type="submit">Search</button>
-                    </form> -->
-                    <!-- <div id="display"></div> -->
                 </nav>
                 </div>
             </div>
@@ -64,13 +58,16 @@
             </div>
             <div class="col-md-4 d-flex justify-content-end align-self-center cart">
                 <div class="d-flex h-100">
-                    <a href="cart.php">
+                    <a href="cart.php" class="cart-toggle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                     </svg> 
                     <span class="cart-count"><?= $count; ?></span> / $<span class="cart-total"><?= isset($subtotal) ? $subtotal : '$0.00'; ?></span> CAD
                     </a>
                 </div>
+            </div>
+            <div class="col-12">
+                <?php $site->addCartMenu(); ?>
             </div>
         </div>
     </div>

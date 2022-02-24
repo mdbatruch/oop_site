@@ -230,3 +230,29 @@ function toggleLoginRegistration() {
         $(register).parents('.register-option').addClass('d-flex');
     });
 }
+
+function toggleCartMenu() {
+    var cart = $('.cart-toggle');
+    var menu = $('.cart-menu');
+    var close_button = $('.close-button');
+    var body = $('body');
+
+
+    $(document).on('click', function(e) {
+        if ($(menu).hasClass('active')) {
+
+            if (!menu.is(e.target) && menu.has(e.target).length === 0) {
+                $(menu).removeClass('active');
+                $(body).removeClass('no-scroll');
+            } else if (close_button.is(e.target)) {
+                $(menu).removeClass('active');
+                $(body).removeClass('no-scroll');
+            }
+
+        } else if (cart.is(e.target)) {
+            e.preventDefault();
+            $(menu).addClass('active');
+            $(body).addClass('no-scroll');
+        }
+    });
+}
