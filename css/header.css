@@ -25,6 +25,36 @@ header .row-first a.shop-faq {
 header .row-first .sign-in {
   text-align: right; }
 
+header .row-first .item-removal-container {
+  display: none;
+  background-color: #fff;
+  position: absolute;
+  z-index: 105;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%; }
+  @media (min-width: 1030px) {
+    header .row-first .item-removal-container {
+      width: 60%; } }
+  @media (min-width: 1400px) {
+    header .row-first .item-removal-container {
+      width: 40%; } }
+  header .row-first .item-removal-container .actions {
+    justify-content: flex-end; }
+    header .row-first .item-removal-container .actions > div {
+      justify-content: space-evenly; }
+      header .row-first .item-removal-container .actions > div .btn {
+        text-transform: uppercase;
+        border-radius: 0px;
+        flex: 1; }
+        header .row-first .item-removal-container .actions > div .btn:first-child {
+          margin-right: calc(var(--bs-gutter-x) * .5); }
+        header .row-first .item-removal-container .actions > div .btn:last-child {
+          margin-left: calc(var(--bs-gutter-x) * .5); }
+
 header .row-second {
   box-shadow: 0px 0px 15px 0px #000000;
   -webkit-box-shadow: 0px 0px 15px 0px #000000; }
@@ -61,10 +91,33 @@ header .row-second {
           font-weight: 300;
           position: relative;
           bottom: 2px; }
+    header .row-second .cart-menu .cart-summary-slider .img-container {
+      max-width: 150px; }
+    header .row-second .cart-menu .cart-summary-slider .price {
+      color: #197b30;
+      font-weight: 700; }
+    header .row-second .cart-menu .cart-summary-slider .product-order-info .remove-item-full-cart {
+      padding: 0px;
+      text-decoration: underline; }
+    header .row-second .cart-menu .order-total {
+      justify-content: space-between;
+      border-top: 1px solid #d3d3d3;
+      border-bottom: 1px solid #d3d3d3; }
+      header .row-second .cart-menu .order-total .subtotal-title {
+        text-transform: uppercase;
+        font-weight: 700;
+        text-align: left; }
+      header .row-second .cart-menu .order-total #cart-sub-total {
+        color: #197b30;
+        font-weight: 700; }
     header .row-second .cart-menu .link-container a {
       border-radius: 0px;
       width: 50%;
       text-transform: uppercase; }
+      header .row-second .cart-menu .link-container a:first-child {
+        margin-right: calc(var(--bs-gutter-x) * .5); }
+      header .row-second .cart-menu .link-container a:last-child {
+        margin-left: calc(var(--bs-gutter-x) * .5); }
 
 header nav #main-navigation > li a {
   display: inline-block;

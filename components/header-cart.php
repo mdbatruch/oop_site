@@ -5,36 +5,39 @@
             <a href="" class="shop-faq">
                 Shopping Faq
             </a>    
-        </div>
-        <div id="cart_id" style="display: none;"><?= isset($_SESSION['account']) ? $items['id'] : null; ?></div>
+            </div>
+            <div id="cart_id" style="display: none;">
+                <?= isset($_SESSION['account']) ? $items['id'] : null; ?>
+            </div>
             <div class="<?= (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') ? 'col-md-3' : 'col-md-4'; ?> d-flex justify-content-end customer" id="<?= isset($_SESSION['account']) ? $_SESSION['id'] : 'no-customer' ; ?>">
-            <?php 
-            // echo '<pre>';
-            // print_r($_SESSION);
-            if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
-                <div class="account-name">
-                    <img src="<?= root_url('uploads/' . $_SESSION['avatar']); ?>" alt="<?= $_SESSION['username']; ?> Picture" class="img-fluid">
-                    <a href="<?= root_url_private('customer/index.php'); ?>">
-                        View Your Account,
-                        <?= $_SESSION['username']; ?>
-                    </a>
-                </div>
-            <?php else :?>
-                <div class="col pr-0 sign-in">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-person-fill" viewBox="0 0 16 16">
-                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    </svg> 
-                    <a href="customer.php">
-                    Login / Register
-                    </a>
-                </div>
-            <?php endif; ?>
+                <?php
+                if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
+                    <div class="account-name">
+                        <img src="<?= root_url('uploads/' . $_SESSION['avatar']); ?>" alt="<?= $_SESSION['username']; ?> Picture" class="img-fluid">
+                        <a href="<?= root_url_private('customer/index.php'); ?>">
+                            View Your Account,
+                            <?= $_SESSION['username']; ?>
+                        </a>
+                    </div>
+                <?php else :?>
+                    <div class="col pr-0 sign-in">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg> 
+                        <a href="customer.php">
+                        Login / Register
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
             <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
-            <div class="col-md-1 logout">
-                <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
-            </div>
+                <div class="col-md-1 logout">
+                    <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
+                </div>
             <?php endif; ?>
+            <div class="col-12">
+                <?php $site->addItemRemoval(); ?>
+            </div>
         </div>
     </div>
 </div>
@@ -67,7 +70,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <?php $site->addCartMenu(); ?>
+                <?php $site->addCartMenu($db); ?>
             </div>
         </div>
     </div>

@@ -13,6 +13,25 @@ function evaluateSubTotal() {
     $('.cart-total').text(total);
 }
 
+function evaluateSliderCartSubTotal() {
+    var product = $('.cart-product');
+    var total = 0;
+    $.each(product , function(index, val) { 
+        var item_total = $(this).find('.price').html();
+        var quantity = $(this).find('.product-quantity').html();
+        var item_total_formatted = item_total.substring(1, item_total.length);
+
+        var final_total = item_total_formatted * quantity;
+
+        // console.log(final_total);
+
+        total += parseFloat(final_total);
+
+    });
+
+    $('#cart-sub-total').text('$' + total);
+}
+
 
 function evaluateProductSubTotal(amount) {
 

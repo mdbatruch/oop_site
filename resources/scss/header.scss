@@ -36,6 +36,41 @@ header {
         .sign-in {
             text-align: right;
         }
+        .item-removal-container {
+            display: none;
+            background-color: $white;
+            position: absolute;
+            z-index: 105;
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            @media(min-width: 1030px) {
+                width: 60%;
+            }
+            @media(min-width: 1400px) {
+                width: 40%;
+            }
+            .actions {
+                justify-content: flex-end;
+                 > div {
+                    justify-content: space-evenly;
+                    .btn {
+                        text-transform: uppercase;
+                        border-radius: 0px;
+                        flex: 1;
+                        &:first-child {
+                            margin-right: calc(var(--bs-gutter-x) * .5);
+                        }
+                        &:last-child {
+                            margin-left: calc(var(--bs-gutter-x) * .5);
+                        }
+                    }
+                 }
+            }
+        }
     }
     .row-second {
         box-shadow: 0px 0px 15px 0px #000000;
@@ -82,11 +117,46 @@ header {
                     }
                 }
             }
+            .cart-summary-slider {
+                .img-container {
+                    max-width: 150px;
+                }
+                .price {
+                    color: $brand-green;
+                    font-weight: 700;
+                }
+                .product-order-info {
+                    .remove-item-full-cart {
+                        padding: 0px;
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .order-total {
+                justify-content: space-between;
+                border-top: 1px solid $lightgrey;
+                border-bottom: 1px solid $lightgrey;
+                .subtotal-title {
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    text-align: left;
+                }
+                #cart-sub-total {
+                    color: $brand-green;
+                    font-weight: 700;
+                }
+            }
             .link-container {
                 a {
                     border-radius: 0px;
                     width: 50%;
                     text-transform: uppercase;
+                    &:first-child {
+                        margin-right: calc(var(--bs-gutter-x) * .5);
+                    }
+                    &:last-child {
+                        margin-left: calc(var(--bs-gutter-x) * .5);
+                    }
                 }
             }
         }

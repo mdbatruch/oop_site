@@ -64,6 +64,8 @@
 
     toggleCartMenu();
 
+    evaluateSliderCartSubTotal();
+
     // leave here for now for product page
     toggleProductGalleryImages();
 
@@ -739,6 +741,7 @@
     $(".remove-item-full").on("click", function(e){
         e.preventDefault();
 
+
         console.log('an item deletion has been tried');
             
             var formId = $(this).attr('data-action');
@@ -746,7 +749,14 @@
             var cart_id = $('#cart_id').text();
             var quantity = $(this).attr('data-quantity');
 
-        console.log(formId, product_id, cart_id);
+            console.log(formId, product_id, cart_id);
+
+            var item_removal = $('#item-removal');
+            var body = $('body');
+
+            $(body).addClass('no-scroll');
+
+            $(item_removal).addClass('d-block');
 
     
             $.ajax({
@@ -778,6 +788,49 @@
                     if ($('.cart-count-bottom').text() == 0) {
                         window.location.href = 'cart.php';
                     }
+
+                }
+            
+        });
+
+    });
+
+    $(".remove-item-full-cart").on("click", function(e){
+        e.preventDefault();
+
+        console.log('an item deletion has been tried');
+            
+            var formId = $(this).attr('data-action');
+            var product_id = $(this).attr('data-id');
+            var cart_id = $('#cart_id').text();
+            var quantity = $(this).attr('data-quantity');
+
+        console.log(formId, product_id, cart_id);
+
+    
+            $.ajax({
+                type: "POST",
+                url: "private/process.php",
+                dataType: "json",
+                data: {product_id:product_id, id:formId, cart_id: cart_id},
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    $('#cart-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    console.log('Item did not delete!');
+
+                } else {
+                    
+                    console.log('Item deleted!');
+
+                    $('#cart-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    
+                    $('.cart-product[data-id="' + data.id + '"]').remove();
+
+                    // reevaluate sub total and cart count
+                    evaluateSliderCartSubTotal();
 
                 }
             
