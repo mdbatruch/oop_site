@@ -55,6 +55,7 @@ header {
             }
             .actions {
                 justify-content: flex-end;
+                max-width: none;
                  > div {
                     justify-content: space-evenly;
                     .btn {

@@ -63,7 +63,8 @@ header .row-first .item-removal-container {
     header .row-first .item-removal-container {
       width: 40%; } }
   header .row-first .item-removal-container .actions {
-    justify-content: flex-end; }
+    justify-content: flex-end;
+    max-width: none; }
     header .row-first .item-removal-container .actions > div {
       justify-content: space-evenly; }
       header .row-first .item-removal-container .actions > div .btn {
