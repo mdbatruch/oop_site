@@ -28,7 +28,7 @@
                         </a>
                     </div>
                     <div class="product-order-info px-4">
-                        <h5>
+                        <h5 class="name">
                             <?= $product['name']; ?>
                         </h5>
                         <div class="quantity-container">

@@ -39,11 +39,13 @@ header {
         .item-removal-container {
             display: none;
             background-color: $white;
-            position: absolute;
-            z-index: 105;
+            position: fixed;
+            z-index: 125;
             transition: all 0.5s ease;
             -webkit-transition: all 0.5s ease;
             transform: translate(-50%, -50%);
+            -webkit-box-shadow: 0px 0px 14px 1px $grey;
+            box-shadow: 0px 0px 14px 1px $grey;
             top: 50%;
             left: 50%;
             width: 100%;
@@ -100,6 +102,10 @@ header {
             max-width: 420px;
             &.active {
                 transform: translateX(0);
+                transition: all .25s ease;
+            }
+            &.inactive {
+                transform: translateX(100%);
                 transition: all .25s ease;
             }
             .header {

@@ -32,13 +32,68 @@ function evaluateSliderCartSubTotal() {
     $('#cart-sub-total').text('$' + total);
 }
 
+function returnSidebarProduct(id, name, description, image, price) {
+
+    var product = $('.cart-product');
+
+    var str;
+
+    var exists;
+
+    $.each(product , function(index, val) { 
+        var existing_name = $(this).find('.name').html().trim();
+
+        var quantity_container = $(this).find('.product-quantity');
+        var existing_quantity = $(this).find('.product-quantity').html().trim();
+
+        var quantity = quantity || 1;
+
+        console.log(existing_name + " " + name);
+        if (existing_name == name) {
+            exists = true;
+            
+            var new_quantity = parseFloat(existing_quantity) + parseFloat(quantity);
+
+            $(quantity_container).text(new_quantity);
+
+            return false;
+        } else {
+            exists = false;
+        }
+    });
+
+    if (!exists) {
+        str = `<div class="cart-product my-2 d-flex" data-id="` + id + `">
+            <div class="img-container">
+                <a href="//localhost:3000/oop_site/product.php?id=` + id + `">
+                    <img src="//localhost:3000/oop_site/images/` + image + `" alt="" class="img-fluid">
+                </a>
+            </div>
+            <div class="product-order-info px-4">
+                <h5 class="name">` + name + `</h5>
+                <div class="quantity-container">
+                    <span class="product-quantity">1</span> x <span class="price">` + price + `</span>
+                </div>
+                <div class="delete-product-cart">
+                    <button class="btn remove-item-full-cart" data-action="remove-item-full" data-id="` + id + `">
+                        Remove
+                    </button>
+                </div>
+            </div>
+            </div>`;
+        }
+
+    return str;
+}
 
 function evaluateProductSubTotal(amount) {
 
     var current_subtotal = $('.cart-total').text();
+    var current_sidebar_subtotal = $('#cart-sub-total').text();
     var newtotal = parseFloat(current_subtotal) + parseFloat(amount);
 
     $('.cart-total').text(newtotal);
+    $('#cart-sub-total').text('$' + newtotal);
 }
 
 function evaluateCartCount() {
@@ -262,16 +317,22 @@ function toggleCartMenu() {
 
             if (!menu.is(e.target) && menu.has(e.target).length === 0) {
                 $(menu).removeClass('active');
+                $(menu).addClass('inactive');
                 $(body).removeClass('no-scroll');
+                $(body).addClass('scroll');
             } else if (close_button.is(e.target)) {
                 $(menu).removeClass('active');
+                $(menu).addClass('inactive');
                 $(body).removeClass('no-scroll');
+                $(body).addClass('scroll');
             }
 
         } else if (cart.is(e.target)) {
             e.preventDefault();
             $(menu).addClass('active');
             $(body).addClass('no-scroll');
+            $(menu).removeClass('inactive');
+            $(body).removeClass('scroll');
         }
     });
 }

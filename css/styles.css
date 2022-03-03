@@ -48,11 +48,13 @@ header .row-first .sign-in {
 header .row-first .item-removal-container {
   display: none;
   background-color: #fff;
-  position: absolute;
-  z-index: 105;
+  position: fixed;
+  z-index: 125;
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
   transform: translate(-50%, -50%);
+  -webkit-box-shadow: 0px 0px 14px 1px #666;
+  box-shadow: 0px 0px 14px 1px #666;
   top: 50%;
   left: 50%;
   width: 100%; }
@@ -98,6 +100,9 @@ header .row-second {
     max-width: 420px; }
     header .row-second .cart-menu.active {
       transform: translateX(0);
+      transition: all .25s ease; }
+    header .row-second .cart-menu.inactive {
+      transform: translateX(100%);
       transition: all .25s ease; }
     header .row-second .cart-menu .header {
       background-color: #666;

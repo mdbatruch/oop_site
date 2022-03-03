@@ -466,6 +466,14 @@
                     image: image[image.length - 1],
                     price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
                 }
+
+                var product_json = {
+                    id: $(this).attr('data-id'),
+                    name: $(this).parent().siblings('.product-link').find('.name').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.description').text().replace(/\s+/g, ' ').trim(),
+                    image: image[image.length - 1],
+                    price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
+                }
                 
                 console.log(id, user_id, cart_id, product);
 
@@ -504,6 +512,15 @@
                                         var newCount = parseFloat(cartText) + 1;
 
                                         $('.cart-count').text(newCount);
+
+                                        // add product to sidebar
+                                        var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price);
+
+                                        $( ".cart-summary-slider" ).append(product_sidebar);
+                                        // add to side menu
+                                        // $('#cart-sub-total').text(newCount);
+
+
 
                                 }
                         });
@@ -842,7 +859,7 @@
             e.preventDefault();
             
             e.stopPropagation();
-            
+
             $(item_removal).removeClass('d-block');
 
             $.ajax({
