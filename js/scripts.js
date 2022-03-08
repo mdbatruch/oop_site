@@ -13,6 +13,24 @@ function evaluateSubTotal() {
     $('.cart-total').text(total);
 }
 
+function evaluateSliderSubTotal() {
+    var product = $('.cart-product');
+    var total = 0;
+    $.each(product , function(index, val) { 
+        var item_total = $(this).find('.price').html();
+
+        var quantity = $(this).find('.product-quantity').html();
+
+        var item_total_formatted = item_total.substring(1, item_total.length);
+
+        total += quantity * parseFloat(item_total_formatted)
+
+        // alert(total);
+    });
+
+    $('.cart-total').text(total);
+}
+
 function evaluateSliderCartSubTotal() {
     var product = $('.cart-product');
     var total = 0;
@@ -32,13 +50,18 @@ function evaluateSliderCartSubTotal() {
     $('#cart-sub-total').text('$' + total);
 }
 
-function returnSidebarProduct(id, name, description, image, price) {
+function returnSidebarProduct(id, name, description, image, price, quantity, adjust) {
 
     var product = $('.cart-product');
+
+    var adjust = adjust;
 
     var str;
 
     var exists;
+
+    this.quantity = quantity;
+
 
     $.each(product , function(index, val) { 
         var existing_name = $(this).find('.name').html().trim();
@@ -46,15 +69,32 @@ function returnSidebarProduct(id, name, description, image, price) {
         var quantity_container = $(this).find('.product-quantity');
         var existing_quantity = $(this).find('.product-quantity').html().trim();
 
-        var quantity = quantity || 1;
+        console.log(quantity + 'preloop');
+
+        var quantity = self.quantity || 1;
+
+        console.log(quantity + 'loop');
 
         console.log(existing_name + " " + name);
         if (existing_name == name) {
             exists = true;
-            
-            var new_quantity = parseFloat(existing_quantity) + parseFloat(quantity);
+
+            if (adjust) {
+                if (adjust == 'remove') {
+                    var new_quantity = parseFloat(existing_quantity) - 1;
+                } else if (adjust == 'add') {
+                    var new_quantity = parseFloat(existing_quantity) + parseFloat(quantity);
+                }
+
+            } else {
+                var new_quantity = parseFloat(existing_quantity) + parseFloat(quantity);
+            }
 
             $(quantity_container).text(new_quantity);
+
+            if (new_quantity == 0) {
+                $(this).remove();
+            }
 
             return false;
         } else {
@@ -63,6 +103,10 @@ function returnSidebarProduct(id, name, description, image, price) {
     });
 
     if (!exists) {
+
+        console.log(quantity + 'general');
+        console.log(this.quantity + 'this');
+        console.log(self.quantity + 'self');
         str = `<div class="cart-product my-2 d-flex" data-id="` + id + `">
             <div class="img-container">
                 <a href="//localhost:3000/oop_site/product.php?id=` + id + `">
@@ -72,7 +116,7 @@ function returnSidebarProduct(id, name, description, image, price) {
             <div class="product-order-info px-4">
                 <h5 class="name">` + name + `</h5>
                 <div class="quantity-container">
-                    <span class="product-quantity">1</span> x <span class="price">` + price + `</span>
+                    <span class="product-quantity">` + quantity + `</span> x <span class="price">` + price + `</span>
                 </div>
                 <div class="delete-product-cart">
                     <button class="btn remove-item-full-cart" data-action="remove-item-full" data-id="` + id + `">
@@ -98,6 +142,22 @@ function evaluateProductSubTotal(amount) {
 
 function evaluateCartCount() {
     var product = $('.product');
+    var total = 0;
+    $.each(product , function(index, val) { 
+        var item_total = $(this).find('.product-quantity').html();
+
+        total += parseFloat(item_total)
+
+        // alert(total);
+    });
+
+    $('.cart-count').text(total);
+    $('.cart-count-bottom').text(total);
+
+}
+
+function evaluateSliderCartCount() {
+    var product = $('.cart-product');
     var total = 0;
     $.each(product , function(index, val) { 
         var item_total = $(this).find('.product-quantity').html();

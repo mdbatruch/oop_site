@@ -514,7 +514,7 @@
                                         $('.cart-count').text(newCount);
 
                                         // add product to sidebar
-                                        var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price);
+                                        var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price, 1, '');
 
                                         $( ".cart-summary-slider" ).append(product_sidebar);
                                         // add to side menu
@@ -548,6 +548,14 @@
                 var product_price_unformatted = $('#price').attr('data-price');
 
                 var product = {
+                    id: $('#product-info').attr('data-id'),
+                    name: $('#name').text(),
+                    description: $('#description').text(),
+                    image: image[image.length - 1],
+                    price: $('#price').text(),
+                }
+
+                var product_json = {
                     id: $('#product-info').attr('data-id'),
                     name: $('#name').text(),
                     description: $('#description').text(),
@@ -609,6 +617,10 @@
 
                 evaluateProductSubTotal(amount);
 
+                var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price, quantity, '');
+
+                $( ".cart-summary-slider" ).append(product_sidebar);
+
                 });
 
         // $('#search').submit(function(e){
@@ -656,6 +668,9 @@
             
             var formId = $(this).attr('data-action');
             var product_id = $(this).attr('data-id');
+            var product_name = $(this).attr('data-name');
+            var product_image = $(this).attr('data-image');
+            var product_price = $(this).attr('data-price');
             var cart_id = $('#cart_id').text().trim();
             var quantity = $(this).attr('data-quantity');
 
@@ -696,6 +711,8 @@
 
                     evaluateSubTotal();
 
+                    var product_sidebar = returnSidebarProduct(product_id, product_name, '', product_image, product_price, quantity, 'remove');
+
                     if ($('.cart-count-bottom').text() == 0) {
                         window.location.href = 'cart.php';
                     }
@@ -713,6 +730,9 @@
             
             var formId = $(this).attr('data-action');
             var product_id = $(this).attr('data-id');
+            var product_name = $(this).attr('data-name');
+            var product_image = $(this).attr('data-image');
+            var product_price = $(this).attr('data-price');
             var cart_id = $('#cart_id').text().trim();
             var quantity = $(this).attr('data-quantity');
 
@@ -748,6 +768,10 @@
                     evaluateCartCount();
 
                     evaluateSubTotal();
+
+                    var product_sidebar = returnSidebarProduct(product_id, product_name, '', product_image, product_price, 1, 'add');
+
+                    $( ".cart-summary-slider" ).append(product_sidebar);
 
                 }
             
@@ -810,6 +834,8 @@
                         $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                         
                         $('.product[data-id="' + data.id + '"]').remove();
+
+                        $('.cart-product[data-id="' + data.id + '"]').remove();
 
                         // reevaluate sub total and cart count
                         evaluateCartCount();
@@ -879,16 +905,22 @@
                     
                     console.log('Item deleted!');
 
-                    $('#cart-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#slider-cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                     
                     $('.cart-product[data-id="' + data.id + '"]').remove();
 
                     $('#cart .product[data-id="' + data.id + '"]').remove();
 
+                    evaluateSliderCartCount();
+
+                    evaluateSliderSubTotal();
+
                     // reevaluate sub total and cart count
                     evaluateSliderCartSubTotal();
 
-                    
+                    setTimeout(function() {
+                        $('#slider-cart-message-' + data.id).remove();
+                    }, 2000);
 
                 }
             });

@@ -89,9 +89,9 @@
                             </div>
                             <div class='col col-12 col-md-2 d-flex text-center adjust-quantity'>
                                 <div class="adjust-container d-flex">
-                                <button class='btn remove-item' data-action='remove-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>-</button>
+                                <button class='btn remove-item' data-action='remove-item' data-id='<?= $product['id']; ?>' data-name='<?= $product['name']; ?>' data-price='<?= $product['price']; ?>' data-image='<?= $product['image']; ?>' data-quantity='<?= $product['quantity']; ?>'>-</button>
                                     <p><span class='product-quantity'><?= $product['quantity']; ?></span></p>
-                                <button class='btn add-item' data-action='add-item' data-id='<?= $product['id']; ?>' data-quantity='<?= $product['quantity']; ?>'>+</button>
+                                <button class='btn add-item' data-action='add-item' data-id='<?= $product['id']; ?>' data-name='<?= $product['name']; ?>' data-price='<?= $product['price']; ?>' data-image='<?= $product['image']; ?>' data-quantity='<?= $product['quantity']; ?>'>+</button>
                                 </div>
                             </div>
                             <div class='col col-12 col-md-2'>

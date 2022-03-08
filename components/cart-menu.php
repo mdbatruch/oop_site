@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="cart-message"></div>
+                <div id="slider-cart-message-<?= $product['id']; ?>"></div>
         <?php   } ?>
     </div>
     <div class="order-total d-flex py-3 mx-4">
