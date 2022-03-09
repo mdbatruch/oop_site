@@ -1,4 +1,4 @@
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn {
+#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-header a {
   border-radius: 0px;
   text-transform: uppercase;
   padding: 10px 50px; }
@@ -190,7 +190,7 @@ footer {
   footer .column:last-child h4:after {
     width: 20%; }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn {
+#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-header a {
   border-radius: 0px;
   text-transform: uppercase;
   padding: 10px 50px; }
@@ -272,7 +272,7 @@ body .login-registration > .container {
       body .login-registration > .container .login-container form > div .btn, body .login-registration > .container .register-container form > div .btn {
         text-transform: uppercase; }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn {
+#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-header a {
   border-radius: 0px;
   text-transform: uppercase;
   padding: 10px 50px; }
@@ -360,7 +360,7 @@ body main.admin-login {
       width: 220px;
       padding: 10px 0px; }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn {
+#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-header a {
   border-radius: 0px;
   text-transform: uppercase;
   padding: 10px 50px; }
@@ -582,7 +582,7 @@ body .btn {
       #cart .confirmation-container .links a:nth-child(2) {
         margin: 0px 20px; } }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn {
+#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-header a {
   border-radius: 0px;
   text-transform: uppercase;
   padding: 10px 50px; }
@@ -935,6 +935,26 @@ body .login-registration > .container .login-container form > div input, body .l
     width: 300px;
     padding: 10px 0px; }
 
+#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-header a {
+  border-radius: 0px;
+  text-transform: uppercase;
+  padding: 10px 50px; }
+
+body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
+  height: 80%;
+  width: 100%;
+  max-width: none;
+  margin: auto;
+  align-items: center;
+  position: relative; }
+
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+  width: 100%;
+  border-radius: 0px;
+  border: 1px solid #666;
+  background-color: #fff;
+  padding: 10px 20px; }
+
 body header {
   background-color: #000; }
   body header a {
@@ -946,6 +966,12 @@ body #customer-header {
 body .customer-container img {
   max-width: 300px;
   border-radius: 50% !important; }
+
+body .customer-main {
+  min-height: calc(100vh - 163px); }
+  body .customer-main .customer-header {
+    background-color: #000;
+    color: #fff; }
 
 #products .top-products .top-products-inner {
   flex-direction: column; }

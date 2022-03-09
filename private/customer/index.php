@@ -13,37 +13,76 @@
         header( 'location: index.php?id=' . $_SESSION['id']);
     }
 
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
+
+        $cart_item = new CartItem($db);
+
+        if (isset($_SESSION['id'])) {
+            $items = $cart_item->get_cart($_SESSION['id']);
+            $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            $subtotal = '';
+
+            if ($products) {
+                foreach ($products as $product_item) {
+                    $product_item['price'] = substr($product_item['price'], 1);
+
+                    $total = $product_item['price'] * $product_item['quantity'];
+                    
+                    $subtotal = intval($subtotal) + intval($total);
+                }
+            } else {
+                $subtotal = 0;
+            }
+        }
+
+        $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
+
+    } else {
+        $count = 0;
+        $items = null;
+    }
+
+
     $title = 'Customer Dashboard';
 
     $site->addPrivateHeader($title);
 
+    // $site->addHeader();
+    
 ?>
-
 <header id="customer-header" class="container-fluid">
     <div class="row">
         <div id="customer-navigation">
-            <?= $site->addPrivateCustomerNav(); ?>
+            <?= 
+            
+            $site->addPrivateCustomerNav(); 
+            // $site->addCustomerCart($site, $count, $items, $subtotal, $db);
+            ?>
         </div>
     </div>
 </header>
-<main>
-    <div class="container">
-        <div class="row">
+<main class="customer-main">
+    <div class="container-fluid">
+        <div class="row customer-header justify-content-center py-4">
+            <div class="col-md-10 col-xl-9 text-center">
+                <h3>Welcome back, <?= $_SESSION['username']; ?></h3>
+                <div class="link-container d-flex justify-content-evenly">
+                    <a href="<?php echo root_url_private('/customer/orders.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">View Past Orders</a>
+                    <a href="<?php echo root_url_private('/customer/profile.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">Edit Profile</a>
+                    <a href="<?= root_url('products.php'); ?>" class="btn btn-lightgrey py-3 my-2">Start Shopping</a>
+                </div>
+            </div>
+        </div>
+        <div class="row d-none">
             <div class="col-12">
                 <p>
                     Customer Dashboard
                 </p>
             </div>
-            <div class="col-12">
-                <p>
-                    Welcome back, <?= $_SESSION['username']; ?>
-                </p>
-            </div>
         </div>
     </div>
 </main>
-<?php 
-
-    $site->addPrivateFooter();
-
-?>
+<footer class="pt-4 pb-4">
+    <?php $site->addCustomerFooter(); ?>
+</footer>

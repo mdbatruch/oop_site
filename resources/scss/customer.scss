@@ -1,4 +1,5 @@
 @import "colors";
+@import 'extends';
 
 body {
     header {
@@ -14,6 +15,16 @@ body {
         img {
             max-width: 300px;
             border-radius: 50% !important;
+        }
+    }
+    .customer-main {
+        min-height: calc(100vh - 163px);
+        .customer-header {
+            background-color: $black;
+            color: $white;
+            a {
+                @extend %btn-format;
+            }
         }
     }
 }

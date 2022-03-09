@@ -1,10 +1,12 @@
 <?php 
-    $cart_item = new CartItem($db);
 
-    $items = $cart_item->get_cart($_SESSION['id']);
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
+        $cart_item = new CartItem($db);
 
-    $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+        $items = $cart_item->get_cart($_SESSION['id']);
 
+        $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+    }
     // echo '<pre>';
     // print_r($products);
 ?>

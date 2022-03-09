@@ -32,8 +32,18 @@
         <?= $site->addPrivateCustomerNav(); ?>
     </div>
 </header>
-<main>
-    <div class="container">
+<main class="customer-main">
+    <div class="container-fluid">
+        <div class="row customer-header justify-content-center py-4">
+            <div class="col-md-10 col-xl-9 text-center">
+                <h3>Welcome back, <?= $_SESSION['username']; ?></h3>
+                <div class="link-container d-flex justify-content-evenly">
+                    <a href="<?php echo root_url_private('/customer/orders.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">View Past Orders</a>
+                    <a href="<?php echo root_url_private('/customer/profile.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">Edit Profile</a>
+                    <a href="<?= root_url('products.php'); ?>" class="btn btn-lightgrey py-3 my-2">Start Shopping</a>
+                </div>
+            </div>
+        </div>
     <div class="row">
         <h2>Order Description for <?= ucfirst($_SESSION['username']); ?></h2>
     </div>
@@ -85,9 +95,6 @@
         </div>
     </div>
 </main>
-
-<?php 
-
-    $site->addPrivateFooter();
-
-?>
+<footer class="pt-4 pb-4">
+    <?php $site->addCustomerFooter(); ?>
+</footer>

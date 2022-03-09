@@ -1,3 +1,8 @@
+body .customer-main .customer-header a {
+  border-radius: 0px;
+  text-transform: uppercase;
+  padding: 10px 50px; }
+
 body header {
   background-color: #000; }
   body header a {
@@ -9,3 +14,9 @@ body #customer-header {
 body .customer-container img {
   max-width: 300px;
   border-radius: 50% !important; }
+
+body .customer-main {
+  min-height: calc(100vh - 163px); }
+  body .customer-main .customer-header {
+    background-color: #000;
+    color: #fff; }

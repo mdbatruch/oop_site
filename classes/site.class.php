@@ -47,6 +47,11 @@
             require_once("includes/header.php");
         }
 
+        public function addCustomerCart($site, $count, $items, $subtotal, $db) {
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path . '/private');
+            include "$private/includes/customer/customer-cart.php";
+        }
+
         public function addPrivateHeader($title) {
             $private = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path . '/private');
             include "$private/includes/header.php";
@@ -57,7 +62,9 @@
         }
 
         public function addItemRemoval() {
+            // $root = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path);
             require_once("components/item-removal.php");
+            // include "$root/includes/header.php";
         }
 
         public function addFooter() {
@@ -67,6 +74,16 @@
         public function addPrivateFooter() {
             $private = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path . '/private');
             include "$private/includes/footer.php";
+        }
+
+        public function addCustomerHeader() {
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path . '/private');
+            include "$private/includes/customer/header.php";
+        }
+
+        public function addCustomerFooter() {
+            $private = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path . '/private');
+            include "$private/includes/customer/footer.php";
         }
         
         public function addPrivateNav() {
