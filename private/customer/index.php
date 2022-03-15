@@ -52,14 +52,8 @@
     
 ?>
 <header id="customer-header" class="container-fluid">
-    <div class="row">
-        <div id="customer-navigation">
-            <?= 
-            
-            $site->addPrivateCustomerNav(); 
-            // $site->addCustomerCart($site, $count, $items, $subtotal, $db);
-            ?>
-        </div>
+    <div class="row" id="customer-navigation">
+        <?php $site->addCustomerCart($site, $count, $items, $subtotal, $db); ?>
     </div>
 </header>
 <main class="customer-main">

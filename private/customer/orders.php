@@ -22,6 +22,38 @@
 
     $title = 'Customer Orders';
 
+    $subtotal = 0;
+
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
+
+        $cart_item = new CartItem($db);
+
+        if (isset($_SESSION['id'])) {
+            $items = $cart_item->get_cart($_SESSION['id']);
+            $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            $subtotal = '';
+
+            if ($products) {
+                foreach ($products as $product_item) {
+                    $product_item['price'] = substr($product_item['price'], 1);
+
+                    $total = $product_item['price'] * $product_item['quantity'];
+                    
+                    $subtotal = intval($subtotal) + intval($total);
+                }
+            } else {
+                $subtotal = 0;
+            }
+        }
+
+        $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
+
+    } else {
+        $count = 0;
+        $items = null;
+    }
+
     $site->addPrivateHeader($title);
 
     $pagination = new Pagination($current_page, $page_count, $order_count);
@@ -45,10 +77,8 @@
 ?>
 
 <header id="customer-header" class="container-fluid">
-    <div class="row">
-        <div id="customer-navigation">
-            <?= $site->addPrivateCustomerNav(); ?>
-        </div>
+    <div class="row" id="customer-navigation">
+        <?php $site->addCustomerCart($site, $count, $items, $subtotal, $db); ?>
     </div>
 </header>
 <main class="customer-main">
@@ -65,7 +95,7 @@
         </div>
             <div class="container">
                 <div class="row">
-                    <table class="table w-auto">
+                    <table class="table w-auto orders-container">
                         <thead>
                             <tr>
                             <th>Order ID</th>
@@ -82,42 +112,46 @@
                             <tbody>
                                     <?php foreach($orders as $order) : ?>
                                     <tr>
-                                        <td>
+                                        <td class="order-id">
                                             Order #<?= $order['id']; ?>
                                         </td>
-                                        <td>
+                                        <td class="date-ordered">
                                             <?php $order_date = $order['created_at']; 
                                                 $date = new DateTime($order_date);
-                                                echo $date->format('l F j g:h a');
+                                                echo $date->format('F t, Y; g:i A');
                                             ?>
                                         </td>
-                                        <td>Products: 
-                                            <?php foreach($order['products'] as $product) : ?>
-                                                <span style="display: block;"><?= $product->item_name; ?> $<?= $product->item_price; ?> Quantity: <?= $product->item_quantity; ?></span>
-                                            <?php endforeach; ?>
+                                        <td class="order-status">
+                                            Processing
+                                            <div class="d-none">Products: 
+                                                <?php foreach($order['products'] as $product) : ?>
+                                                    <span style="display: block;"><?= $product->item_name; ?> $<?= $product->item_price; ?> Quantity: <?= $product->item_quantity; ?></span>
+                                                <?php endforeach; ?>
+                                            </div>
                                         </td>
-                                        <td></td>
-                                        <td>
+                                        <td class="shipping-option">
+                                            <?php $shipping_option = json_decode($order['shipping_information']); ?>
+                                            <?= $shipping_option->name ?? 'N/A'; ?>
+                                        </td>
+                                        <td class="address">
                                             <?php $contact = json_decode($order['contact_details']);
                                                 $shipping = json_decode($order['shipping_address']);
-                                                $card = json_decode($order['card_info']);
                                             ?>
-                                            <span><?= $contact->name; ?></span>
-                                            <span><?= $contact->phone; ?></span>
-                                            <span><?= $contact->email; ?></span>
-                                            <span><?= $shipping->street; ?></span>
-                                            <span><?= $shipping->suite; ?></span>
-                                            <span><?= $shipping->city; ?></span>
-                                            <span><?= $shipping->province; ?></span>
-                                            <span><?= $shipping->postal; ?></span>
+                                            <?= $contact->name; ?><br/>
+                                            <?= $shipping->street; ?> <?= $shipping->suite; ?><br/>
+                                            <?= $shipping->city; ?>, <?= $shipping->province; ?> <?= $shipping->postal; ?><br/>
+                                            <?= $contact->email; ?> | <?= $contact->phone; ?>
                                         </td>
-                                        <td>
-                                            <span><?= $card->card_type; ?></span>
-                                            <span>Ending with: <?= $card->card_hash; ?></span>
+                                        <td class="billing-information">
+                                            <?php $card = json_decode($order['card_info']); ?>
+                                            <?= $card->card_name ?? ''; ?><br/>
+                                            <?= $card->card_hash; ?><br/>
+                                            Expiry <?= $card->card_expiry ?? ''; ?><br/>
+                                            <?= $card->card_type; ?>
                                         </td>
-                                        <td><?= $order['amount']; ?></td>
+                                        <td><b><?= $order['amount']; ?></b></td>
                                         <td>
-                                            <a href="order.php?index=<?= $order['id']; ?>" target="_blank">View Order</a>
+                                            <a href="order.php?index=<?= $order['id']; ?>" target="_blank">View Products</a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
@@ -133,8 +167,18 @@
                 </div>
             </div>
         <div class="row">
-            <div class="container-fluid">
-                <?= $pagination->page_extra_links($url, $current_page); ?>
+            <div class="container-fluid text-center">
+                <div class="results">
+                    <?= $pagination->show_range(); ?>
+                </div>
+                <div class="pagination justify-content-center my-4">
+                    <?= $pagination->order_links($url); ?>
+                </div>
+                <div class="back-to-top-container mb-4">
+                    <div class="back-to-top d-inline-block">
+                        Back to Top
+                    </div>    
+                </div>
             </div>
         </div>
     </div>

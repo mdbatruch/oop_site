@@ -9,14 +9,27 @@ body header {
     color: #d3d3d3; }
 
 body #customer-header {
-  background-color: #343a40; }
+  background-color: #000; }
+  body #customer-header .row-first > .container > .row {
+    align-items: center; }
+  body #customer-header .logout svg {
+    color: #fff; }
+  body #customer-header .logout a {
+    text-decoration: none; }
 
 body .customer-container img {
   max-width: 300px;
   border-radius: 50% !important; }
 
 body .customer-main {
-  min-height: calc(100vh - 163px); }
+  min-height: calc(100vh - 163px);
+  background-color: #FFCBA4; }
   body .customer-main .customer-header {
-    background-color: #000;
+    background-color: #343a40;
     color: #fff; }
+  body .customer-main table tr th {
+    text-transform: uppercase; }
+  body .customer-main .back-to-top {
+    text-transform: uppercase;
+    text-decoration: underline;
+    cursor: pointer; }

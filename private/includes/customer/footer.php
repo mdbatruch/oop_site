@@ -61,6 +61,93 @@
 
     <script src="js/2.d1644945.chunk.js"></script>
     <script src="js/main.4a4fc564.chunk.js"></script>
+
+    <script type="text/javascript">
+        toggleCartMenu();
+
+        $(".back-to-top").on("click", function(e) {
+
+            e.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 'fast');
+
+        });
+
+        $(".remove-item-full-cart").on("click", function(e){
+            e.preventDefault();
+
+            console.log('an item deletion has been tried');
+            
+            var formId = $(this).attr('data-action');
+            var product_id = $(this).attr('data-id');
+            var cart_id = $('#cart_id').text().trim();
+            var quantity = $(this).attr('data-quantity');
+
+            var item_removal = $('#item-removal');
+            var body = $('body');
+
+            $(item_removal).addClass('d-block');
+
+            console.log(formId, product_id, cart_id);
+
+        $("#confirm-item-removal .cancel").on("click", function(e){
+                e.preventDefault();
+
+                e.stopPropagation();
+
+            $(item_removal).removeClass('d-block');
+        });
+
+    
+        $("#confirm-item-removal .confirm").on("click", function(e){
+
+            e.preventDefault();
+            
+            e.stopPropagation();
+
+            $(item_removal).removeClass('d-block');
+
+            $.ajax({
+                type: "POST",
+                url: "../../private/process.php",
+                dataType: "json",
+                data: {product_id:product_id, id:formId, cart_id: cart_id},
+            }).done(function(data){
+
+            if (!data.success) {
+
+                    $('#cart-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    console.log('Item did not delete!');
+
+                } else {
+                    
+                    console.log('Item deleted!');
+
+                    $('#slider-cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    
+                    $('.cart-product[data-id="' + data.id + '"]').remove();
+
+                    $('#cart .product[data-id="' + data.id + '"]').remove();
+
+                    evaluateSliderCartCount();
+
+                    evaluateSliderSubTotal();
+
+                    // reevaluate sub total and cart count
+                    evaluateSliderCartSubTotal();
+
+                    setTimeout(function() {
+                        $('#slider-cart-message-' + data.id).remove();
+                    }, 2000);
+
+                }
+            });
+
+        });
+
+    });
+
+    </script>
     <script id="__bs_script__">//<![CDATA[
         document.write("<script async src='http://HOST:8890/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
         //]]></script>

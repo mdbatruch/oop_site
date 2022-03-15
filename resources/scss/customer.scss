@@ -9,7 +9,22 @@ body {
         }
     }
     #customer-header {
-        background-color: #343a40;
+        background-color: $black;
+        .row-first {
+            > .container {
+                > .row {
+                    align-items: center;
+                }
+            }
+        }
+        .logout {
+            svg {
+                color: $white;
+            }
+            a {
+                text-decoration: none;
+            }
+        }
     }
     .customer-container {
         img {
@@ -19,12 +34,25 @@ body {
     }
     .customer-main {
         min-height: calc(100vh - 163px);
+        background-color: $brand-peach;
         .customer-header {
-            background-color: $black;
+            background-color: #343a40;
             color: $white;
             a {
                 @extend %btn-format;
             }
+        }
+        table {
+            tr {
+                th {
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .back-to-top {
+            text-transform: uppercase;
+            text-decoration: underline;
+            cursor: pointer;
         }
     }
 }

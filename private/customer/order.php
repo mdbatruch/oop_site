@@ -21,6 +21,38 @@
 
     $title = 'Individual Order Page';
 
+    $subtotal = 0;
+
+    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
+
+        $cart_item = new CartItem($db);
+
+        if (isset($_SESSION['id'])) {
+            $items = $cart_item->get_cart($_SESSION['id']);
+            $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+
+            $subtotal = '';
+
+            if ($products) {
+                foreach ($products as $product_item) {
+                    $product_item['price'] = substr($product_item['price'], 1);
+
+                    $total = $product_item['price'] * $product_item['quantity'];
+                    
+                    $subtotal = intval($subtotal) + intval($total);
+                }
+            } else {
+                $subtotal = 0;
+            }
+        }
+
+        $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
+
+    } else {
+        $count = 0;
+        $items = null;
+    }
+
     $site->addPrivateHeader($title);
 
 ?>
@@ -28,8 +60,8 @@
 
 
 <header id="customer-header" class="container-fluid">
-    <div class="row">
-        <?= $site->addPrivateCustomerNav(); ?>
+    <div class="row" id="customer-navigation">
+        <?php $site->addCustomerCart($site, $count, $items, $subtotal, $db); ?>
     </div>
 </header>
 <main class="customer-main">

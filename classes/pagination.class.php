@@ -98,6 +98,19 @@
             return $link;
         }
 
+        public function previous_order_link($url="") {
+            $link = "";
+            $chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left p-1" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+            </svg>';
+            if ($this->previous_page() != false) {
+            $link = "<a class=\"previous\" href=\"{$url}&page={$this->previous_page()}\">{$chevron}</a>";
+            } else {
+              $link = "<span class=\"disabled\">{$chevron}</span>";
+            }
+            return $link;
+        }
+
         public function next_range_link($url="", $range) {
           $link = "";
           $chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-right p-1" viewBox="0 0 16 16">
@@ -149,6 +162,19 @@
             }
             return $link;
         }
+
+        public function next_order_link($url="") {
+          $link = "";
+          $chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-right p-1" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>';
+          if ($this->next_page() != false) {
+          $link = "<a class=\"next\" href=\"{$url}&page={$this->next_page()}\">{$chevron}</a>";
+          } else {
+            $link = "<span class=\"disabled\">{$chevron}</span>";
+          }
+          return $link;
+      }
 
         public function previous_extra_link($url="") {
             $link = "";
@@ -230,6 +256,21 @@
 
             return $output;
         }
+
+        public function order_links($url) {
+
+          $output = "";
+
+         if ($this->total_pages() > 1) {
+              $output .= "<div class=\"pagination d-flex text-center\">";
+              $output .= $this->previous_order_link($url);
+              $output .= '<div class="pagination-index mx-2">Page ' . $this->current_page . ' of ' . $this->total_pages() . '</div>';
+              $output .= $this->next_order_link($url);
+              $output .= "</div>";
+          }
+
+          return $output;
+      }
 
         public function page_extra_links($url, $category = false) {
 

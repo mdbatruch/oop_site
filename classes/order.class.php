@@ -205,6 +205,8 @@
                         "customer_id" => $customer_id,
                         "contact_details" => $contact_details,
                         "shipping_address" => $shipping_address,
+                        "billing_address" => $billing_address,
+                        "shipping_information" => $shipping_information,
                         "products" => json_decode($products),
                         "card_info" => $card_info,
                         "amount" => $amount,
