@@ -63,7 +63,10 @@
     <script src="js/main.4a4fc564.chunk.js"></script>
 
     <script type="text/javascript">
+        
         toggleCartMenu();
+
+        toggleOrderList();
 
         $(".back-to-top").on("click", function(e) {
 

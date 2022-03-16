@@ -83,7 +83,7 @@
 </header>
 <main class="customer-main">
     <div class="container-fluid">
-        <div class="row customer-header justify-content-center py-4">
+        <div class="row customer-top justify-content-center py-4">
             <div class="col-md-10 col-xl-9 text-center">
                 <h3>Welcome back, <?= $_SESSION['username']; ?></h3>
                 <div class="link-container d-flex justify-content-evenly">
@@ -93,6 +93,7 @@
                 </div>
             </div>
         </div>
+        <?php if (!empty($orders)) : ?>
             <div class="container">
                 <div class="row">
                     <table class="table w-auto orders-container">
@@ -108,7 +109,6 @@
                             <th></th>
                             </tr>
                         </thead>
-                            <?php if (!empty($orders)) : ?>
                             <tbody>
                                     <?php foreach($orders as $order) : ?>
                                     <tr>
@@ -123,11 +123,6 @@
                                         </td>
                                         <td class="order-status">
                                             Processing
-                                            <div class="d-none">Products: 
-                                                <?php foreach($order['products'] as $product) : ?>
-                                                    <span style="display: block;"><?= $product->item_name; ?> $<?= $product->item_price; ?> Quantity: <?= $product->item_quantity; ?></span>
-                                                <?php endforeach; ?>
-                                            </div>
                                         </td>
                                         <td class="shipping-option">
                                             <?php $shipping_option = json_decode($order['shipping_information']); ?>
@@ -151,18 +146,59 @@
                                         </td>
                                         <td><b><?= $order['amount']; ?></b></td>
                                         <td>
-                                            <a href="order.php?index=<?= $order['id']; ?>" target="_blank">View Products</a>
+                                            <a href="order.php?index=<?= $order['id']; ?>" class="order-pop" data-id="<?= $order['id']; ?>" target="_blank">View Products</a>
+                                            <div class="order-products p-4 d-none" data-id="<?= $order['id']; ?>">
+                                                <div class="order-products-container">
+                                                    <div class="close-button mb-3">
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    </div>
+                                                    <div class="products-header d-flex">
+                                                        <h4>View Products</h4>
+                                                        <div class="order-placed">
+                                                            Order placed
+                                                            <?php $order_date = $order['created_at']; 
+                                                                $date = new DateTime($order_date);
+                                                                echo $date->format('F t, Y; g:i A');
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="products-main">
+                                                        <?php foreach($order['products'] as $product) {
+                                                            // echo '<pre>';
+                                                            // print_r($product);
+                                                            $image = Product::getProductImage($product->item_name, $db);
+
+                                                            ?>
+
+                                                            <div class="cart-product my-2 d-flex" data-id="<?= $product->item_id; ?>">
+                                                                <div class="img-container">
+                                                                    <a href="<?= root_url('product.php?id=' . $product->item_id); ?>" target="_blank">
+                                                                        <img src="<?= !empty($image['image']) ? root_url('images/' . $image['image']) : root_url('images/missing.jpg'); ?>" alt="<?= $product->item_name; ?>" class="img-fluid border">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-order-info px-4">
+                                                                    <div class="name">
+                                                                        <b>Item:</b> <?= $product->item_name; ?>
+                                                                    </div>
+                                                                    <div class="quantity-container">
+                                                                        <b>Quantity:</b> <span class='product-quantity'><?= $product->item_quantity; ?></span>
+                                                                    </div>
+                                                                    <div class="price">
+                                                                        <b>Price:</b> <span class='product-price'><?= $product->item_individual_price ?? 'N/A'; ?></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-total">
+                                                                    $<span class="price"><?= $product->item_price; ?></span>
+                                                                </div>
+                                                            </div>
+                                                        <?php   } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
                             <tbody>
-                            <?php else: ?>
-                                <tr>
-                                    <td>
-                                        <br/>Your order list is empty!
-                                    </td>
-                                </tr>
-                            <?php endif; ?>
                     </table>
                 </div>
             </div>
@@ -181,6 +217,18 @@
                 </div>
             </div>
         </div>
+        <?php else: ?>
+            <div class="row">
+                <div class="col my-4 text-center no-orders">
+                    <img src="<?= root_url('uploads/empty-bag.png'); ?>" alt="Not Found" class="img-fluid">
+                    <h3 class="my-4">No Orders to Display</h3>
+                    <p class="my-4">
+                        No orders have been placed through this account.
+                    </p>
+                    <a href="<?= root_url('products.php'); ?>" class="btn btn-black">Start Shopping</a>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </main>
 <footer class="pt-4 pb-4">

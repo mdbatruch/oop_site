@@ -66,7 +66,7 @@
 </header>
 <main class="customer-main">
     <div class="container-fluid">
-        <div class="row customer-header justify-content-center py-4">
+        <div class="row customer-top justify-content-center py-4">
             <div class="col-md-10 col-xl-9 text-center">
                 <h3>Welcome back, <?= $_SESSION['username']; ?></h3>
                 <div class="link-container d-flex justify-content-evenly">

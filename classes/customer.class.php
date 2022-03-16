@@ -141,6 +141,7 @@ class Customer extends Cart {
                     $_SESSION['id'] = $customerId['id'];
                     $_SESSION['account'] = 'Customer';
                     $_SESSION['last_login'] = time();
+                    $_SESSION['avatar'] = $avatar;
                     $login_time = date('D-M-d-Y g:i A', $_SESSION['last_login']);
 
                     $data['redirect'] = 'private/customer/index.php?id=' . $customerId['id'];

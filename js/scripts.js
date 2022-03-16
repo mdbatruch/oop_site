@@ -396,3 +396,46 @@ function toggleCartMenu() {
         }
     });
 }
+
+function toggleOrderList() {
+
+    var order = $('.order-pop');
+    var close = $('.close-button');
+    var body = $('body');
+
+    var order_products = $('.order-products');
+
+    $(order).on("click", function(e){
+        e.preventDefault();
+
+        e.stopPropagation();
+
+        let id = $(this).attr('data-id');
+        console.log(id);
+
+        $(body).addClass('no-scroll');
+
+        $(this).siblings('.order-products').removeClass('d-none');
+    });
+
+    $(close).on("click", function(e){
+        e.preventDefault();
+
+        e.stopPropagation();
+
+        $(body).removeClass('no-scroll');
+
+        $(this).closest('.order-products').addClass('d-none');
+    });
+
+    $(document).on('click', function(e) {
+        console.log('1');
+        if (!$(this).closest('.order-products').hasClass('d-none')) {
+            console.log('2');
+            if (!order_products.is(e.target) && order_products.has(e.target).length === 0) {
+                $(order_products).addClass('d-none');
+                $(body).removeClass('no-scroll');
+            }
+        }
+    });
+}

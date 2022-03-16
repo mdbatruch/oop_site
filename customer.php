@@ -8,35 +8,37 @@
 
   $subtotal = 0;
 
-    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
-        $cart_item = new CartItem($db);
+        if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
-        if (isset($_SESSION['id'])) {
-            $items = $cart_item->get_cart($_SESSION['id']);
-            $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+            $cart_item = new CartItem($db);
 
-            $subtotal = '';
+            if (isset($_SESSION['id'])) {
+                $items = $cart_item->get_cart($_SESSION['id']);
+                $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
 
-            if ($products) {
-                foreach ($products as $product_item) {
-                    $product_item['price'] = substr($product_item['price'], 1);
+                $subtotal = '';
 
-                    $total = $product_item['price'] * $product_item['quantity'];
-                    
-                    $subtotal = intval($subtotal) + intval($total);
+                if ($products) {
+                    foreach ($products as $product_item) {
+                        $product_item['price'] = substr($product_item['price'], 1);
+
+                        $total = $product_item['price'] * $product_item['quantity'];
+                        
+                        $subtotal = intval($subtotal) + intval($total);
+                    }
+                } else {
+                    $subtotal = 0;
                 }
-            } else {
-                $subtotal = 0;
             }
+
+            $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
+
+        } else {
+            $count = 0;
+            $items = null;
         }
 
-        $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
-
-    } else {
-        $count = 0;
-        $items = null;
-    }
 
   $site->addHeader();
 

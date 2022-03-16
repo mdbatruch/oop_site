@@ -13,7 +13,7 @@
                 <?php
                 if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
                     <div class="account-name">
-                        <img src="<?= root_url('uploads/' . $_SESSION['avatar']); ?>" alt="<?= $_SESSION['username']; ?> Picture" class="img-fluid me-2">
+                        <img src="<?= root_url('uploads/' . $_SESSION['avatar'] ?? 'empty.png'); ?>" alt="<?= $_SESSION['username']; ?> Picture" class="img-fluid me-2">
                         <a href="<?= root_url_private('customer/index.php'); ?>"> 
                             <?= $_SESSION['username']; ?>
                         </a>
