@@ -1017,6 +1017,95 @@ body .customer-main {
         color: #197b30;
         font-weight: 700;
         margin-left: auto; }
+  body .customer-main #edit-profile {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    max-width: none; }
+    body .customer-main #edit-profile .ast {
+      color: #f00; }
+    body .customer-main #edit-profile label {
+      display: block; }
+    body .customer-main #edit-profile .fs-title {
+      font-size: 1.5rem;
+      color: #000;
+      margin-bottom: 10px; }
+      body .customer-main #edit-profile .fs-title .inner-title {
+        text-transform: uppercase;
+        color: #000;
+        font-size: 1rem;
+        margin-left: 15px; }
+        body .customer-main #edit-profile .fs-title .inner-title svg {
+          position: relative;
+          bottom: 2px; }
+    body .customer-main #edit-profile .fs-subtitle {
+      font-weight: normal;
+      font-size: 1rem;
+      color: #000;
+      margin-bottom: 20px; }
+    body .customer-main #edit-profile fieldset {
+      background: white;
+      border: 0 none;
+      border-radius: 3px;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      position: relative;
+      text-align: left;
+      white-space: nowrap; }
+      @media (min-width: 1030px) {
+        body .customer-main #edit-profile fieldset {
+          width: 80%;
+          margin: 0 10%; } }
+      body .customer-main #edit-profile fieldset input, body .customer-main #edit-profile fieldset textarea, body .customer-main #edit-profile fieldset select {
+        padding: 15px;
+        border: 1px solid #666;
+        border-radius: 0px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        color: #2C3E50;
+        font-size: 13px;
+        font-weight: 600; }
+        body .customer-main #edit-profile fieldset input::placeholder, body .customer-main #edit-profile fieldset textarea::placeholder, body .customer-main #edit-profile fieldset select::placeholder {
+          font-style: italic;
+          color: #A0A0A0; }
+        body .customer-main #edit-profile fieldset input[type="checkbox"], body .customer-main #edit-profile fieldset textarea[type="checkbox"], body .customer-main #edit-profile fieldset select[type="checkbox"] {
+          width: auto; }
+      @media (min-width: 1030px) {
+        body .customer-main #edit-profile fieldset .form-inner-container.form-address-other {
+          flex-direction: row !important; }
+          body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 400px; }
+            body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field:first-child {
+              padding-right: 0px; }
+            body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field:nth-child(2), body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field:nth-child(3) {
+              padding: 0px 20px;
+              flex-shrink: 2; } }
+      body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field.city {
+        flex-grow: 5; }
+      @media (min-width: 1030px) {
+        body .customer-main #edit-profile fieldset .form-inner-container.form-password-confirm .form-field {
+          max-width: 50%; } }
+      body .customer-main #edit-profile fieldset .form-inner-container.half {
+        flex-direction: column; }
+        @media (min-width: 1030px) {
+          body .customer-main #edit-profile fieldset .form-inner-container.half {
+            flex-direction: row; }
+            body .customer-main #edit-profile fieldset .form-inner-container.half .form-field:first-child {
+              padding-right: 20px; } }
+      body .customer-main #edit-profile fieldset .form-field {
+        white-space: normal;
+        vertical-align: top;
+        flex: 1; }
+    body .customer-main #edit-profile .update-container {
+      border-top: 2px solid #d3d3d3; }
+      body .customer-main #edit-profile .update-container .form-field.message {
+        flex-grow: 1.5; }
+      body .customer-main #edit-profile .update-container .form-field input[type="submit"] {
+        text-transform: uppercase; }
   @media (min-height: 650px) {
     body .customer-main .no-orders {
       transform: translateY(50%); } }

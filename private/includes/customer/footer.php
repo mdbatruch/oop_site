@@ -75,6 +75,57 @@
 
         });
 
+        $("#edit-profile").on("submit", function(e){
+
+            e.preventDefault();
+
+            var id = $(this).attr('id');
+            var username = $('#username').val();
+            var first_name = $('#first_name').val();
+            var last_name = $('#last_name').val();
+            var email = $('#email').val();
+            var street = $('#street').val();
+            var suite = $('#suite').val();
+            var city = $('#city').val();
+            var province = $('#province').val();
+            var postal = $('#postal').val();
+            var country = $('#country').val();
+
+            var address = {
+                street: street,
+                suite: suite,
+                city: city,
+                province: province,
+                postal: postal,
+                country: country
+            }
+
+            console.log(id, username, first_name, last_name, email, street, suite, city, province, postal, country);
+
+            // $.ajax({
+            //     type: "POST",
+            //     url: "../../private/process.php",
+            //     dataType: "json",
+            //     data: {product_id:product_id, id:formId, cart_id: cart_id},
+            // }).done(function(data){
+
+            // if (!data.success) {
+
+            //         $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+            //         console.log('Profile did not update!');
+
+            //     } else {
+                    
+            //         console.log('Profile updated!');
+
+            //         $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+            //     }
+            // });
+
+        });
+
         $(".remove-item-full-cart").on("click", function(e){
             e.preventDefault();
 

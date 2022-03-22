@@ -94,6 +94,132 @@ body {
                 }
             }
         }
+        #edit-profile {
+            width: 100%;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+            max-width: none;
+            .ast {
+                color: $red;
+            }
+            label {
+                display: block;
+            }
+            .fs-title {
+                font-size: 1.5rem;
+                color: $black;
+                margin-bottom: 10px;
+                .inner-title {
+                    text-transform: uppercase;
+                    color: $black;
+                    font-size: 1rem;
+                    margin-left: 15px;
+                    svg {
+                        position: relative;
+                        bottom: 2px;
+                    }
+                }
+            }
+            .fs-subtitle {
+                font-weight: normal;
+                font-size: 1rem;
+                color: $black;
+                margin-bottom: 20px;
+            }
+            fieldset {
+                background: white;
+                border: 0 none;
+                border-radius: 3px;
+                padding: 20px 30px;
+                box-sizing: border-box;
+                position: relative;
+                text-align: left;
+                white-space: nowrap;
+        
+                @media(min-width: 1030px) {
+                    width: 80%;
+                    margin: 0 10%;
+                }
+        
+                input, textarea, select {
+                    padding: 15px;
+                    border: 1px solid $grey;
+                    border-radius: 0px;
+                    margin-bottom: 10px;
+                    width: 100%;
+                    box-sizing: border-box;
+                    color: #2C3E50;
+                    font-size: 13px;
+                    font-weight: 600;
+                    &::placeholder {
+                        font-style: italic;
+                        color: $grey-A0;
+                    }
+                    &[type="checkbox"] {
+                        width: auto;	
+                    }
+                }
+                .form-inner-container {
+                    &.form-address-other {
+                        @media(min-width: 1030px) {
+                            flex-direction: row !important;
+                            .form-field {
+                                flex-grow: 1;
+                                flex-shrink: 1;
+                                flex-basis: 400px;
+                                &:first-child {
+                                    padding-right: 0px;
+                                }
+                                &:nth-child(2), &:nth-child(3) {
+                                    padding: 0px 20px;
+                                    flex-shrink: 2;
+                                }	
+                            }
+                        }
+                        .form-field {
+                            &.city {
+                                flex-grow: 5;
+                            }
+                        }
+                    }
+                    &.form-password-confirm {
+                        .form-field {
+                            @media(min-width: 1030px) {
+                                max-width: 50%;
+                            }
+                        }
+                    }
+                    &.half {
+                        flex-direction: column;
+                        @media(min-width: 1030px) {
+                            flex-direction: row;
+                            .form-field {
+                                &:first-child {
+                                    padding-right: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .form-field {
+                    white-space: normal;
+                    vertical-align: top;
+                    flex: 1;
+                }
+            }
+            .update-container {
+                border-top: 2px solid $lightgrey;
+                .form-field {
+                    &.message {
+                        flex-grow: 1.5;
+                    }
+                    input[type="submit"] {
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
         .no-orders {
             @media(min-height: 650px) {
                 transform: translateY(50%);
