@@ -1017,34 +1017,34 @@ body .customer-main {
         color: #197b30;
         font-weight: 700;
         margin-left: auto; }
-  body .customer-main #edit-profile {
+  body .customer-main #customer-update {
     width: 100%;
     margin: 50px auto;
     text-align: center;
     position: relative;
     max-width: none; }
-    body .customer-main #edit-profile .ast {
+    body .customer-main #customer-update .ast {
       color: #f00; }
-    body .customer-main #edit-profile label {
+    body .customer-main #customer-update label {
       display: block; }
-    body .customer-main #edit-profile .fs-title {
+    body .customer-main #customer-update .fs-title {
       font-size: 1.5rem;
       color: #000;
       margin-bottom: 10px; }
-      body .customer-main #edit-profile .fs-title .inner-title {
+      body .customer-main #customer-update .fs-title .inner-title {
         text-transform: uppercase;
         color: #000;
         font-size: 1rem;
         margin-left: 15px; }
-        body .customer-main #edit-profile .fs-title .inner-title svg {
+        body .customer-main #customer-update .fs-title .inner-title svg {
           position: relative;
           bottom: 2px; }
-    body .customer-main #edit-profile .fs-subtitle {
+    body .customer-main #customer-update .fs-subtitle {
       font-weight: normal;
       font-size: 1rem;
       color: #000;
       margin-bottom: 20px; }
-    body .customer-main #edit-profile fieldset {
+    body .customer-main #customer-update fieldset {
       background: white;
       border: 0 none;
       border-radius: 3px;
@@ -1054,10 +1054,10 @@ body .customer-main {
       text-align: left;
       white-space: nowrap; }
       @media (min-width: 1030px) {
-        body .customer-main #edit-profile fieldset {
+        body .customer-main #customer-update fieldset {
           width: 80%;
           margin: 0 10%; } }
-      body .customer-main #edit-profile fieldset input, body .customer-main #edit-profile fieldset textarea, body .customer-main #edit-profile fieldset select {
+      body .customer-main #customer-update fieldset input, body .customer-main #customer-update fieldset textarea, body .customer-main #customer-update fieldset select {
         padding: 15px;
         border: 1px solid #666;
         border-radius: 0px;
@@ -1067,44 +1067,44 @@ body .customer-main {
         color: #2C3E50;
         font-size: 13px;
         font-weight: 600; }
-        body .customer-main #edit-profile fieldset input::placeholder, body .customer-main #edit-profile fieldset textarea::placeholder, body .customer-main #edit-profile fieldset select::placeholder {
+        body .customer-main #customer-update fieldset input::placeholder, body .customer-main #customer-update fieldset textarea::placeholder, body .customer-main #customer-update fieldset select::placeholder {
           font-style: italic;
           color: #A0A0A0; }
-        body .customer-main #edit-profile fieldset input[type="checkbox"], body .customer-main #edit-profile fieldset textarea[type="checkbox"], body .customer-main #edit-profile fieldset select[type="checkbox"] {
+        body .customer-main #customer-update fieldset input[type="checkbox"], body .customer-main #customer-update fieldset textarea[type="checkbox"], body .customer-main #customer-update fieldset select[type="checkbox"] {
           width: auto; }
       @media (min-width: 1030px) {
-        body .customer-main #edit-profile fieldset .form-inner-container.form-address-other {
+        body .customer-main #customer-update fieldset .form-inner-container.form-address-other {
           flex-direction: row !important; }
-          body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field {
+          body .customer-main #customer-update fieldset .form-inner-container.form-address-other .form-field {
             flex-grow: 1;
             flex-shrink: 1;
             flex-basis: 400px; }
-            body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field:first-child {
+            body .customer-main #customer-update fieldset .form-inner-container.form-address-other .form-field:first-child {
               padding-right: 0px; }
-            body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field:nth-child(2), body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field:nth-child(3) {
+            body .customer-main #customer-update fieldset .form-inner-container.form-address-other .form-field:nth-child(2), body .customer-main #customer-update fieldset .form-inner-container.form-address-other .form-field:nth-child(3) {
               padding: 0px 20px;
               flex-shrink: 2; } }
-      body .customer-main #edit-profile fieldset .form-inner-container.form-address-other .form-field.city {
+      body .customer-main #customer-update fieldset .form-inner-container.form-address-other .form-field.city {
         flex-grow: 5; }
       @media (min-width: 1030px) {
-        body .customer-main #edit-profile fieldset .form-inner-container.form-password-confirm .form-field {
+        body .customer-main #customer-update fieldset .form-inner-container.form-password-confirm .form-field {
           max-width: 50%; } }
-      body .customer-main #edit-profile fieldset .form-inner-container.half {
+      body .customer-main #customer-update fieldset .form-inner-container.half {
         flex-direction: column; }
         @media (min-width: 1030px) {
-          body .customer-main #edit-profile fieldset .form-inner-container.half {
+          body .customer-main #customer-update fieldset .form-inner-container.half {
             flex-direction: row; }
-            body .customer-main #edit-profile fieldset .form-inner-container.half .form-field:first-child {
+            body .customer-main #customer-update fieldset .form-inner-container.half .form-field:first-child {
               padding-right: 20px; } }
-      body .customer-main #edit-profile fieldset .form-field {
+      body .customer-main #customer-update fieldset .form-field {
         white-space: normal;
         vertical-align: top;
         flex: 1; }
-    body .customer-main #edit-profile .update-container {
+    body .customer-main #customer-update .update-container {
       border-top: 2px solid #d3d3d3; }
-      body .customer-main #edit-profile .update-container .form-field.message {
+      body .customer-main #customer-update .update-container .form-field.message {
         flex-grow: 1.5; }
-      body .customer-main #edit-profile .update-container .form-field input[type="submit"] {
+      body .customer-main #customer-update .update-container .form-field input[type="submit"] {
         text-transform: uppercase; }
   @media (min-height: 650px) {
     body .customer-main .no-orders {

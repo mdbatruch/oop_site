@@ -588,6 +588,21 @@
 
       break;
 
+      case 'customer-update':
+
+        // echo '<pre>';
+        // print_r($_POST);
+
+        $id = $_POST['customer_id'];
+        $firstName = $_POST['first_name'];
+        $lastName = $_POST['last_name'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+
+        Customer::update($id, $firstName, $lastName, $username, $email, $db);
+
+      break;
+
       case 'add-cart':
 
         $user_id = $_POST['user_id'];

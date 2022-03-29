@@ -42,10 +42,6 @@ class Customer extends Cart {
             $errors['firstname'] = 'First name cannot be blank';
           }
 
-        if (empty($firstName)) {
-            $errors['firstname'] = 'First name cannot be blank';
-          }
-
         if (empty($lastName)) {
             $errors['lastname'] = 'Last name cannot be blank';
         }
@@ -241,6 +237,128 @@ class Customer extends Cart {
           }
         
         echo json_encode($data);
+    }
+
+    static public function update($id, $firstName, $lastName, $username, $email, $db) {
+
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        // if (empty($address['street'])) {
+        //     $errors['street'] = 'Street cannot be blank';
+        // }
+
+        // if (empty($address['city'])) {
+        //     $errors['city'] = 'City cannot be blank';
+        // }
+
+        // if (empty($address['postal'])) {
+        //     $errors['postal'] = 'Postal Code cannot be blank';
+        // }
+
+        // if (empty($address['province'])) {
+        //     $errors['province'] = 'Province cannot be blank';
+        // }
+
+        // if (empty($address['country'])) {
+        //     $errors['country'] = 'Country cannot be blank';
+        // }
+
+        if (empty($firstName)) {
+            $errors['firstname'] = 'First name cannot be blank';
+          }
+
+        if (empty($lastName)) {
+            $errors['lastname'] = 'Last name cannot be blank';
+        }
+
+        // $address = json_encode($address);
+
+        if (empty($email)) {
+            $errors['email'] = 'Email cannot be blank';
+        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = "Please enter a valid email";
+        } else {
+
+            $stmt = $db->prepare("SELECT id, email from customers WHERE email = ?");
+            $stmt->bindParam(1, $email);
+            $stmt->execute();
+            $email_exists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // echo '<pre>';
+            // print_r($email_exists);
+
+            if ($email_exists['email'] == $email && !($email_exists['id'] == $id)) {
+                $errors['email'] = 'There is already an account associated with this email. Please contact the administrator for assistance with your account.';
+            }
+
+        }
+
+        if (empty($username)) {
+            $errors['username'] = 'Username cannot be blank';
+        } else {
+
+            $stmt = $db->prepare("SELECT id, username from customers WHERE username = ?");
+            $stmt->bindParam(1, $username);
+            $stmt->execute();
+            $username_exists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // echo '<pre>';
+            // print_r($username_exists);
+
+            if ($username_exists['username'] == $username && !($username_exists['id'] == $id)) {
+                $errors['username'] = 'This username already exists, please try another one';
+            }
+
+        }
+
+        // if (empty($password)) {
+        //     $errors['password'] = 'Password cannot be blank';
+        // } else if ($password !== $p_validate) {
+        //     $errors['p_validate'] = 'Passwords do not match';
+        // } else {
+        //     $password = password_hash($password, PASSWORD_DEFAULT);
+        // }
+
+          if (!empty($errors)) {
+
+            $data['message'] = 'There was an error with your submission. Please try again.';
+            $data['success'] = false;
+            $data['errors'] = $errors;
+
+          } else {
+
+
+                try {
+
+                    $stmt = $db->prepare('UPDATE customers SET first_name = ?, last_name = ?, username = ?, email = ? WHERE id = ?');
+                    
+                    $stmt->bindParam(1, $firstName);
+                    $stmt->bindParam(2, $lastName);
+                    $stmt->bindParam(3, $username);
+                    $stmt->bindParam(4, $email);
+                    $stmt->bindParam(5, $id);
+        
+                    $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+
+                    $_SESSION['username'] = $username;
+
+                    // echo '<pre>';
+                    // print_r($_SESSION);
+
+                    $data['success'] = true;
+
+                    $data['message'] = 'Success! Your Account was updated!';
+        
+                } catch (Exception $e) {
+                            
+                    $data['success'] = false;
+        
+                    $data['message'] = $e->getMessage();
+                }
+          }
+
+        echo json_encode($data);
+
     }
 
     static public function view_customer_info($id, $db) {

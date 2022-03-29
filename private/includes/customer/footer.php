@@ -75,11 +75,12 @@
 
         });
 
-        $("#edit-profile").on("submit", function(e){
+        $("#customer-update").on("submit", function(e){
 
             e.preventDefault();
 
             var id = $(this).attr('id');
+            var customer_id = $(this).attr('data-id');
             var username = $('#username').val();
             var first_name = $('#first_name').val();
             var last_name = $('#last_name').val();
@@ -100,29 +101,53 @@
                 country: country
             }
 
-            console.log(id, username, first_name, last_name, email, street, suite, city, province, postal, country);
+            console.log(id, customer_id, username, first_name, last_name, email, street, suite, city, province, postal, country);
 
-            // $.ajax({
-            //     type: "POST",
-            //     url: "../../private/process.php",
-            //     dataType: "json",
-            //     data: {product_id:product_id, id:formId, cart_id: cart_id},
-            // }).done(function(data){
+            $.ajax({
+                type: "POST",
+                url: "../../private/process.php",
+                dataType: "json",
+                data: {id: id, customer_id: customer_id, first_name: first_name, last_name: last_name, username: username, email: email, street: street, suite: suite, city: city, province: province, postal: postal, country: country},
+            }).done(function(data){
 
-            // if (!data.success) {
+            if (!data.success) {
 
-            //         $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    if(data.errors.firstname) {
+                        $('#first_name_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.firstname + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#first_name_warning').html('');
+                            }
 
-            //         console.log('Profile did not update!');
+                    if(data.errors.lastname) {
+                        $('#last_name_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.lastname + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#last_name_warning').html('');
+                            }
 
-            //     } else {
+                    if(data.errors.username) {
+                        $('#username_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.username + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#username_warning').html('');
+                            }
+
+                    if(data.errors.email) {
+                        $('#email_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.email + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#email_warning').html('');
+                            }
+
+                    $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                    console.log('Profile did not update!');
+
+                } else {
                     
-            //         console.log('Profile updated!');
+                    console.log('Profile updated!');
 
-            //         $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-            //     }
-            // });
+                }
+            });
 
         });
 
