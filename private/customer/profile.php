@@ -115,7 +115,7 @@
                                     <div id="street_warning" class="warning"></div>
                                 </div>
                                 <div class="form-field half">
-                                    <label for="suite">Suite <span class="ast">*</span></label>
+                                    <label for="suite">Suite</label>
                                     <input type="text" id="suite" name="street_name_number" placeholder="Suite or Apartment Number (optional)" value="<?= $address->suite; ?>" />
                                 </div>
                             </div>
@@ -179,6 +179,7 @@
                                 <div class="form-field half ps-2 pe-0">
                                     <label for="confirm_new_password">Confirm New Password <span class="ast">*</span></label>
                                     <input type="confirm_new_password" id="confirm_new_password" name="confirm_new_password" />
+                                    <div id="password_validate_warning" class="warning"></div>
                                 </div>
                             </div>
                         </div>

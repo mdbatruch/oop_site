@@ -593,13 +593,19 @@
         // echo '<pre>';
         // print_r($_POST);
 
+        // exit;
+
         $id = $_POST['customer_id'];
         $firstName = $_POST['first_name'];
         $lastName = $_POST['last_name'];
         $username = $_POST['username'];
         $email = $_POST['email'];
+        $address = $_POST['address'];
+        $current_password = $_POST['current_password'];
+        $new_password = $_POST['new_password'];
+        $validate_password = $_POST['validate_password'];
 
-        Customer::update($id, $firstName, $lastName, $username, $email, $db);
+        Customer::update($id, $firstName, $lastName, $username, $email, $address, $current_password, $new_password, $validate_password, $db);
 
       break;
 

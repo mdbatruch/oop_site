@@ -92,6 +92,10 @@
             var postal = $('#postal').val();
             var country = $('#country').val();
 
+            var current_password = $('#current_password').val();
+            var new_password = $('#new_password').val();
+            var validate_password = $('#confirm_new_password').val();
+
             var address = {
                 street: street,
                 suite: suite,
@@ -107,7 +111,7 @@
                 type: "POST",
                 url: "../../private/process.php",
                 dataType: "json",
-                data: {id: id, customer_id: customer_id, first_name: first_name, last_name: last_name, username: username, email: email, street: street, suite: suite, city: city, province: province, postal: postal, country: country},
+                data: {id: id, customer_id: customer_id, first_name: first_name, last_name: last_name, username: username, email: email, address: address, current_password: current_password, new_password: new_password, validate_password: validate_password},
             }).done(function(data){
 
             if (!data.success) {
@@ -134,6 +138,48 @@
                         $('#email_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.email + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                             } else {
                                 $('#email_warning').html('');
+                            }
+
+                    if(data.errors.street) {
+                        $('#street_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.street + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#street_warning').html('');
+                            }
+
+                    if(data.errors.city) {
+                        $('#city_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.city + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#city_warning').html('');
+                            }
+
+                    if(data.errors.province) {
+                        $('#province_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.province + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#province_warning').html('');
+                            }
+
+                    if(data.errors.postal) {
+                        $('#postal_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.postal + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#postal_warning').html('');
+                            }
+                    
+                    if(data.errors.country) {
+                        $('#country_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.country + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#country_warning').html('');
+                            }
+                    
+                    if(data.errors.current_password) {
+                        $('#current_password_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.current_password + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#current_password_warning').html('');
+                            }
+
+                    if(data.errors.validate_password) {
+                        $('#password_validate_warning').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.errors.validate_password + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            } else {
+                                $('#password_validate_warning').html('');
                             }
 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');

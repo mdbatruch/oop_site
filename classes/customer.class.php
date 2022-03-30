@@ -239,29 +239,9 @@ class Customer extends Cart {
         echo json_encode($data);
     }
 
-    static public function update($id, $firstName, $lastName, $username, $email, $db) {
+    static public function update($id, $firstName, $lastName, $username, $email, $address, $current_password, $new_password, $validate_password, $db) {
 
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        // if (empty($address['street'])) {
-        //     $errors['street'] = 'Street cannot be blank';
-        // }
-
-        // if (empty($address['city'])) {
-        //     $errors['city'] = 'City cannot be blank';
-        // }
-
-        // if (empty($address['postal'])) {
-        //     $errors['postal'] = 'Postal Code cannot be blank';
-        // }
-
-        // if (empty($address['province'])) {
-        //     $errors['province'] = 'Province cannot be blank';
-        // }
-
-        // if (empty($address['country'])) {
-        //     $errors['country'] = 'Country cannot be blank';
-        // }
 
         if (empty($firstName)) {
             $errors['firstname'] = 'First name cannot be blank';
@@ -270,8 +250,6 @@ class Customer extends Cart {
         if (empty($lastName)) {
             $errors['lastname'] = 'Last name cannot be blank';
         }
-
-        // $address = json_encode($address);
 
         if (empty($email)) {
             $errors['email'] = 'Email cannot be blank';
@@ -311,13 +289,57 @@ class Customer extends Cart {
 
         }
 
-        // if (empty($password)) {
-        //     $errors['password'] = 'Password cannot be blank';
-        // } else if ($password !== $p_validate) {
-        //     $errors['p_validate'] = 'Passwords do not match';
-        // } else {
-        //     $password = password_hash($password, PASSWORD_DEFAULT);
-        // }
+        // echo '<pre>';
+        // print_r($address);
+
+        if (empty($address['street'])) {
+            $errors['street'] = 'Street cannot be blank';
+        }
+
+        if (empty($address['city'])) {
+            $errors['city'] = 'City cannot be blank';
+        }
+
+        if (empty($address['postal'])) {
+            $errors['postal'] = 'Postal Code cannot be blank';
+        }
+
+        if (empty($address['province'])) {
+            $errors['province'] = 'Province cannot be blank';
+        }
+
+        if (empty($address['country'])) {
+            $errors['country'] = 'Country cannot be blank';
+        }
+
+        $address = json_encode($address);
+
+        if (isset($current_password)) {
+
+            $stmt = $db->prepare("SELECT hashed_password FROM customers WHERE username=:username");        
+            $stmt->bindParam(":username", $username);
+
+            $stmt->execute();
+
+            $customer_exists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if (empty($current_password)) {
+                    $errors['current_password'] = 'Password cannot be blank';
+                } else if (!password_verify($current_password, $customer_exists['hashed_password'])) {
+                    $errors['current_password'] = 'Your Password is incorrect';
+                } else {
+                    $current_password = password_hash($current_password, PASSWORD_DEFAULT);
+               }
+            }
+
+
+        if (empty($new_password)) {
+            $errors['validate_password'] = 'Password cannot be blank';
+        } else if ($new_password !== $validate_password) {
+            $errors['validate_password'] = 'Passwords do not match';
+        } else {
+            $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+        }
 
           if (!empty($errors)) {
 
@@ -327,16 +349,17 @@ class Customer extends Cart {
 
           } else {
 
-
                 try {
 
-                    $stmt = $db->prepare('UPDATE customers SET first_name = ?, last_name = ?, username = ?, email = ? WHERE id = ?');
+                    $stmt = $db->prepare('UPDATE customers SET first_name = ?, last_name = ?, username = ?, email = ?, address = ?, hashed_password = ? WHERE id = ?');
                     
                     $stmt->bindParam(1, $firstName);
                     $stmt->bindParam(2, $lastName);
                     $stmt->bindParam(3, $username);
                     $stmt->bindParam(4, $email);
-                    $stmt->bindParam(5, $id);
+                    $stmt->bindParam(5, $address);
+                    $stmt->bindParam(6, $new_password);
+                    $stmt->bindParam(7, $id);
         
                     $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
