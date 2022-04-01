@@ -265,8 +265,10 @@ class Customer extends Cart {
             // echo '<pre>';
             // print_r($email_exists);
 
-            if ($email_exists['email'] == $email && !($email_exists['id'] == $id)) {
-                $errors['email'] = 'There is already an account associated with this email. Please contact the administrator for assistance with your account.';
+            if (!empty($email_exists)) {
+                if ($email_exists['email'] == $email && !($email_exists['id'] == $id)) {
+                    $errors['email'] = 'There is already an account associated with this email. Please contact the administrator for assistance with your account.';
+                }
             }
 
         }
@@ -283,8 +285,10 @@ class Customer extends Cart {
             // echo '<pre>';
             // print_r($username_exists);
 
-            if ($username_exists['username'] == $username && !($username_exists['id'] == $id)) {
-                $errors['username'] = 'This username already exists, please try another one';
+            if (!empty($username_exists)) {
+                if ($username_exists['username'] == $username && !($username_exists['id'] == $id)) {
+                    $errors['username'] = 'This username already exists, please try another one';
+                }
             }
 
         }
@@ -314,7 +318,7 @@ class Customer extends Cart {
 
         $address = json_encode($address);
 
-        if (isset($current_password)) {
+        if ($current_password !== '') {
 
             $stmt = $db->prepare("SELECT hashed_password FROM customers WHERE username=:username");        
             $stmt->bindParam(":username", $username);
@@ -330,55 +334,98 @@ class Customer extends Cart {
                 } else {
                     $current_password = password_hash($current_password, PASSWORD_DEFAULT);
                }
+
+               if (empty($new_password)) {
+                    $errors['validate_password'] = 'Password cannot be blank';
+                } else if ($new_password !== $validate_password) {
+                    $errors['validate_password'] = 'Passwords do not match';
+                } else {
+                    $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+                }
+
+                if (!empty($errors)) {
+
+                    $data['message'] = 'There was an error with your submission. Please try again.';
+                    $data['success'] = false;
+                    $data['errors'] = $errors;
+        
+                  } else {
+
+                        try {
+        
+                            $stmt = $db->prepare('UPDATE customers SET first_name = ?, last_name = ?, username = ?, email = ?, address = ?, hashed_password = ? WHERE id = ?');
+                            
+                            $stmt->bindParam(1, $firstName);
+                            $stmt->bindParam(2, $lastName);
+                            $stmt->bindParam(3, $username);
+                            $stmt->bindParam(4, $email);
+                            $stmt->bindParam(5, $address);
+                            $stmt->bindParam(6, $new_password);
+                            $stmt->bindParam(7, $id);
+                
+                            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+        
+                            $_SESSION['username'] = $username;
+        
+                            // echo '<pre>';
+                            // print_r($_SESSION);
+        
+                            $data['success'] = true;
+        
+                            $data['message'] = 'Success! Your Account was updated!';
+                
+                        } catch (Exception $e) {
+                                    
+                            $data['success'] = false;
+                
+                            $data['message'] = $e->getMessage();
+                        }
+                    }
+                } else {
+
+                    // echo 'does not works';
+                    // exit;
+
+                if (!empty($errors)) {
+
+                    $data['message'] = 'There was an error with your submission. Please try again.';
+                    $data['success'] = false;
+                    $data['errors'] = $errors;
+        
+                  } else {
+        
+                        try {
+        
+                            $stmt = $db->prepare('UPDATE customers SET first_name = ?, last_name = ?, username = ?, email = ?, address = ? WHERE id = ?');
+                            
+                            $stmt->bindParam(1, $firstName);
+                            $stmt->bindParam(2, $lastName);
+                            $stmt->bindParam(3, $username);
+                            $stmt->bindParam(4, $email);
+                            $stmt->bindParam(5, $address);
+                            $stmt->bindParam(6, $id);
+                
+                            $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+        
+                            $_SESSION['username'] = $username;
+        
+                            // echo '<pre>';
+                            // print_r($_SESSION);
+        
+                            $data['success'] = true;
+        
+                            $data['message'] = 'Success! Your Account was updated!';
+                
+                        } catch (Exception $e) {
+                                    
+                            $data['success'] = false;
+                
+                            $data['message'] = $e->getMessage();
+                        }
+                }
+
             }
 
-
-        if (empty($new_password)) {
-            $errors['validate_password'] = 'Password cannot be blank';
-        } else if ($new_password !== $validate_password) {
-            $errors['validate_password'] = 'Passwords do not match';
-        } else {
-            $new_password = password_hash($new_password, PASSWORD_DEFAULT);
-        }
-
-          if (!empty($errors)) {
-
-            $data['message'] = 'There was an error with your submission. Please try again.';
-            $data['success'] = false;
-            $data['errors'] = $errors;
-
-          } else {
-
-                try {
-
-                    $stmt = $db->prepare('UPDATE customers SET first_name = ?, last_name = ?, username = ?, email = ?, address = ?, hashed_password = ? WHERE id = ?');
-                    
-                    $stmt->bindParam(1, $firstName);
-                    $stmt->bindParam(2, $lastName);
-                    $stmt->bindParam(3, $username);
-                    $stmt->bindParam(4, $email);
-                    $stmt->bindParam(5, $address);
-                    $stmt->bindParam(6, $new_password);
-                    $stmt->bindParam(7, $id);
-        
-                    $stmt->execute() or die(print_r($stmt->errorInfo(), true));
-
-                    $_SESSION['username'] = $username;
-
-                    // echo '<pre>';
-                    // print_r($_SESSION);
-
-                    $data['success'] = true;
-
-                    $data['message'] = 'Success! Your Account was updated!';
-        
-                } catch (Exception $e) {
-                            
-                    $data['success'] = false;
-        
-                    $data['message'] = $e->getMessage();
-                }
-          }
 
         echo json_encode($data);
 

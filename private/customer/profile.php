@@ -77,7 +77,7 @@
     <div class="container">
         <div class="row">
             <div class="col col-12">
-                <form id="customer-update" method="post" data-id="<?= $profile['id']; ?>">
+                <form id="customer-update" method="post" data-id="<?= $profile['id']; ?>" novalidate="novalidate">
                     <fieldset>
                         <div class="customer-information">
                             <h2 class="fs-title mt-4">Edit Your Account Information</h2>
@@ -172,13 +172,13 @@
                                 </div>
                                 <div class="form-field half">
                                     <label for="new_password">New Password <span class="ast">*</span></label>
-                                    <input type="new_password" id="new_password" name="new_password" />
+                                    <input type="password" id="new_password" name="new_password" />
                                 </div>
                             </div>
                             <div class="form-inner-container form-password-confirm d-flex half justify-content-end">
                                 <div class="form-field half ps-2 pe-0">
                                     <label for="confirm_new_password">Confirm New Password <span class="ast">*</span></label>
-                                    <input type="confirm_new_password" id="confirm_new_password" name="confirm_new_password" />
+                                    <input type="password" id="confirm_new_password" name="confirm_new_password" />
                                     <div id="password_validate_warning" class="warning"></div>
                                 </div>
                             </div>
