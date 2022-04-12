@@ -15,7 +15,7 @@
 </div>
 <div class="col-12 nav-container admin">
     <div id="navigation" style="width: 100%;">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>

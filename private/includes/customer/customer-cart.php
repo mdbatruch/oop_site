@@ -49,7 +49,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div id="navigation" class="d-flex h-100" style="width: 100%;">
-                    <nav class="navbar navbar-expand-sm navbar-light bg-white pl-0">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white pl-0">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="col-md-4 pt-2 pb-2 logo-container d-flex justify-content-center">
-                <img src="<?= root_url('images/CastleGames.png'); ?>" alt="Castle Games" class="img-fluid w-25">
+                <img src="<?= root_url('images/CastleGames.png'); ?>" alt="Castle Games" class="img-fluid">
             </div>
             <div class="col-md-4 d-flex justify-content-end align-self-center cart">
                 <div class="d-flex h-100">

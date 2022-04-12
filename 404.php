@@ -50,16 +50,12 @@
 
 ?>
 <header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
-    <div class="container-fluid p-0">
-        <div class="row">
-            <?php 
-                if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
-                    $site->addAdminBar($site);
-                } else {
-                    $site->addCartHeader($site, $count, $items, $subtotal, $db);
-                } ?>
-        </div>
-    </div>
+    <?php 
+        if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
+            $site->addAdminBar($site);
+        } else {
+            $site->addCartHeader($site, $count, $items, $subtotal, $db);
+        } ?>
 </header>
 <main class="not-found">
     <?= $site->addCategorySearch($term); ?>

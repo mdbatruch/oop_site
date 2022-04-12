@@ -439,3 +439,24 @@ function toggleOrderList() {
         }
     });
 }
+
+function toggleNav() {
+
+    var body = $('body');
+    var close_button = $('.close-button');
+    var icon = $('#nav-icon2');
+    var navbar = $('.navbar-collapse');
+
+    $('.navbar-toggler').click(function(){
+		$(icon).addClass('open');
+        $(body).addClass('no-scroll');
+        $(body).removeClass('scroll');
+	});
+
+    $('.close-button').click(function(){
+		$(icon).removeClass('open');
+        $(body).removeClass('no-scroll');
+        $(body).addClass('scroll');
+        $(navbar).removeClass('show');
+	});
+}

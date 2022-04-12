@@ -6,6 +6,8 @@ footer {
     .column {
         h4 {
             position: relative;
+            margin-bottom: 13px;
+            line-height: 2;
             &:after {
                 content: "";
                 position: absolute;
@@ -31,6 +33,18 @@ footer {
             h4 {
                 &:after {
                     width: 20%;
+                }
+            }
+        }
+        &.logo {
+            text-align: center;
+            @media(min-width: 991px) {
+                text-align: left;
+            }
+            img {
+                max-width: 150px;
+                @media(min-width: 991px) {
+                    max-width: 200px;
                 }
             }
         }
