@@ -6,9 +6,15 @@
             This action cannot be undone.
         </p>
         <div id="confirm-item-removal" class="actions d-flex">
-            <div class="w-50 d-flex">
-                <button class="btn btn-outline-dark py-3 cancel">Cancel</button>
-                <button class="btn btn-green py-3 confirm">Confirm</button>
+            <div class="container-fluid link-container">
+                <div class="row">
+                    <div class="col-6 col-md-4">
+                        <button class="btn btn-outline-dark py-3 cancel">Cancel</button>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <button class="btn btn-green py-3 confirm">Confirm</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,35 +1,55 @@
 <div class="container">
         <div class="row">
-            <div class="col-md-3 column">
-                <img src="<?= root_url('images/CastleGames-White.png'); ?>" alt="Castle Games" class="img-fluid w-50">
+            <div class="col-lg-3 column logo">
+                <img src="<?= root_url('images/CastleGames-White.png'); ?>" alt="Castle Games" class="img-fluid">
             </div>
-            <div class="col-md-2 column">
+            <div class="col-6 col-lg-2 column">
                 <h4>Information</h4>
                 <ul>
-                    <li>About Us</li>
-                    <li>Our Collections</li>
-                    <li>Our Products</li>
-                    <li>Latest News</li>
-                    <li>Contact Us</li>
+                    <li>
+                        <a href="<?= root_url('about.php'); ?>">About Us</a>    
+                    </li>
+                    <li>
+                        <a href="<?= root_url('news.php'); ?>">Our Collections</a>
+                    </li>
+                    <li>
+                        <a href="<?= root_url('products.php'); ?>">Our Products</a>    
+                    </li>
+                    <li>
+                        <a href="<?= root_url('news.php'); ?>">Latest News</a>
+                    </li>
+                    <li>
+                        <a href="<?= root_url('contact.php'); ?>">Contact Us</a>
+                    </li>
                 </ul>
             </div>
-            <div class="col-md-2 column">
+            <div class="col-6 col-lg-2 column">
                 <h4>Useful Links</h4>
                 <ul>
-                    <li>Shopping FAQs</li>
-                    <li>Shipping</li>
-                    <li>Our Sitemap</li>
-                    <li>Terms of Use</li>
-                    <li>Privacy Policy</li>
+                    <li>
+                        <a href="<?= root_url('faq.php'); ?>">Shopping FAQs</a>
+                    </li>
+                    <li>
+                        <a href="<?= root_url('shipping.php'); ?>">Shipping</a>
+                    </li>
+                    <li>
+                        <a href="<?= root_url('sitemap.php'); ?>">Our Sitemap</a>
+                    </li>
+                    <li>
+                        <a href="<?= root_url('terms.php'); ?>">Terms of Use</a>
+                    </li>
+                    <li>
+                        <a href="<?= root_url('privacy-policy.php'); ?>">Privacy Policy</a>  
+                    </li>
                 </ul>
             </div>
-            <div class="col-md-5 column">
+            <div class="col-lg-5 column">
                 <h4>About Us</h4>
                 <p>
-                    Castle Games is an independent game store based in Toronto, Ontario.
+                    Castle Games is an independent game store based in Toronto, Ontario.<br/>
                     We carry rare collectables and collections catered to all types of 
-                    enthusiasts and hobbiests.
-                    Got a question? E-mail our team at info@castlegames.com.
+                    enthusiasts and hobbiests.<br/>
+                    Got a question? E-mail our team at <a href="mailto:info@castlegames.com">info@castlegames.com</a>.
                 </p>
                 <ul>
                     <li>
@@ -52,6 +72,7 @@
         </div>
     </div>
     
+    
     <script src="<?php echo root_url('js/lightbox-plus-jquery.min.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
@@ -67,6 +88,8 @@
         toggleCartMenu();
 
         toggleOrderList();
+
+        toggleNav();
 
         $(".back-to-top").on("click", function(e) {
 

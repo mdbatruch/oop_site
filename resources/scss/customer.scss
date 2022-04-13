@@ -41,6 +41,11 @@ body {
             a {
                 @extend %btn-format;
             }
+            .link-container {
+                a {
+                    width: 100%;
+                }
+            }
         }
         table {
             tr {

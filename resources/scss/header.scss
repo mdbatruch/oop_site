@@ -26,13 +26,16 @@ header {
         }
     }
     .customer {
-        @media(max-width: 767px) {
-            position: fixed;
-            width: 50%;
-            background-color: #000;
-            right: 0;
-            min-width: 260px;
-            top: 75px;
+        &.logged-in-customer {
+            @media(max-width: 767px) {
+                position: fixed;
+                width: 50%;
+                background-color: #000;
+                right: 0;
+                min-width: 260px;
+                top: 75px;
+                z-index: 100;
+            }
         }
         a {
             text-decoration: none;
@@ -60,22 +63,35 @@ header {
             box-shadow: 0px 0px 14px 1px $grey;
             top: 50%;
             left: 50%;
-            width: 100%;
+            width: 90%;
             @media(min-width: 1030px) {
                 width: 60%;
             }
             @media(min-width: 1400px) {
                 width: 40%;
             }
+            .confirm {
+                text-align: center;
+                @media(min-width: 1030px) {
+                    text-align: left;
+                }
+            }
             .actions {
                 justify-content: flex-end;
                 max-width: none;
                  > div {
                     justify-content: space-evenly;
+                    .row {
+                        @media(min-width: 992px) {
+                            justify-content: flex-end;
+                        }
+                    }
                     .btn {
                         text-transform: uppercase;
                         border-radius: 0px;
                         flex: 1;
+                        width: 100%;
+                        text-align: center;
                         &:first-child {
                             margin-right: calc(var(--bs-gutter-x) * .5);
                         }
@@ -106,8 +122,8 @@ header {
                     border: none;
                     color: transparent;
                     > div {
-                        width: 60px;
-                        height: 45px;
+                        width: 45px;
+                        height: 40px;
                         position: relative;
                         margin: 50px auto;
                         -webkit-transform: rotate(0deg);
@@ -122,7 +138,7 @@ header {
                         span {
                             display: block;
                             position: absolute;
-                            height: 9px;
+                            height: 5px;
                             width: 50%;
                             background: $black;
                             opacity: 1;
@@ -143,10 +159,10 @@ header {
                                 border-radius: 9px 0 0 9px;
                             }
                             &:nth-child(3), &:nth-child(4) {
-                                top: 18px;
+                                top: 14px;
                             }
                             &:nth-child(5), &:nth-child(6) {
-                                top: 36px;
+                                top: 28px;
                             }
                         }
                         &.open {
@@ -164,12 +180,12 @@ header {
                                     transform: rotate(-45deg);
                                 }
                                 &:nth-child(1) {
-                                    left: 5px;
-                                    top: 7px;
+                                    left: 6px;
+                                    top: 16px;
                                   }
                                 &:nth-child(2) {
-                                    left: calc(50% - 5px);
-                                    top: 7px;
+                                    left: calc(50% - 4px);
+                                    top: 16px;
                                 }
                                 &:nth-child(3) {
                                     left: -50%;

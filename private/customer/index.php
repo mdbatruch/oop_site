@@ -61,10 +61,18 @@
         <div class="row customer-top justify-content-center py-4">
             <div class="col-md-10 col-xl-9 text-center">
                 <h3>Welcome back, <?= $_SESSION['username']; ?></h3>
-                <div class="link-container d-flex justify-content-evenly">
-                    <a href="<?php echo root_url_private('/customer/orders.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">View Past Orders</a>
-                    <a href="<?php echo root_url_private('/customer/profile.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">Edit Profile</a>
-                    <a href="<?= root_url('products.php'); ?>" class="btn btn-lightgrey py-3 my-2">Start Shopping</a>
+                <div class="container-fluid link-container">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <a href="<?php echo root_url_private('/customer/orders.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">View Past Orders</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a href="<?php echo root_url_private('/customer/profile.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">Edit Profile</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a href="<?= root_url('products.php'); ?>" class="btn btn-lightgrey py-3 my-2">Start Shopping</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

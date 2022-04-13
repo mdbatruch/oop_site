@@ -44,8 +44,24 @@ body {
                 form {
                     @extend %login-border;
                     &.customer-login {
+                        @media(max-width: 767px) {
+                            height: auto;
+                            padding: 2rem;
+                            border-radius: 5px;
+                            -webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+                            box-shadow: 0px 0px 13px 2px $lightgrey;
+                        }
                         @media(min-width: 768px) {
                             border-right: 1px solid $lightgrey;
+                            padding: 2rem;
+                        }
+                        .submit-container {
+                            text-align: center;
+                            input[type="submit"] {
+                                @media(max-width: 767px) {
+                                    max-width: 220px;
+                                }
+                            }
                         }
                     }
                     &.customer-register {
@@ -77,10 +93,14 @@ body {
                         }
                     }
                     > div {
-                        margin: 0 auto;
-                        @media(max-width: 990px) {
-                            max-width: 300px;
+                        width: 100%;
+                        @media(min-width: 768px) {
+                            width: auto;
+                            margin: 0 auto;
                         }
+                        // @media(max-width: 991px) {
+                        //     max-width: 300px;
+                        // }
                         .ast {
                             color: $red;
                             margin-left: 5px;

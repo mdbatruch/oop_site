@@ -27,6 +27,8 @@ body .customer-main {
   body .customer-main .customer-top {
     background-color: #343a40;
     color: #fff; }
+    body .customer-main .customer-top .link-container a {
+      width: 100%; }
   body .customer-main table tr th {
     text-transform: uppercase; }
   body .customer-main table tr td .order-products {

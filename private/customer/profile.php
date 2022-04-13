@@ -66,10 +66,18 @@
         <div class="row customer-top justify-content-center py-4">
             <div class="col-md-10 col-xl-9 text-center">
                 <h3>Welcome back, <?= $_SESSION['username']; ?></h3>
-                <div class="link-container d-flex justify-content-evenly">
-                    <a href="<?php echo root_url_private('/customer/orders.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">View Past Orders</a>
-                    <a href="<?php echo root_url_private('/customer/profile.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">Edit Profile</a>
-                    <a href="<?= root_url('products.php'); ?>" class="btn btn-lightgrey py-3 my-2">Start Shopping</a>
+                <div class="container-fluid link-container">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <a href="<?php echo root_url_private('/customer/orders.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">View Past Orders</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a href="<?php echo root_url_private('/customer/profile.php?id=' . $_SESSION['id']); ?>" class="btn btn-lightgrey py-3 my-2">Edit Profile</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a href="<?= root_url('products.php'); ?>" class="btn btn-lightgrey py-3 my-2">Start Shopping</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,18 +119,18 @@
                             <div class="form-inner-container form-address d-flex half">
                                 <div class="form-field half">
                                     <label for="street">Address <span class="ast">*</span></label>
-                                    <input type="text" id="street" name="street_name_number" placeholder="Street Name and Number" value="<?= $address->street; ?>" />
+                                    <input type="text" id="street" name="street_name_number" placeholder="Street Name and Number" value="<?= isset($address->street) ? $address->street : ''; ?>" />
                                     <div id="street_warning" class="warning"></div>
                                 </div>
                                 <div class="form-field half">
                                     <label for="suite">Suite</label>
-                                    <input type="text" id="suite" name="street_name_number" placeholder="Suite or Apartment Number (optional)" value="<?= $address->suite; ?>" />
+                                    <input type="text" id="suite" name="street_name_number" placeholder="Suite or Apartment Number (optional)" value="<?= isset($address->suite) ? $address->suite : ''; ?>" />
                                 </div>
                             </div>
                             <div class="form-inner-container form-address-other d-flex flex-column">
                                 <div class="form-field city">
                                     <label for="city">City <span class="ast">*</span></label>
-                                    <input type="text" id="city" name="city" value="<?= $address->city; ?>" />
+                                    <input type="text" id="city" name="city" value="<?= isset($address->city) ? $address->city : ''; ?>" />
                                     <div id="city_warning" class="warning"></div>
                                 </div>
                                 <div class="form-field">
@@ -145,19 +153,23 @@
                                         <select name="province" id="province" class="province">
                                             <option value=""></option>
                                             <?php foreach ($canadian_states as $key => $value) : ?>
-                                                <option value="<?= $key; ?>" <?= $address->province == $key ? 'selected' : '';?> class="province-value"><?= $value; ?></option>
+                                                <?php if (isset($address->province)) :?>
+                                                    <option value="<?= $key; ?>" <?= $address->province == $key ? 'selected' : '';?> class="province-value"><?= $value; ?></option>
+                                                <?php else :?>
+                                                    <option value="<?= $key; ?>" class="province-value"><?= $value; ?></option>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>
                                     <div id="province_warning" class="warning"></div>
                                 </div>
                                 <div class="form-field ps-0">
                                     <label for="postal">Postal Code <span class="ast">*</span></label>
-                                    <input type="text" id="postal" name="postal" value="<?= $address->postal; ?>"/>
+                                    <input type="text" id="postal" name="postal" value="<?= isset($address->postal) ? $address->postal : ''; ?>"/>
                                     <div id="postal_warning" class="warning"></div>
                                 </div>
                                 <div class="form-field">
                                     <label for="country">Country <span class="ast">*</span></label>
-                                    <input type="text" id="country" name="country" placeholder="Country" value="<?= $address->country; ?>"/>
+                                    <input type="text" id="country" name="country" placeholder="Country" value="<?= isset($address->country) ? $address->country : ''; ?>"/>
                                     <div id="country_warning" class="warning"></div>
                                 </div>
                             </div>

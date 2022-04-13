@@ -15,7 +15,9 @@
                 <div id="login-password-error"></div><br />
             </div>
         </div>
-        <input type="submit" name="submit" value="Submit" class="btn btn-black" />
+        <div class="submit-container">
+            <input type="submit" name="submit" value="Sign In" class="btn btn-black" />
+        </div>
         <div class="logged-out">
             <?php if (isset($_SESSION['logout_message'])) : ?>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">

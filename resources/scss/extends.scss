@@ -21,4 +21,10 @@
     border: 1px solid $grey;
     background-color: $white;
     padding: 10px 20px;
+    @media(max-width: 767px) {
+      border-color: $black;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
   }

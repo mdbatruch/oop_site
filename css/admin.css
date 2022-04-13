@@ -4,6 +4,12 @@ body main.admin-login > .container input, body main.admin-login > .container tex
   border: 1px solid #666;
   background-color: #fff;
   padding: 10px 20px; }
+  @media (max-width: 767px) {
+    body main.admin-login > .container input, body main.admin-login > .container textarea {
+      border-color: #000;
+      border-top: none;
+      border-left: none;
+      border-right: none; } }
 
 body #admin-header {
   background-color: #343a40; }

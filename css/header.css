@@ -17,13 +17,14 @@ header .account-name img {
   width: 40px; }
 
 @media (max-width: 767px) {
-  header .customer {
+  header .customer.logged-in-customer {
     position: fixed;
     width: 50%;
     background-color: #000;
     right: 0;
     min-width: 260px;
-    top: 75px; } }
+    top: 75px;
+    z-index: 100; } }
 
 header .customer a {
   text-decoration: none; }
@@ -47,22 +48,32 @@ header .row-first .item-removal-container {
   box-shadow: 0px 0px 14px 1px #666;
   top: 50%;
   left: 50%;
-  width: 100%; }
+  width: 90%; }
   @media (min-width: 1030px) {
     header .row-first .item-removal-container {
       width: 60%; } }
   @media (min-width: 1400px) {
     header .row-first .item-removal-container {
       width: 40%; } }
+  header .row-first .item-removal-container .confirm {
+    text-align: center; }
+    @media (min-width: 1030px) {
+      header .row-first .item-removal-container .confirm {
+        text-align: left; } }
   header .row-first .item-removal-container .actions {
     justify-content: flex-end;
     max-width: none; }
     header .row-first .item-removal-container .actions > div {
       justify-content: space-evenly; }
+      @media (min-width: 992px) {
+        header .row-first .item-removal-container .actions > div .row {
+          justify-content: flex-end; } }
       header .row-first .item-removal-container .actions > div .btn {
         text-transform: uppercase;
         border-radius: 0px;
-        flex: 1; }
+        flex: 1;
+        width: 100%;
+        text-align: center; }
         header .row-first .item-removal-container .actions > div .btn:first-child {
           margin-right: calc(var(--bs-gutter-x) * .5); }
         header .row-first .item-removal-container .actions > div .btn:last-child {
@@ -84,8 +95,8 @@ header .row-second {
       border: none;
       color: transparent; }
       header .row-second > .container > div .navbar-toggler > div {
-        width: 60px;
-        height: 45px;
+        width: 45px;
+        height: 40px;
         position: relative;
         margin: 50px auto;
         -webkit-transform: rotate(0deg);
@@ -100,7 +111,7 @@ header .row-second {
         header .row-second > .container > div .navbar-toggler > div span {
           display: block;
           position: absolute;
-          height: 9px;
+          height: 5px;
           width: 50%;
           background: #000;
           opacity: 1;
@@ -119,9 +130,9 @@ header .row-second {
             left: 0px;
             border-radius: 9px 0 0 9px; }
           header .row-second > .container > div .navbar-toggler > div span:nth-child(3), header .row-second > .container > div .navbar-toggler > div span:nth-child(4) {
-            top: 18px; }
+            top: 14px; }
           header .row-second > .container > div .navbar-toggler > div span:nth-child(5), header .row-second > .container > div .navbar-toggler > div span:nth-child(6) {
-            top: 36px; }
+            top: 28px; }
         header .row-second > .container > div .navbar-toggler > div.open span:nth-child(1), header .row-second > .container > div .navbar-toggler > div.open span:nth-child(6) {
           -webkit-transform: rotate(45deg);
           -moz-transform: rotate(45deg);
@@ -133,11 +144,11 @@ header .row-second {
           -o-transform: rotate(-45deg);
           transform: rotate(-45deg); }
         header .row-second > .container > div .navbar-toggler > div.open span:nth-child(1) {
-          left: 5px;
-          top: 7px; }
+          left: 6px;
+          top: 16px; }
         header .row-second > .container > div .navbar-toggler > div.open span:nth-child(2) {
-          left: calc(50% - 5px);
-          top: 7px; }
+          left: calc(50% - 4px);
+          top: 16px; }
         header .row-second > .container > div .navbar-toggler > div.open span:nth-child(3) {
           left: -50%;
           opacity: 0; }
