@@ -332,9 +332,11 @@ function filterProductRange() {
 }
 
 function toggleLoginRegistration() {
+    var register_container = $('.register-container');
     var register = $('.register-option-button');
     var register_form = $('#customer-register');
     
+    var login_container = $('.login-container');
     var login = $('.login-option-button');
     var login_form = $('#customer-login');
 
@@ -348,7 +350,14 @@ function toggleLoginRegistration() {
 
         $(login_form).toggleClass('d-none');
         $(login).parents('.login-option').removeClass('d-none');
-        $(login).parents('.login-option').addClass('d-flex');
+        $(login).parents('.login-option').addClass('d-flex order-2');
+        
+        if ($(window).width() < 767) {
+            $(register_container).removeClass('order-2');
+            $(login_container).addClass('order-2');
+        }
+
+        window.location.href = '#customer-register';
     });
 
     $(login).on('click', function(e) {
@@ -357,11 +366,25 @@ function toggleLoginRegistration() {
 
         $(this).parents('.login-option').addClass('d-none');
         $(login_form).removeClass('d-none');
-        $(login_form).addClass('d-flex');
+        $(login_form).addClass('d-flex order-2');
 
         $(register_form).addClass('d-none');
         $(register).parents('.register-option').removeClass('d-none');
-        $(register).parents('.register-option').addClass('d-flex');
+        $(register).parents('.register-option').addClass('d-flex order-2');
+
+        if ($(window).width() < 767) {
+            $(register_container).addClass('order-2');
+            $(login_container).removeClass('order-2');
+        }
+
+        window.location.href = '#customer-login';
+    });
+
+    $(window).resize(function(){
+        if ($(window).width() > 767) {
+            $(login_container).removeClass('order-2');
+            $(register_container).removeClass('order-2');
+         }
     });
 }
 
@@ -459,4 +482,105 @@ function toggleNav() {
         $(body).addClass('scroll');
         $(navbar).removeClass('show');
 	});
+}
+
+function productTab() {
+
+    var tab = $('.product-ind-meta');
+
+    $(tab).children('h5').click(function(){
+        $(this).children('.btn').toggleClass('greentext');
+	});
+}
+
+function toggleFilter() {
+
+    var filter = $('.filter-container');
+    var toggle_filter = $('.toggle-filters');
+
+    var price_container = $('price_container');
+    var sort_container = $('.sort-container');
+
+    var body = $('body');
+
+    if ($(window).width() < 768) {
+
+        $(filter).click(function(){
+
+            $(toggle_filter).toggleClass('mobile-layout');
+            $(this).find('a').toggleClass('greentext');
+            $(this).find('svg').toggleClass('greentext');
+
+            $(body).toggleClass('no-scroll');
+
+
+        });
+
+        $('.close-inner').click(function(){
+
+            $(toggle_filter).toggleClass('mobile-layout');
+            $(filter).find('a').toggleClass('greentext');
+            $(filter).find('svg').toggleClass('greentext');
+
+            $(body).toggleClass('no-scroll');
+
+        });
+
+        $('.price-container').click(function(){
+
+            $(this).toggleClass('selected');
+
+        });
+
+        $('.sort-container').click(function(){
+
+            $(this).toggleClass('selected');
+
+        });
+
+    }
+
+    if ($(window).width() > 767) {
+        $(toggle_filter).removeClass('mobile-layout');
+    }
+
+    $(window).on('resize', function(){
+        if ($(window).width() > 767) {
+            $(toggle_filter).removeClass('mobile-layout');
+
+            $(filter).click(function(){
+
+                $(toggle_filter).toggleClass('mobile-layout');
+                $(this).find('a').toggleClass('greentext');
+                $(this).find('svg').toggleClass('greentext');
+    
+                $(body).toggleClass('no-scroll');
+    
+    
+            });
+    
+            $('.close-inner').click(function(){
+    
+                $(toggle_filter).toggleClass('mobile-layout');
+                $(filter).find('a').toggleClass('greentext');
+                $(filter).find('svg').toggleClass('greentext');
+    
+                $(body).toggleClass('no-scroll');
+    
+            });
+
+
+            $('.price-container').click(function(){
+
+                $(this).toggleClass('selected');
+
+            });
+
+            $('.sort-container').click(function(){
+
+                $(this).toggleClass('selected');
+
+            });
+        }
+    });
 }

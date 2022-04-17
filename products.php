@@ -143,7 +143,6 @@
         $stmt = $product->read($per_page, $pagination->offset());
 
     }
-
 ?>
 <header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
     <div class="container-fluid p-0">
@@ -157,10 +156,7 @@
         </div>
     </div>
 </header>
-<main>
-<?php if (isset($_GET['category'])) : ?>
-<?= $site->addCategorySearch($category); ?>
-<?php endif; ?>
+<main class="products">
 <div id="products" class="container">
     <div class="row top-products">
         <div class="container-fluid">
@@ -177,17 +173,42 @@
                     <?php endif; ?>
                 </div>
                 <div class="page-info d-flex">
-                    <div class="results pe-2">
-                        <?= $pagination->show_range(); ?>
-                    </div>
-                    | 
-                    <div class="pagination-top">
-                        <?= $pagination->page_links($url, ''); ?>
-                    </div>
+                    <?php if (isset($_GET['category'])) : ?>
+                        <div class="results-pagination d-flex">
+                            <div class="results-container">
+                                <h4>
+                                    Results for <?= isset($_GET['category']) ? '"' . ucwords($_GET['category']) . '"' : $value; ?>
+                                </h4>
+                            </div>
+                            <div class="pagination-container d-flex">
+                                <div class="results pe-2">
+                                    <?= $pagination->show_range(); ?>
+                                </div>
+                                <span>|</span> 
+                                <div class="pagination-top">
+                                    <?= $pagination->page_links($url, ''); ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <div class="pagination-container d-flex">
+                            <div class="results pe-2">
+                                <?= $pagination->show_range(); ?>
+                            </div>
+                            | 
+                            <div class="pagination-top">
+                                <?= $pagination->page_links($url, ''); ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <div class="search"><div id="root"></div></div>
                     <div class="filter-container ms-4">
                         <p class="mb-0">
-                            <a class="close-outer" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Filters
+                            <a class="close-outer" data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                                </svg>    
+                                Filter
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                 </svg>
@@ -197,25 +218,38 @@
                 </div>
             </div>
             <div class="toggle-filters">
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body d-flex py-4">
-                        <a class="close-inner" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                        </a>
-                        <div class="sort me-4">
-                            <h5>Sort By</h5>
-                            <ul class="ps-0">
+                <div class="collapse" id="filterCollapse">
+                    <div class="card card-body d-flex">
+                        <div class="title">
+                            <h5>Filters</h5>
+                            <a class="close-inner" data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="sort">
+                            <div class="sort-container" data-toggle="collapse" href="#sort-by" role="button" aria-expanded="false" aria-controls="sort-by">
+                                <h5 class="sort-by">Sort By</h5>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <ul id="sort-by" class="collapse">
                                 <li><a href="<?= root_url('products.php?page=1&filter=lowest'); ?>">Price: Low to High</a></li>
                                 <li><a href="<?= root_url('products.php?page=1&filter=highest'); ?>">Price: High to Low</a></li>
                                 <li><a href="<?= root_url('products.php?page=1&filter=ascending'); ?>">Alphabetical A-Z</a></li>
                                 <li><a href="<?= root_url('products.php?page=1&filter=descending'); ?>">Alphabetical Z-A</a></li>
                             </ul>
                         </div>
-                        <div class="price me-4">
-                            <h5>Price</h5>
-                            <ul class="ps-0">
+                        <div class="price">
+                            <div class="price-container" data-toggle="collapse" href="#price-by" role="button" aria-expanded="false" aria-controls="price-by">
+                                <h5 class="price-by">Price</h5>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <ul id="price-by" class="collapse">
                                 <li> <input type="checkbox" class="me-2" value="all"> All</li>
                                 <li> <input type="checkbox" class="me-2" value="0-50"> $0.00 - $50.00</li>
                                 <li> <input type="checkbox" class="me-2" value="50-150"> $50.00 - $150.00</li>
@@ -239,7 +273,8 @@
 
                       if (($row['category_id'] == $category_filter) || (!isset($_GET['category']))) :
                     ?>
-                <div class='col mb-2 d-flex product-container'>
+                <div class="col mb-2 d-flex">
+                    <div class="product-container">
                     <div class="img-container">
                         <div class='product-id'><?= "{$id}" ?></div>
                         <div class="image">
@@ -260,16 +295,18 @@
                         </div>
                         <div class='mb-1'>
                             <div data-id="<?= $id ?>" data-action="add-cart-products" class="add-cart-products d-flex">
-                                <div class="btn btn-primary btn-black cart-icon me-2 py-0 rounded-0">
+                                <div class="btn btn-primary btn-black cart-icon d-flex me-2 py-0 rounded-0">
                                     Add to Cart
                                 </div>
                                 <div class="arrow-right"></div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart-plus p-1" viewBox="0 0 16 16">
-                                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
-                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                </svg>
+                                <div class="icon-container">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart-plus p-1" viewBox="0 0 16 16">
+                                        <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                    </svg>
+                                </div>
                             </div>
-                            <a href="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" data-lightbox="photos">
+                            <a href="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" class="zoom" data-lightbox="photos">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-zoom-in p-1 <?= $id; ?>" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
                                     <path d="M10.344 11.742c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1 6.538 6.538 0 0 1-1.398 1.4z"/>
@@ -280,6 +317,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             <?php
 
             endif;

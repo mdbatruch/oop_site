@@ -20,11 +20,18 @@ body {
         }
     }
     main {
-        background: #ff0;
+        // background: #ff0;
         min-height: calc(100vh - 430px);
         .page-content {
             padding-top: 20px;
             padding-bottom: 20px;
+        }
+        &.products {
+            .category-search {
+                @media(max-width: 767px) {
+                    display: none;
+                }
+            }
         }
         .shop-by {
             h3 {
@@ -524,4 +531,8 @@ body {
     opacity: .5;
     border: none;
     background: transparent;
+}
+
+.greentext {
+    color: $brand-green !important;
 }

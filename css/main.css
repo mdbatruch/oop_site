@@ -51,11 +51,13 @@ body {
       z-index: 105;
       transition: all 1s ease; }
   body main {
-    background: #ff0;
     min-height: calc(100vh - 430px); }
     body main .page-content {
       padding-top: 20px;
       padding-bottom: 20px; }
+    @media (max-width: 767px) {
+      body main.products .category-search {
+        display: none; } }
     body main .shop-by h3 {
       text-transform: uppercase;
       padding: 12px 0px;
@@ -429,3 +431,6 @@ body {
   opacity: .5;
   border: none;
   background: transparent; }
+
+.greentext {
+  color: #197b30 !important; }

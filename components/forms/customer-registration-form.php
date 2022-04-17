@@ -84,6 +84,6 @@
             </div>
             <br />
         </div>
-        <input type="submit" name="submit" value="Submit" class="btn btn-black" />
+        <input type="submit" name="submit" value="Create Account" class="btn btn-black" />
     </div>
 </form>

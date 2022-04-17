@@ -98,7 +98,7 @@
 <div class="container">
         <div class="row">
             <div class="col-12 mb-4 mt-4 d-flex breadcrumbs">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                     <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
                 </svg>
@@ -160,8 +160,10 @@
                     </div>
                     </div>
                     <div class="col-md-6 info-container">
-                        <h2 id="name"><?= $chosen['name']; ?></h2>
-                        <div id="price" class="" data-price="<?= $chosen['price']; ?>"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>
+                        <div class="name-price">
+                            <h2 id="name"><?= $chosen['name']; ?></h2>
+                            <div id="price" class="" data-price="<?= $chosen['price']; ?>"><?= "$" . number_format($chosen['price'], 2, '.', ','); ?></div>
+                        </div>
                         <div id="description" class="my-2"><?= nl2br($chosen['description']); ?></div>
                         <div class="add-cart-container d-flex my-2">
                             <div class="count">
@@ -174,7 +176,7 @@
                             </div>
                             <div id="add-cart" data-id="<?= $chosen['id']; ?>" class='btn btn-primary btn-black w-100-pct ms-4 add-cart'>Add to Cart</div>
                         </div>
-                        <div class="categories d-flex align-items-baseline">
+                        <div class="categories d-flex">
                             <div>Category:</div>
                             <h5 class="ms-2">
                                 <a href="<?= root_url('products.php?page=1&category=' . $category_search . ''); ?>"><?= $chosen['category_name']; ?></a>
@@ -186,30 +188,58 @@
                         <div id="cart-message"></div>
                     </div>
                 </div>
+                </div>
                 <div class="row">
                     <div class="container-fluid">
-                    <div class="col-12 delivery-returns py-4 my-4">
+                    <div class="col-12 delivery-returns">
                         <div class="row">
                             <div class="col-12 ">
                                 <h4 class="mb-4">Delivery and Returns</h4>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 ">
-                                <h5>Free In-Store Pickup</h5>
-                                <p>ALL orders are FREE to collect from our local store.</p>
-                                <h5>Delivery</h5>
-                                <p>
-                                    Delivery is FREE for orders of CAD $80 or over, and from CAD $15 for orders under CAD $80.
-                                </p>
+                            <div class="col-md-4 product-ind-meta">
+                                <h5>
+                                    <a class="btn btn-primary pickup-tab" data-toggle="collapse" href="#pickup" role="button" aria-expanded="false" aria-controls="pickup">
+                                        Free In-Store Pickup
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </a>
+                                </h5>
+                                <div class="collapse" id="pickup">
+                                    <p>ALL orders are FREE to collect from our local store.</p>
+                                </div>
+                                <h5>
+                                    <a class="btn btn-primary delivery-tab" data-toggle="collapse" href="#delivery" role="button" aria-expanded="false" aria-controls="delivery">
+                                        Delivery
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </a>
+                                </h5>
+                                <div class="collapse" id="delivery">
+                                    <p>
+                                        Delivery is FREE for orders of CAD $80 or over, and from CAD $15 for orders under CAD $80.
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-md-8 ">
-                                <h5>Returns</h5>
-                                <p class="returns-desc">
-                                    If for any reason at all, you're not satisfied with your purchase, you can return it to us for a refund, or exchange it for something else. No quibbles and no funny handshakes required. All we ask is the product still be in its original packaging and you have your proof of purchase and we'll be happy to help.
-                                    <br/><br/>
-                                    Just call our Customer Service team on 416-555-8910 or email them at info@castlegames.comand we will take care of this for you as quickly and simply as possible.
-                                </p>
+                            <div class="col-md-8 product-ind-meta">
+                                <h5>
+                                    <a class="btn btn-primary returns-tab" data-toggle="collapse" href="#returns" role="button" aria-expanded="false" aria-controls="returns">
+                                        Returns
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </a>
+                                </h5>
+                                <div class="collapse" id="returns">
+                                    <p class="returns-desc">
+                                        If for any reason at all, you're not satisfied with your purchase, you can return it to us for a refund, or exchange it for something else. No quibbles and no funny handshakes required. All we ask is the product still be in its original packaging and you have your proof of purchase and we'll be happy to help.
+                                        <br/><br/>
+                                        Just call our Customer Service team on 416-555-8910 or email them at info@castlegames.comand we will take care of this for you as quickly and simply as possible.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="row">

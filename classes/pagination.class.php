@@ -29,7 +29,7 @@
         }
 
         public function show_range() {
-          return 'Showing <b>' . $this->amount_index() . '</b> of <b>' . $this->total_count . '</b> Results';
+          return '<span>Showing</span> <b>' . $this->amount_index() . '</b> of <b>' . $this->total_count . '</b> <span class="results-text">Results</span>';
         }
 
         public function total_pages() {

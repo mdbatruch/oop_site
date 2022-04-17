@@ -65,6 +65,17 @@ body .login-registration > .container {
           max-width: 220px; } }
     body .login-registration > .container .login-container form.customer-register, body .login-registration > .container .register-container form.customer-register {
       display: none; }
+      @media (max-width: 767px) {
+        body .login-registration > .container .login-container form.customer-register, body .login-registration > .container .register-container form.customer-register {
+          height: auto;
+          padding: 2rem;
+          border-radius: 5px;
+          -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+          box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+      @media (min-width: 768px) {
+        body .login-registration > .container .login-container form.customer-register, body .login-registration > .container .register-container form.customer-register {
+          border-right: 1px solid #d3d3d3;
+          padding: 2rem; } }
       body .login-registration > .container .login-container form.customer-register .form-field-inner, body .login-registration > .container .register-container form.customer-register .form-field-inner {
         flex-direction: column; }
         @media (min-width: 1200px) {
@@ -78,6 +89,13 @@ body .login-registration > .container {
         body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container:first-child #province, body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container:first-child #province {
           padding: 10px 20px;
           color: #666; }
+          @media (max-width: 767px) {
+            body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container:first-child #province, body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container:first-child #province {
+              border-top: 0;
+              border-left: 0;
+              border-right: 0;
+              border-color: #000;
+              border-radius: 0px; } }
         @media (min-width: 1200px) {
           body .login-registration > .container .login-container form.customer-register .form-field-inner .field-container:nth-child(2), body .login-registration > .container .register-container form.customer-register .form-field-inner .field-container:nth-child(2) {
             margin-right: 2rem; } }
