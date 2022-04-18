@@ -157,6 +157,9 @@
     </div>
 </header>
 <main class="products">
+<?php if (isset($_GET['category'])) : ?>
+    <?= $site->addCategoryBar($category); ?>
+<?php endif; ?>
 <div id="products" class="container">
     <div class="row top-products">
         <div class="container-fluid">
@@ -201,23 +204,25 @@
                             </div>
                         </div>
                     <?php endif; ?>
-                    <div class="search"><div id="root"></div></div>
-                    <div class="filter-container ms-4">
-                        <p class="mb-0">
-                            <a class="close-outer" data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                                </svg>    
-                                Filter
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </a>
-                        </p>
+                    <div class="search-filter-container d-flex">
+                        <div class="search"><div id="root"></div></div>
+                        <div class="filter-container ms-4">
+                            <p class="mb-0">
+                                <a class="close-outer" data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                                    </svg>    
+                                    Filter
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="toggle-filters">
+            <div class="toggle-filters px-2">
                 <div class="collapse" id="filterCollapse">
                     <div class="card card-body d-flex">
                         <div class="title">
@@ -281,19 +286,21 @@
                             <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $row['name'] . ' Image'; ?>" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-12 mt-2">
-                        <a href='product.php?id=<?= $id ?>' class='product-link title'>
-                            <div class='name mb-1'>
-                                <?= "{$name}"  ?>
+                    <div class="col-12 mt-2 d-flex">
+                        <div class="item-meta">
+                            <a href='product.php?id=<?= $id ?>' class='product-link title'>
+                                <div class='name mb-1'>
+                                    <?= "{$name}"  ?>
+                                </div>
+                            </a>
+                            <div class='mb-1 description d-none'>
+                                <?= nl2br("{$description}"); ?>
                             </div>
-                        </a>
-                        <div class='mb-1 description d-none'>
-                            <?= nl2br("{$description}"); ?>
+                            <div class='mb-1 price' data-price="<?= $price; ?>">
+                                <?= "$" . number_format($price, 2, '.', ','); ?>
+                            </div>
                         </div>
-                        <div class='mb-1 price' data-price="<?= $price; ?>">
-                            <?= "$" . number_format($price, 2, '.', ','); ?>
-                        </div>
-                        <div class='mb-1'>
+                        <div class='mb-1 product-icons'>
                             <div data-id="<?= $id ?>" data-action="add-cart-products" class="add-cart-products d-flex">
                                 <div class="btn btn-primary btn-black cart-icon d-flex me-2 py-0 rounded-0">
                                     Add to Cart

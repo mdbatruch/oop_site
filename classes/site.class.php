@@ -27,6 +27,10 @@
             include('components/products/category-search.php'); 
         }
 
+        public function addCategoryBar($value = '') {
+            include('components/products/category-bar.php'); 
+        }
+
         public function addCartHeader($site, $count, $items, $subtotal, $db) {
             include('components/header-cart.php'); 
         }
