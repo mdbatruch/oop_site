@@ -1,9 +1,29 @@
+#order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
+  width: 100%;
+  border-radius: 0px;
+  border: 1px solid #666;
+  background-color: #fff;
+  padding: 10px 20px; }
+  @media (max-width: 767px) {
+    #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
+      border-color: #000;
+      border-top: none;
+      border-left: none;
+      border-right: none; } }
+
 #order {
   width: 100%;
   margin: 50px auto;
   text-align: center;
   position: relative;
   max-width: none; }
+  #order fieldset:not(:first-of-type) {
+    display: none; }
+  #order .titles h1 {
+    text-transform: uppercase;
+    display: none; }
+    #order .titles h1.active {
+      display: block; }
   #order .ast {
     color: #f00; }
   #order label {
@@ -53,6 +73,11 @@
         color: #A0A0A0; }
       #order fieldset input[type="checkbox"], #order fieldset textarea[type="checkbox"], #order fieldset select[type="checkbox"] {
         width: auto; }
+      #order fieldset input[type="button"], #order fieldset input[type="submit"], #order fieldset textarea[type="button"], #order fieldset textarea[type="submit"], #order fieldset select[type="button"], #order fieldset select[type="submit"] {
+        background-color: #000;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1rem; }
     @media (min-width: 1030px) {
       #order fieldset .form-inner-container.form-address-other, #order fieldset .form-inner-container.form-billing-address.part-2 {
         flex-direction: row !important; }
@@ -65,8 +90,11 @@
           #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2), #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) {
             padding: 0px 20px;
             flex-shrink: 2; } }
+    @media (max-width: 767px) {
+      #order fieldset .form-inner-container.form-address-other .form-field:first-child, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:first-child {
+        padding-right: 20px; } }
     #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) select {
-      height: 50px;
+      height: 40px;
       border-radius: 0px;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -76,6 +104,9 @@
       background-position-x: 95%;
       background-position-y: 12px;
       padding: 0px 10px; }
+      @media (min-width: 767px) {
+        #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) select {
+          height: 50px; } }
     #order fieldset .form-inner-container.form-shipping-information .form-field.first label {
       display: inline-block; }
     #order fieldset .form-inner-container.form-shipping-information .shipping-option {
@@ -122,6 +153,11 @@
           flex-direction: row; }
           #order fieldset .form-inner-container.half .form-field:first-child {
             padding-right: 20px; } }
+    @media (min-width: 450px) {
+      #order fieldset .form-inner-container.mobile-half {
+        flex-direction: row; }
+        #order fieldset .form-inner-container.mobile-half .form-field:first-child {
+          padding-right: 20px; } }
     #order fieldset .form-inner-container.form-card {
       flex-wrap: wrap; }
       @media (min-width: 1030px) and (max-width: 1399px) {
@@ -156,43 +192,142 @@
       #order fieldset .info span {
         font-weight: 400;
         white-space: pre-line; }
-  #order .step-3 svg {
-    position: relative;
-    top: 11px; }
-  #order .step-3 input[type="button"].previous {
-    text-align: left;
-    background-color: transparent;
-    color: #000;
-    text-transform: inherit;
-    margin: 0;
-    width: auto; }
-  #order .step-3 input[type="submit"] {
-    text-transform: uppercase; }
-  #order .step-3 legend {
-    font-size: calc(0.75rem + 0.3vw); }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .customer-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information .form-address-other {
+        flex-wrap: wrap;
+        flex-direction: row !important; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information .form-address-other .form-field:first-child, #order fieldset.step-1 .delivery-information .form-address-other .form-field:nth-child(2) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information .form-address-other .form-field:nth-child(3) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .card-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 990px) {
+      #order fieldset.step-2 .card-information .form-field.month-year {
+        flex-flow: wrap;
+        flex-direction: row;
+        display: flex; }
+        #order fieldset.step-2 .card-information .form-field.month-year label {
+          flex: 0 0 100%; }
+        #order fieldset.step-2 .card-information .form-field.month-year .select-container {
+          display: flex;
+          width: 100%; }
+          #order fieldset.step-2 .card-information .form-field.month-year .select-container > div {
+            flex: 0 0 50%; }
+            #order fieldset.step-2 .card-information .form-field.month-year .select-container > div:first-child {
+              padding-right: 20px; }
+            #order fieldset.step-2 .card-information .form-field.month-year .select-container > div select {
+              margin: 0 0 10px; }
+              #order fieldset.step-2 .card-information .form-field.month-year .select-container > div select [name=month] {
+                padding-right: 20px; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information .form-billing-address.part-2 {
+        flex-wrap: wrap;
+        flex-direction: row !important; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information .form-billing-address.part-2 .form-field:first-child, #order fieldset.step-2 .billing-information .form-billing-address.part-2 .form-field:nth-child(2) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information .form-billing-address.part-2 .form-field:nth-child(3) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .shipping-option {
+        margin-bottom: 1rem; }
+        #order fieldset.step-2 .shipping-option .form-field.p-2 {
+          outline: 1px solid #fff;
+          border-radius: 4px;
+          -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+          box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+    @media (min-width: 768px) {
+      #order fieldset.step-2 .mobile {
+        display: none; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .order-notes {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (min-width: 768px) {
+      #order fieldset.step-2 .order-notes {
+        margin-top: 2rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .order-notes .desktop {
+        display: none; } }
+    #order fieldset.step-3 svg {
+      position: relative;
+      top: 11px;
+      margin: 3px 5px; }
+    #order fieldset.step-3 input[type="button"].previous {
+      text-align: left;
+      background-color: transparent;
+      color: #000;
+      text-transform: inherit;
+      margin: 0;
+      width: auto; }
+    #order fieldset.step-3 input[type="submit"] {
+      text-transform: uppercase; }
+    #order fieldset.step-3 legend {
+      font-size: calc(1rem + 0.3vw);
+      letter-spacing: 0.5px; }
+      @media (min-width: 768px) {
+        #order fieldset.step-3 legend {
+          font-size: calc(0.75rem + 0.3vw); } }
+    @media (max-width: 767px) {
+      #order fieldset.step-3 .form-inner-container {
+        padding: 0rem 2rem 1.5rem;
+        margin-top: 1rem;
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+    #order fieldset.step-3 .form-inner-container .form-info-field span {
+      font-weight: 500;
+      letter-spacing: 0.5px; }
+    #order fieldset.step-3 .action-button {
+      width: 100%;
+      background: #666;
+      font-weight: bold;
+      color: #fff;
+      border: 0 none;
+      border-radius: 1px;
+      cursor: pointer;
+      padding: 10px 5px;
+      margin: 10px 0px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease; }
+      #order fieldset.step-3 .action-button:hover {
+        color: #333333 !important; }
 
-/*Hide all except first fieldset*/
-#order fieldset:not(:first-of-type) {
-  display: none; }
-
-/*buttons*/
-#order .action-button {
-  width: 100%;
-  background: #000;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 1px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 0px;
-  text-transform: uppercase;
-  transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease; }
-  #order .action-button:hover {
-    color: #333333 !important; }
-
-/*progressbar*/
 #progressbar {
   margin-bottom: 30px;
   overflow: hidden;
@@ -203,23 +338,31 @@
   margin: 40px 10%;
   padding-left: 0px;
   display: flex;
-  flex-direction: column; }
-  @media (min-width: 1030px) {
-    #progressbar {
-      flex-direction: row; } }
+  flex-direction: row;
+  position: relative;
+  left: 25px; }
   #progressbar li {
     list-style-type: none;
-    color: black;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    float: left;
+    color: #000;
     position: relative;
-    border-bottom: 2px solid #A0A0A0;
     flex: 1;
-    padding: 10px; }
+    padding: 18px;
+    font-weight: 500;
+    letter-spacing: 0px; }
+    @media (max-width: 767px) {
+      #progressbar li {
+        font-size: 0.9rem; } }
+    @media (min-width: 991px) {
+      #progressbar li {
+        padding: 10px;
+        border-bottom: 2px solid #A0A0A0; } }
     #progressbar li.active {
-      border-bottom: 2px solid #000;
       text-align: center; }
+      @media (min-width: 991px) {
+        #progressbar li.active {
+          border-bottom: 2px solid #000; } }
+      #progressbar li.active:before {
+        border: none; }
     #progressbar li:before {
       content: counter(step);
       counter-increment: step;
@@ -235,19 +378,27 @@
       position: absolute;
       left: 20px;
       padding-top: 4px;
-      top: 3px; }
+      top: 3px;
+      border: 2px solid #d3d3d3; }
+    #progressbar li span {
+      display: none; }
+      @media (min-width: 991px) {
+        #progressbar li span {
+          display: inline-block; } }
 
 /*progressbar connectors*/
 #progressbar li:after {
   content: '';
   width: 100%;
   height: 2px;
-  background: white;
+  background: #d3d3d3;
   position: absolute;
-  left: -50%;
-  top: 9px;
-  z-index: -1;
-  /*put it behind the numbers*/ }
+  right: 75%;
+  top: 18px;
+  z-index: -1; }
+  @media (min-width: 991px) {
+    #progressbar li:after {
+      content: none; } }
 
 #progressbar li:first-child:after {
   /*connector not needed before the first step*/

@@ -424,6 +424,9 @@
             text-decoration: none;
             color: $black;
         }
+        > .meta-container {
+            flex-direction: column;
+        }
         .add-cart-products {
             // bottom: 20px;
             justify-content: flex-end;

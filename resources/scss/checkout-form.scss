@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'extends';
 
 #order {
 	width: 100%;
@@ -6,6 +7,20 @@
 	text-align: center;
 	position: relative;
     max-width: none;
+
+	fieldset:not(:first-of-type) {
+		display: none;
+	}
+
+	.titles {
+		h1 {
+			text-transform: uppercase;
+			display: none;
+			&.active {
+				display: block;
+			}
+		}
+	}
 	.ast {
 		color: $red;
 	}
@@ -62,9 +77,15 @@
 				font-style: italic;
 				color: $grey-A0;
 			}
-		&[type="checkbox"] {
-			width: auto;	
-		}
+			&[type="checkbox"] {
+				width: auto;	
+			}
+			&[type="button"], &[type="submit"] {
+				background-color: $black;
+				color: $white;
+				text-transform: uppercase;
+				font-size: 1rem;
+			}
 		}
 		.form-inner-container {
 			&.form-address-other, &.form-billing-address.part-2 {
@@ -87,9 +108,14 @@
 					}
 				}
 				.form-field {
+					&:first-child {
+						@media(max-width: 767px) {
+							padding-right: 20px;
+						}
+					}
 					&:nth-child(2) {
 						select {
-							height: 50px;
+							height: 40px;
 							border-radius: 0px;
 							-webkit-appearance: none;
 							-moz-appearance: none;
@@ -101,6 +127,9 @@
 							background-position-x: 95%;
 							background-position-y: 12px;
 							padding: 0px 10px;
+							@media(min-width: 767px) {
+								height: 50px;
+							}
 						}
 					}
 				}
@@ -172,6 +201,16 @@
 					}
 				}
 			}
+			&.mobile-half {
+				@media(min-width: 450px) {
+					flex-direction: row;
+					.form-field {
+						&:first-child {
+							padding-right: 20px;
+						}
+					}
+				}
+			}
 			&.form-card {
 				flex-wrap: wrap;
 				> div {
@@ -214,12 +253,6 @@
 			white-space: normal;
     		vertical-align: top;
 			flex: 1;
-			// &.half {
-			// 	@media(min-width: 1030px) {
-			// 		width: 50%;
-    		// 		display: inline-block;
-			// 	}
-			// }
 		}
 	
 		.info { 
@@ -231,58 +264,222 @@
 				white-space: pre-line;
 			}
 		}
-		.steps-container-2 {
-
-		}
-	}
-	.step-3 {
-		svg {
-			position: relative;
-			top: 11px;
-		}
-		input[type="button"] {
-			&.previous {
-				text-align: left;
-				background-color: transparent;
-				color: #000;
-				text-transform: inherit;
-				margin: 0;
-				width: auto;
+	
+		&.step-1 {
+			.customer-information {
+				@media(max-width: 767px) {
+					-webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+					box-shadow: 0px 0px 13px 2px $lightgrey;
+					border-radius: 4px;
+					padding: 1rem;
+					margin-bottom: 1rem;
+				}
+				input, select {
+					@extend %login-inputs;
+				}
+			}
+			.delivery-information {
+				@media(max-width: 767px) {
+					-webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+					box-shadow: 0px 0px 13px 2px $lightgrey;
+					border-radius: 4px;
+					padding: 1rem;
+					margin-bottom: 1rem;
+				}
+				input, select {
+					@extend %login-inputs;
+				}
+				.form-address-other {
+					@media(max-width: 767px) {
+						flex-wrap: wrap;
+						flex-direction: row !important;
+					}
+					.form-field {
+						&:first-child, &:nth-child(2) {
+							@media(max-width: 767px) {
+								flex: 1 1 50%;
+							}
+						}
+						&:nth-child(3) {
+							@media(max-width: 767px) {
+								flex: 1 1 50%;
+							}
+						}
+					}
+				}
 			}
 		}
-		input[type="submit"] {
-			text-transform: uppercase;
+		&.step-2 {
+			.card-information {
+				@media(max-width: 767px) {
+					-webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+					box-shadow: 0px 0px 13px 2px $lightgrey;
+					border-radius: 4px;
+					padding: 1rem;
+					margin-bottom: 1rem;
+				}
+				.form-field {
+					&.month-year {
+						@media(max-width: 990px) {
+							flex-flow: wrap;
+							flex-direction: row;
+							display: flex;
+							label {
+								flex: 0 0 100%;
+							}
+							.select-container {
+								display: flex;
+								width: 100%;
+								> div {
+									flex: 0 0 50%;
+									&:first-child {
+										padding-right: 20px;									}
+									select {
+										margin: 0 0 10px;
+										[name=month] {
+											padding-right: 20px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				input, select {
+					@extend %login-inputs;
+				}
+			}
+			.billing-information {
+				@media(max-width: 767px) {
+					-webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+					box-shadow: 0px 0px 13px 2px $lightgrey;
+					border-radius: 4px;
+					padding: 1rem;
+					margin-bottom: 1rem;
+				}
+				input, select {
+					@extend %login-inputs;
+				}
+				.form-billing-address.part-2 {
+					@media(max-width: 767px) {
+						flex-wrap: wrap;
+						flex-direction: row !important;
+					}
+					.form-field {
+						&:first-child, &:nth-child(2) {
+							@media(max-width: 767px) {
+								flex: 1 1 50%;
+							}
+						}
+						&:nth-child(3) {
+							@media(max-width: 767px) {
+								flex: 1 1 50%;
+							}
+						}
+					}
+				}
+			}
+			.shipping-option {
+				@media(max-width: 767px) {
+					margin-bottom: 1rem;
+					.form-field.p-2 {
+						outline: 1px solid $white;
+						border-radius: 4px;
+						-webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+						box-shadow: 0px 0px 13px 2px $lightgrey;
+					}
+				}
+			}
+			.mobile {
+				@media(min-width: 768px) {
+					display: none;
+				}
+			}
+			.order-notes {
+				@media(max-width: 767px) {
+					-webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+					box-shadow: 0px 0px 13px 2px $lightgrey;
+					border-radius: 4px;
+					padding: 1rem;
+					margin-bottom: 1rem;
+				}
+				@media(min-width: 768px) {
+					margin-top: 2rem;
+				}
+				input, select {
+					@extend %login-inputs;
+				}
+				.desktop {
+					@media(max-width: 767px) {
+						display: none;
+					}
+				}
+			}
 		}
-		legend {
-			font-size: calc(0.75rem + 0.3vw);
+		&.step-3 {
+			svg {
+				position: relative;
+				top: 11px;
+				margin: 3px 5px;
+			}
+			input[type="button"] {
+				&.previous {
+					text-align: left;
+					background-color: transparent;
+					color: #000;
+					text-transform: inherit;
+					margin: 0;
+					width: auto;
+				}
+			}
+			input[type="submit"] {
+				text-transform: uppercase;
+			}
+			legend {
+				font-size: calc(1rem + 0.3vw);
+				letter-spacing: 0.5px;
+				@media(min-width: 768px) {
+					font-size: calc(0.75rem + 0.3vw);
+				}
+			}
+			.form-inner-container {
+				@media(max-width: 767px) {
+					padding: 0rem 2rem 1.5rem;
+					margin-top: 1rem;
+					border-radius: 4px;
+					-webkit-box-shadow: 0px 0px 13px 2px $lightgrey; 
+					box-shadow: 0px 0px 13px 2px $lightgrey;
+				}
+				.form-info-field {
+					span {
+						font-weight: 500;
+						letter-spacing: 0.5px;
+					}
+				}
+			}
+			.action-button {
+				width: 100%;
+				background: $grey;
+				font-weight: bold;
+				color: $white;
+				border: 0 none;
+				border-radius: 1px;
+				cursor: pointer;
+				padding: 10px 5px;
+				margin: 10px 0px;
+				font-size: 1rem;
+				text-transform: uppercase;
+				transition: all 0.5s ease;
+				-webkit-transition: all 0.5s ease;
+				&:hover {
+					color: lighten($black, 20%) !important;
+				}
+			}
 		}
 	}
 }
-/*Hide all except first fieldset*/
-#order fieldset:not(:first-of-type) {
-	display: none;
-}
 
-/*buttons*/
-#order .action-button {
-	width: 100%;
-	background: $black;
-	font-weight: bold;
-	color: white;
-	border: 0 none;
-	border-radius: 1px;
-	cursor: pointer;
-	padding: 10px 5px;
-	margin: 10px 0px;
-	text-transform: uppercase;
-	transition: all 0.5s ease;
-	-webkit-transition: all 0.5s ease;
-	&:hover {
-		color: lighten($black, 20%) !important;
-	}
-}
 
-/*progressbar*/
 #progressbar {
 	margin-bottom: 30px;
 	overflow: hidden;
@@ -294,23 +491,32 @@
 	margin: 40px 10%;
 	padding-left: 0px;
 	display: flex;
-	flex-direction: column;
-	@media(min-width: 1030px) {
-		flex-direction: row;
-	}
+	flex-direction: row;
+	position: relative;
+	left: 25px;
 	li {
 		list-style-type: none;
-		color: black;
-		text-transform: uppercase;
-		font-size: 0.8rem;
-		float: left;
+		color: $black;
 		position: relative;
-		border-bottom: 2px solid $grey-A0;
 		flex: 1;
-		padding: 10px;
+		padding: 18px;
+		font-weight: 500;
+		letter-spacing: 0px;
+		@media(max-width: 767px) {
+			font-size: 0.9rem;
+		}
+		@media (min-width: 991px) {
+			padding: 10px;
+			border-bottom: 2px solid $grey-A0;
+		}
 		&.active {
-			border-bottom: 2px solid $black;
 			text-align: center;
+			@media (min-width: 991px) {
+				border-bottom: 2px solid $black;
+			}
+			&:before {
+				border: none;
+			}
 		}
 		&:before {
 			content: counter(step);
@@ -328,19 +534,31 @@
 			left: 20px;
 			padding-top: 4px;
 			top: 3px;
+			border: 2px solid $lightgrey;
+		}
+		span {
+			display: none;
+			@media (min-width: 991px) {
+				display: inline-block;
+			}
 		}
 	}
 }
 /*progressbar connectors*/
-#progressbar li:after {
-	content: '';
-	width: 100%;
-	height: 2px;
-	background: white;
-	position: absolute;
-	left: -50%;
-	top: 9px;
-	z-index: -1; /*put it behind the numbers*/
+#progressbar li {
+	&:after {
+		content: '';
+		width: 100%;
+		height: 2px;
+		background: $lightgrey;
+		position: absolute;
+		right: 75%;
+		top: 18px;
+		z-index: -1;
+		@media(min-width: 991px) {
+			content: none;
+		}
+	}
 }
 #progressbar li:first-child:after {
 	/*connector not needed before the first step*/

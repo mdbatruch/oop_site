@@ -483,22 +483,22 @@
                 var id = $(this).attr('data-action');
                 var image = $(this).parent().parent().siblings('.img-container').find('.img-fluid').attr('src').split("/");
 
-                var product_price_unformatted = $(this).parent().siblings('.price').attr('data-price');
+                var product_price_unformatted = $(this).parent().siblings('.item-meta').find('.price').attr('data-price');
 
                 var product = {
                     id: $(this).attr('data-id'),
-                    name: $(this).parent().siblings('.product-link').find('.name').text().replace(/\s+/g, ' ').trim(),
-                    description: $(this).parent().siblings('.description').text().replace(/\s+/g, ' ').trim(),
+                    name: $(this).parent().siblings('.item-meta').find('.name').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.item-meta').find('.description').text().replace(/\s+/g, ' ').trim(),
                     image: image[image.length - 1],
-                    price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
+                    price: $(this).parent().siblings('.item-meta').find('.price').text().replace(/\s+/g, ' ').trim(),
                 }
 
                 var product_json = {
                     id: $(this).attr('data-id'),
-                    name: $(this).parent().siblings('.product-link').find('.name').text().replace(/\s+/g, ' ').trim(),
-                    description: $(this).parent().siblings('.description').text().replace(/\s+/g, ' ').trim(),
+                    name: $(this).parent().siblings('.item-meta').find('.name').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.item-meta').find('.description').text().replace(/\s+/g, ' ').trim(),
                     image: image[image.length - 1],
-                    price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
+                    price: $(this).parent().siblings('.item-meta').find('.price').text().replace(/\s+/g, ' ').trim(),
                 }
                 
                 console.log(id, user_id, cart_id, product);

@@ -128,7 +128,7 @@
                     </div>
                 </div>
                 <div class="time py-4">
-                    <?= date('D M Y h:i:s A'); ?>
+                    <?= date('D M j Y h:i:s A'); ?>
                 </div>
                 <div>
                     <div class="order-container">
@@ -170,8 +170,8 @@
                             </div>
                         </div>
                     </div>
-                    <h4>Order Summary</h4>
                     <div class="order-summary pb-3">
+                    <h4>Order Summary</h4>
                         <div class="col col-sm-12 item-list my-4">
                             <div class="row titles">
                                 <div class='col col-md-6'>
@@ -191,90 +191,103 @@
                         <?php foreach($order[0]['products'] as $product) :
                             $image = Product::getProductImage($product->item_name, $db);
                             ?>
-                            <div class='product col col-12 col-sm-6 col-md-12 my-2' data-id='<?= $products['id']; ?>' >
+                            <div class='product col col-12 col-md-12 my-2' data-id='<?= $product->item_id; ?>' >
                                 <div class='row'>
                                     <div class='col col-12 col-md-6 product-title'>
                                     <div class="img-container">
                                         <img src="<?= !empty($image['image']) ? root_url('images/' . $image['image']) : root_url('images/missing.jpg'); ?>" alt="<?= $product->item_name; ?>" class="rounded img-fluid img-thumbnail">
                                     </div>
-                                    <a href="<?= root_url('product.php?id=' . $product->item_id); ?>" class="product-title-link pt-3">
-                                        <h5><?= $product->item_name; ?></h5>
-                                    </a>
+                                    <div class="product-info d-flex">
+                                        <a href="<?= root_url('product.php?id=' . $product->item_id); ?>" class="product-title-link">
+                                            <h5><?= $product->item_name; ?></h5>
+                                        </a>
+                                        <div class="quantity-mobile">
+                                            <?= $product->item_quantity; ?>
+                                        </div>
+                                        <div class="ind-price-mobile">
+                                            Price: <?= $product->item_individual_price; ?>
+                                        </div>
+                                        <div class="price-mobile">
+                                            $<?= $product->item_price; ?>
+                                        </div>
                                     </div>
-                                    <div class='col col-12 col-md-2'>
+                                    </div>
+                                    <div class='col col-12 col-md-2 desktop'>
                                         <?= $product->item_quantity; ?>
                                     </div>
-                                    <div class='col col-12 col-md-2 d-flex text-center'>
+                                    <div class='col col-12 col-md-2 d-flex text-center desktop'>
                                         <?= $product->item_individual_price; ?>
                                     </div>
-                                    <div class='col col-12 col-md-2'>
+                                    <div class='col col-12 col-md-2 desktop'>
                                         <p>$<span class='price'><?= $product->item_price; ?></span></p>
                                     </div>
-                                    <div class='col col-md-2 px-4'>
+                                    <div class='col col-md-2 px-4 desktop'>
 
                                     </div>    
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <div class="tax-subtotal container-fluid pb-3 px-0 my-4">
-                        <?php $taxes_subtotals = json_decode($order[0]['taxes_subtotals']); ?>
-                        <div class="row subtotal-sub my-2">
-                            <div class="col-sm-8"></div>
-                            <div class="col-sm-2 label">
-                                <h6>
-                                    Subtotal
-                                </h6>
+                    <div class="totals">
+                        <div class="tax-subtotal container-fluid pb-3 px-0 my-4">
+                            <?php $taxes_subtotals = json_decode($order[0]['taxes_subtotals']); ?>
+                            <div class="row subtotal-sub my-2">
+                                <div class="col-sm-6 col-md-8"></div>
+                                <div class="col-6 col-sm-3 col-md-2 label">
+                                    <h6>
+                                        Subtotal
+                                    </h6>
+                                </div>
+                                <div class="col-6 col-sm-3 col-md-2 value">
+                                    <?= $taxes_subtotals->subtotal; ?>                          
+                                </div>
                             </div>
-                            <div class="col-sm-2 value">
-                                <?= $taxes_subtotals->subtotal; ?>                          
+                            <div class="row hst-sub my-2">
+                                <div class="col-sm-6 col-md-8"></div>
+                                <div class="col-6 col-sm-3 col-md-2 label">
+                                    <h6>
+                                        HST 13%
+                                    </h6>
+                                </div>
+                                <div class="col-6 col-sm-3 col-md-2 value">
+                                    <?= $taxes_subtotals->hst; ?>                          
+                                </div>
+                            </div>
+                            <div class="row shipping-sub my-2">
+                                <div class="col-sm-6 col-md-8"></div>
+                                <div class="col-6 col-sm-3 col-md-2 label">
+                                    <h6>
+                                        <?= $shipping_information->name; ?>
+                                    </h6>
+                                </div>
+                                <div class="col-6 col-sm-3 col-md-2 value">
+                                    <?= $shipping_information->price; ?>                        
+                                </div>
                             </div>
                         </div>
-                        <div class="row hst-sub my-2">
-                            <div class="col-sm-8"></div>
-                            <div class="col-sm-2 label">
-                                <h6>
-                                    HST 13%
-                                </h6>
-                            </div>
-                            <div class="col-sm-2 value">
-                                <?= $taxes_subtotals->hst; ?>                          
-                            </div>
-                        </div>
-                        <div class="row shipping-sub my-2">
-                            <div class="col-sm-8"></div>
-                            <div class="col-sm-2 label">
-                                <h6>
-                                    <?= $shipping_information->name; ?>
-                                </h6>
-                            </div>
-                            <div class="col-sm-2 value">
-                                <?= $shipping_information->price; ?>                        
-                            </div>
-                        </div>
-                    </div>
-                    <div class="payment-info container-fluid px-0 my-4">
-                        <div class="row">
-                            <div class="card-info col-sm-8">
-                                <div class="card-name">
-                                    <?= $card->card_name; ?>
+                        <div class="payment-info container-fluid px-0 mb-4">
+                            <div class="row">
+                                <div class="card-info col-sm-8">
+                                    <div class="card-name">
+                                        <?= $card->card_name; ?>
+                                    </div>
+                                    <div class="card-hash">
+                                        <?= $card->card_hash; ?>
+                                    </div>
+                                    <div class="card-expiry">
+                                        <?= $card->card_expiry; ?>
+                                    </div>
+                                    <div class="card-type">
+                                        <?= $card->card_type; ?>
+                                    </div>
                                 </div>
-                                <div class="card-hash">
-                                    <?= $card->card_hash; ?>
-                                </div>
-                                <div class="card-expiry">
-                                    <?= $card->card_expiry; ?>
-                                </div>
-                                <div class="card-type">
-                                    <?= $card->card_type; ?>
-                                </div>
-                            </div>
-                            <div class="order-amount col-sm-4 d-flex my-4 justify-content-between">
-                                <div class="title">
-                                    Paid
-                                </div>
-                                <div class="paid">
-                                    <?= $order[0]['amount']; ?> CAD
+                                <div class="order-amount col-sm-4 d-flex my-4 justify-content-between">
+                                    <div class="title">
+                                        Paid
+                                    </div>
+                                    <div class="paid">
+                                        <?= $order[0]['amount']; ?> CAD
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -147,7 +147,7 @@
         </div>
             <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer' && !empty($products)) {
                 ?>
-                <div class="col min-12 col-md-4 bg-light">
+                <div class="col min-12 col-md-4 bg-light main-cart-container">
                     <div class="cart-container my-4">
                         <div class="cart-summary-title">
                             <h4>Order Summary</h4> <div id="item-total"></div>
@@ -208,6 +208,7 @@
             evaluateSubTotal();
             calculateHST();
             orderTotal();
+            toggleCartMenu();
     })(jQuery);
 </script>
 

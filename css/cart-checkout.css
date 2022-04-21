@@ -3,6 +3,25 @@
   text-transform: uppercase;
   padding: 10px 50px; }
 
+@media (max-width: 767px) {
+  #cart-checkout .main-cart-container {
+    background: #000;
+    border: 0;
+    display: block !important;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateX(100%);
+    z-index: 110;
+    width: calc(100% - 38px);
+    max-width: 220px;
+    padding: 20px; }
+    #cart-checkout .main-cart-container.show {
+      transform: translateX(0%);
+      transition: all .25s ease; } }
+
 #cart-checkout .return-to-cart {
   text-align: center;
   width: 80%;

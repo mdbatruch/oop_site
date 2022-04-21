@@ -278,6 +278,8 @@
                 count++;
                 
                 //activate next step on progressbar using the index of next_fs
+                $(".titles h1").eq($("fieldset").index(current_fs)).removeClass("active");
+                $(".titles h1").eq($("fieldset").index(next_fs)).addClass("active");
                 $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
                 console.log($("#progressbar li").eq($("fieldset").index(next_fs)));
@@ -391,6 +393,8 @@
             }
             
             //de-activate current step on progressbar
+            $(".titles h1").eq($("fieldset").index(current_fs)).removeClass("active");
+            $(".titles h1").eq($("fieldset").index(previous_fs)).addClass("active");
             $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
             
             //show the previous fieldset

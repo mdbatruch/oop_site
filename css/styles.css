@@ -11,14 +11,14 @@ body .login-registration > .container .login-container .login-option, body .logi
   align-items: center;
   position: relative; }
 
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
   width: 100%;
   border-radius: 0px;
   border: 1px solid #666;
   background-color: #fff;
   padding: 10px 20px; }
   @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
       border-color: #000;
       border-top: none;
       border-left: none;
@@ -106,8 +106,8 @@ header .row-first .item-removal-container {
           margin-left: calc(var(--bs-gutter-x) * .5); }
 
 header .row-second {
-  box-shadow: 0px 0px 15px 0px #000;
-  -webkit-box-shadow: 0px 0px 15px 0px #000; }
+  box-shadow: 0px 0px 15px 0px #d3d3d3;
+  -webkit-box-shadow: 0px 0px 15px 0px #d3d3d3; }
   header .row-second > .container > div {
     flex-basis: 33%; }
     header .row-second > .container > div:last-child {
@@ -373,14 +373,14 @@ body .login-registration > .container .login-container .login-option, body .logi
   align-items: center;
   position: relative; }
 
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
   width: 100%;
   border-radius: 0px;
   border: 1px solid #666;
   background-color: #fff;
   padding: 10px 20px; }
   @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
       border-color: #000;
       border-top: none;
       border-left: none;
@@ -493,14 +493,14 @@ body .login-registration > .container .login-container .login-option, body .logi
   align-items: center;
   position: relative; }
 
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
   width: 100%;
   border-radius: 0px;
   border: 1px solid #666;
   background-color: #fff;
   padding: 10px 20px; }
   @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
       border-color: #000;
       border-top: none;
       border-left: none;
@@ -587,14 +587,14 @@ body .login-registration > .container .login-container .login-option, body .logi
   align-items: center;
   position: relative; }
 
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
   width: 100%;
   border-radius: 0px;
   border: 1px solid #666;
   background-color: #fff;
   padding: 10px 20px; }
   @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
       border-color: #000;
       border-top: none;
       border-left: none;
@@ -667,13 +667,25 @@ body .btn {
     max-width: 90%;
     margin: 0 auto; } }
 
+#cart .product .desktop {
+  display: none; }
+  @media (min-width: 768px) {
+    #cart .product .desktop {
+      display: block; } }
+
 #cart .product .product-title {
-  justify-content: space-between; }
+  justify-content: space-between !important;
+  display: flex; }
   @media (max-width: 767px) {
     #cart .product .product-title {
-      border-radius: 5px;
       -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
-      box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+      box-shadow: 0px 0px 13px 2px #d3d3d3;
+      border-radius: 4px;
+      padding: 1rem;
+      margin-bottom: 1rem; } }
+  @media (min-width: 768px) {
+    #cart .product .product-title {
+      justify-content: space-around !important; } }
   #cart .product .product-title .title-container {
     display: flex;
     flex-direction: column;
@@ -695,6 +707,10 @@ body .btn {
   #cart .product .product-title img {
     max-width: 150px;
     border-radius: 0px; }
+    @media (max-width: 767px) {
+      #cart .product .product-title img {
+        border: 0px;
+        max-width: 125px; } }
   #cart .product .product-title .product-price {
     text-align: left; }
     @media (min-width: 768px) {
@@ -764,77 +780,212 @@ body .btn {
       #cart .cart-totals .checkout {
         text-align: right; } }
 
-#cart .confirmation-container #progressbar li.active:before {
-  content: none; }
-
-#cart .confirmation-container #progressbar li.active svg {
-  background-color: #fff;
-  border-radius: 50%;
-  color: #39b54a; }
-
-#cart .confirmation-container #progressbar li.active span {
-  position: relative;
-  top: 1px; }
+#cart .confirmation-container #progressbar {
+  display: none; }
+  #cart .confirmation-container #progressbar li.active:before {
+    content: none; }
+  #cart .confirmation-container #progressbar li.active svg {
+    background-color: #fff;
+    border-radius: 50%;
+    color: #39b54a; }
+  #cart .confirmation-container #progressbar li.active span {
+    position: relative;
+    top: 1px; }
 
 #cart .confirmation-container h4 {
   border-bottom: 2px solid #acacac;
   line-height: 2; }
 
 #cart .confirmation-container .message {
-  border: 2px solid #39b54a;
   align-items: center; }
+  @media (max-width: 767px) {
+    #cart .confirmation-container .message {
+      flex-direction: column;
+      text-align: center; } }
+  @media (min-width: 768px) {
+    #cart .confirmation-container .message {
+      border: 2px solid #39b54a; } }
   #cart .confirmation-container .message .icon-container {
-    position: relative; }
-    #cart .confirmation-container .message .icon-container:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: -30px;
-      width: 1px;
-      height: 100%;
-      background-color: #ccc; }
+    position: relative;
+    margin-bottom: 1rem; }
+    @media (min-width: 768px) {
+      #cart .confirmation-container .message .icon-container {
+        margin-bottom: 0; }
+        #cart .confirmation-container .message .icon-container:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: -30px;
+          width: 1px;
+          height: 100%;
+          background-color: #ccc; } }
     #cart .confirmation-container .message .icon-container svg {
       border-radius: 50%;
       background-color: #fff;
       color: #39b54a; }
-  #cart .confirmation-container .message .inner-message {
-    margin-left: 3rem; }
+  @media (max-width: 767px) {
+    #cart .confirmation-container .message .inner-message .text-success {
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 0.5rem; } }
+  @media (min-width: 768px) {
+    #cart .confirmation-container .message .inner-message {
+      margin-left: 3rem; } }
+
+#cart .confirmation-container .time {
+  font-weight: 500;
+  letter-spacing: 0px; }
+  @media (max-width: 767px) {
+    #cart .confirmation-container .time {
+      font-size: 0.9rem; } }
 
 #cart .confirmation-container .order-summary {
-  overflow: hidden;
-  border-bottom: 2px solid #acacac; }
+  overflow: hidden; }
+  @media (max-width: 767px) {
+    #cart .confirmation-container .order-summary {
+      border-radius: 4px;
+      padding: 1rem 2rem;
+      margin-bottom: 2rem;
+      -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+      box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+  @media (min-width: 768px) {
+    #cart .confirmation-container .order-summary {
+      border-bottom: 2px solid #acacac; } }
   #cart .confirmation-container .order-summary .titles {
     border-bottom: 2px solid #acacac; }
+    @media (max-width: 767px) {
+      #cart .confirmation-container .order-summary .titles {
+        display: none; } }
     #cart .confirmation-container .order-summary .titles > div {
       font-weight: 700;
       line-height: 2.5; }
+  #cart .confirmation-container .order-summary .product-info h5 {
+    font-weight: 700;
+    margin-bottom: 0px; }
+  @media (max-width: 767px) {
+    #cart .confirmation-container .order-summary .product-info {
+      flex-direction: column;
+      text-align: left; } }
+  @media (min-width: 768px) {
+    #cart .confirmation-container .order-summary .product-info .quantity-mobile, #cart .confirmation-container .order-summary .product-info .ind-price-mobile, #cart .confirmation-container .order-summary .product-info .price-mobile {
+      display: none; } }
+  #cart .confirmation-container .order-summary .product-info .quantity-mobile {
+    color: #fff;
+    background-color: #197b30;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 150px;
+    top: -5px; }
+  #cart .confirmation-container .order-summary .product-info .price-mobile {
+    color: #197b30;
+    font-weight: 700; }
+  #cart .confirmation-container .order-summary .product-info .ind-price-mobile {
+    color: #666;
+    margin: 0.25rem 0; }
 
 #cart .confirmation-container .tax-subtotal {
   border-bottom: 2px solid #acacac; }
   #cart .confirmation-container .tax-subtotal h6 {
     font-weight: 700; }
+  #cart .confirmation-container .tax-subtotal .subtotal-sub .value {
+    text-align: right;
+    font-weight: 500;
+    letter-spacing: 0px; }
+    @media (max-width: 767px) {
+      #cart .confirmation-container .tax-subtotal .subtotal-sub .value {
+        font-size: 0.9rem; } }
+  #cart .confirmation-container .tax-subtotal .hst-sub .value {
+    text-align: right;
+    font-weight: 500;
+    letter-spacing: 0px; }
+    @media (max-width: 767px) {
+      #cart .confirmation-container .tax-subtotal .hst-sub .value {
+        font-size: 0.9rem; } }
   #cart .confirmation-container .tax-subtotal .shipping-sub .value {
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    text-align: right;
+    font-weight: 500;
+    letter-spacing: 0px; }
+    @media (max-width: 767px) {
+      #cart .confirmation-container .tax-subtotal .shipping-sub .value {
+        font-size: 0.9rem; } }
 
-#cart .confirmation-container .order-inner-container {
+@media (max-width: 767px) {
+  #cart .confirmation-container .order-container {
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+    box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+
+#cart .confirmation-container .order-container .order-inner-container {
   flex-direction: column; }
   @media (min-width: 768px) {
-    #cart .confirmation-container .order-inner-container {
+    #cart .confirmation-container .order-container .order-inner-container {
       flex-direction: row; } }
-  #cart .confirmation-container .order-inner-container h6 {
+  #cart .confirmation-container .order-container .order-inner-container h6 {
     font-weight: 700; }
-  #cart .confirmation-container .order-inner-container .billing-details {
+    @media (max-width: 767px) {
+      #cart .confirmation-container .order-container .order-inner-container h6 {
+        font-size: 1.1rem; } }
+  #cart .confirmation-container .order-container .order-inner-container .billing-details {
     flex-grow: 2; }
-  #cart .confirmation-container .order-inner-container .shipping-method {
-    flex-grow: 2; }
+    #cart .confirmation-container .order-container .order-inner-container .billing-details span {
+      font-weight: 500;
+      letter-spacing: 0px; }
+      @media (max-width: 767px) {
+        #cart .confirmation-container .order-container .order-inner-container .billing-details span {
+          font-size: 0.9rem; } }
+  #cart .confirmation-container .order-container .order-inner-container .shipping-method {
+    flex-grow: 2;
+    font-weight: 500;
+    letter-spacing: 0px; }
+    @media (max-width: 767px) {
+      #cart .confirmation-container .order-container .order-inner-container .shipping-method {
+        font-size: 0.9rem; } }
     @media (min-width: 768px) {
-      #cart .confirmation-container .order-inner-container .shipping-method {
+      #cart .confirmation-container .order-container .order-inner-container .shipping-method {
         margin: 0 1rem; } }
-  #cart .confirmation-container .order-inner-container .notes {
-    flex-grow: 2; }
+  #cart .confirmation-container .order-container .order-inner-container .notes {
+    flex-grow: 2;
+    font-weight: 500;
+    letter-spacing: 0px; }
+    @media (max-width: 767px) {
+      #cart .confirmation-container .order-container .order-inner-container .notes {
+        font-size: 0.9rem; } }
 
-#cart .confirmation-container .order-amount > div {
+@media (max-width: 767px) {
+  #cart .confirmation-container .totals {
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+    box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+
+@media (min-width: 768px) {
+  #cart .confirmation-container .totals .order-amount {
+    justify-content: space-around !important; } }
+
+#cart .confirmation-container .totals .order-amount > div {
   font-weight: 700; }
+
+#cart .confirmation-container .totals .order-amount .value {
+  text-align: right; }
+
+@media (max-width: 768px) {
+  #cart .confirmation-container .totals .payment-info .card-info {
+    order: 2; } }
+
+#cart .confirmation-container .totals .payment-info .card-info > * {
+  color: #666;
+  font-weight: 500;
+  letter-spacing: 0px; }
 
 #cart .confirmation-container .links {
   flex-direction: column; }
@@ -861,18 +1012,37 @@ body .login-registration > .container .login-container .login-option, body .logi
   align-items: center;
   position: relative; }
 
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
   width: 100%;
   border-radius: 0px;
   border: 1px solid #666;
   background-color: #fff;
   padding: 10px 20px; }
   @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
       border-color: #000;
       border-top: none;
       border-left: none;
       border-right: none; } }
+
+@media (max-width: 767px) {
+  #cart-checkout .main-cart-container {
+    background: #000;
+    border: 0;
+    display: block !important;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateX(100%);
+    z-index: 110;
+    width: calc(100% - 38px);
+    max-width: 220px;
+    padding: 20px; }
+    #cart-checkout .main-cart-container.show {
+      transform: translateX(0%);
+      transition: all .25s ease; } }
 
 #cart-checkout .return-to-cart {
   text-align: center;
@@ -931,12 +1101,45 @@ body .login-registration > .container .login-container form > div input, body .l
       margin-top: 20px;
       padding-top: 20px; }
 
+#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
+  border-radius: 0px;
+  text-transform: uppercase;
+  padding: 10px 50px; }
+
+body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
+  height: 80%;
+  width: 100%;
+  max-width: none;
+  margin: auto;
+  align-items: center;
+  position: relative; }
+
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
+  width: 100%;
+  border-radius: 0px;
+  border: 1px solid #666;
+  background-color: #fff;
+  padding: 10px 20px; }
+  @media (max-width: 767px) {
+    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
+      border-color: #000;
+      border-top: none;
+      border-left: none;
+      border-right: none; } }
+
 #order {
   width: 100%;
   margin: 50px auto;
   text-align: center;
   position: relative;
   max-width: none; }
+  #order fieldset:not(:first-of-type) {
+    display: none; }
+  #order .titles h1 {
+    text-transform: uppercase;
+    display: none; }
+    #order .titles h1.active {
+      display: block; }
   #order .ast {
     color: #f00; }
   #order label {
@@ -986,6 +1189,11 @@ body .login-registration > .container .login-container form > div input, body .l
         color: #A0A0A0; }
       #order fieldset input[type="checkbox"], #order fieldset textarea[type="checkbox"], #order fieldset select[type="checkbox"] {
         width: auto; }
+      #order fieldset input[type="button"], #order fieldset input[type="submit"], #order fieldset textarea[type="button"], #order fieldset textarea[type="submit"], #order fieldset select[type="button"], #order fieldset select[type="submit"] {
+        background-color: #000;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1rem; }
     @media (min-width: 1030px) {
       #order fieldset .form-inner-container.form-address-other, #order fieldset .form-inner-container.form-billing-address.part-2 {
         flex-direction: row !important; }
@@ -998,8 +1206,11 @@ body .login-registration > .container .login-container form > div input, body .l
           #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2), #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) {
             padding: 0px 20px;
             flex-shrink: 2; } }
+    @media (max-width: 767px) {
+      #order fieldset .form-inner-container.form-address-other .form-field:first-child, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:first-child {
+        padding-right: 20px; } }
     #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) select {
-      height: 50px;
+      height: 40px;
       border-radius: 0px;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -1009,6 +1220,9 @@ body .login-registration > .container .login-container form > div input, body .l
       background-position-x: 95%;
       background-position-y: 12px;
       padding: 0px 10px; }
+      @media (min-width: 767px) {
+        #order fieldset .form-inner-container.form-address-other .form-field:nth-child(2) select, #order fieldset .form-inner-container.form-billing-address.part-2 .form-field:nth-child(2) select {
+          height: 50px; } }
     #order fieldset .form-inner-container.form-shipping-information .form-field.first label {
       display: inline-block; }
     #order fieldset .form-inner-container.form-shipping-information .shipping-option {
@@ -1055,6 +1269,11 @@ body .login-registration > .container .login-container form > div input, body .l
           flex-direction: row; }
           #order fieldset .form-inner-container.half .form-field:first-child {
             padding-right: 20px; } }
+    @media (min-width: 450px) {
+      #order fieldset .form-inner-container.mobile-half {
+        flex-direction: row; }
+        #order fieldset .form-inner-container.mobile-half .form-field:first-child {
+          padding-right: 20px; } }
     #order fieldset .form-inner-container.form-card {
       flex-wrap: wrap; }
       @media (min-width: 1030px) and (max-width: 1399px) {
@@ -1089,43 +1308,142 @@ body .login-registration > .container .login-container form > div input, body .l
       #order fieldset .info span {
         font-weight: 400;
         white-space: pre-line; }
-  #order .step-3 svg {
-    position: relative;
-    top: 11px; }
-  #order .step-3 input[type="button"].previous {
-    text-align: left;
-    background-color: transparent;
-    color: #000;
-    text-transform: inherit;
-    margin: 0;
-    width: auto; }
-  #order .step-3 input[type="submit"] {
-    text-transform: uppercase; }
-  #order .step-3 legend {
-    font-size: calc(0.75rem + 0.3vw); }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .customer-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information .form-address-other {
+        flex-wrap: wrap;
+        flex-direction: row !important; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information .form-address-other .form-field:first-child, #order fieldset.step-1 .delivery-information .form-address-other .form-field:nth-child(2) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-1 .delivery-information .form-address-other .form-field:nth-child(3) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .card-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 990px) {
+      #order fieldset.step-2 .card-information .form-field.month-year {
+        flex-flow: wrap;
+        flex-direction: row;
+        display: flex; }
+        #order fieldset.step-2 .card-information .form-field.month-year label {
+          flex: 0 0 100%; }
+        #order fieldset.step-2 .card-information .form-field.month-year .select-container {
+          display: flex;
+          width: 100%; }
+          #order fieldset.step-2 .card-information .form-field.month-year .select-container > div {
+            flex: 0 0 50%; }
+            #order fieldset.step-2 .card-information .form-field.month-year .select-container > div:first-child {
+              padding-right: 20px; }
+            #order fieldset.step-2 .card-information .form-field.month-year .select-container > div select {
+              margin: 0 0 10px; }
+              #order fieldset.step-2 .card-information .form-field.month-year .select-container > div select [name=month] {
+                padding-right: 20px; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information .form-billing-address.part-2 {
+        flex-wrap: wrap;
+        flex-direction: row !important; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information .form-billing-address.part-2 .form-field:first-child, #order fieldset.step-2 .billing-information .form-billing-address.part-2 .form-field:nth-child(2) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .billing-information .form-billing-address.part-2 .form-field:nth-child(3) {
+        flex: 1 1 50%; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .shipping-option {
+        margin-bottom: 1rem; }
+        #order fieldset.step-2 .shipping-option .form-field.p-2 {
+          outline: 1px solid #fff;
+          border-radius: 4px;
+          -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+          box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+    @media (min-width: 768px) {
+      #order fieldset.step-2 .mobile {
+        display: none; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .order-notes {
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem; } }
+    @media (min-width: 768px) {
+      #order fieldset.step-2 .order-notes {
+        margin-top: 2rem; } }
+    @media (max-width: 767px) {
+      #order fieldset.step-2 .order-notes .desktop {
+        display: none; } }
+    #order fieldset.step-3 svg {
+      position: relative;
+      top: 11px;
+      margin: 3px 5px; }
+    #order fieldset.step-3 input[type="button"].previous {
+      text-align: left;
+      background-color: transparent;
+      color: #000;
+      text-transform: inherit;
+      margin: 0;
+      width: auto; }
+    #order fieldset.step-3 input[type="submit"] {
+      text-transform: uppercase; }
+    #order fieldset.step-3 legend {
+      font-size: calc(1rem + 0.3vw);
+      letter-spacing: 0.5px; }
+      @media (min-width: 768px) {
+        #order fieldset.step-3 legend {
+          font-size: calc(0.75rem + 0.3vw); } }
+    @media (max-width: 767px) {
+      #order fieldset.step-3 .form-inner-container {
+        padding: 0rem 2rem 1.5rem;
+        margin-top: 1rem;
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+        box-shadow: 0px 0px 13px 2px #d3d3d3; } }
+    #order fieldset.step-3 .form-inner-container .form-info-field span {
+      font-weight: 500;
+      letter-spacing: 0.5px; }
+    #order fieldset.step-3 .action-button {
+      width: 100%;
+      background: #666;
+      font-weight: bold;
+      color: #fff;
+      border: 0 none;
+      border-radius: 1px;
+      cursor: pointer;
+      padding: 10px 5px;
+      margin: 10px 0px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease; }
+      #order fieldset.step-3 .action-button:hover {
+        color: #333333 !important; }
 
-/*Hide all except first fieldset*/
-#order fieldset:not(:first-of-type) {
-  display: none; }
-
-/*buttons*/
-#order .action-button {
-  width: 100%;
-  background: #000;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 1px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 0px;
-  text-transform: uppercase;
-  transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease; }
-  #order .action-button:hover {
-    color: #333333 !important; }
-
-/*progressbar*/
 #progressbar {
   margin-bottom: 30px;
   overflow: hidden;
@@ -1136,23 +1454,31 @@ body .login-registration > .container .login-container form > div input, body .l
   margin: 40px 10%;
   padding-left: 0px;
   display: flex;
-  flex-direction: column; }
-  @media (min-width: 1030px) {
-    #progressbar {
-      flex-direction: row; } }
+  flex-direction: row;
+  position: relative;
+  left: 25px; }
   #progressbar li {
     list-style-type: none;
-    color: black;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    float: left;
+    color: #000;
     position: relative;
-    border-bottom: 2px solid #A0A0A0;
     flex: 1;
-    padding: 10px; }
+    padding: 18px;
+    font-weight: 500;
+    letter-spacing: 0px; }
+    @media (max-width: 767px) {
+      #progressbar li {
+        font-size: 0.9rem; } }
+    @media (min-width: 991px) {
+      #progressbar li {
+        padding: 10px;
+        border-bottom: 2px solid #A0A0A0; } }
     #progressbar li.active {
-      border-bottom: 2px solid #000;
       text-align: center; }
+      @media (min-width: 991px) {
+        #progressbar li.active {
+          border-bottom: 2px solid #000; } }
+      #progressbar li.active:before {
+        border: none; }
     #progressbar li:before {
       content: counter(step);
       counter-increment: step;
@@ -1168,19 +1494,27 @@ body .login-registration > .container .login-container form > div input, body .l
       position: absolute;
       left: 20px;
       padding-top: 4px;
-      top: 3px; }
+      top: 3px;
+      border: 2px solid #d3d3d3; }
+    #progressbar li span {
+      display: none; }
+      @media (min-width: 991px) {
+        #progressbar li span {
+          display: inline-block; } }
 
 /*progressbar connectors*/
 #progressbar li:after {
   content: '';
   width: 100%;
   height: 2px;
-  background: white;
+  background: #d3d3d3;
   position: absolute;
-  left: -50%;
-  top: 9px;
-  z-index: -1;
-  /*put it behind the numbers*/ }
+  right: 75%;
+  top: 18px;
+  z-index: -1; }
+  @media (min-width: 991px) {
+    #progressbar li:after {
+      content: none; } }
 
 #progressbar li:first-child:after {
   /*connector not needed before the first step*/
@@ -1220,14 +1554,14 @@ body .login-registration > .container .login-container .login-option, body .logi
   align-items: center;
   position: relative; }
 
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
   width: 100%;
   border-radius: 0px;
   border: 1px solid #666;
   background-color: #fff;
   padding: 10px 20px; }
   @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea {
+    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
       border-color: #000;
       border-top: none;
       border-left: none;
@@ -1715,6 +2049,8 @@ body .customer-main {
   #products .product-container .title {
     text-decoration: none;
     color: #000; }
+  #products .product-container > .meta-container {
+    flex-direction: column; }
   #products .product-container .add-cart-products {
     justify-content: flex-end;
     position: relative; }

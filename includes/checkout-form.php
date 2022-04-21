@@ -1,14 +1,31 @@
 <form id="order" method="post">
+  <div class="titles">
+    <h1 class="active">Checkout Details</h1>
+    <h1>Billing &amp; Shipping</h1>
+    <h1>Review</h1>
+  </div>
   <ul id="progressbar">
-    <li class="active">Customer Info</li>
-    <li>Shipping &amp; Billing</li>
-    <li>Review</li>
+    <li class="active">
+      <span>  
+      Customer Info
+      </span>
+    </li>
+    <li>
+      <span>
+        Shipping &amp; Billing
+      </span>  
+    </li>
+    <li>
+      <span>
+        Review
+      </span>  
+    </li>
   </ul>
   <fieldset class="step-1">
     <h2 class="fs-title">Customer Information</h2>
     <h3 class="fs-subtitle d-none"></h3>
     <div class="customer-information">
-      <div class="form-inner-container form-name d-flex half">
+      <div class="form-inner-container form-name d-flex half mobile-half">
         <div class="form-field half">
             <label for="first_name">First Name <span class="ast">*</span></label>
             <input type="text" id="first_name" name="first_name" />
@@ -22,7 +39,7 @@
       </div>
       <div class="form-inner-container form-contact d-flex half">
         <div class="form-field half">
-            <label for="phone">Phone <span class="ast">*</span></label>
+            <label for="phone">Phone Number<span class="ast">*</span></label>
           <input type="text" id="phone" class="half" name="phone" />
           <div id="phone_warning" class="warning"></div>
         </div>
@@ -33,9 +50,9 @@
         </div>
       </div>
     </div>
-    <div class="delivery-information">
     <h2 class="fs-title">Delivery Information</h2>
     <h3 class="fs-subtitle">Enter your delivery address</h3>
+    <div class="delivery-information">
     <div class="form-inner-container form-address d-flex flex-column">
       <div class="form-field">
           <label for="street">Street <span class="ast">*</span></label>
@@ -115,28 +132,32 @@
           <div id="card_type_warning" class="warning"></div>
         </div>
         <div class="form-field half month-year">
-            <label>Expiry Date</label> 
-            <span id="userEmail-info" class="info d-none"></span>
-            <!-- <input type="text" id="month-year" name="month-year" placeholder="MM/YY" /> -->
-            <select name="month" id="month" class="demoSelectBox">
-                  <option value="08">08</option>
-                  <option value="09">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-              </select> 
-              <select name="year" id="year" class="demoSelectBox">
-                  <option value="21">2021</option>
-                  <option value="22">2022</option>
-                  <option value="23">2023</option>
-                  <option value="24">2024</option>
-                  <option value="25">2025</option>
-                  <option value="26">2026</option>
-                  <option value="27">2027</option>
-                  <option value="28">2028</option>
-                  <option value="29">2029</option>
-                  <option value="30">2030</option>
-              </select>
+            <label>Expiry Date</label>
+            <div class="select-container">
+              <div class="month-container">
+                <select name="month" id="month" class="demoSelectBox">
+                    <option value="08">08</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select> 
+              </div>
+              <div class="year-container">
+                <select name="year" id="year" class="demoSelectBox">
+                    <option value="21">2021</option>
+                    <option value="22">2022</option>
+                    <option value="23">2023</option>
+                    <option value="24">2024</option>
+                    <option value="25">2025</option>
+                    <option value="26">2026</option>
+                    <option value="27">2027</option>
+                    <option value="28">2028</option>
+                    <option value="29">2029</option>
+                    <option value="30">2030</option>
+                </select>
+              </div>
+            </div>
         </div>
         <div class="form-field half cvc">
             <label for="cvv-info">CVC</label> 
@@ -235,8 +256,9 @@
             </div>
             <div id="shipping_option_warning" class="warning"></div>
           </div>
-          <div class="form-field mt-4">
-            <label for="order-notes">Order Notes (Optional)</label>
+          <h5 class="mobile">Order Notes (Optional)</h5>
+          <div class="form-field order-notes">
+          <label for="order-notes" class="desktop mb-2">Order Notes (Optional)</label>
             <input type="text" id="order-notes" name="order-notes" placeholder="Notes about your order, e.g. special notes for your delivery" />
           </div>
       </div>

@@ -484,6 +484,34 @@ function toggleNav() {
 	});
 }
 
+function toggleCart() {
+
+    var body = $('body');
+    var cart = $('.cart');
+    var cart_container = $('.main-cart-container');
+
+    if ($(window).width() < 768) {
+
+    $(cart).click(function(e){
+        
+        e.preventDefault();
+
+		$(cart_container).addClass('show');
+        $(body).addClass('no-scroll');
+    });
+
+    $(cart_container).click(function(e){
+        
+        e.preventDefault();
+
+		$(cart_container).removeClass('show');
+        $(body).removeClass('no-scroll');
+
+    });
+    }
+
+}
+
 function productTab() {
 
     var tab = $('.product-ind-meta');

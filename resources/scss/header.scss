@@ -104,8 +104,8 @@ header {
         }
     }
     .row-second {
-        box-shadow: 0px 0px 15px 0px $black;
-        -webkit-box-shadow: 0px 0px 15px 0px $black;
+        box-shadow: 0px 0px 15px 0px $lightgrey;
+        -webkit-box-shadow: 0px 0px 15px 0px $lightgrey;
         > .container {
             > div {
                 flex-basis: 33%;

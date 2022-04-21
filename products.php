@@ -286,7 +286,7 @@
                             <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $row['name'] . ' Image'; ?>" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-12 mt-2 d-flex">
+                    <div class="meta-container col-12 mt-2 d-flex">
                         <div class="item-meta">
                             <a href='product.php?id=<?= $id ?>' class='product-link title'>
                                 <div class='name mb-1'>

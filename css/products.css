@@ -313,6 +313,8 @@
   #products .product-container .title {
     text-decoration: none;
     color: #000; }
+  #products .product-container > .meta-container {
+    flex-direction: column; }
   #products .product-container .add-cart-products {
     justify-content: flex-end;
     position: relative; }
