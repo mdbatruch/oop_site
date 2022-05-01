@@ -4,8 +4,26 @@
 body {
     height: auto;
     font-family: $roboto;
+    // overflow-x: hidden;
+    .show {
+        display: block !important;
+    }
     &.no-scroll {
         overflow: hidden;
+        position: relative;
+        &:before {
+            content: "";
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            position: absolute;
+            z-index: 105;
+            transition: all 1s ease;
+        }
+    }
+    &.overlay {
         position: relative;
         &:before {
             content: "";
@@ -81,42 +99,80 @@ body {
                     right: 0;
                     margin-left: auto;
                     margin-right: auto;
+                    transition: 0.35s all ease;
+                    -webkit-transition: 0.35s all ease;
+                    &:hover {
+                        background-color: $lightgrey;
+                        color: $black;
+                    }
                 }
             }
         }
         .container-fluid {
             .browse-categories {
-                @media(max-width: 1029px) {
-                    display: none;
+                position: relative;
+                @media(max-width: 990px) {
+                    padding: 0px;
+                    .nav-title {
+                        padding: 0px;
+                    }
                 }
-                #root {
-                    position: relative;
-                    z-index: 100;
-                    .App {
-                        margin: 0px;
-                        max-width: none;
-                        width: 100%;
-                        form {
+                @media(min-width: 991px) {
+                    padding-top: 1.5rem;
+                }
+                .search-container {
+                    @media(max-width: 990px) {
+                        background-color: $lightgrey;
+                    }
+                    #root {
+                        z-index: 100;
+                        @media(min-width: 991px) {
+                            position: relative;
+                        }
+                        .App {
+                            margin: 0px;
                             max-width: none;
-                            input[type="text"] {
-                                border-radius: 0px;
-                                padding: 10px;
-                                border: 1px solid $grey-999;
-                            }
-                            #container {
-                                .show {
-                                    position: absolute;
-                                    background-color: $white;
-                                    width: 100%;
-                                    padding: 20px;
+                            width: 100%;
+                            form {
+                                max-width: none;
+                                input[type="text"] {
+                                    border-radius: 0px;
+                                    padding: 15px;
+                                    border: none;
+                                    background-color: $lightgrey;
+                                    color: $black;
+                                    &::placeholder {
+                                        color: $black;
+                                    }
+                                    @media(min-width: 991px) {
+                                        border: 1px solid $grey-999;
+                                        background-color: $white;
+                                        padding: 10px;
+                                    }
                                 }
-                                ul {
-                                    left: auto;
-                                    max-width: none;
-                                    width: 100%;
-                                    li {
-                                        img {
-                                            max-width: 250px;
+                                .spinner {
+                                    right: 5px;
+                                    top: calc(50% - 9px);
+                                }
+                                #container {
+                                    .show {
+                                        position: absolute;
+                                        background-color: $white;
+                                        width: 100%;
+                                        padding: 20px;
+                                        left: 0px;
+                                        z-index: 120;
+                                        margin-top: 0px;
+                                        border: 2px solid $grey;
+                                    }
+                                    ul {
+                                        left: auto;
+                                        max-width: none;
+                                        width: 100%;
+                                        li {
+                                            img {
+                                                max-width: 250px;
+                                            }
                                         }
                                     }
                                 }
@@ -141,6 +197,9 @@ body {
                         align-items: center;
                         justify-content: space-between;
                         font-size: 0.85rem;
+                        @media(max-width: 990px) {
+                            flex-direction: column;
+                        }
                         @media(min-width: 1240px) {
                             font-size: 16px;
                         }
@@ -151,43 +210,49 @@ body {
                                 background-color: $black;
                             }
                         }
-                        &:hover, &.active {
+                        &:hover, &.active, &[aria-expanded=true] {
                             background-color: $brand-green;
                             color: $white;
                             .tab-pane { 
-                                display: block;
+                                @media(min-width: 991px) {
+                                    display: block;
+                                }
                             }
+                        }
+                        &:not(.nav-link-header) {
+                            svg {
+                                @media(max-width: 990px) {
+                                    transform: rotate(90deg);
+                                }
+                            }
+                        }
+                        .text {
+                            display: flex;
+                            width: 100%;
+                            justify-content: space-between;
+                            align-items: center;
                         }
                         svg {
                             color: $white;
                             fill: $white;
                         }
                         .tab-pane {
-                            position: absolute;
-                            left: 100%;
-                            z-index: 100;
-                            height: 100%;
-                            background-color: rgba(25, 123, 48, 0.75);
-                            width: 125%;
-                            top: 0;
-                            display: none;
-                            color: $white;
-                            .category.menu {
-                                padding-left: 0px;
-                                li {
-                                    list-style: none;
-                                    a {
-                                        color: $white;
-                                        text-decoration: none;
-                                        text-transform: initial;
-                                        line-height: 2;
-                                        &.category-header {
-                                            text-decoration: underline;
-                                            font-size: 1.2rem;
-                                        }
-                                    }
+                            width: 100%;
+                            @media(max-width: 1029px) {
+                                padding-left: 0px !important;
+                            }
+                                @media(min-width: 1030px) {
+                                    position: absolute;
+                                    left: 100%;
+                                    z-index: 100;
+                                    height: 100%;
+                                    background-color: rgba(25, 123, 48, 0.75);
+                                    width: 125%;
+                                    top: 0;
+                                    display: none;
+                                    color: $white;
                                 }
-                                ul {
+                                .category.menu {
                                     padding-left: 0px;
                                     li {
                                         list-style: none;
@@ -195,12 +260,51 @@ body {
                                             color: $white;
                                             text-decoration: none;
                                             text-transform: initial;
+                                            line-height: 2;
+                                            &.category-header {
+                                                text-decoration: underline;
+                                                font-size: 1.2rem;
+                                            }
+                                        }
+                                    }
+                                    ul {
+                                        padding-left: 0px;
+                                        li {
+                                            list-style: none;
+                                            a {
+                                                color: $white;
+                                                text-decoration: none;
+                                                text-transform: initial;
+                                            }
                                         }
                                     }
                                 }
                             }
+                            &.inner {
+                                @media(min-width: 991px) {
+                                    display: none;
+                                }
+                            }
                         }
+                    }
+                }
+                .pill-promos-container {
+                    .promo-info {
+                        @media(max-width: 990px) {
+                            display: none;
                         }
+                    }
+                }
+                .pill-container {
+                    @media(max-width: 990px) {
+                        display: none;
+                        position: absolute;
+                        z-index: 105;
+                    }
+                }
+                .pills-gallery {
+                    @media(min-width: 991px) {
+                        padding-left: 0px;
                     }
                 }
                 .tab-content {
@@ -251,13 +355,18 @@ body {
                         font-size: 1.25rem;
                     }
                 }
-                img {
-                    max-height: 265px;
+                .img-container {
+                    min-height: 265px;
+                    img {
+                        max-height: 265px;
+                    }
                 }
                 .price {
                     color: $grey-A0;
                     font-weight: 700;
-                    text-align: left;
+                    @media(min-width: 600px) {
+                        text-align: left;
+                    }
                 }
                 .add-cart-products {
                     position: absolute;
@@ -275,6 +384,7 @@ body {
                         opacity: 0;
                         font-size: 0.8rem;
                         align-items: center;
+                        display: flex;
                     }
                     .arrow-right {
                         transition: all 0.5s ease;
@@ -370,6 +480,7 @@ body {
             }
         }
         .latest-releases {
+            position: relative;
             h3 {
                 text-transform: uppercase;
                 letter-spacing: 1.5px;
@@ -378,6 +489,13 @@ body {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                padding: 0px 80px;
+                @media(min-width: 600px) {
+                    padding: 0px 40px 0px 20px !important;
+                }
+                @media(min-width: 991px) {
+                    padding: 0px;
+                }
                 .img-container {
                     background-position: center;
                     background-repeat: no-repeat;
@@ -386,7 +504,70 @@ body {
                 }
                 .btn {
                     border-radius: 0px;
-                    
+                    &:hover {
+                        background-color: $lightgrey !important;
+                    }
+                }
+            }
+            .controls {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                position: absolute;
+                left: 0;
+                width: 100%;    
+                top: 50%;
+                transform: translatey(-50%);
+                display: flex;
+                align-items: center;    
+                justify-content: space-between;
+                z-index: 50;
+                &:focus {
+                    outline: none;
+                }
+            
+                li {
+                    :hover {
+                        cursor: pointer;        
+                    }
+                    &.prev {
+                        position: relative;
+                        left: 10px;
+                        @media(min-width: 600px) {
+                            left: -30px;
+                        }
+                    }
+                    &.next {
+                        position: relative;
+                        right: 10px;
+                        @media(min-width: 600px) {
+                            right: -30px;
+                        }
+                    }
+                }
+                svg {
+                    font-size: 3rem;
+                    color: $grey;
+                }
+            }
+            .tns-nav {
+                position: absolute;
+                bottom: 20px;
+                z-index: 50;
+                left: calc(50% - 40px);
+                display: none;
+                @media(min-width: 991px) {
+                    bottom: 40px;
+                }
+                button {
+                    width: 30px;
+                    border: none;
+                    padding: 2px;
+                    margin: 0px 5px;
+                    background-color: $lightgrey;
+                    &.tns-nav-active {
+                        background-color: $white;
+                    }
                 }
             }
         }
@@ -433,9 +614,12 @@ body {
             }
             .tns-nav {
                 position: absolute;
-                bottom: 40px;
+                bottom: 20px;
                 z-index: 50;
                 left: calc(50% - 40px);
+                @media(min-width: 991px) {
+                    bottom: 40px;
+                }
                 button {
                     width: 30px;
                     border: none;
@@ -456,6 +640,7 @@ body {
                     color: $white;
                     text-align: center;
                     padding: 50px 20px 30px;
+                    min-height: 220px;
                     @media(min-width: 768px) {
                         background-color: $black-overlay;
                         position: absolute;

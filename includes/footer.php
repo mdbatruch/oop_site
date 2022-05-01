@@ -99,6 +99,7 @@
     toggleNav();
 
     toggleFilter();
+    toggleCategories();
 
         $("#product-image").on("click", function(e) {
 

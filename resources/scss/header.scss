@@ -118,6 +118,69 @@ header {
                         max-width: 150px;
                     }
                 }
+                .navbar {
+                    @media(max-width: 990px) {
+                        .nav-item {
+                            .dropdown-menu {
+                                background-color: $black;
+                                padding-top: 0px;
+                                a {
+                                    color: $white !important;
+                                    padding: 0px 0px 0px 10px !important;
+                                    line-height: 1.5;
+                                    font-size: 0.85rem;
+                                }
+                                .dropdown-item {
+                                    &:hover, &:focus {
+                                        background-color: $black;
+                                        a {
+                                            color: $white !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    #main-navigation {
+                        .nav-item {
+                            @media(min-width: 991px) {
+                                &:hover {
+                                    a, svg {
+                                        color: $brand-green;
+                                    }
+                                }
+                            }
+                            &.show {
+                                svg {
+                                    transform: rotate(180deg);
+                                    -webkit-transform: rotate(180deg);
+                                }
+                            }
+                            .dropdown-toggle {
+                                padding-right: 0px;
+                                padding-top: 0px;
+                                position: absolute;
+                                right: 10px;
+                                top: 10px;
+                                @media(min-width: 991px) {
+                                    right: 0px;
+                                    top: 12px;
+                                    svg {
+                                        height: 18px;
+                                        width: 18px;
+                                    }
+                                }
+                                svg {
+                                    transition: all 0.25s ease;
+                                    -webkit-transition: all 0.25s ease;
+                                }
+                                &:after {
+                                    content: none;
+                                }
+                            }
+                        }
+                    }
+                }
                 .navbar-toggler {
                     border: none;
                     color: transparent;
@@ -368,17 +431,6 @@ header {
                     padding: 5px 20px;
                     @media(min-width: 992px) {
                         color: $black;
-                    }
-                    &.dd-handle {
-                        &:after {
-                            content: "";
-                            position: absolute;
-                            background-color: $black;
-                            width: 1px;
-                            height: 20px;
-                            right: 0;
-                            top: 10px;
-                        }
                     }
                 }
                 &:first-child {

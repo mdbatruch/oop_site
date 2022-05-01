@@ -19,7 +19,7 @@
                 <div class="promo-desc mb-3">
                     Join your favourite characters from the Lord of the Rings and The Hobbit for epic adventures.
                 </div>
-                <a href="#" class="btn btn-warning">Find Out More</a>
+                <a href="https://middle-earthstrategybattlegame.com/" class="btn btn-warning" target="_blank"> Find Out More</a>
             </div>
         </div>
         <div class="col-12 set promo">
@@ -29,7 +29,7 @@
                 <div class="promo-desc mb-3">
                     Bring the sturdy strongholds of the Riddermark to your gaming table.
                 </div>
-                <a href="#" class="btn btn-warning">Buy it today</a>
+                <a href="https://www.games-workshop.com/en-CA/Middle-Earth-Rohan-Watchtower-and-Palisades-2019" class="btn btn-warning" target="_blank">Buy it today</a>
             </div>
         </div>
     </div>

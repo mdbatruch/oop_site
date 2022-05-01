@@ -612,3 +612,32 @@ function toggleFilter() {
         }
     });
 }
+
+function toggleCategories() {
+
+    var nav_header = $('.nav-link-header');
+    var pill_container = $('.pill-container');
+
+    var body = $('body');
+
+    if ($(window).width() < 991) {
+
+        $(nav_header).click(function(){
+
+            $(pill_container).toggleClass('show');
+            $(body).toggleClass('overlay');
+
+        });
+    }
+
+    $(window).resize(function(){
+        if ($(window).width() > 991) {
+            $(nav_header).click(function(){
+
+                $(pill_container).toggleClass('show');
+                $(body).toggleClass('overlay');
+    
+            });
+         }
+    });
+}
