@@ -28,3 +28,17 @@
       border-right: none;
     }
   }
+
+  %customer-inputs {
+    width: 100%;
+    border-radius: 0px;
+    border: 1px solid $grey;
+    background-color: $white;
+    padding: 10px 20px;
+    @media(max-width: 990px) {
+      border-color: $black;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+  }

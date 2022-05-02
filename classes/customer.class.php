@@ -413,8 +413,10 @@ class Customer extends Cart {
                             // print_r($_SESSION);
         
                             $data['success'] = true;
+                            
+                            $data['username'] = $username;
         
-                            $data['message'] = 'Success! Your Account was updated!';
+                            $data['message'] = '<span>Success!</span> Your Account was updated!';
                 
                         } catch (Exception $e) {
                                     

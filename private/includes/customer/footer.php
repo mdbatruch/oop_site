@@ -85,6 +85,8 @@
 
     <script type="text/javascript">
         
+        toggleBodyandFormMessage();
+
         toggleCartMenu();
 
         toggleOrderList();
@@ -213,8 +215,13 @@
                     
                     console.log('Profile updated!');
 
-                    $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+                    $('#form-message').html('<div class="alert alert-success"><img src="<?= root_url('uploads/check.png'); ?>" alt="success" class="img-fluid mb-2">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
+                    $('.username').html(data.username);
+
+                    if ($(window).width() < 991) {
+                        $('body').addClass('no-scroll');
+                    }
                 }
             });
 

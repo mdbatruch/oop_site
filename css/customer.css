@@ -3,6 +3,19 @@ body .customer-main .customer-top a {
   text-transform: uppercase;
   padding: 10px 50px; }
 
+body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
+  width: 100%;
+  border-radius: 0px;
+  border: 1px solid #666;
+  background-color: #fff;
+  padding: 10px 20px; }
+  @media (max-width: 990px) {
+    body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
+      border-color: #000;
+      border-top: none;
+      border-left: none;
+      border-right: none; } }
+
 body header {
   background-color: #000; }
   body header a {
@@ -27,6 +40,30 @@ body .customer-main {
   body .customer-main .customer-top {
     background-color: #343a40;
     color: #fff; }
+    @media (max-width: 991px) {
+      body .customer-main .customer-top a {
+        background-color: transparent;
+        border-right: 0px;
+        border-left: 0px;
+        border-top: 0px;
+        border-color: #fff;
+        color: #fff; }
+        body .customer-main .customer-top a:hover {
+          color: #22a541;
+          border-color: #22a541; } }
+    body .customer-main .customer-top a.active {
+      color: #22a541;
+      border-color: #22a541; }
+      @media (min-width: 992px) {
+        body .customer-main .customer-top a.active {
+          background-color: #197b30;
+          border-color: #197b30;
+          color: #fff; } }
+    @media (min-width: 992px) {
+      body .customer-main .customer-top a:hover {
+        background-color: #22a541;
+        border-color: #22a541;
+        color: #fff; } }
     body .customer-main .customer-top .link-container a {
       width: 100%; }
   body .customer-main table tr th {
@@ -49,7 +86,7 @@ body .customer-main {
       width: 0px;
       background: transparent;
       /* make scrollbar transparent */ }
-    @media (min-width: 991px) {
+    @media (min-width: 992px) {
       body .customer-main table tr td .order-products {
         width: 60%; } }
     body .customer-main table tr td .order-products .close-button {
@@ -77,10 +114,71 @@ body .customer-main {
       color: #f00; }
     body .customer-main #customer-update label {
       display: block; }
+    @media (min-width: 992px) {
+      body .customer-main #customer-update .form-title {
+        border-bottom: 2px solid #d3d3d3; } }
+    body .customer-main #customer-update .customer-title, body .customer-main #customer-update .delivery-title, body .customer-main #customer-update .password-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-transform: uppercase; }
+      @media (min-width: 992px) {
+        body .customer-main #customer-update .customer-title, body .customer-main #customer-update .delivery-title, body .customer-main #customer-update .password-title {
+          text-transform: initial;
+          cursor: inherit;
+          margin-top: 2rem; } }
+      body .customer-main #customer-update .customer-title svg, body .customer-main #customer-update .delivery-title svg, body .customer-main #customer-update .password-title svg {
+        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease; }
+        @media (min-width: 992px) {
+          body .customer-main #customer-update .customer-title svg, body .customer-main #customer-update .delivery-title svg, body .customer-main #customer-update .password-title svg {
+            display: none; } }
+      body .customer-main #customer-update .customer-title[aria-expanded=true] h2, body .customer-main #customer-update .delivery-title[aria-expanded=true] h2, body .customer-main #customer-update .password-title[aria-expanded=true] h2 {
+        color: #197b30; }
+        @media (min-width: 992px) {
+          body .customer-main #customer-update .customer-title[aria-expanded=true] h2, body .customer-main #customer-update .delivery-title[aria-expanded=true] h2, body .customer-main #customer-update .password-title[aria-expanded=true] h2 {
+            color: #000; } }
+      body .customer-main #customer-update .customer-title[aria-expanded=true] svg, body .customer-main #customer-update .delivery-title[aria-expanded=true] svg, body .customer-main #customer-update .password-title[aria-expanded=true] svg {
+        color: #197b30;
+        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg); }
+        @media (min-width: 992px) {
+          body .customer-main #customer-update .customer-title[aria-expanded=true] svg, body .customer-main #customer-update .delivery-title[aria-expanded=true] svg, body .customer-main #customer-update .password-title[aria-expanded=true] svg {
+            color: #000; } }
+    @media (max-width: 991px) {
+      body .customer-main #customer-update .customer-information, body .customer-main #customer-update .delivery-information, body .customer-main #customer-update .password-information {
+        -webkit-box-shadow: 0px 0px 14px 1px #d3d3d3;
+        box-shadow: 0px 0px 14px 1px #d3d3d3;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0rem; } }
+    body .customer-main #customer-update .customer-inner-information, body .customer-main #customer-update .delivery-inner-information, body .customer-main #customer-update .password-inner-information {
+      margin-top: 1rem; }
+      @media (min-width: 992px) {
+        body .customer-main #customer-update .customer-inner-information.collapse, body .customer-main #customer-update .delivery-inner-information.collapse, body .customer-main #customer-update .password-inner-information.collapse {
+          display: block;
+          height: auto !important;
+          visibility: visible;
+          cursor: initial; } }
+      @media (min-width: 992px) {
+        body .customer-main #customer-update .customer-inner-information.collapsing, body .customer-main #customer-update .delivery-inner-information.collapsing, body .customer-main #customer-update .password-inner-information.collapsing {
+          position: relative;
+          height: unset !important;
+          overflow: hidden; } }
     body .customer-main #customer-update .fs-title {
-      font-size: 1.5rem;
+      font-size: 1rem;
       color: #000;
-      margin-bottom: 10px; }
+      margin-bottom: 0px;
+      font-weight: 600; }
+      body .customer-main #customer-update .fs-title.main {
+        font-size: 1.5rem;
+        font-weight: 500; }
+      @media (min-width: 992px) {
+        body .customer-main #customer-update .fs-title {
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+          font-weight: 500; } }
       body .customer-main #customer-update .fs-title .inner-title {
         text-transform: uppercase;
         color: #000;
@@ -103,7 +201,7 @@ body .customer-main {
       position: relative;
       text-align: left;
       white-space: nowrap; }
-      @media (min-width: 1030px) {
+      @media (min-width: 992px) {
         body .customer-main #customer-update fieldset {
           width: 80%;
           margin: 0 10%; } }
@@ -122,7 +220,7 @@ body .customer-main {
           color: #A0A0A0; }
         body .customer-main #customer-update fieldset input[type="checkbox"], body .customer-main #customer-update fieldset textarea[type="checkbox"], body .customer-main #customer-update fieldset select[type="checkbox"] {
           width: auto; }
-      @media (min-width: 1030px) {
+      @media (min-width: 992px) {
         body .customer-main #customer-update fieldset .form-inner-container.form-address-other {
           flex-direction: row !important; }
           body .customer-main #customer-update fieldset .form-inner-container.form-address-other .form-field {
@@ -136,12 +234,13 @@ body .customer-main {
               flex-shrink: 2; } }
       body .customer-main #customer-update fieldset .form-inner-container.form-address-other .form-field.city {
         flex-grow: 5; }
-      @media (min-width: 1030px) {
+      @media (min-width: 992px) {
         body .customer-main #customer-update fieldset .form-inner-container.form-password-confirm .form-field {
+          padding-left: 0.5rem;
           max-width: 50%; } }
       body .customer-main #customer-update fieldset .form-inner-container.half {
         flex-direction: column; }
-        @media (min-width: 1030px) {
+        @media (min-width: 992px) {
           body .customer-main #customer-update fieldset .form-inner-container.half {
             flex-direction: row; }
             body .customer-main #customer-update fieldset .form-inner-container.half .form-field:first-child {
@@ -150,12 +249,53 @@ body .customer-main {
         white-space: normal;
         vertical-align: top;
         flex: 1; }
-    body .customer-main #customer-update .update-container {
-      border-top: 2px solid #d3d3d3; }
-      body .customer-main #customer-update .update-container .form-field.message {
-        flex-grow: 1.5; }
-      body .customer-main #customer-update .update-container .form-field input[type="submit"] {
-        text-transform: uppercase; }
+    @media (min-width: 992px) {
+      body .customer-main #customer-update .update-container {
+        border-top: 2px solid #d3d3d3; } }
+    body .customer-main #customer-update .update-container .form-field.message {
+      flex-grow: 1.5; }
+      @media (min-width: 768px) and (max-width: 991px) {
+        body .customer-main #customer-update .update-container .form-field.message #form-message {
+          width: 60% !important; } }
+      @media (max-width: 1029px) {
+        body .customer-main #customer-update .update-container .form-field.message #form-message {
+          background-color: #fff;
+          position: fixed;
+          z-index: 125;
+          transition: all 0.5s ease;
+          -webkit-transition: all 0.5s ease;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+          width: 90%;
+          text-align: center; }
+          body .customer-main #customer-update .update-container .form-field.message #form-message > div {
+            background-color: #fff;
+            border-color: #fff;
+            color: #197b30; }
+            body .customer-main #customer-update .update-container .form-field.message #form-message > div img {
+              max-width: 64px;
+              margin: 0 auto;
+              display: block; }
+            body .customer-main #customer-update .update-container .form-field.message #form-message > div span {
+              display: block;
+              text-transform: uppercase; }
+            body .customer-main #customer-update .update-container .form-field.message #form-message > div button {
+              position: absolute;
+              top: 0;
+              right: 0; } }
+      body .customer-main #customer-update .update-container .form-field.message #form-message img {
+        display: none; }
+    body .customer-main #customer-update .update-container .form-field input[type="submit"] {
+      text-transform: uppercase; }
+      @media (max-width: 991px) {
+        body .customer-main #customer-update .update-container .form-field input[type="submit"] {
+          background-color: #197b30 !important;
+          border-color: #197b30 !important; }
+          body .customer-main #customer-update .update-container .form-field input[type="submit"]:hover {
+            background-color: #22a541 !important;
+            border-color: #22a541 !important;
+            color: #fff !important; } }
   @media (min-height: 650px) {
     body .customer-main .no-orders {
       transform: translateY(50%); } }
