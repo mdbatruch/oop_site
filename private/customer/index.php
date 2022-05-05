@@ -59,13 +59,6 @@
 <main class="customer-main">
     <div class="container-fluid">
         <?= $site->addCustomerDashboard(); ?>
-        <div class="row d-none">
-            <div class="col-12">
-                <p>
-                    Customer Dashboard
-                </p>
-            </div>
-        </div>
     </div>
 </main>
 <footer class="pt-4 pb-4">

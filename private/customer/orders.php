@@ -87,7 +87,7 @@
         <?php if (!empty($orders)) : ?>
             <div class="container">
                 <div class="row">
-                    <table class="table w-auto orders-container">
+                    <table class="table orders-container">
                         <thead>
                             <tr>
                             <th>Order ID</th>
@@ -109,11 +109,11 @@
                                         <td class="date-ordered">
                                             <?php $order_date = $order['created_at']; 
                                                 $date = new DateTime($order_date);
-                                                echo $date->format('F t, Y; g:i A');
+                                                echo $date->format('F t, Y;<\b\\r> g:i A');
                                             ?>
                                         </td>
                                         <td class="order-status">
-                                            Processing
+                                            <span class="mobile">Status:</span> Processing
                                         </td>
                                         <td class="shipping-option">
                                             <?php $shipping_option = json_decode($order['shipping_information']); ?>
@@ -129,15 +129,64 @@
                                             <?= $contact->email; ?> | <?= $contact->phone; ?>
                                         </td>
                                         <td class="billing-information">
-                                            <?php $card = json_decode($order['card_info']); ?>
-                                            <?= $card->card_name ?? ''; ?><br/>
-                                            <?= $card->card_hash; ?><br/>
-                                            Expiry <?= $card->card_expiry ?? ''; ?><br/>
-                                            <?= $card->card_type; ?>
+                                            <div class="desktop">
+                                                <?php $card = json_decode($order['card_info']); ?>
+                                                <?= $card->card_name ?? ''; ?><br/>
+                                                <?= $card->card_hash; ?><br/>
+                                                Expiry <?= $card->card_expiry ?? ''; ?><br/>
+                                                <?= $card->card_type; ?>
+                                            </div>
+                                            <div class="mobile">
+                                                <a href="" class="billing-details billing-pop" data-id="<?= $order['id']; ?>" target="_blank">
+                                                    View Billing Details
+                                                </a>
+                                            </div>
+                                            <div class="order-billing p-4 d-none" data-id="<?= $order['id']; ?>">
+                                                <div class="order-billing-container">
+                                                    <div class="close-button mb-3">
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    </div>
+                                                    <div class="billing-header d-flex">
+                                                        <h4>Billing &amp; Shipping Details</h4>
+                                                        <div class="order-number">
+                                                            Order #<?= $order['id']; ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="shipping-details my-4">
+                                                        <div class="shipping-address">
+                                                            <h6>Shipping Details</h6>
+                                                            <?php $contact = json_decode($order['contact_details']);
+                                                                $shipping = json_decode($order['shipping_address']);
+                                                            ?>
+                                                            <?= $contact->name; ?><br/>
+                                                            <?= $shipping->street; ?> <?= $shipping->suite; ?><br/>
+                                                            <?= $shipping->city; ?>, <?= $shipping->province; ?> <?= $shipping->postal; ?><br/>
+                                                            <?= $contact->email; ?> | <?= $contact->phone; ?>
+                                                        </div>
+                                                        <div class="shipping-option mt-4">
+                                                            <h6>Shipping Option</h6>
+                                                            <?= $shipping_option->name ?? 'N/A'; ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="billing-details mt-4">
+                                                        <h6>Billing Details</h6>
+                                                        <?php $card = json_decode($order['card_info']); ?>
+                                                        <?= $card->card_name ?? ''; ?><br/>
+                                                        <?= $card->card_hash; ?><br/>
+                                                        Expiry <?= $card->card_expiry ?? ''; ?><br/>
+                                                        <?= $card->card_type; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
-                                        <td><b><?= $order['amount']; ?></b></td>
-                                        <td>
-                                            <a href="order.php?index=<?= $order['id']; ?>" class="order-pop" data-id="<?= $order['id']; ?>" target="_blank">View Products</a>
+                                        <td class="order-amount"><b><?= $order['amount']; ?></b></td>
+                                        <td class="order-link">
+                                            <a href="order.php?index=<?= $order['id']; ?>" class="order-pop" data-id="<?= $order['id']; ?>" target="_blank">
+                                                <span class="view-desktop desktop">
+                                                    View Products
+                                                </span>
+                                                <img src="<?= root_url('uploads/maximize.png'); ?>" alt="View Order" class="img-fluid mobile maximize" />
+                                            </a>
                                             <div class="order-products p-4 d-none" data-id="<?= $order['id']; ?>">
                                                 <div class="order-products-container">
                                                     <div class="close-button mb-3">
@@ -158,7 +207,9 @@
                                                             // echo '<pre>';
                                                             // print_r($product);
                                                             $image = Product::getProductImage($product->item_name, $db);
-
+                                                            if (!isset($product->item_id)) {
+                                                                $product->item_id = "";
+                                                            }
                                                             ?>
 
                                                             <div class="cart-product my-2 d-flex" data-id="<?= $product->item_id; ?>">
@@ -167,19 +218,21 @@
                                                                         <img src="<?= !empty($image['image']) ? root_url('images/' . $image['image']) : root_url('images/missing.jpg'); ?>" alt="<?= $product->item_name; ?>" class="img-fluid border">
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-order-info px-4">
-                                                                    <div class="name">
-                                                                        <b>Item:</b> <?= $product->item_name; ?>
+                                                                <div class="order-info d-flex">
+                                                                    <div class="product-order-info px-4">
+                                                                        <div class="name">
+                                                                            <b>Item:</b> <?= $product->item_name; ?>
+                                                                        </div>
+                                                                        <div class="quantity-container">
+                                                                            <b>Quantity:</b> <span class='product-quantity'><?= $product->item_quantity; ?></span>
+                                                                        </div>
+                                                                        <div class="price">
+                                                                            <b>Price:</b> <span class='product-price'><?= $product->item_individual_price ?? 'N/A'; ?></span>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="quantity-container">
-                                                                        <b>Quantity:</b> <span class='product-quantity'><?= $product->item_quantity; ?></span>
+                                                                    <div class="product-total">
+                                                                        $<span class="price"><?= $product->item_price; ?></span>
                                                                     </div>
-                                                                    <div class="price">
-                                                                        <b>Price:</b> <span class='product-price'><?= $product->item_individual_price ?? 'N/A'; ?></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-total">
-                                                                    $<span class="price"><?= $product->item_price; ?></span>
                                                                 </div>
                                                             </div>
                                                         <?php   } ?>

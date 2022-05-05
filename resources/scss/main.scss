@@ -40,6 +40,10 @@ body {
     main {
         // background: #ff0;
         min-height: calc(100vh - 430px);
+        .swiper-container {
+            position: relative;
+            overflow: hidden;
+        }
         .page-content {
             padding-top: 20px;
             padding-bottom: 20px;

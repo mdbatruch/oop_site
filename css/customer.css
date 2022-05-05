@@ -35,7 +35,6 @@ body .customer-container img {
   border-radius: 50% !important; }
 
 body .customer-main {
-  min-height: calc(100vh - 163px);
   background-color: #FFCBA4; }
   body .customer-main .customer-top {
     background-color: #343a40;
@@ -66,44 +65,133 @@ body .customer-main {
         color: #fff; } }
     body .customer-main .customer-top .link-container a {
       width: 100%; }
+  @media (min-width: 991px) {
+    body .customer-main table {
+      border-bottom: 2px solid #000; } }
   body .customer-main table tr th {
     text-transform: uppercase; }
-  body .customer-main table tr td .order-products {
-    background-color: #fff;
-    position: fixed;
-    z-index: 125;
-    transition: all 0.5s ease;
-    -webkit-transition: all 0.5s ease;
-    transform: translate(-50%, 10%);
-    -webkit-box-shadow: 0px 0px 14px 1px #666;
-    box-shadow: 0px 0px 14px 1px #666;
-    left: 50%;
-    width: 100%;
-    top: 0;
-    height: 80vh;
-    overflow: scroll; }
-    body .customer-main table tr td .order-products::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
-      /* make scrollbar transparent */ }
-    @media (min-width: 992px) {
-      body .customer-main table tr td .order-products {
-        width: 60%; } }
-    body .customer-main table tr td .order-products .close-button {
-      text-align: right; }
-      body .customer-main table tr td .order-products .close-button .close {
-        float: unset; }
-    body .customer-main table tr td .order-products .products-header {
-      border-bottom: 2px solid #d3d3d3;
-      justify-content: space-between; }
-    body .customer-main table tr td .order-products .cart-product {
-      align-items: center; }
-      body .customer-main table tr td .order-products .cart-product img {
-        max-width: 250px; }
-      body .customer-main table tr td .order-products .cart-product .product-total {
-        color: #197b30;
-        font-weight: 700;
-        margin-left: auto; }
+  body .customer-main table tr td {
+    border: none; }
+    body .customer-main table tr td .order-products, body .customer-main table tr td .order-billing {
+      background-color: #fff;
+      position: fixed;
+      z-index: 125;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+      transform: translate(-50%, 10%);
+      -webkit-box-shadow: 0px 0px 14px 1px #666;
+      box-shadow: 0px 0px 14px 1px #666;
+      left: 50%;
+      width: 90%;
+      top: 0;
+      overflow: scroll; }
+      body .customer-main table tr td .order-products::-webkit-scrollbar, body .customer-main table tr td .order-billing::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; }
+      @media (min-width: 991px) {
+        body .customer-main table tr td .order-products, body .customer-main table tr td .order-billing {
+          width: 60%; } }
+      body .customer-main table tr td .order-products h6, body .customer-main table tr td .order-billing h6 {
+        font-weight: 700; }
+      body .customer-main table tr td .order-products .close-button, body .customer-main table tr td .order-billing .close-button {
+        text-align: right;
+        position: absolute;
+        right: 1rem;
+        top: 1rem; }
+        body .customer-main table tr td .order-products .close-button .close, body .customer-main table tr td .order-billing .close-button .close {
+          float: unset; }
+      body .customer-main table tr td .order-products .products-header, body .customer-main table tr td .order-products .billing-header, body .customer-main table tr td .order-billing .products-header, body .customer-main table tr td .order-billing .billing-header {
+        border-bottom: 2px solid #d3d3d3;
+        justify-content: space-between; }
+        body .customer-main table tr td .order-products .products-header .order-number, body .customer-main table tr td .order-products .billing-header .order-number, body .customer-main table tr td .order-billing .products-header .order-number, body .customer-main table tr td .order-billing .billing-header .order-number {
+          padding-right: 2rem; }
+      body .customer-main table tr td .order-products .cart-product, body .customer-main table tr td .order-billing .cart-product {
+        align-items: center; }
+        body .customer-main table tr td .order-products .cart-product img, body .customer-main table tr td .order-billing .cart-product img {
+          max-width: 250px; }
+          @media (max-width: 450px) {
+            body .customer-main table tr td .order-products .cart-product img, body .customer-main table tr td .order-billing .cart-product img {
+              width: 100px; } }
+          @media (min-width: 451px) and (max-width: 990px) {
+            body .customer-main table tr td .order-products .cart-product img, body .customer-main table tr td .order-billing .cart-product img {
+              width: 150px; } }
+        body .customer-main table tr td .order-products .cart-product .order-info, body .customer-main table tr td .order-billing .cart-product .order-info {
+          width: 100%;
+          justify-content: space-between; }
+          @media (max-width: 767px) {
+            body .customer-main table tr td .order-products .cart-product .order-info, body .customer-main table tr td .order-billing .cart-product .order-info {
+              flex-direction: column; } }
+          body .customer-main table tr td .order-products .cart-product .order-info .product-total, body .customer-main table tr td .order-billing .cart-product .order-info .product-total {
+            color: #197b30;
+            font-weight: 700; }
+            @media (max-width: 767px) {
+              body .customer-main table tr td .order-products .cart-product .order-info .product-total, body .customer-main table tr td .order-billing .cart-product .order-info .product-total {
+                padding-left: 1.5rem; } }
+  @media (max-width: 990px) {
+    body .customer-main table thead {
+      display: none; } }
+  @media (max-width: 990px) {
+    body .customer-main table tbody {
+      border-top: 0px !important; } }
+  @media (max-width: 990px) {
+    body .customer-main table tbody tr {
+      display: flex;
+      flex-direction: column;
+      -webkit-box-shadow: 0px 0px 13px 2px #d3d3d3;
+      box-shadow: 0px 0px 13px 2px #d3d3d3;
+      background-color: #fff;
+      border-radius: 4px;
+      margin: 10px 0px;
+      padding: 0.75rem;
+      position: relative; } }
+  @media (max-width: 990px) {
+    body .customer-main table tbody tr td {
+      padding: 0px; } }
+  @media (max-width: 990px) {
+    body .customer-main table tbody tr td.address, body .customer-main table tbody tr td.shipping-option {
+      display: none; } }
+  body .customer-main table tbody tr td.billing-information .desktop {
+    display: none; }
+    @media (min-width: 991px) {
+      body .customer-main table tbody tr td.billing-information .desktop {
+        display: block; } }
+  @media (min-width: 991px) {
+    body .customer-main table tbody tr td.billing-information .mobile {
+      display: none; } }
+  body .customer-main table tbody tr td.billing-information a {
+    color: #22a541; }
+  @media (max-width: 991px) {
+    body .customer-main table tbody tr td.date-ordered br {
+      display: none; } }
+  @media (min-width: 991px) {
+    body .customer-main table tbody tr td.order-status .mobile {
+      display: none; } }
+  @media (max-width: 990px) {
+    body .customer-main table tbody tr td.order-link {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem; }
+      body .customer-main table tbody tr td.order-link .order-placed {
+        display: none; } }
+  @media (min-width: 991px) {
+    body .customer-main table tbody tr td.order-link .order-placed {
+      padding-right: 2rem; } }
+  body .customer-main table tbody tr td.order-link .desktop {
+    display: none; }
+    @media (min-width: 991px) {
+      body .customer-main table tbody tr td.order-link .desktop {
+        display: block; } }
+  @media (min-width: 991px) {
+    body .customer-main table tbody tr td.order-link .mobile {
+      display: none; } }
+  body .customer-main table tbody tr td.order-link img.maximize {
+    width: 25px;
+    height: 25px; }
+  @media (max-width: 990px) {
+    body .customer-main table tbody tr td.order-amount {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem; } }
   body .customer-main #customer-update {
     width: 100%;
     margin: 50px auto;
@@ -296,9 +384,6 @@ body .customer-main {
             background-color: #22a541 !important;
             border-color: #22a541 !important;
             color: #fff !important; } }
-  @media (min-height: 650px) {
-    body .customer-main .no-orders {
-      transform: translateY(50%); } }
   body .customer-main .no-orders h3 {
     text-transform: uppercase; }
   body .customer-main .no-orders .btn {

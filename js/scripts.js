@@ -433,9 +433,10 @@ function toggleBodyandFormMessage() {
     });
 }
 
-function toggleOrderList() {
+function toggleOrderBillingList() {
 
     var order = $('.order-pop');
+    var billing = $('.billing-pop');
     var close = $('.close-button');
     var body = $('body');
 
@@ -454,6 +455,19 @@ function toggleOrderList() {
         $(this).siblings('.order-products').removeClass('d-none');
     });
 
+    $(billing).on("click", function(e){
+        e.preventDefault();
+
+        e.stopPropagation();
+
+        let id = $(this).attr('data-id');
+        console.log(id);
+
+        $(body).addClass('no-scroll');
+
+        $(this).parent().siblings('.order-billing').removeClass('d-none');
+    });
+
     $(close).on("click", function(e){
         e.preventDefault();
 
@@ -461,7 +475,7 @@ function toggleOrderList() {
 
         $(body).removeClass('no-scroll');
 
-        $(this).closest('.order-products').addClass('d-none');
+        $(this).closest('.order-products, .order-billing').addClass('d-none');
     });
 
     $(document).on('click', function(e) {

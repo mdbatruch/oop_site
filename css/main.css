@@ -66,6 +66,9 @@ body {
       transition: all 1s ease; }
   body main {
     min-height: calc(100vh - 430px); }
+    body main .swiper-container {
+      position: relative;
+      overflow: hidden; }
     body main .page-content {
       padding-top: 20px;
       padding-bottom: 20px; }
