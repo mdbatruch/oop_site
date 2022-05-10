@@ -133,14 +133,20 @@
                                 <div id="product-gallery" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <?php 
-                                            $count = 0;
-                                            foreach ($galleries as $singleimage) : 
-                                            $count++;
+                                            if ($galleries) :
+                                                $count = 0;
+                                                foreach ($galleries as $singleimage) : 
+                                                $count++;
                                         ?>
                                             <div class="carousel-item <?= $count == 1 ? 'active' : ''; ?>" data-order=<?= $count; ?>>
                                                 <img class="d-block w-100" src="<?= !empty($singleimage) ? root_url('images/' . $singleimage) : root_url('images/missing.jpg'); ?>">
                                             </div>
-                                        <?php endforeach; ?>
+                                        <?php endforeach;
+                                            else : ?>
+                                            <div class="image">
+                                                <img src="<?= !empty($image) ? root_url('images/' . $image) : root_url('images/missing.jpg'); ?>" alt="<?= $chosen['name'] . ' Image'; ?>" id="product-image" class="border img-fluid">
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                     <a class="carousel-control-prev" href="#product-gallery" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

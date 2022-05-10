@@ -636,6 +636,9 @@
                     }
                 }
             }
+            .carousel-control-next-icon, .carousel-control-prev-icon {
+                background-color: $black;
+            }
         }
         .info-container {
             margin: 20px 0px;

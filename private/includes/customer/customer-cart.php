@@ -63,7 +63,7 @@
                         <div class="close-button justify-content-end">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
-                        <?php $site->addNav(); ?>
+                        <?php $site->addCustomerNav(); ?>
                     </div>
                 </nav>
             </div>

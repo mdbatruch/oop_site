@@ -21,6 +21,8 @@ footer {
   footer .column a {
     text-decoration: none;
     color: #fff; }
+    footer .column a:hover {
+      color: #22a541; }
   footer .column:last-child h4:after {
     width: 20%; }
   footer .column.logo {

@@ -43,6 +43,39 @@ body {
         .swiper-container {
             position: relative;
             overflow: hidden;
+            .swiper-button-prev, .swiper-button-next {
+                background-color: rgba(0,0,0,0.6);
+                padding: 30px 0px;
+                &:after {
+                    font-size: 1.5rem;
+                    color: $white;
+                }
+            }
+            .swiper-pagination-bullet {
+                border-radius: 50%;
+                border: 3px solid $brand-green;
+                box-shadow: none;
+                background: rgba(25, 123, 48, 0.65);
+                width: 15px;
+                height: 15px;
+                opacity: var(--swiper-pagination-bullet-opacity, 1);
+                position: relative;
+                &.swiper-pagination-bullet-active {
+                    background: lighten($brand-green, 10%);
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        width: 21px;
+                        height: 21px;
+                        left: -6px;
+                        top: -6px;
+                        background: rgba(25, 123, 48, 0.75);
+                        opacity: .5;
+                        z-index: 3;
+                        border-radius: 50%;
+                    }
+                }
+            }
         }
         .page-content {
             padding-top: 20px;

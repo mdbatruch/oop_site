@@ -23,6 +23,9 @@ body {
             }
             a {
                 text-decoration: none;
+                &:hover {
+                    color: lighten($brand-green, 10%)
+                }
             }
         }
     }

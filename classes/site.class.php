@@ -166,6 +166,46 @@
 
         }
 
+        public function addCustomerNav() {
+            $items = self::find_nav_by_title('main-navigation');
+
+            $items = json_decode($items[0]['output'], true);
+
+            // echo '<pre>';
+            // print_r($items);
+
+            echo '<ul id="main-navigation" class="navbar-nav dd-list">';
+                foreach($items as $item) {
+
+                    $result = isset($item['children']) ? 'dropdown' : '';
+                    echo '<li class="nav-item dd-item ' . $result . '" data-name="' . $item['name'] . '" data-order="' . $item['order'] . '">';
+                    echo '<a class="nav-link dd-handle" href="';
+                    echo root_url('index.php?id=' . $item['id']);
+                    echo '">' . $item['name'] . '</a>';
+
+                        if (isset($item['children'])) {
+                            echo '<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg></a>';
+                                echo   '<div class="dropdown-menu">'; 
+                                foreach($item['children'] as $key => $value) {
+                                        echo '<div class="dropdown-item dd-item" data-name="' . $value['name'] . '" data-order="' . $value['order'] . '">';
+                                            echo '<a class="nav-link dd-handle" href="';
+                                            echo root_url('index.php?id=' . $value['id']);
+                                            echo '">' . $value['name'] . '</a>';
+                                        echo '</div>'; 
+                                    }
+                                echo '</div>';
+                        }
+                    echo '</li>';
+                }
+                echo '<li class="nav-item dd-item" data-name="products">';
+                echo '<a class="nav-link dd-handle" href="';
+                echo root_url('products.php') . '">Products</a></li>';
+            echo '</ul>';
+
+        }
+
         public function addNav() {
             $items = self::find_nav_by_title('main-navigation');
 

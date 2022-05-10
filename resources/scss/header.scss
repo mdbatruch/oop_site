@@ -19,6 +19,12 @@ header {
     .logout {
         line-height: 2;
         text-align: right;
+        a {
+            text-decoration: none;
+            &:hover {
+                color: lighten($brand-green, 10%);
+            }
+        }
     }
     .account-name {
         img {
@@ -39,6 +45,9 @@ header {
         }
         a {
             text-decoration: none;
+            &:hover {
+                color: lighten($brand-green, 10%)
+            }
         }
     }
     .row-first {
@@ -46,6 +55,9 @@ header {
             &.shop-faq {
                 text-decoration: none;
                 text-transform: uppercase;
+                &:hover {
+                    color: lighten($brand-green, 10%)
+                }
             }
         }
         .sign-in {
@@ -107,6 +119,7 @@ header {
         box-shadow: 0px 5px 12px -4px $lightgrey;
         -webkit-box-shadow: 0px 5px 12px -4px $lightgrey;
         > .container {
+            justify-content: space-evenly;
             > div {
                 flex-basis: 33%;
                 &:last-child {
@@ -396,7 +409,6 @@ header {
             .link-container {
                 a {
                     border-radius: 0px;
-                    width: 50%;
                     text-transform: uppercase;
                     &:first-child {
                         margin-right: calc(var(--bs-gutter-x) * .5);
@@ -420,6 +432,7 @@ header {
             }
         }
         #main-navigation {
+            justify-content: space-between;
             > li {
                 border-bottom: 1px solid $white;
                 line-height: 2;
@@ -428,7 +441,7 @@ header {
                     text-transform: uppercase;
                     color: $white;
                     position: relative;
-                    padding: 5px 20px;
+                    // padding: 5px 20px;
                     @media(min-width: 992px) {
                         color: $black;
                     }

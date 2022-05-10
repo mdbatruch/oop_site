@@ -502,21 +502,11 @@
 
       case 'search':
 
-        // echo '<pre>';
-        // print_r($_POST);
-
-        // exit;
-
         $search = new Search($db);
 
         try {
           
           $query = $search->search_term($_POST['term']);
-
-
-
-          // $redirect = 'http://localhost:8888' . dirname(dirname($_SERVER['PHP_SELF'])) . '/search.php?search=' . $_POST['term'];
-          // $redirect = root_url( 'search.php?search=' . $_POST['term']);
 
           if ($query) {
               header("Location: " . $redirect);
@@ -525,35 +515,7 @@
             echo 'No Results!';
           }
 
-          // ajax
-          // if ($query) {
-
-          //   $data['success'] = true;
-
-          //   $data['message'] = 'Here are your results';
-
-          //   $data['redirect'] =  root_url( 'search.php?search=' . $_POST['term']);
-
-          // } else {
-
-          //   $data['success'] = false;
-
-          //   $data['message'] = 'There is nothing available';
-
-          //   $data['redirect'] =  root_url( 'search.php?search=' . $_POST['term']);
-
-          // }
-
         } catch (PDOException $e) {
-
-
-          // ajax
-                  
-          // $data['success'] = false;
-
-          // $data['message'] = $e->getMessage();
-
-          // $data['redirect'] =  root_url( 'search.php?search=' . $_POST['term']);
 
       }
 

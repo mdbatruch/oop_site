@@ -92,14 +92,14 @@
         </div>
     <?php endif; ?>
 
-<div class="container">
+<div class="container-fluid">
         <div class="row">
         <?php if ($gallery) :?>
                 <?= $site->addSlider(); ?>
         <?php endif; ?>
         </div>
-        <div class="row">
-            <div class="col-12 page-content">
+        <div class="row justify-content-center">
+            <div class="col-10 page-content">
                 <p>
                     <?php $site->render(); ?>
                 </p>

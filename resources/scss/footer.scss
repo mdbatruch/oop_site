@@ -28,6 +28,9 @@ footer {
         a {
             text-decoration: none;
             color: $white;
+            &:hover {
+                color: lighten($brand-green, 10%)
+            }
         }
         &:last-child {
             h4 {

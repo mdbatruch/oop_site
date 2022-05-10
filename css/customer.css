@@ -29,6 +29,8 @@ body #customer-header {
     color: #fff; }
   body #customer-header .logout a {
     text-decoration: none; }
+    body #customer-header .logout a:hover {
+      color: #22a541; }
 
 body .customer-container img {
   max-width: 300px;
