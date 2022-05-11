@@ -1,4 +1,4 @@
-<div class="row text-center featured-products">
+<div class="row text-center justify-content-center featured-products">
     <h3 class="my-4 py-2">Featured Products</h3>
     <ul class="controls" id="customize-controls" aria-label="Carousel Navigation" tabindex="0">
         <li class="prev" data-controls="prev" aria-controls="customize" tabindex="-1">

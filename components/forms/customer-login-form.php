@@ -18,7 +18,7 @@
         <div class="submit-container">
             <input type="submit" name="submit" value="Sign In" class="btn btn-black" />
         </div>
-        <div class="logged-out">
+        <div class="logged-out mt-4">
             <?php if (isset($_SESSION['logout_message'])) : ?>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <?php echo $_SESSION['logout_message'];

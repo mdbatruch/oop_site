@@ -107,10 +107,14 @@ function returnSidebarProduct(id, name, description, image, price, quantity, adj
         console.log(quantity + 'general');
         console.log(this.quantity + 'this');
         console.log(self.quantity + 'self');
+
+        var loc = window.location.pathname;
+        var dir = loc.substring(0, loc.lastIndexOf('/'));
+
         str = `<div class="cart-product my-2 d-flex" data-id="` + id + `">
             <div class="img-container">
-                <a href="//localhost:3000/oop_site/product.php?id=` + id + `">
-                    <img src="//localhost:3000/oop_site/images/` + image + `" alt="" class="img-fluid">
+                <a href="` + window.location.origin + dir + `/product.php?id=` + id + `">
+                    <img src="` + window.location.origin + dir + `/images/` + image + `" alt="" class="img-fluid">
                 </a>
             </div>
             <div class="product-order-info px-4">
@@ -394,29 +398,19 @@ function toggleCartMenu() {
     var close_button = $('.close-button');
     var body = $('body');
 
+    $(cart).on('click', function(e) {
+        e.preventDefault();
+        $(menu).addClass('active');
+        $(body).addClass('no-scroll');
+        $(menu).removeClass('inactive');
+        $(body).removeClass('scroll');
+    });
 
-    $(document).on('click', function(e) {
-        if ($(menu).hasClass('active')) {
-
-            if (!menu.is(e.target) && menu.has(e.target).length === 0) {
-                $(menu).removeClass('active');
-                $(menu).addClass('inactive');
-                $(body).removeClass('no-scroll');
-                $(body).addClass('scroll');
-            } else if (close_button.is(e.target)) {
-                $(menu).removeClass('active');
-                $(menu).addClass('inactive');
-                $(body).removeClass('no-scroll');
-                $(body).addClass('scroll');
-            }
-
-        } else if (cart.is(e.target)) {
-            e.preventDefault();
-            $(menu).addClass('active');
-            $(body).addClass('no-scroll');
-            $(menu).removeClass('inactive');
-            $(body).removeClass('scroll');
-        }
+    $(close_button).on('click', function(e) {
+        $(menu).removeClass('active');
+        $(menu).addClass('inactive');
+        $(body).removeClass('no-scroll');
+        $(body).addClass('scroll');
     });
 }
 

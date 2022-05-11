@@ -37,8 +37,19 @@ body {
             transition: all 1s ease;
         }
     }
+    .admin-bar {
+        background-color: $brand-purple;
+        color: $white;
+        font-weight: 700;
+        top: 0;
+        z-index: 103;
+        width: 100%;
+        a {
+            color: $white;
+            font-weight: 500;
+        }
+    }
     main {
-        // background: #ff0;
         min-height: calc(100vh - 430px);
         .swiper-container {
             position: relative;
@@ -385,85 +396,88 @@ body {
                 text-transform: uppercase;
                 letter-spacing: 1.5px;
             }
-            .tns-item {
-                position: relative;
-                h4 {
-                    @media (min-width: 1200px) {
-                        font-size: 1.25rem;
-                    }
-                }
-                .img-container {
-                    min-height: 265px;
-                    img {
-                        max-height: 265px;
-                    }
-                }
-                .price {
-                    color: $grey-A0;
-                    font-weight: 700;
-                    @media(min-width: 600px) {
-                        text-align: left;
-                    }
-                }
-                .add-cart-products {
-                    position: absolute;
-                    top: 0;
-                    right: calc(var(--bs-gutter-x) * .5);
-                    &:hover {
-                        .cart-icon, .arrow-right {
-                            opacity: 1;
-                            display: flex !important;
+            .tns-outer {
+                max-width: 1240px;
+                .tns-item {
+                    position: relative;
+                    h4 {
+                        @media (min-width: 1200px) {
+                            font-size: 1.25rem;
                         }
                     }
-                    .cart-icon {
-                        transition: all 0.5s ease;
-                        -webkit-transition: all 0.5s ease;
-                        opacity: 0;
-                        font-size: 0.8rem;
-                        align-items: center;
-                        display: flex;
+                    .img-container {
+                        min-height: 265px;
+                        img {
+                            max-height: 265px;
+                        }
                     }
-                    .arrow-right {
-                        transition: all 0.5s ease;
-                        -webkit-transition: all 0.5s ease;
-                        opacity: 0;
-                        height: 0px;
-                        width: 0px;
-                        right: 32px;
-                        top: 10px;
+                    .price {
+                        color: $grey-A0;
+                        font-weight: 700;
+                        @media(min-width: 600px) {
+                            text-align: left;
+                        }
+                    }
+                    .add-cart-products {
                         position: absolute;
-                        border-top: solid 8px transparent;
-                        border-left: solid 8px black;
-                        border-bottom: solid 8px transparent;
-                    }
-                    svg {
-                        cursor: pointer;
-                        transition: all 0.5s ease;
-                        -webkit-transition: all 0.5s ease;
-                        &.bi-cart-plus {
-                            &:hover {
-                                background-color: $brand-green;
-                                color: $white;
+                        top: 0;
+                        right: calc(var(--bs-gutter-x) * .5);
+                        &:hover {
+                            .cart-icon, .arrow-right {
+                                opacity: 1;
+                                display: flex !important;
+                            }
+                        }
+                        .cart-icon {
+                            transition: all 0.5s ease;
+                            -webkit-transition: all 0.5s ease;
+                            opacity: 0;
+                            font-size: 0.8rem;
+                            align-items: center;
+                            display: flex;
+                        }
+                        .arrow-right {
+                            transition: all 0.5s ease;
+                            -webkit-transition: all 0.5s ease;
+                            opacity: 0;
+                            height: 0px;
+                            width: 0px;
+                            right: 32px;
+                            top: 10px;
+                            position: absolute;
+                            border-top: solid 8px transparent;
+                            border-left: solid 8px black;
+                            border-bottom: solid 8px transparent;
+                        }
+                        svg {
+                            cursor: pointer;
+                            transition: all 0.5s ease;
+                            -webkit-transition: all 0.5s ease;
+                            &.bi-cart-plus {
+                                &:hover {
+                                    background-color: $brand-green;
+                                    color: $white;
+                                }
                             }
                         }
                     }
-                }
-                a {
-                    text-decoration: none;
-                    color: $black;
-                    svg {
-                        position: absolute;
-                        right: calc(var(--bs-gutter-x) * .5);
-                        top: 32px;
-                        fill: $black;
+                    a {
+                        text-decoration: none;
                         color: $black;
-                        cursor: pointer;
-                        transition: all 0.5s ease;
-                        -webkit-transition: all 0.5s ease;
-                        &:hover {
-                            background-color: $brand-green;
-                            color: $white;
-                            fill: $white;
+                        svg {
+                            position: absolute;
+                            right: calc(var(--bs-gutter-x) * .5);
+                            top: 32px;
+                            fill: $black;
+                            color: $black;
+                            cursor: pointer;
+                            transition: all 0.5s ease;
+                            -webkit-transition: all 0.5s ease;
+                            &:hover {
+                                background-color: $brand-green;
+                                color: $white;
+                                fill: $white;
+                            }
                         }
                     }
                 }

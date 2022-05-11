@@ -1,11 +1,13 @@
 <?php 
 
-    if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
+    if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') {
         $cart_item = new CartItem($db);
 
         $items = $cart_item->get_cart($_SESSION['id']);
 
         $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
+    } else {
+        $products = false;
     }
     // echo '<pre>';
     // print_r($products);
@@ -20,6 +22,7 @@
     </div>
     <div class="cart-summary-slider m-4">
         <?php
+        if ($products) :
             foreach ($products as $product) {
                 $price = substr($product['price'], 1) * $product['quantity']; ?>
 
@@ -44,7 +47,9 @@
                     </div>
                 </div>
                 <div id="slider-cart-message-<?= $product['id']; ?>"></div>
-        <?php   } ?>
+        <?php   } 
+            endif;
+        ?>
     </div>
     <div class="order-total d-flex py-3 mx-4">
         <div class="subtotal-title">Subtotal</div>

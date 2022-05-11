@@ -37,17 +37,6 @@ body .customer-main #customer-update .customer-information input, body .customer
       border-left: none;
       border-right: none; } }
 
-header .admin-bar {
-  background-color: #6f42c1;
-  color: #fff;
-  font-weight: 700;
-  top: 0;
-  z-index: 10;
-  width: 100%; }
-  header .admin-bar a {
-    color: #fff;
-    font-weight: 500; }
-
 header .logout {
   line-height: 2;
   text-align: right; }
@@ -132,7 +121,8 @@ header .row-second {
   header .row-second > .container {
     justify-content: space-evenly; }
     header .row-second > .container > div {
-      flex-basis: 33%; }
+      flex-basis: 33%;
+      max-width: 33%; }
       header .row-second > .container > div:last-child {
         flex-basis: auto; }
       header .row-second > .container > div img {
@@ -153,30 +143,48 @@ header .row-second {
             background-color: #000; }
             header .row-second > .container > div .navbar .nav-item .dropdown-menu .dropdown-item:hover a, header .row-second > .container > div .navbar .nav-item .dropdown-menu .dropdown-item:focus a {
               color: #fff !important; } }
-      @media (min-width: 991px) {
-        header .row-second > .container > div .navbar #main-navigation .nav-item:hover a, header .row-second > .container > div .navbar #main-navigation .nav-item:hover svg {
-          color: #197b30; } }
-      header .row-second > .container > div .navbar #main-navigation .nav-item.show svg {
-        transform: rotate(180deg);
-        -webkit-transform: rotate(180deg); }
-      header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle {
-        padding-right: 0px;
-        padding-top: 0px;
-        position: absolute;
-        right: 10px;
-        top: 10px; }
+      header .row-second > .container > div .navbar #main-navigation .nav-item {
+        position: relative; }
         @media (min-width: 991px) {
-          header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle {
-            right: 0px;
-            top: 12px; }
-            header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle svg {
-              height: 18px;
-              width: 18px; } }
-        header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle svg {
-          transition: all 0.25s ease;
-          -webkit-transition: all 0.25s ease; }
-        header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle:after {
-          content: none; }
+          header .row-second > .container > div .navbar #main-navigation .nav-item {
+            display: flex !important; }
+            header .row-second > .container > div .navbar #main-navigation .nav-item:hover a, header .row-second > .container > div .navbar #main-navigation .nav-item:hover svg {
+              color: #197b30; }
+            header .row-second > .container > div .navbar #main-navigation .nav-item:after {
+              content: none;
+              background-color: #000;
+              width: 1px;
+              height: 10px;
+              top: 50%;
+              right: 0;
+              position: absolute;
+              transform: translateY(-50%); } }
+        header .row-second > .container > div .navbar #main-navigation .nav-item.show svg {
+          transform: rotate(180deg);
+          -webkit-transform: rotate(180deg); }
+        header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle {
+          padding-right: 0px;
+          padding-top: 0px;
+          right: 10px;
+          top: 10px;
+          position: absolute; }
+          @media (min-width: 991px) {
+            header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle {
+              right: 5px;
+              top: 12px;
+              position: relative; }
+              header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle svg {
+                height: 18px;
+                width: 18px; } }
+          header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle svg {
+            transition: all 0.25s ease;
+            -webkit-transition: all 0.25s ease;
+            top: 3px;
+            position: relative; }
+          header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle:after {
+            content: none; }
+        header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-menu {
+          top: 50px; }
       header .row-second > .container > div .navbar-toggler {
         border: none;
         color: transparent; }
@@ -274,11 +282,8 @@ header .row-second {
       header .row-second .cart a.cart-toggle span.cart-count {
         color: #fff;
         background-color: #197b30;
-        padding: 5px;
-        display: flex;
-        align-items: center;
-        width: 20px;
-        height: 20px;
+        width: 23px;
+        height: 23px;
         text-align: center;
         border-radius: 50%;
         position: absolute;
@@ -362,8 +367,10 @@ header nav #main-navigation {
   header nav #main-navigation > li {
     border-bottom: 1px solid #fff;
     line-height: 2; }
+    header nav #main-navigation > li:hover a, header nav #main-navigation > li:hover svg {
+      color: #197b30; }
     header nav #main-navigation > li a {
-      display: inline-block;
+      display: block;
       text-transform: uppercase;
       color: #fff;
       position: relative; }
@@ -375,6 +382,8 @@ header nav #main-navigation {
         padding-left: 0px; } }
     header nav #main-navigation > li:last-child a.dd-handle:after {
       width: 0px; }
+  header nav #main-navigation a:hover {
+    color: #197b30 !important; }
 
 footer {
   background-color: #000;
@@ -2912,6 +2921,16 @@ body {
       position: absolute;
       z-index: 105;
       transition: all 1s ease; }
+  body .admin-bar {
+    background-color: #6f42c1;
+    color: #fff;
+    font-weight: 700;
+    top: 0;
+    z-index: 103;
+    width: 100%; }
+    body .admin-bar a {
+      color: #fff;
+      font-weight: 500; }
   body main {
     min-height: calc(100vh - 430px); }
     body main .swiper-container {
@@ -3179,70 +3198,72 @@ body {
       body main .featured-products h3 {
         text-transform: uppercase;
         letter-spacing: 1.5px; }
-      body main .featured-products .tns-item {
-        position: relative; }
-        @media (min-width: 1200px) {
-          body main .featured-products .tns-item h4 {
-            font-size: 1.25rem; } }
-        body main .featured-products .tns-item .img-container {
-          min-height: 265px; }
-          body main .featured-products .tns-item .img-container img {
-            max-height: 265px; }
-        body main .featured-products .tns-item .price {
-          color: #A0A0A0;
-          font-weight: 700; }
-          @media (min-width: 600px) {
-            body main .featured-products .tns-item .price {
-              text-align: left; } }
-        body main .featured-products .tns-item .add-cart-products {
-          position: absolute;
-          top: 0;
-          right: calc(var(--bs-gutter-x) * .5); }
-          body main .featured-products .tns-item .add-cart-products:hover .cart-icon, body main .featured-products .tns-item .add-cart-products:hover .arrow-right {
-            opacity: 1;
-            display: flex !important; }
-          body main .featured-products .tns-item .add-cart-products .cart-icon {
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease;
-            opacity: 0;
-            font-size: 0.8rem;
-            align-items: center;
-            display: flex; }
-          body main .featured-products .tns-item .add-cart-products .arrow-right {
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease;
-            opacity: 0;
-            height: 0px;
-            width: 0px;
-            right: 32px;
-            top: 10px;
+      body main .featured-products .tns-outer {
+        max-width: 1240px; }
+        body main .featured-products .tns-outer .tns-item {
+          position: relative; }
+          @media (min-width: 1200px) {
+            body main .featured-products .tns-outer .tns-item h4 {
+              font-size: 1.25rem; } }
+          body main .featured-products .tns-outer .tns-item .img-container {
+            min-height: 265px; }
+            body main .featured-products .tns-outer .tns-item .img-container img {
+              max-height: 265px; }
+          body main .featured-products .tns-outer .tns-item .price {
+            color: #A0A0A0;
+            font-weight: 700; }
+            @media (min-width: 600px) {
+              body main .featured-products .tns-outer .tns-item .price {
+                text-align: left; } }
+          body main .featured-products .tns-outer .tns-item .add-cart-products {
             position: absolute;
-            border-top: solid 8px transparent;
-            border-left: solid 8px black;
-            border-bottom: solid 8px transparent; }
-          body main .featured-products .tns-item .add-cart-products svg {
-            cursor: pointer;
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease; }
-            body main .featured-products .tns-item .add-cart-products svg.bi-cart-plus:hover {
-              background-color: #197b30;
-              color: #fff; }
-        body main .featured-products .tns-item a {
-          text-decoration: none;
-          color: #000; }
-          body main .featured-products .tns-item a svg {
-            position: absolute;
-            right: calc(var(--bs-gutter-x) * .5);
-            top: 32px;
-            fill: #000;
-            color: #000;
-            cursor: pointer;
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease; }
-            body main .featured-products .tns-item a svg:hover {
-              background-color: #197b30;
-              color: #fff;
-              fill: #fff; }
+            top: 0;
+            right: calc(var(--bs-gutter-x) * .5); }
+            body main .featured-products .tns-outer .tns-item .add-cart-products:hover .cart-icon, body main .featured-products .tns-outer .tns-item .add-cart-products:hover .arrow-right {
+              opacity: 1;
+              display: flex !important; }
+            body main .featured-products .tns-outer .tns-item .add-cart-products .cart-icon {
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease;
+              opacity: 0;
+              font-size: 0.8rem;
+              align-items: center;
+              display: flex; }
+            body main .featured-products .tns-outer .tns-item .add-cart-products .arrow-right {
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease;
+              opacity: 0;
+              height: 0px;
+              width: 0px;
+              right: 32px;
+              top: 10px;
+              position: absolute;
+              border-top: solid 8px transparent;
+              border-left: solid 8px black;
+              border-bottom: solid 8px transparent; }
+            body main .featured-products .tns-outer .tns-item .add-cart-products svg {
+              cursor: pointer;
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease; }
+              body main .featured-products .tns-outer .tns-item .add-cart-products svg.bi-cart-plus:hover {
+                background-color: #197b30;
+                color: #fff; }
+          body main .featured-products .tns-outer .tns-item a {
+            text-decoration: none;
+            color: #000; }
+            body main .featured-products .tns-outer .tns-item a svg {
+              position: absolute;
+              right: calc(var(--bs-gutter-x) * .5);
+              top: 32px;
+              fill: #000;
+              color: #000;
+              cursor: pointer;
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease; }
+              body main .featured-products .tns-outer .tns-item a svg:hover {
+                background-color: #197b30;
+                color: #fff;
+                fill: #fff; }
       body main .featured-products .controls {
         margin: 0;
         padding: 0;

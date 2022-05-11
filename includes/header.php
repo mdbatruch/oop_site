@@ -26,7 +26,8 @@
             
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
             <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.helper.ie8.js"></script><![endif]-->
-
+            
+            <link rel="icon" href="<?= root_url('images/favicon.ico'); ?>">
             <script src="<?php echo root_url('js/scripts.js'); ?>"></script>
     </head>
 

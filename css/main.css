@@ -64,6 +64,16 @@ body {
       position: absolute;
       z-index: 105;
       transition: all 1s ease; }
+  body .admin-bar {
+    background-color: #6f42c1;
+    color: #fff;
+    font-weight: 700;
+    top: 0;
+    z-index: 103;
+    width: 100%; }
+    body .admin-bar a {
+      color: #fff;
+      font-weight: 500; }
   body main {
     min-height: calc(100vh - 430px); }
     body main .swiper-container {
@@ -331,70 +341,72 @@ body {
       body main .featured-products h3 {
         text-transform: uppercase;
         letter-spacing: 1.5px; }
-      body main .featured-products .tns-item {
-        position: relative; }
-        @media (min-width: 1200px) {
-          body main .featured-products .tns-item h4 {
-            font-size: 1.25rem; } }
-        body main .featured-products .tns-item .img-container {
-          min-height: 265px; }
-          body main .featured-products .tns-item .img-container img {
-            max-height: 265px; }
-        body main .featured-products .tns-item .price {
-          color: #A0A0A0;
-          font-weight: 700; }
-          @media (min-width: 600px) {
-            body main .featured-products .tns-item .price {
-              text-align: left; } }
-        body main .featured-products .tns-item .add-cart-products {
-          position: absolute;
-          top: 0;
-          right: calc(var(--bs-gutter-x) * .5); }
-          body main .featured-products .tns-item .add-cart-products:hover .cart-icon, body main .featured-products .tns-item .add-cart-products:hover .arrow-right {
-            opacity: 1;
-            display: flex !important; }
-          body main .featured-products .tns-item .add-cart-products .cart-icon {
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease;
-            opacity: 0;
-            font-size: 0.8rem;
-            align-items: center;
-            display: flex; }
-          body main .featured-products .tns-item .add-cart-products .arrow-right {
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease;
-            opacity: 0;
-            height: 0px;
-            width: 0px;
-            right: 32px;
-            top: 10px;
+      body main .featured-products .tns-outer {
+        max-width: 1240px; }
+        body main .featured-products .tns-outer .tns-item {
+          position: relative; }
+          @media (min-width: 1200px) {
+            body main .featured-products .tns-outer .tns-item h4 {
+              font-size: 1.25rem; } }
+          body main .featured-products .tns-outer .tns-item .img-container {
+            min-height: 265px; }
+            body main .featured-products .tns-outer .tns-item .img-container img {
+              max-height: 265px; }
+          body main .featured-products .tns-outer .tns-item .price {
+            color: #A0A0A0;
+            font-weight: 700; }
+            @media (min-width: 600px) {
+              body main .featured-products .tns-outer .tns-item .price {
+                text-align: left; } }
+          body main .featured-products .tns-outer .tns-item .add-cart-products {
             position: absolute;
-            border-top: solid 8px transparent;
-            border-left: solid 8px black;
-            border-bottom: solid 8px transparent; }
-          body main .featured-products .tns-item .add-cart-products svg {
-            cursor: pointer;
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease; }
-            body main .featured-products .tns-item .add-cart-products svg.bi-cart-plus:hover {
-              background-color: #197b30;
-              color: #fff; }
-        body main .featured-products .tns-item a {
-          text-decoration: none;
-          color: #000; }
-          body main .featured-products .tns-item a svg {
-            position: absolute;
-            right: calc(var(--bs-gutter-x) * .5);
-            top: 32px;
-            fill: #000;
-            color: #000;
-            cursor: pointer;
-            transition: all 0.5s ease;
-            -webkit-transition: all 0.5s ease; }
-            body main .featured-products .tns-item a svg:hover {
-              background-color: #197b30;
-              color: #fff;
-              fill: #fff; }
+            top: 0;
+            right: calc(var(--bs-gutter-x) * .5); }
+            body main .featured-products .tns-outer .tns-item .add-cart-products:hover .cart-icon, body main .featured-products .tns-outer .tns-item .add-cart-products:hover .arrow-right {
+              opacity: 1;
+              display: flex !important; }
+            body main .featured-products .tns-outer .tns-item .add-cart-products .cart-icon {
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease;
+              opacity: 0;
+              font-size: 0.8rem;
+              align-items: center;
+              display: flex; }
+            body main .featured-products .tns-outer .tns-item .add-cart-products .arrow-right {
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease;
+              opacity: 0;
+              height: 0px;
+              width: 0px;
+              right: 32px;
+              top: 10px;
+              position: absolute;
+              border-top: solid 8px transparent;
+              border-left: solid 8px black;
+              border-bottom: solid 8px transparent; }
+            body main .featured-products .tns-outer .tns-item .add-cart-products svg {
+              cursor: pointer;
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease; }
+              body main .featured-products .tns-outer .tns-item .add-cart-products svg.bi-cart-plus:hover {
+                background-color: #197b30;
+                color: #fff; }
+          body main .featured-products .tns-outer .tns-item a {
+            text-decoration: none;
+            color: #000; }
+            body main .featured-products .tns-outer .tns-item a svg {
+              position: absolute;
+              right: calc(var(--bs-gutter-x) * .5);
+              top: 32px;
+              fill: #000;
+              color: #000;
+              cursor: pointer;
+              transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease; }
+              body main .featured-products .tns-outer .tns-item a svg:hover {
+                background-color: #197b30;
+                color: #fff;
+                fill: #fff; }
       body main .featured-products .controls {
         margin: 0;
         padding: 0;

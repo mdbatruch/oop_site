@@ -1,6 +1,7 @@
 .env/smtp.ini
 .env/db.ini
 .env/stripe.ini
+.env/path.ini
 uploads/
 resources/node_modules
 images/

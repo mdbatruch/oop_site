@@ -1,33 +1,35 @@
-<div class="admin-bar col-12">
-    <div class="container-fluid admin-bar-inner">
-        <div class="row">
-            <div class="col-md-10 admin">
-            Hello, <?= $_SESSION['username']; ?>
-                <a href="<?= root_url_private('index.php'); ?>">
-                    Return to Dashboard
-                </a>
-            </div>
-            <div class="col-md-2 logout">
-                <a href="<?= root_url('logout.php'); ?>" class="button">Logout</a>
+<div class="row-second bg-white">
+    <div class="container d-flex">
+        <div class="col-12 nav-container admin">
+            <div id="navigation" class="d-flex h-100" style="width: 100%;">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                        <div id="nav-icon2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <div class="close-button justify-content-end">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <?php $site->addNav(); ?>
+                    </div>
+                </nav>
             </div>
         </div>
-    </div>
-</div>
-<div class="col-12 nav-container admin">
-    <div id="navigation" style="width: 100%;">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <?php $site->addNav(); ?>
+        <div class="pt-2 pb-2 logo-container d-flex justify-content-center">
+            <img src="<?= root_url('images/CastleGames.png'); ?>" alt="Castle Games" class="img-fluid">
+        </div>
+        <div class="d-flex justify-content-end align-self-center cart">
+            <div class="d-flex h-100">
+
             </div>
-            <form id="search" action="search.php" method="GET" class="form-inline my-2 my-lg-0">
-                <?php $q = isset($_GET['q']) ? $_GET['q'] : ''; ?>
-                <input id="type-search" class="search-term form-control mr-sm-2" type="search" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Search">
-                <button class="btn my-2 my-sm-0 btn-outline-secondary" type="submit">Search</button>
-            </form>
-            <div id="display"></div>
-        </nav>
+        </div>
+        <div class="d-flex"></div>
     </div>
 </div>

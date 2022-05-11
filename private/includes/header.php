@@ -16,6 +16,8 @@
             <link rel="stylesheet" href="<?php echo root_url('css/styles.css'); ?>">
             <link rel="stylesheet" href="<?php echo root_url('css/bootstrap.css'); ?>" />
 
+            <link rel="icon" href="<?= root_url('images/favicon.ico'); ?>">
+            
             <script src="<?php echo root_url('js/scripts.js'); ?>"></script>
 
             <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

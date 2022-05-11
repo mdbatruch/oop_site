@@ -85,7 +85,7 @@
 
     <script type="text/javascript">
         
-        toggleBodyandFormMessage();
+        // toggleBodyandFormMessage();
 
         toggleCartMenu();
 

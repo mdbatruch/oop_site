@@ -8,6 +8,7 @@
 
   $subtotal = 0;
 
+  if (isset($_SESSION['account'])) {
 
         if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 
@@ -39,14 +40,19 @@
             $items = null;
         }
 
+    } else {
+        $count = 0;
+        $items = null;
+    }
+
 
   $site->addHeader();
 
 ?>
-<header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
+<header <?= isset($_SESSION['account']) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
     <div class="header-container">
         <?php 
-            if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {
+            if (isset($_SESSION['account']) && $_SESSION['account'] == 'Administrator') {
                 $site->addAdminBar($site);
             } else {
                 $site->addCartHeader($site, $count, $items, $subtotal, $db);

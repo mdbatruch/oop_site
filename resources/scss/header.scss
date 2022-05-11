@@ -1,18 +1,6 @@
 @import "colors";
 
 header {
-    .admin-bar {
-        background-color: #6f42c1;
-        color: #fff;
-        font-weight: 700;
-        top: 0;
-        z-index: 10;
-        width: 100%;
-        a {
-            color: #fff;
-            font-weight: 500;
-        }
-    }
     .cart {
 
     } 
@@ -122,6 +110,7 @@ header {
             justify-content: space-evenly;
             > div {
                 flex-basis: 33%;
+                max-width: 33%;
                 &:last-child {
                     flex-basis: auto;
                 }
@@ -156,11 +145,23 @@ header {
                     }
                     #main-navigation {
                         .nav-item {
+                            position: relative;
                             @media(min-width: 991px) {
+                                display: flex !important;
                                 &:hover {
                                     a, svg {
                                         color: $brand-green;
                                     }
+                                }
+                                &:after {
+                                    content: none;
+                                    background-color: $black;
+                                    width: 1px;
+                                    height: 10px;
+                                    top: 50%;
+                                    right: 0;
+                                    position: absolute;
+                                    transform: translateY(-50%);
                                 }
                             }
                             &.show {
@@ -172,12 +173,13 @@ header {
                             .dropdown-toggle {
                                 padding-right: 0px;
                                 padding-top: 0px;
-                                position: absolute;
                                 right: 10px;
                                 top: 10px;
+                                position: absolute;
                                 @media(min-width: 991px) {
-                                    right: 0px;
+                                    right: 5px;
                                     top: 12px;
+                                    position: relative;
                                     svg {
                                         height: 18px;
                                         width: 18px;
@@ -186,10 +188,15 @@ header {
                                 svg {
                                     transition: all 0.25s ease;
                                     -webkit-transition: all 0.25s ease;
+                                    top: 3px;
+                                    position: relative;
                                 }
                                 &:after {
                                     content: none;
                                 }
+                            }
+                            .dropdown-menu {
+                                top: 50px;
                             }
                         }
                     }
@@ -318,11 +325,8 @@ header {
                             @media(max-width: 991px) {
                                 color: $white;
                                 background-color: $brand-green;
-                                padding: 5px;
-                                display: flex;
-                                align-items: center;
-                                width: 20px;
-                                height: 20px;
+                                width: 23px;
+                                height: 23px;
                                 text-align: center;
                                 border-radius: 50%;
                                 position: absolute;
@@ -436,12 +440,16 @@ header {
             > li {
                 border-bottom: 1px solid $white;
                 line-height: 2;
+                &:hover {
+                    a, svg {
+                        color: $brand-green;
+                    }
+                }
                     a {
-                    display: inline-block;
+                    display: block;
                     text-transform: uppercase;
                     color: $white;
                     position: relative;
-                    // padding: 5px 20px;
                     @media(min-width: 992px) {
                         color: $black;
                     }
@@ -461,6 +469,11 @@ header {
                             }
                         }
                     }
+                }
+            }
+            a {
+                &:hover {
+                    color: $brand-green !important;
                 }
             }
         }

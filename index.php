@@ -72,7 +72,24 @@
     $site->addHeader();
 
 ?>
-<header <?= !empty($_SESSION) && $_SESSION['account'] == 'Administrator' ? 'class="sticky-top"' : '';?>>
+<?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Administrator') : ?>
+    <div class="admin-bar col-12 sticky-top">
+        <div class="container-fluid admin-bar-inner">
+            <div class="row">
+                <div class="col-md-10 admin">
+                Hello, <?= $_SESSION['username']; ?>
+                    <a href="<?= root_url_private('index.php'); ?>">
+                        Return to Dashboard
+                    </a>
+                </div>
+                <div class="col-md-2 logout">
+                    <a href="<?= root_url('logout.php'); ?>" class="button">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<header>
     <div class="header-container">
         <?php 
             if (!empty($_SESSION) && $_SESSION['account'] == 'Administrator') {

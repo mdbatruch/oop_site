@@ -58,9 +58,24 @@ These are the files for a custom built Website CMS and a Shopping Cart Portion w
 ## v1.8.6
 * Add Billing Address informaton and Shipping options for checkout. Add Product image gallery for individual product pages.
 
+## v1.8.7
+* Update page layouts. Image modals for product pages. Add Filter and Range options for Product Search.
+
+## v1.8.8
+* Update homepage layout and components. Update Registration inputs and validation.
+
+## v1.9
+* Add Cart side toggle menu. Update customer page layouts.
+
+## v1.9.1
+* Add order popup for customer order lists. Add form for editing customer profile. Remove individual order page for customers.
+
+## v1.9.2
+* Add toggleble nav menu for mobile. Update layouts for mobile.
+
 ## Usage
 
-To install the application, clone the files and keep DB, SMTP and Stripe credentials in seperate .ini files outside of Site Root in the following format, replacing the placeholder values with your server settings:
+To install the application, clone the files and keep DB, PATH, SMTP and Stripe credentials in seperate .ini files outside of Site Root in the following format, replacing the placeholder values with your server settings:
 
 ###### db.ini
 
@@ -68,6 +83,10 @@ server=SERVER_NAME<br />
 username=USERNAME<br />
 password=PASSWORD<br />
 db=DATABASE_NAME<br />
+
+###### path.ini
+
+path=PATH_NAME<br />
 
 ###### smtp.ini
 
