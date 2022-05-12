@@ -1,3 +1,58 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Thin.ttf") format("opentype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Light.ttf") format("opentype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Medium.ttf") format("opentype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Bold.ttf") format("opentype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../../fonts/Roboto/Roboto-Black.ttf") format("opentype");
+  font-weight: 800;
+  font-style: normal; }
+
+body .btn {
+  font-weight: 600; }
+  body .btn.btn-green {
+    background-color: #197b30;
+    border-color: #197b30;
+    color: #fff; }
+  body .btn.btn-lightgrey {
+    background-color: #d3d3d3;
+    border-color: #d3d3d3;
+    color: #000; }
+  body .btn.btn-black {
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important; }
+    body .btn.btn-black:hover {
+      background-color: #fff !important;
+      border-color: #fff !important;
+      color: #000 !important; }
+
 #cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
   border-radius: 0px;
   text-transform: uppercase;
@@ -40,10 +95,10 @@ body .customer-main #customer-update .customer-information input, body .customer
 header .logout {
   line-height: 2;
   text-align: right; }
+  header .logout:hover a, header .logout:hover svg {
+    color: #22a541; }
   header .logout a {
     text-decoration: none; }
-    header .logout a:hover {
-      color: #22a541; }
 
 header .account-name img {
   width: 40px; }
@@ -143,6 +198,15 @@ header .row-second {
             background-color: #000; }
             header .row-second > .container > div .navbar .nav-item .dropdown-menu .dropdown-item:hover a, header .row-second > .container > div .navbar .nav-item .dropdown-menu .dropdown-item:focus a {
               color: #fff !important; } }
+      @media (min-width: 991px) {
+        header .row-second > .container > div .navbar .dropdown-item a {
+          transition: none; }
+        header .row-second > .container > div .navbar .dropdown-item:hover a {
+          color: #197b30; }
+        header .row-second > .container > div .navbar .dropdown-item:active, header .row-second > .container > div .navbar .dropdown-item.active {
+          background-color: #000; }
+          header .row-second > .container > div .navbar .dropdown-item:active a, header .row-second > .container > div .navbar .dropdown-item.active a {
+            color: #fff !important; } }
       header .row-second > .container > div .navbar #main-navigation .nav-item {
         position: relative; }
         @media (min-width: 991px) {
@@ -423,45 +487,6 @@ footer {
         footer .column.logo img {
           max-width: 200px; } }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
-  border-radius: 0px;
-  text-transform: uppercase;
-  padding: 10px 50px; }
-
-body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
-  height: 80%;
-  width: 100%;
-  max-width: none;
-  margin: auto;
-  align-items: center;
-  position: relative; }
-
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
-body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 990px) {
-    body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
 body .login-registration > .container {
   padding-top: 4rem;
   padding-bottom: 4rem; }
@@ -556,45 +581,6 @@ body .login-registration > .container {
       body .login-registration > .container .login-container form > div .btn, body .login-registration > .container .register-container form > div .btn {
         text-transform: uppercase; }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
-  border-radius: 0px;
-  text-transform: uppercase;
-  padding: 10px 50px; }
-
-body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
-  height: 80%;
-  width: 100%;
-  max-width: none;
-  margin: auto;
-  align-items: center;
-  position: relative; }
-
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
-body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 990px) {
-    body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
 body #admin-header {
   background-color: #343a40; }
   body #admin-header #admin-navigation ul.navbar-nav li {
@@ -662,64 +648,6 @@ body main.admin-login {
       border-radius: 0px;
       width: 220px;
       padding: 10px 0px; }
-
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
-  border-radius: 0px;
-  text-transform: uppercase;
-  padding: 10px 50px; }
-
-body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
-  height: 80%;
-  width: 100%;
-  max-width: none;
-  margin: auto;
-  align-items: center;
-  position: relative; }
-
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
-body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 990px) {
-    body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
-body .btn {
-  font-weight: 600; }
-  body .btn.btn-green {
-    background-color: #197b30;
-    border-color: #197b30;
-    color: #fff; }
-  body .btn.btn-lightgrey {
-    background-color: #d3d3d3;
-    border-color: #d3d3d3;
-    color: #000; }
-  body .btn.btn-black {
-    background-color: #000 !important;
-    border-color: #000 !important;
-    color: #fff !important; }
-    body .btn.btn-black:hover {
-      background-color: #fff !important;
-      border-color: #fff !important;
-      color: #000 !important; }
 
 #cart .cart-header {
   background-color: #000;
@@ -1101,45 +1029,6 @@ body .btn {
       #cart .confirmation-container .links a:nth-child(2) {
         margin: 0px 20px; } }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
-  border-radius: 0px;
-  text-transform: uppercase;
-  padding: 10px 50px; }
-
-body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
-  height: 80%;
-  width: 100%;
-  max-width: none;
-  margin: auto;
-  align-items: center;
-  position: relative; }
-
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
-body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 990px) {
-    body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
 @media (max-width: 767px) {
   #cart-checkout .main-cart-container {
     background: #000;
@@ -1215,45 +1104,6 @@ body .customer-main #customer-update .customer-information input, body .customer
       font-weight: bold;
       margin-top: 20px;
       padding-top: 20px; }
-
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
-  border-radius: 0px;
-  text-transform: uppercase;
-  padding: 10px 50px; }
-
-body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
-  height: 80%;
-  width: 100%;
-  max-width: none;
-  margin: auto;
-  align-items: center;
-  position: relative; }
-
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
-body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 990px) {
-    body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
 
 #order {
   width: 100%;
@@ -1669,45 +1519,6 @@ body .customer-main #customer-update .customer-information input, body .customer
     width: 300px;
     padding: 10px 0px; }
 
-#cart .cart-header .btn, #cart .empty-cart-container .btn, #cart .cart-totals .btn, #cart-checkout .return-to-cart .btn, body .customer-main .customer-top a {
-  border-radius: 0px;
-  text-transform: uppercase;
-  padding: 10px 50px; }
-
-body .login-registration > .container .login-container .login-option, body .login-registration > .container .register-container .login-option, body .login-registration > .container .login-container form, body .login-registration > .container .register-container form {
-  height: 80%;
-  width: 100%;
-  max-width: none;
-  margin: auto;
-  align-items: center;
-  position: relative; }
-
-body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 767px) {
-    body .login-registration > .container .login-container form > div input, body .login-registration > .container .login-container form > div textarea, body .login-registration > .container .register-container form > div input, body .login-registration > .container .register-container form > div textarea, body main.admin-login > .container input, body main.admin-login > .container textarea, #order fieldset.step-1 .customer-information input, #order fieldset.step-1 .customer-information select, #order fieldset.step-1 .delivery-information input, #order fieldset.step-1 .delivery-information select, #order fieldset.step-2 .card-information input, #order fieldset.step-2 .card-information select, #order fieldset.step-2 .billing-information input, #order fieldset.step-2 .billing-information select, #order fieldset.step-2 .order-notes input, #order fieldset.step-2 .order-notes select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
-body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px solid #666;
-  background-color: #fff;
-  padding: 10px 20px; }
-  @media (max-width: 990px) {
-    body .customer-main #customer-update .customer-information input, body .customer-main #customer-update .customer-information select, body .customer-main #customer-update .delivery-information input, body .customer-main #customer-update .delivery-information select, body .customer-main #customer-update .password-information input, body .customer-main #customer-update .password-information select {
-      border-color: #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; } }
-
 body header {
   background-color: #000; }
   body header a {
@@ -1717,12 +1528,12 @@ body #customer-header {
   background-color: #000; }
   body #customer-header .row-first > .container > .row {
     align-items: center; }
+  body #customer-header .logout:hover a, body #customer-header .logout:hover svg {
+    color: #22a541; }
   body #customer-header .logout svg {
     color: #fff; }
   body #customer-header .logout a {
     text-decoration: none; }
-    body #customer-header .logout a:hover {
-      color: #22a541; }
 
 body .customer-container img {
   max-width: 300px;
@@ -2167,6 +1978,9 @@ body .customer-main {
                 width: 100%; }
                 #products .top-products .top-products-inner .page-info .search-filter-container .search #root .App form #container ul li img {
                   max-width: 250px; }
+          #products .top-products .top-products-inner .page-info .search-filter-container .search #root .spinner {
+            right: 5px;
+            top: calc(50% - 9px); }
       #products .top-products .top-products-inner .page-info .search-filter-container .filter-container {
         text-align: center;
         line-height: 2; }
@@ -2855,42 +2669,6 @@ select.demoSelectBox {
   width: 45px;
   vertical-align: middle; }
 
-@font-face {
-  font-family: 'Roboto';
-  src: url("../../fonts/Roboto/Roboto-Thin.ttf") format("opentype");
-  font-weight: 100;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Roboto';
-  src: url("../../fonts/Roboto/Roboto-Light.ttf") format("opentype");
-  font-weight: 300;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Roboto';
-  src: url("../../fonts/Roboto/Roboto-Regular.ttf") format("opentype");
-  font-weight: 400;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Roboto';
-  src: url("../../fonts/Roboto/Roboto-Medium.ttf") format("opentype");
-  font-weight: 500;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Roboto';
-  src: url("../../fonts/Roboto/Roboto-Bold.ttf") format("opentype");
-  font-weight: 600;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Roboto';
-  src: url("../../fonts/Roboto/Roboto-Black.ttf") format("opentype");
-  font-weight: 800;
-  font-style: normal; }
-
 body {
   height: auto;
   font-family: "Roboto", sans-serif; }
@@ -3331,9 +3109,8 @@ body {
         padding: 0;
         list-style: none;
         position: absolute;
-        left: 0;
-        width: 100%;
-        top: 50%;
+        width: 95%;
+        top: 60%;
         transform: translatey(-50%);
         display: flex;
         align-items: center;

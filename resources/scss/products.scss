@@ -1,5 +1,3 @@
-@import "colors";
-
 #products {
     .top-products {
         .top-products-inner {
@@ -99,6 +97,10 @@
                                         }
                                     }
                                 }
+                            }
+                            .spinner {
+                                right: 5px;
+                                top: calc(50% - 9px);
                             }
                         }
                     }

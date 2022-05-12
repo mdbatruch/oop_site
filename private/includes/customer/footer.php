@@ -130,7 +130,7 @@
                 country: country
             }
 
-            console.log(id, customer_id, username, first_name, last_name, email, street, suite, city, province, postal, country);
+            // console.log(id, customer_id, username, first_name, last_name, email, street, suite, city, province, postal, country);
 
             $.ajax({
                 type: "POST",
@@ -222,6 +222,11 @@
                     if ($(window).width() < 991) {
                         $('body').addClass('no-scroll');
                     }
+
+                    $('#form-message .close').on('click', function(e) {
+                        e.preventDefault();
+                        $('body').removeClass('no-scroll');
+                    });
                 }
             });
 

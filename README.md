@@ -75,7 +75,7 @@ These are the files for a custom built Website CMS and a Shopping Cart Portion w
 
 ## Usage
 
-To install the application, clone the files and keep DB, PATH, SMTP and Stripe credentials in seperate .ini files outside of Site Root in the following format, replacing the placeholder values with your server settings:
+To install the application, clone the files and keep DB, Path, SMTP and Stripe credentials in seperate .ini files outside of Site Root in the following format, replacing the placeholder values with your server settings:
 
 ###### db.ini
 
@@ -114,7 +114,5 @@ GETTING STARTED
 * Create A Database and Run all Migrations, including the Seed files (you can replace values as needed and make sure password is hashed with MD5 encryption). Be sure to run Customer Migration and Seed *before* Cart Migration and Seed as Cart has foreign key attached to customer and will return error if order is wrong. Create new MD5 password hashes for customer and admin profiles.
 
 * To run Sass and BrowserSync preprocessor, cd into resources directory and run **npm install** command to install node modules. Replace proxy url with your site's directory in gulpfile.js on line 17. After installation run **gulp** to watch any changes to sass files. You may need to refresh browser to begin seeing changes, you'll be on port 3000.
-
-* Replace site_path variable in initialize.php according to your site's path on line 8. **This is very important, otherwise the site will throw errors!**
 
 * Replace 404 path in .htaccess file according to your site's path on line 1.

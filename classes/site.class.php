@@ -228,7 +228,7 @@
                                 echo   '<div class="dropdown-menu">'; 
                                 foreach($item['children'] as $key => $value) {
                                         echo '<div class="dropdown-item dd-item" data-name="' . $value['name'] . '" data-order="' . $value['order'] . '">';
-                                            echo '<a class="nav-link dd-handle" href="index.php?id=' . $value['id'] . '" style="color: #000">' . $value['name'] . '</a>';
+                                            echo '<a class="nav-link dd-handle" href="index.php?id=' . $value['id'] . '">' . $value['name'] . '</a>';
                                         echo '</div>'; 
                                     }
                                 echo '</div>';

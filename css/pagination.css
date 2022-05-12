@@ -1,8 +1,0 @@
-body .pagination a svg, body .pagination span svg {
-  background-color: #197b30;
-  color: #fff;
-  fill: #fff;
-  border-radius: 50%; }
-
-body .pagination a.disabled svg, body .pagination span.disabled svg {
-  background-color: #d3d3d3; }

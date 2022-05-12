@@ -4,7 +4,7 @@ const browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 
 gulp.task('sass', function() {
-    return gulp.src("scss/*.scss")
+    return gulp.src("scss/styles.scss")
         .pipe(sass())
         .pipe(gulp.dest("../css"))
         .pipe(browserSync.stream());

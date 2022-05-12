@@ -1,6 +1,3 @@
-@import "colors";
-@import 'extends';
-
 body {
     header {
         background-color: $black;
@@ -18,14 +15,16 @@ body {
             }
         }
         .logout {
+            &:hover {
+                a, svg {
+                    color: lighten($brand-green, 10%);
+                }
+            }
             svg {
                 color: $white;
             }
             a {
                 text-decoration: none;
-                &:hover {
-                    color: lighten($brand-green, 10%)
-                }
             }
         }
     }

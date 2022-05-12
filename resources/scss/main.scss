@@ -1,10 +1,6 @@
-@import "colors";
-@import "fonts";
-
 body {
     height: auto;
     font-family: $roboto;
-    // overflow-x: hidden;
     .show {
         display: block !important;
     }
@@ -565,9 +561,8 @@ body {
                 padding: 0;
                 list-style: none;
                 position: absolute;
-                left: 0;
-                width: 100%;    
-                top: 50%;
+                width: 95%;    
+                top: 60%;
                 transform: translatey(-50%);
                 display: flex;
                 align-items: center;    

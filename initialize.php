@@ -7,11 +7,12 @@
 
     date_default_timezone_set('America/Toronto');
 
-    $path = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/path.ini');
+    $site_root_name = explode("/", $_SERVER['PHP_SELF']);
+    $path = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/' . $site_root_name[1] . '/.env/path.ini');
 
-    // $site_path =  $path['path'];
+    // echo $_SERVER['DOCUMENT_ROOT'] . '/' . $site_root_name[1];
 
-    $site_path =  '/oop_site';
+    $site_path =  $path['path'];
 
     define("SITE_ROOT", $_SERVER['HTTP_HOST'] . $site_path);
     define("SITE_ROOT_PRIVATE", $_SERVER['HTTP_HOST'] . $site_path . '/private');

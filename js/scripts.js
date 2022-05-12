@@ -471,15 +471,6 @@ function toggleOrderBillingList() {
 
         $(this).closest('.order-products, .order-billing').addClass('d-none');
     });
-
-    $(document).on('click', function(e) {
-        if (!$(this).closest('.order-products').hasClass('d-none')) {
-            if (!order_products.is(e.target) && order_products.has(e.target).length === 0) {
-                $(order_products).addClass('d-none');
-                $(body).removeClass('no-scroll');
-            }
-        }
-    });
 }
 
 function toggleNav() {

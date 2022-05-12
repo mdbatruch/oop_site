@@ -1,5 +1,3 @@
-@import "colors";
-
 header {
     .cart {
 
@@ -7,11 +5,13 @@ header {
     .logout {
         line-height: 2;
         text-align: right;
-        a {
-            text-decoration: none;
-            &:hover {
+        &:hover {
+            a, svg {
                 color: lighten($brand-green, 10%);
             }
+        }
+        a {
+            text-decoration: none;
         }
     }
     .account-name {
@@ -139,6 +139,24 @@ header {
                                             color: $white !important;
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                    @media(min-width: 991px) {
+                        .dropdown-item {
+                            a {
+                                transition: none;
+                            }
+                            &:hover {
+                                a {
+                                    color: $brand-green;
+                                }
+                            }
+                            &:active, &.active {
+                                background-color: $black;
+                                a {
+                                    color: $white !important;
                                 }
                             }
                         }
