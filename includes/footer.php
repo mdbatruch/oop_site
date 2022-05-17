@@ -284,6 +284,25 @@
             });
         });
 
+        $('#contact-form').submit(function(e){
+            e.preventDefault();
+
+            console.log('contact has been attempted');
+
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var subject = $('#subject').val();
+            var message = $('#message').val();
+
+            console.log(name, email, subject, message);
+
+            $('#form-message').html('<div class="alert alert-success">Thanks ' + name + ', we got your message. We\'ll look to contact you at: ' + email + ' about your inquiry about ' + subject + ' (P.S. this email will not send anywhere actually).</div>');
+
+            setTimeout(function() {
+                $('#form-message').html('');
+            }, 5000);
+        });
+
         $('#customer-register').submit(function(e){
 
         e.preventDefault(); 
@@ -484,22 +503,22 @@
                 var id = $(this).attr('data-action');
                 var image = $(this).parent().parent().siblings('.img-container').find('.img-fluid').attr('src').split("/");
 
-                var product_price_unformatted = $(this).parent().siblings('.item-meta').find('.price').attr('data-price');
+                var product_price_unformatted = $(this).parent().siblings('.price').attr('data-price');
 
                 var product = {
                     id: $(this).attr('data-id'),
-                    name: $(this).parent().siblings('.item-meta').find('.name').text().replace(/\s+/g, ' ').trim(),
-                    description: $(this).parent().siblings('.item-meta').find('.description').text().replace(/\s+/g, ' ').trim(),
+                    name: $(this).parent().siblings('.featured-info').find('.name').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.featured-info').find('.description').text().replace(/\s+/g, ' ').trim(),
                     image: image[image.length - 1],
-                    price: $(this).parent().siblings('.item-meta').find('.price').text().replace(/\s+/g, ' ').trim(),
+                    price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
                 }
 
                 var product_json = {
                     id: $(this).attr('data-id'),
-                    name: $(this).parent().siblings('.item-meta').find('.name').text().replace(/\s+/g, ' ').trim(),
-                    description: $(this).parent().siblings('.item-meta').find('.description').text().replace(/\s+/g, ' ').trim(),
+                    name: $(this).parent().siblings('.featured-info').find('.name').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.featured-info').find('.description').text().replace(/\s+/g, ' ').trim(),
                     image: image[image.length - 1],
-                    price: $(this).parent().siblings('.item-meta').find('.price').text().replace(/\s+/g, ' ').trim(),
+                    price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
                 }
                 
                 console.log(id, user_id, cart_id, product);
@@ -649,43 +668,6 @@
                 $( ".cart-summary-slider" ).append(product_sidebar);
 
                 });
-
-        // $('#search').submit(function(e){
-
-        //     e.preventDefault(); 
-
-        //     console.log('a search has been attempted');
-
-        //     var formId = $('form').attr('id');
-        //     var term = $('.search-term').val();
-
-
-        //     console.log(formId, term);
-
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "private/process.php",
-        //         dataType: "json",
-        //         data: {id: formId, term: term},
-        //     }).done(function(data) {
-
-        //         if(!data.success) {
-
-        //                 $('#form-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
-
-        //                 $(location).attr('href', data.redirect);
-
-        //             } else {
-
-        //                 $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
-
-        //                 $(location).attr('href', data.redirect);
-
-        //             }
-        //     });
-
-        // });
-
 
 
         $(".remove-item").on("click", function(e){

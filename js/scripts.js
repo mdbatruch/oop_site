@@ -69,13 +69,13 @@ function returnSidebarProduct(id, name, description, image, price, quantity, adj
         var quantity_container = $(this).find('.product-quantity');
         var existing_quantity = $(this).find('.product-quantity').html().trim();
 
-        console.log(quantity + 'preloop');
+        // console.log(quantity + 'preloop');
 
         var quantity = self.quantity || 1;
 
-        console.log(quantity + 'loop');
+        // console.log(quantity + 'loop');
 
-        console.log(existing_name + " " + name);
+        // console.log(existing_name + " " + name);
         if (existing_name == name) {
             exists = true;
 
@@ -104,9 +104,9 @@ function returnSidebarProduct(id, name, description, image, price, quantity, adj
 
     if (!exists) {
 
-        console.log(quantity + 'general');
-        console.log(this.quantity + 'this');
-        console.log(self.quantity + 'self');
+        // console.log(quantity + 'general');
+        // console.log(this.quantity + 'this');
+        // console.log(self.quantity + 'self');
 
         var loc = window.location.pathname;
         var dir = loc.substring(0, loc.lastIndexOf('/'));

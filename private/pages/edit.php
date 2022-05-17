@@ -2,11 +2,7 @@
     
     require('../../initialize.php');
 
-    // echo $_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini'
-
     global $session;
-    // // echo '<pre>';
-    // // print_r($session);
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login.php?timedout=true' );
@@ -68,7 +64,10 @@
                             </dd>
                         </dl>
                         <input type="hidden" id="page_id" name="page_id" value="<?= $page['id']; ?>"/>
-                        <input type="submit" value="Save Page">
+                        <div class="d-flex justify-content-between mb-4">
+                            <input type="submit" value="Save Page">
+                            <a href="<?= root_url('index.php?id=' .  $id . ''); ?>" class="btn btn-black">View Page</a>
+                        </div>
                         <div id="form-message"></div>
                     </form>
                 </div>

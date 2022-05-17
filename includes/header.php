@@ -1,13 +1,7 @@
-<?php 
-
-    // namespace Public;
-
-?>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Shopping Cart</title>
+        <title><?= !empty($title) ? $title : ucfirst(basename($_SERVER['PHP_SELF'], '.php')); ?></title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

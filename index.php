@@ -69,7 +69,7 @@
     }
 
     
-    $site->addHeader();
+    $site->addHeader($title);
 
 ?>
 <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Administrator') : ?>

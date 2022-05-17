@@ -84,7 +84,7 @@
                 margin-bottom: 1rem;
             }
             @media(min-width: 768px) {
-                justify-content: space-around !important;
+                justify-content: space-between !important;
             }
             .title-container {
                 display: flex;
@@ -315,7 +315,7 @@
                 }
                 @media(min-width: 768px) {
                     .quantity-mobile, .ind-price-mobile, .price-mobile {
-                        display: none;
+                        display: none !important;
                     }
                 }
                 .quantity-mobile {
@@ -329,8 +329,8 @@
                     text-align: center;
                     border-radius: 50%;
                     position: absolute;
-                    left: 150px;
-                    top: -5px;
+                    left: 115px;
+                    top: 10px;
                 }
                 .price-mobile {
                     color: $brand-green;
@@ -469,6 +469,9 @@
             a {
                 border-radius: 0px;
                 text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 &:nth-child(2) {
                     @media(min-width: 768px) {
                         margin: 0px 20px;

@@ -2,8 +2,6 @@
     
     require('../../initialize.php');
 
-    // echo $_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini'
-
     global $session;
     // // echo '<pre>';
     // // print_r($session);

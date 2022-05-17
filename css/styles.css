@@ -715,7 +715,7 @@ body main.admin-login {
       margin-bottom: 1rem; } }
   @media (min-width: 768px) {
     #cart .product .product-title {
-      justify-content: space-around !important; } }
+      justify-content: space-between !important; } }
   #cart .product .product-title .title-container {
     display: flex;
     flex-direction: column;
@@ -898,7 +898,7 @@ body main.admin-login {
       text-align: left; } }
   @media (min-width: 768px) {
     #cart .confirmation-container .order-summary .product-info .quantity-mobile, #cart .confirmation-container .order-summary .product-info .ind-price-mobile, #cart .confirmation-container .order-summary .product-info .price-mobile {
-      display: none; } }
+      display: none !important; } }
   #cart .confirmation-container .order-summary .product-info .quantity-mobile {
     color: #fff;
     background-color: #197b30;
@@ -910,8 +910,8 @@ body main.admin-login {
     text-align: center;
     border-radius: 50%;
     position: absolute;
-    left: 150px;
-    top: -5px; }
+    left: 115px;
+    top: 10px; }
   #cart .confirmation-container .order-summary .product-info .price-mobile {
     color: #197b30;
     font-weight: 700; }
@@ -1024,7 +1024,10 @@ body main.admin-login {
       flex-direction: row; } }
   #cart .confirmation-container .links a {
     border-radius: 0px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
     @media (min-width: 768px) {
       #cart .confirmation-container .links a:nth-child(2) {
         margin: 0px 20px; } }
@@ -2671,7 +2674,8 @@ select.demoSelectBox {
 
 body {
   height: auto;
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden; }
   body .show {
     display: block !important; }
   body.no-scroll {

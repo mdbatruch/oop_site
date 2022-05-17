@@ -1,6 +1,7 @@
 body {
     height: auto;
     font-family: $roboto;
+    overflow-x: hidden;
     .show {
         display: block !important;
     }

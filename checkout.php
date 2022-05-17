@@ -246,7 +246,6 @@ Stripe.setPublishableKey("<?= $stripe['public_key']; ?>");
 function stripeResponseHandler(status, response) {
     if (response.error) {
         //enable the submit button
-        console.log('bleh');
         $("#submit-btn").show();
         $( "#loader" ).css("display", "none");
         //display the errors on the form

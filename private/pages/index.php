@@ -46,7 +46,7 @@
                     ?>
                     <li class="page">
                         <h3>
-                            <a class="<?= $name; ?>" href="<?php echo root_url_private('/pages/index.php?id=' . $page_id); ?>">
+                            <a class="<?= $name; ?>" href="<?php echo root_url('index.php?id=' . $page_id); ?>">
                                 <?= $name; ?>
                             </a>
                         </h3>

@@ -16,6 +16,7 @@
 
     if ($_SESSION['id'] == $order[0]['customer_id']) {
 
+        if (isset($_SESSION['orders'])) {
             foreach ($_SESSION['orders'] as $key => $value) {
                 //check if this is not the first time the page has been viewed
                 if($_GET['order'] == $value) {
@@ -26,6 +27,7 @@
                     session_write_close();
                     exit();
                 }
+            }
         }
     } else {
         header('location: index.php');

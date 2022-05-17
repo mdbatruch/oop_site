@@ -478,6 +478,11 @@
                     console.log('page has been edited!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+                    setTimeout(function() {
+                        $('#form-message').html('');
+                    }, 5000);
+
                 }
             
         });
