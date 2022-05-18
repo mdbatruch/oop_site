@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-6 d-flex align-items-center">
-                <a href="<?= root_url('faq.php'); ?>" class="shop-faq">
-                    Shopping Faq
+                <a href="<?= root_url('terms.php'); ?>" class="shop-faq">
+                    Terms of Service
                 </a>    
             </div>
             <div id="cart_id" style="display: none;">

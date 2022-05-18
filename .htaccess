@@ -1,1 +1,4 @@
+Options +FollowSymLinks
+RewriteEngine On
+
 ErrorDocument 404 /oop_site/404.php

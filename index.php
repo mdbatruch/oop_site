@@ -32,6 +32,11 @@
 
 
     $page = new Page($title, $description, $db);
+
+    if ($title == NULL && $description == NULL) {
+        header('Location: index.php?id=1');
+    }
+
     $site->setPage($page);
 
     $gallery = $site->findSliderByPageId($id);

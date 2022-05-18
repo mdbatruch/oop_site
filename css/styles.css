@@ -2717,7 +2717,10 @@ body {
     min-height: calc(100vh - 430px); }
     body main .swiper-container {
       position: relative;
-      overflow: hidden; }
+      overflow: hidden;
+      padding: 0px; }
+      body main .swiper-container .swiper-slide img {
+        width: 100%; }
       body main .swiper-container .swiper-button-prev, body main .swiper-container .swiper-button-next {
         background-color: rgba(0, 0, 0, 0.6);
         padding: 30px 0px; }

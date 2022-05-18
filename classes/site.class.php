@@ -187,6 +187,52 @@
 
         }
 
+        public function navPageDelete($id) {
+            
+            $items = self::find_nav_by_title('main-navigation');
+
+            $items = json_decode($items[0]['output'], true);
+
+            $new_nav = array();
+                            
+                foreach($items as $item) {
+                        if ($id = $item['id']) {
+                            echo 'fuck!';
+                            unset($item);
+                        } else {
+                            if (isset($item['children'])) {
+
+                                foreach($item['children'] as $key => $value) {
+                                    if ($id == $value['id']) {
+                                        unset($value);
+                                    }
+
+                                }
+                            }
+                        }
+                        
+                        // echo '<pre>';
+                        // print_r($item);
+
+                        array_push($new_nav, $item);
+                    
+                    }
+
+                    $nav = json_encode($new_nav);
+
+                    echo '<pre>';
+                    print($nav);
+
+                    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $stmt = $this->conn->prepare('UPDATE navigations SET output = ? WHERE title=?');
+
+                    $stmt->bindValue(1, $nav);
+                    $stmt->bindValue(2, 'main-navigation');
+                    $stmt->execute();
+
+        }
+
         public function addEditNav() {
 
             $items = self::find_nav_by_title('main-navigation');
@@ -510,6 +556,9 @@
 
                     $data['message'] = 'Deletion Failed, this page may be currently set to a Gallery which will need to be removed first.';
                 } else {
+
+                    $output = self::navPageDelete($id);
+
                     $data['success'] = true;
                     $data['id'] = $id;
                     $data['message'] = 'Success! Page was deleted!';
