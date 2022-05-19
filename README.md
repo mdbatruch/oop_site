@@ -117,15 +117,15 @@ GETTING STARTED
 
 * Replace 404 path in .htaccess file according to your site's path on line 1.
 
-###### API
+## API
 
 There are a few endpoints that allow you to create, read, update and delete the Product object.
 
- **GET** /api/read
- **GET** /api/read_one/:name
- **POST** /api/create/:name :price :description :category_id :image
- **POST** /api/update/:id :name :price :description :category_id :image
- **POST** /api/delete/:id
+ **GET** /api/read  
+ **GET** /api/read_one/:name  
+ **POST** /api/create/:name :price :description :category_id :image  
+ **POST** /api/update/:id :name :price :description :category_id :image  
+ **POST** /api/delete/:id  
 
  ## Read all Products
 
