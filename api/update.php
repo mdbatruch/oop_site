@@ -22,15 +22,6 @@ $product->price = $_GET['price'];
 $product->description = $_GET['description'];
 $product->image = $_GET['image'];
 $product->category_id = $_GET['category_id'];
-
-// $data = json_decode(file_get_contents("php://input"));
-  
-// $product->id = $data->id;
-  
-// $product->name = $data->name;
-// $product->price = $data->price;
-// $product->description = $data->description;
-// $product->category_id = $data->category_id;
   
 if($product->update()){
   

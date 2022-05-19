@@ -15,23 +15,14 @@ $database = new Database($site_path);
 $db = $database->getConnection();
   
 $product = new Product($db);
-  
-$data = json_decode(file_get_contents("php://input"));
-  
-if(
-    !empty($data->name) &&
-    !empty($data->price) &&
-    !empty($data->description) &&
-    !empty($data->category_id)
-){
-  
-    $product->name = $data->name;
-    $product->price = $data->price;
-    $product->description = $data->description;
-    $product->image = $data->image;
-    $product->category_id = $data->category_id;
-    $product->created = date('Y-m-d H:i:s');
-  
+
+$product->name = $_GET['name'];
+$product->price = $_GET['price'];
+$product->description = $_GET['description'];
+$product->image = $_GET['image'];
+$product->category_id = $_GET['category_id'];
+$product->created = date('Y-m-d H:i:s');
+
     if($product->create()){
   
         http_response_code(201);
@@ -45,12 +36,4 @@ if(
   
         echo json_encode(array("message" => "Unable to create product."));
     }
-}
-  
-else{
-  
-    http_response_code(400);
-  
-    echo json_encode(array("message" => "Unable to create product. Data is incomplete."));
-}
 ?>

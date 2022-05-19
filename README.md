@@ -116,3 +116,71 @@ GETTING STARTED
 * To run Sass and BrowserSync preprocessor, cd into resources directory and run **npm install** command to install node modules. Replace proxy url with your site's directory in gulpfile.js on line 17. After installation run **gulp** to watch any changes to sass files. You may need to refresh browser to begin seeing changes, you'll be on port 3000.
 
 * Replace 404 path in .htaccess file according to your site's path on line 1.
+
+###### API
+
+There are a few endpoints that allow you to create, read, update and delete the Product object.
+
+ **GET** /api/read
+ **GET** /api/read_one/:name
+ **POST** /api/create/:name :price :description :category_id :image
+ **POST** /api/update/:id :name :price :description :category_id :image
+ **POST** /api/delete/:id
+
+ ## Read all Products
+
+ **Parameters**
+
+ * None
+
+ Returns all of the currently listed products in the database. Throws a 404 error if there are no products.
+
+ ## Read a Product
+
+ **Parameters**
+
+ * Name - the name of the product. Is case-sensitive but can include spaces.
+
+ Returns a single product as called in the endpoint with the name parameter. Throws a 404 error if there is no such product with a name.
+
+ ## Create a Product
+
+ **Parameters**
+
+ * Name - the name of the product. Is case-sensitive but can include spaces.
+
+ * Price - the price of the product.
+
+ * Description - the description of the product. (Optional)
+
+ * Category ID - the category ID of the product. (Not the name of category)
+
+ * Image - the image file name of the product. (Optional)
+
+ Creates a single product as called in the endpoint with the provided parameters. Throws a 503 error if unsuccessfull.
+
+ ## Update a Product
+
+ **Parameters**
+
+ * ID - the ID of the product.
+
+ * Name - the name of the product. Is case-sensitive but can include spaces.
+
+ * Price - the price of the product.
+
+ * Description - the description of the product. (Optional)
+
+ * Category ID - the category ID of the product. (Not the name of category)
+
+ * Image - the image file name of the product. (Optional)
+
+ Updates a single product as called in the endpoint with the provided parameters. Throws a 503 error if unsuccessfull.
+
+ ## Delete a Product
+
+ **Parameters**
+
+ * ID - the ID of the product.
+
+ Deletes a single product as called in the endpoint with the ID parameter. Throws a 503 error for any error.

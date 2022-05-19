@@ -19,9 +19,7 @@ $database = new Database($site_path);
 $db = $database->getConnection();
   
 $product = new Product($db);
-  
-// $product->id = isset($_GET['id']) ? $_GET['id'] : die();
-// $product->id = isset($_GET['id']) ? $_GET['id'] : die();
+
 $product->name = isset($_GET['name']) ? $_GET['name'] : die();
   
 $product->readOne();
