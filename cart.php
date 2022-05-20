@@ -48,7 +48,7 @@
                         <a href="<?= root_url('/'); ?>" class="btn btn-lightgrey py-3 my-2">Back to Homepage</a>
                     </div>
                     <div class="col-12 col-md-6">
-                        <a href="<?= root_url('products.php'); ?>" class="btn btn-green py-3 my-2">Continue Shopping</a>
+                        <a href="<?= root_url('products'); ?>" class="btn btn-green py-3 my-2">Continue Shopping</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                             <div class='col col-12 col-md-4 p-3 d-flex product-title'>
                                 <img src="<?= root_url('images/' . $product['image']); ?>" alt="<?= $product['name'] . ' Image'; ?>" class="img-fluid img-thumbnail">
                                 <div class="title-container">
-                                    <a href="<?= root_url('product.php?id=' . $product["id"]); ?>" class="product-title-link">
+                                    <a href="<?= root_url('product?id=' . $product["id"]); ?>" class="product-title-link">
                                         <h5><?= $product['name']; ?></h5>
                                     </a>
                                     <div class="product-price mobile">

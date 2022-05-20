@@ -28,7 +28,7 @@
 
                 <div class="cart-product my-2 d-flex" data-id="<?= $product['id']; ?>">
                     <div class="img-container">
-                        <a href="<?= root_url('product.php?id=' . $product["id"]); ?>">
+                        <a href="<?= root_url('product?id=' . $product["id"]); ?>">
                             <img src="<?= root_url('images/' . $product['image']); ?>" alt="" class="img-fluid">
                         </a>
                     </div>

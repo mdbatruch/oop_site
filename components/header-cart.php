@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 d-flex align-items-center">
-                <a href="<?= root_url('terms.php'); ?>" class="shop-faq">
+                <a href="<?= root_url('terms'); ?>" class="shop-faq">
                     Terms of Service
                 </a>    
             </div>

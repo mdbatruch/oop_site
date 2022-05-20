@@ -13,7 +13,7 @@
                         <a href="<?= root_url('news.php'); ?>">Our Collections</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('products.php'); ?>">Our Products</a>    
+                        <a href="<?= root_url('products'); ?>">Our Products</a>    
                     </li>
                     <li>
                         <a href="<?= root_url('news.php'); ?>">Latest News</a>
@@ -27,7 +27,7 @@
                 <h4>Useful Links</h4>
                 <ul>
                     <li>
-                        <a href="<?= root_url('faq.php'); ?>">Shopping FAQs</a>
+                        <a href="<?= root_url('faq'); ?>">Shopping FAQs</a>
                     </li>
                     <li>
                         <a href="<?= root_url('shipping.php'); ?>">Shipping</a>
@@ -36,7 +36,7 @@
                         <a href="<?= root_url('sitemap.php'); ?>">Our Sitemap</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('terms.php'); ?>">Terms of Use</a>
+                        <a href="<?= root_url('terms'); ?>">Terms of Use</a>
                     </li>
                     <li>
                         <a href="<?= root_url('privacy-policy.php'); ?>">Privacy Policy</a>  

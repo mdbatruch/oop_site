@@ -90,9 +90,9 @@
                 <li>
                   <a class="category-header" href="#">Show all Good</a>
                     <ul class="sub-menu mt-4">
-                      <li><a class="category-link" href="<?= root_url('products.php?page=1&category=minas+tirith'); ?>">Minas Tirith</a></li>
-                      <li><a class="category-link" href="<?= root_url('products.php?page=1&category=rohan'); ?>">Rohan</a></li>
-                      <li><a class="category-link" href="<?= root_url('products.php?page=1&category=the+fellowship'); ?>">The Fellowship</a></li>
+                      <li><a class="category-link" href="<?= root_url('products?page=1&category=minas+tirith'); ?>">Minas Tirith</a></li>
+                      <li><a class="category-link" href="<?= root_url('products?page=1&category=rohan'); ?>">Rohan</a></li>
+                      <li><a class="category-link" href="<?= root_url('products?page=1&category=the+fellowship'); ?>">The Fellowship</a></li>
                     </ul>
                 </li>
               </ul> 
@@ -112,10 +112,10 @@
                   <li>
                     <a class="category-header" href="#">Show all Evil</a>
                        <ul class="sub-menu mt-4">
-                         <li><a class="category-link" href="<?= root_url('products.php?page=1&category=isengard'); ?>" target="_self">Isengard</a></li>
-                        <li><a class="category-link" href="<?= root_url('products.php?page=1&category=mordor'); ?>">Mordor</a></li>
-                        <li><a class="category-link" href="<?= root_url('products.php?page=1&category=moria'); ?>">Moria</a></li>
-                        <li><a class="category-link" href="<?= root_url('products.php?page=1&category=desolator+of+the+north'); ?>">Desolator of the North</a></li>
+                         <li><a class="category-link" href="<?= root_url('products?page=1&category=isengard'); ?>" target="_self">Isengard</a></li>
+                        <li><a class="category-link" href="<?= root_url('products?page=1&category=mordor'); ?>">Mordor</a></li>
+                        <li><a class="category-link" href="<?= root_url('products?page=1&category=moria'); ?>">Moria</a></li>
+                        <li><a class="category-link" href="<?= root_url('products?page=1&category=desolator+of+the+north'); ?>">Desolator of the North</a></li>
                        </ul>
                    </li>
                 </ul> 

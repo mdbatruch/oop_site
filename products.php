@@ -17,7 +17,7 @@
 
     $subtotal = 0;
     
-    $url = root_url('products.php');
+    $url = root_url('products');
 
     $categories = Category::getCategories($db);
 
@@ -258,10 +258,10 @@
                                 </svg>
                             </div>
                             <ul id="sort-by" class="collapse">
-                                <li><a href="<?= root_url('products.php?page=1&filter=lowest'); ?>">Price: Low to High</a></li>
-                                <li><a href="<?= root_url('products.php?page=1&filter=highest'); ?>">Price: High to Low</a></li>
-                                <li><a href="<?= root_url('products.php?page=1&filter=ascending'); ?>">Alphabetical A-Z</a></li>
-                                <li><a href="<?= root_url('products.php?page=1&filter=descending'); ?>">Alphabetical Z-A</a></li>
+                                <li><a href="<?= root_url('products?page=1&filter=lowest'); ?>">Price: Low to High</a></li>
+                                <li><a href="<?= root_url('products?page=1&filter=highest'); ?>">Price: High to Low</a></li>
+                                <li><a href="<?= root_url('products?page=1&filter=ascending'); ?>">Alphabetical A-Z</a></li>
+                                <li><a href="<?= root_url('products?page=1&filter=descending'); ?>">Alphabetical Z-A</a></li>
                             </ul>
                         </div>
                         <div class="price">
@@ -305,7 +305,7 @@
                     </div>
                     <div class="meta-container col-12 mt-2 d-flex">
                         <div class="item-meta">
-                            <a href='product.php?id=<?= $id ?>' class='product-link title'>
+                            <a href='product?id=<?= $id ?>' class='product-link title'>
                                 <div class='name mb-1'>
                                     <?= "{$name}"  ?>
                                 </div>

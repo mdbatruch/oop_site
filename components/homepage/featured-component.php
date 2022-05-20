@@ -19,7 +19,7 @@
             </div>
             <div class="meta-container">
                 <div class="mb-1">
-                    <div data-id="13" data-action="add-cart-products" class="add-cart-products d-flex">
+                    <div data-id="13" data-action="add-featured-cart-products" class="add-featured-cart-products d-flex">
                         <div class="btn btn-primary btn-black cart-icon me-2 py-0 rounded-0">
                             Add to Cart
                         </div>
@@ -38,8 +38,8 @@
                     </a>
                 </div>
                 <div class="featured-info product-link mt-2">
-                    <a href="<?= root_url('product.php?id=67'); ?>" class='product-link title'>
-                        <h4 class="name">Fellowship of the Ring</h4>
+                    <a href="<?= root_url('product?id=67'); ?>" class='product-link title'>
+                        <h4 class="name">The Fellowship of the Ring</h4>
                     </a>
                     <div class="description d-none"></div>
                 </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="meta-container">
                 <div class="mb-1">
-                    <div data-id="48" data-action="add-cart-products" class="add-cart-products d-flex">
+                    <div data-id="48" data-action="add-featured-cart-products" class="add-featured-cart-products d-flex">
                         <div class="btn btn-primary btn-black cart-icon me-2 py-0 rounded-0">
                             Add to Cart
                         </div>
@@ -72,7 +72,7 @@
                     </a>
                 </div>
                 <div class="featured-info product-link mt-2">
-                    <a href="<?= root_url('product.php?id=48'); ?>" class='product-link title'>
+                    <a href="<?= root_url('product?id=48'); ?>" class='product-link title'>
                         <h4 class="name">The Balrog</h4>
                     </a>
                     <div class="description d-none"></div>
@@ -87,7 +87,7 @@
             </div>
             <div class="meta-container">
                 <div class="mb-1">
-                    <div data-id="68" data-action="add-cart-products" class="add-cart-products d-flex">
+                    <div data-id="68" data-action="add-featured-cart-products" class="add-featured-cart-products d-flex">
                         <div class="btn btn-primary btn-black cart-icon me-2 py-0 rounded-0">
                             Add to Cart
                         </div>
@@ -106,7 +106,7 @@
                     </a>
                 </div>
                 <div class="featured-info product-link mt-2">
-                    <a href="<?= root_url('product.php?id=68'); ?>" class='product-link title'>
+                    <a href="<?= root_url('product?id=68'); ?>" class='product-link title'>
                         <h4 class="name">Battle of Pelennor Fields</h4>
                     </a>
                     <div class="description d-none"></div>
@@ -121,7 +121,7 @@
             </div>
             <div class="meta-container">
                 <div class="mb-1">
-                    <div data-id="66" data-action="add-cart-products" class="add-cart-products d-flex">
+                    <div data-id="66" data-action="add-featured-cart-products" class="add-featured-cart-products d-flex">
                         <div class="btn btn-primary btn-black cart-icon me-2 py-0 rounded-0">
                             Add to Cart
                         </div>
@@ -140,7 +140,7 @@
                     </a>
                 </div>
                 <div class="featured-info product-link mt-2">
-                    <a href="<?= root_url('product.php?id=66'); ?>" class='product-link title'>
+                    <a href="<?= root_url('product?id=66'); ?>" class='product-link title'>
                         <h4 class="name">Smaug</h4>
                     </a>
                     <div class="description d-none"></div>

@@ -1,4 +1,15 @@
-Options +FollowSymLinks
 RewriteEngine On
+
+RewriteRule ^(products|product|terms)$ $1.php [NC,L]
+RewriteRule ^$ index.php?id=1 [NC,L]
+RewriteRule ^about$ index.php?id=9 [NC,L]
+RewriteRule ^contact$ index.php?id=2 [NC,L]
+RewriteRule ^faq$ index.php?id=13 [NC,L]
+RewriteRule ^privacy-notice$ index.php?id=14 [NC,L]
+RewriteRule ^community$ index.php?id=15 [NC,L]
+
+RewriteRule ^customer/dashboard$ private/customer/index.php [NC,L]
+RewriteRule ^customer/profile$ private/customer/profile.php [NC,L]
+RewriteRule ^customer/orders$ private/customer/orders.php [NC,L]
 
 ErrorDocument 404 /oop_site/404.php

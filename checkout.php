@@ -162,7 +162,7 @@
                                             <img src="<?= root_url('images/' . $product['image']); ?>" alt="" class="img-fluid">
                                         </div>
                                         <div class="product-order-info px-4" data-id="<?= $product['id']; ?>">
-                                            <a class="product-name" href="<?= root_url('product.php?id=' . $product["id"]); ?>">
+                                            <a class="product-name" href="<?= root_url('product?id=' . $product["id"]); ?>">
                                                 <?= $product['name']; ?>
                                             </a>
                                             <div class="product-price d-none"><?= $product['price'] ?></div>

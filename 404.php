@@ -68,7 +68,7 @@
                     Sorry, the page you are looking for does not exist or it may never have existed.
                     Please try a new search or visit our Products page for other relevant items.
                 </p>
-                <a href="<?= root_url('products.php'); ?>" class="btn btn-black">Start Shopping</a>
+                <a href="<?= root_url('products'); ?>" class="btn btn-black">Start Shopping</a>
             </div>
         </div>
     </div>

@@ -214,7 +214,7 @@
 
                                                             <div class="cart-product my-2 d-flex" data-id="<?= $product->item_id; ?>">
                                                                 <div class="img-container">
-                                                                    <a href="<?= root_url('product.php?id=' . $product->item_id); ?>" target="_blank">
+                                                                    <a href="<?= root_url('product?id=' . $product->item_id); ?>" target="_blank">
                                                                         <img src="<?= !empty($image['image']) ? root_url('images/' . $image['image']) : root_url('images/missing.jpg'); ?>" alt="<?= $product->item_name; ?>" class="img-fluid border">
                                                                     </a>
                                                                 </div>
@@ -269,7 +269,7 @@
                     <p class="my-4">
                         No orders have been placed through this account.
                     </p>
-                    <a href="<?= root_url('products.php'); ?>" class="btn btn-black">Start Shopping</a>
+                    <a href="<?= root_url('products'); ?>" class="btn btn-black">Start Shopping</a>
                 </div>
             </div>
         <?php endif; ?>

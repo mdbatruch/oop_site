@@ -200,7 +200,7 @@
                                         <img src="<?= !empty($image['image']) ? root_url('images/' . $image['image']) : root_url('images/missing.jpg'); ?>" alt="<?= $product->item_name; ?>" class="rounded img-fluid img-thumbnail">
                                     </div>
                                     <div class="product-info d-flex">
-                                        <a href="<?= root_url('product.php?id=' . $product->item_id); ?>" class="product-title-link">
+                                        <a href="<?= root_url('product?id=' . $product->item_id); ?>" class="product-title-link">
                                             <h5><?= $product->item_name; ?></h5>
                                         </a>
                                         <div class="quantity-mobile">
@@ -296,7 +296,7 @@
                     </div>
                 </div>
                 <div class="links d-flex justify-content-between">
-                    <a href="<?php echo root_url('products.php'); ?>" class="btn btn-outline-dark w-100 py-3 my-2">Continue Shopping</a>
+                    <a href="<?php echo root_url('products'); ?>" class="btn btn-outline-dark w-100 py-3 my-2">Continue Shopping</a>
                     <a href="<?php echo root_url('index.php'); ?>" class="btn btn-outline-dark w-100 py-3 my-2">Back to Homepage</a>
                     <a href="<?php echo root_url_private('customer/orders.php?id=' . $customer); ?>" class="btn btn-outline-dark w-100 py-3 my-2">View your Orders</a>
                 </div>

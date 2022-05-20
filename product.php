@@ -22,7 +22,7 @@
     }
 
     if (!$product_exists) {
-        header( 'location: products.php');
+        header( 'location: products');
     }
 
     // end product id check
@@ -185,7 +185,7 @@
                         <div class="categories d-flex">
                             <div>Category:</div>
                             <h5 class="ms-2">
-                                <a href="<?= root_url('products.php?page=1&category=' . $category_search . ''); ?>"><?= $chosen['category_name']; ?></a>
+                                <a href="<?= root_url('products?page=1&category=' . $category_search . ''); ?>"><?= $chosen['category_name']; ?></a>
                             </h5>
                         </div>
                         <div class="disclaimer">

@@ -13,7 +13,7 @@
                         <a href="<?= root_url('news.php'); ?>">Our Collections</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('products.php'); ?>">Our Products</a>    
+                        <a href="<?= root_url('products'); ?>">Our Products</a>    
                     </li>
                     <li>
                         <a href="<?= root_url('news.php'); ?>">Latest News</a>
@@ -27,7 +27,7 @@
                 <h4>Useful Links</h4>
                 <ul>
                     <li>
-                        <a href="<?= root_url('faq.php'); ?>">Shopping FAQs</a>
+                        <a href="<?= root_url('faq'); ?>">Shopping FAQs</a>
                     </li>
                     <li>
                         <a href="<?= root_url('shipping.php'); ?>">Shipping</a>
@@ -36,7 +36,7 @@
                         <a href="<?= root_url('sitemap.php'); ?>">Our Sitemap</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('terms.php'); ?>">Terms of Use</a>
+                        <a href="<?= root_url('terms'); ?>">Terms of Use</a>
                     </li>
                     <li>
                         <a href="<?= root_url('privacy-policy.php'); ?>">Privacy Policy</a>  
@@ -492,8 +492,8 @@
 
             });
 
-            // add products on product page
-            $('.add-cart-products').click(function(e){
+            //add products from featured component
+            $('.add-featured-cart-products').click(function(e){
 
                 var customer = true;
                 var admin = false;
@@ -517,6 +517,90 @@
                     id: $(this).attr('data-id'),
                     name: $(this).parent().siblings('.featured-info').find('.name').text().replace(/\s+/g, ' ').trim(),
                     description: $(this).parent().siblings('.featured-info').find('.description').text().replace(/\s+/g, ' ').trim(),
+                    image: image[image.length - 1],
+                    price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
+                }
+
+                console.log(id, user_id, cart_id, product);
+
+                if (user_id == 'no-customer') {
+                    var customer = false;
+                    
+                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">You must register or login to add items to your cart!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    
+                } else if (user_id == undefined) {
+                    
+                    var admin = true;
+
+                    $('#cart-message-' + product.id).html('<div class="alert alert-danger mt-3 input-alert-error">Admins cannot add items to a cart. Create an account or login!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                }
+
+                if (customer || admin) {
+
+                    $.ajax({
+                            type: "POST",
+                            url: "private/process.php",
+                            dataType: "json",
+                            data: {id: id, user_id: user_id, cart_id: cart_id, product: product},
+                        }).done(function(data) {
+
+                            if(!data.success) {
+
+                                    $('#cart-message-' + data.id).html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+                                } else {
+
+                                    $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+                                        // update cart count in header on browser side
+                                        var cartText = $('.cart-count').text();
+
+                                        var newCount = parseFloat(cartText) + 1;
+
+                                        $('.cart-count').text(newCount);
+
+                                        // add product to sidebar
+                                        var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price, 1, '');
+
+                                        $( ".cart-summary-slider" ).append(product_sidebar);
+                                        // add to side menu
+                                        // $('#cart-sub-total').text(newCount);
+
+
+
+                                }
+                        });
+
+                    evaluateProductSubTotal(product_price_unformatted);
+                }
+
+                });
+
+            // add products on product page
+            $('.add-cart-products').click(function(e){
+
+                var customer = true;
+                var admin = false;
+
+                var user_id = $('.customer').attr('id');
+                var cart_id = $('#cart_id').text().trim();
+                var id = $(this).attr('data-action');
+                var image = $(this).parent().parent().siblings('.img-container').find('.img-fluid').attr('src').split("/");
+
+                var product_price_unformatted = $(this).parent().siblings('.item-meta').find('.price').attr('data-price');
+
+                var product = {
+                    id: $(this).attr('data-id'),
+                    name: $(this).parent().siblings('.item-meta').find('.name').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.item-meta').find('.description').text().replace(/\s+/g, ' ').trim(),
+                    image: image[image.length - 1],
+                    price: $(this).parent().siblings('.item-meta').find('.price').text().replace(/\s+/g, ' ').trim(),
+                }
+
+                var product_json = {
+                    id: $(this).attr('data-id'),
+                    name: $(this).parent().siblings('.item-meta').find('.price').text().replace(/\s+/g, ' ').trim(),
+                    description: $(this).parent().siblings('.item-meta').find('.description').text().replace(/\s+/g, ' ').trim(),
                     image: image[image.length - 1],
                     price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
                 }

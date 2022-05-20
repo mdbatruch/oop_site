@@ -329,7 +329,7 @@ function filterProductRange() {
 
             $('.price input:checkbox').not(this).prop('checked', false);
 
-            window.location.href = 'products.php?range=' + value;
+            window.location.href = 'products?range=' + value;
         });
 
     });
