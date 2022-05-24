@@ -315,7 +315,7 @@
                     $name = preg_replace('#[ -]+#', '-', strtolower($item['name']));
                     
                     if ($name == 'home') {
-                        $name = ' ';
+                        $name = SITE_PATH;
                     }
 
                     $result = isset($item['children']) ? 'dropdown' : '';

@@ -14,6 +14,7 @@
 
     $site_path =  $path['path'];
 
+    define("SITE_PATH", $site_path);
     define("SITE_ROOT", $_SERVER['HTTP_HOST'] . $site_path);
     define("SITE_ROOT_PRIVATE", $_SERVER['HTTP_HOST'] . $site_path . '/private');
     define("CONFIRMATION", $_SERVER['HTTP_HOST'] . $site_path . '/confirmation.php');
