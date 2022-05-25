@@ -9,7 +9,7 @@
     $action = isset($_GET['action']) ? $_GET['action'] : "";
 
     if (empty($_SESSION)) {
-        header('Location: cart.php');
+        header('Location: cart');
     } else if ($_SESSION['account'] == 'Administrator') {
         header('Location: index.php');
     }
@@ -30,7 +30,7 @@
         $count = $cart_item->getCartCount($items['id'], $_SESSION['id']);
 
         if ($count == 0) {
-            header('Location: cart.php');
+            header('Location: cart');
         }
 
     } else {
@@ -52,7 +52,7 @@
         <div id="form-message"></div>
             <div class="col-md-8">
                 <div class="col min-12 medium-4 text-right return-to-cart">
-                    <a href="<?= root_url('cart.php'); ?>" class="btn btn-black mx-2">
+                    <a href="<?= root_url('cart'); ?>" class="btn btn-black mx-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                         </svg> 

@@ -13,6 +13,9 @@ header {
         a {
             text-decoration: none;
         }
+        svg {
+            color: $white;
+        }
     }
     .account-name {
         img {
@@ -21,15 +24,13 @@ header {
     }
     .customer {
         &.logged-in-customer {
-            @media(max-width: 767px) {
-                position: fixed;
-                width: 50%;
-                background-color: #000;
-                right: 0;
-                min-width: 260px;
-                top: 75px;
-                z-index: 100;
-            }
+           .account-name {
+               span {
+                   @media(max-width: 767px) {
+                       display: none;
+                   }
+               }
+           }
         }
         a {
             text-decoration: none;
@@ -111,6 +112,7 @@ header {
             > div {
                 flex-basis: 33%;
                 max-width: 33%;
+                align-items: center;
                 &:last-child {
                     flex-basis: auto;
                 }
@@ -168,7 +170,7 @@ header {
                                 display: flex !important;
                                 &:hover {
                                     a, svg {
-                                        color: $brand-green;
+                                        color: $brand-green !important;
                                     }
                                 }
                                 &:after {
@@ -209,6 +211,12 @@ header {
                                     -webkit-transition: all 0.25s ease;
                                     top: 3px;
                                     position: relative;
+                                    @media(max-width: 990px) {
+                                        color: $white;
+                                    }
+                                    @media(min-width: 991px) {
+                                        color: $black;
+                                    }
                                 }
                                 &:after {
                                     content: none;

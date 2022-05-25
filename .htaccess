@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^(products|product|terms)$ $1.php [NC,L]
+RewriteRule ^(products|product|terms|checkout|confirmation|cart)$ $1.php [NC,L]
 RewriteRule ^$ index.php?id=1 [NC,L]
 RewriteRule ^about$ index.php?id=9 [NC,L]
 RewriteRule ^contact$ index.php?id=2 [NC,L]

@@ -99,19 +99,15 @@ header .logout {
     color: #22a541; }
   header .logout a {
     text-decoration: none; }
+  header .logout svg {
+    color: #fff; }
 
 header .account-name img {
   width: 40px; }
 
 @media (max-width: 767px) {
-  header .customer.logged-in-customer {
-    position: fixed;
-    width: 50%;
-    background-color: #000;
-    right: 0;
-    min-width: 260px;
-    top: 75px;
-    z-index: 100; } }
+  header .customer.logged-in-customer .account-name span {
+    display: none; } }
 
 header .customer a {
   text-decoration: none; }
@@ -177,7 +173,8 @@ header .row-second {
     justify-content: space-evenly; }
     header .row-second > .container > div {
       flex-basis: 33%;
-      max-width: 33%; }
+      max-width: 33%;
+      align-items: center; }
       header .row-second > .container > div:last-child {
         flex-basis: auto; }
       header .row-second > .container > div img {
@@ -213,7 +210,7 @@ header .row-second {
           header .row-second > .container > div .navbar #main-navigation .nav-item {
             display: flex !important; }
             header .row-second > .container > div .navbar #main-navigation .nav-item:hover a, header .row-second > .container > div .navbar #main-navigation .nav-item:hover svg {
-              color: #197b30; }
+              color: #197b30 !important; }
             header .row-second > .container > div .navbar #main-navigation .nav-item:after {
               content: none;
               background-color: #000;
@@ -246,6 +243,12 @@ header .row-second {
             -webkit-transition: all 0.25s ease;
             top: 3px;
             position: relative; }
+            @media (max-width: 990px) {
+              header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle svg {
+                color: #fff; } }
+            @media (min-width: 991px) {
+              header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle svg {
+                color: #000; } }
           header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-toggle:after {
             content: none; }
         header .row-second > .container > div .navbar #main-navigation .nav-item .dropdown-menu {
@@ -1063,6 +1066,10 @@ body main.admin-login {
     position: relative;
     bottom: 2px;
     right: 10px; }
+  #cart-checkout .return-to-cart .btn:hover {
+    background-color: #197b30 !important;
+    border-color: #197b30 !important;
+    color: #fff !important; }
 
 #cart-checkout .cart-totals .quantity-total .cart-count-bottom {
   display: block; }
@@ -1175,7 +1182,13 @@ body main.admin-login {
         background-color: #000;
         color: #fff;
         text-transform: uppercase;
-        font-size: 1rem; }
+        font-size: 1rem;
+        transition: 0.5s all ease;
+        -webkit-transition: 0.5s all ease; }
+        #order fieldset input[type="button"]:hover, #order fieldset input[type="submit"]:hover, #order fieldset textarea[type="button"]:hover, #order fieldset textarea[type="submit"]:hover, #order fieldset select[type="button"]:hover, #order fieldset select[type="submit"]:hover {
+          background-color: #197b30 !important;
+          border-color: #197b30 !important;
+          color: #fff !important; }
     @media (min-width: 1030px) {
       #order fieldset .form-inner-container.form-address-other, #order fieldset .form-inner-container.form-billing-address.part-2 {
         flex-direction: row !important; }
@@ -1391,8 +1404,16 @@ body main.admin-login {
       text-transform: inherit;
       margin: 0;
       width: auto; }
+    #order fieldset.step-3 input[type="button"]:hover {
+      background-color: #197b30 !important;
+      border-color: #197b30 !important;
+      color: #fff !important; }
     #order fieldset.step-3 input[type="submit"] {
       text-transform: uppercase; }
+      #order fieldset.step-3 input[type="submit"]:hover {
+        background-color: #197b30 !important;
+        border-color: #197b30 !important;
+        color: #fff !important; }
     #order fieldset.step-3 legend {
       font-size: calc(1rem + 0.3vw);
       letter-spacing: 0.5px; }

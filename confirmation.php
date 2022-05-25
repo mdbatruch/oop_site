@@ -5,7 +5,7 @@
     $order = Order::fetchOrderbyId($_GET['order'], $db);
 
     if (empty($_SESSION)) {
-        header('Location: cart.php');
+        header('Location: cart');
     }
 
     if ($_SESSION['account'] == 'Administrator') {

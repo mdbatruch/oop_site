@@ -34,6 +34,11 @@
                 bottom: 2px;
                 right: 10px;
             }
+            &:hover {
+                background-color: $brand-green !important;
+                border-color: $brand-green !important;
+                color: $white !important;
+            }
         }
     }
     .cart-totals {

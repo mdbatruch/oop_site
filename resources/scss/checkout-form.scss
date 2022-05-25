@@ -82,6 +82,13 @@
 				color: $white;
 				text-transform: uppercase;
 				font-size: 1rem;
+				transition: 0.5s all ease;
+				-webkit-transition: 0.5s all ease;
+				&:hover {
+					background-color: $brand-green !important;
+					border-color: $brand-green !important;
+					color: $white !important;
+				}
 			}
 		}
 		.form-inner-container {
@@ -428,9 +435,19 @@
 					margin: 0;
 					width: auto;
 				}
+				&:hover {
+					background-color: $brand-green !important;
+					border-color: $brand-green !important;
+					color: $white !important;
+				}
 			}
 			input[type="submit"] {
 				text-transform: uppercase;
+				&:hover {
+					background-color: $brand-green !important;
+					border-color: $brand-green !important;
+					color: $white !important;
+				}
 			}
 			legend {
 				font-size: calc(1rem + 0.3vw);

@@ -1,7 +1,7 @@
 <div class="row-first pt-2 pb-2">
     <div class="container">
         <div class="row">
-            <div class="col-6 d-flex align-items-center">
+            <div class="col-6 col-md-5 d-flex align-items-center">
                 <a href="<?= root_url('terms'); ?>" class="shop-faq">
                     Terms of Service
                 </a>    
@@ -9,14 +9,16 @@
             <div id="cart_id" style="display: none;">
                 <?= isset($_SESSION['account']) ? $items['id'] : null; ?>
             </div>
-            <div class="col-6 <?= (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') ? 'logged-in-customer col-md-5' : ''; ?> d-flex justify-content-end align-items-center customer" id="<?= isset($_SESSION['account']) ? $_SESSION['id'] : 'no-customer' ; ?>">
+            <div class="col-3 <?= (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') ? 'logged-in-customer col-md-5' : ''; ?> d-flex justify-content-end align-items-center customer" id="<?= isset($_SESSION['account']) ? $_SESSION['id'] : 'no-customer' ; ?>">
                 <?php
                 if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
                     <div class="account-name d-flex align-items-center">
-                        <img src="<?= root_url('uploads/' . $_SESSION['avatar']); ?>" alt="<?= $_SESSION['username']; ?> Picture" class="img-fluid me-3">
                         <a href="<?= root_url_private('customer/index.php'); ?>">
-                            View Your Account,
-                            <?= $_SESSION['username']; ?>
+                            <img src="<?= root_url('uploads/' . $_SESSION['avatar']); ?>" alt="<?= $_SESSION['username']; ?> Picture" class="img-fluid me-3">
+                            <span>
+                                View Your Account,
+                                <?= $_SESSION['username']; ?>
+                            </span>
                         </a>
                     </div>
                 <?php else :?>
@@ -31,7 +33,11 @@
                 <?php endif; ?>
             </div>
             <?php if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
-                <div class="col-6 col-md-1 d-flex align-items-center justify-content-end logout">
+                <div class="col-3 col-md-2 d-flex align-items-center justify-content-end logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+                        <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+                        <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+                    </svg>
                     <a href="<?php echo root_url('logout.php'); ?>" class="button">Logout</a>
                 </div>
             <?php endif; ?>
@@ -70,7 +76,7 @@
         </div>
         <div class="d-flex justify-content-end align-self-center cart">
             <div class="d-flex h-100">
-                <a href="cart.php" class="cart-toggle">
+                <a href="cart" class="cart-toggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                     <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                 </svg> 

@@ -52,8 +52,8 @@
     </div>
     <div class="cta mx-4 mb-4">
         <div class="link-container d-flex justify-content-evenly mt-4">
-            <a href="<?= root_url('cart.php'); ?>" class="btn btn-black py-3">View Cart</a>
-            <a href="<?= root_url('checkout.php'); ?>" class="btn btn-green py-3">Checkout</a>
+            <a href="<?= root_url('cart'); ?>" class="btn btn-black py-3">View Cart</a>
+            <a href="<?= root_url('checkout'); ?>" class="btn btn-green py-3">Checkout</a>
         </div> 
     </div>
 </div>

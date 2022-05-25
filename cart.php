@@ -147,7 +147,7 @@
                 <p>Shipping calculated at checkout</p>
             </div>
             <div class="col col-12 col-md-8 checkout">
-                <a href="<?= root_url('checkout.php'); ?>" class="btn btn-dark">Checkout</a>
+                <a href="<?= root_url('checkout'); ?>" class="btn btn-dark">Checkout</a>
             </div>
         </div>
         <?php endif; ?>

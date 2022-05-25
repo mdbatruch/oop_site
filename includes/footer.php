@@ -7,19 +7,19 @@
                 <h4>Information</h4>
                 <ul>
                     <li>
-                        <a href="<?= root_url('about.php'); ?>">About Us</a>    
+                        <a href="<?= root_url('about'); ?>">About Us</a>    
                     </li>
                     <li>
-                        <a href="<?= root_url('news.php'); ?>">Our Collections</a>
+                        <a href="<?= root_url('news'); ?>">Our Collections</a>
                     </li>
                     <li>
                         <a href="<?= root_url('products'); ?>">Our Products</a>    
                     </li>
                     <li>
-                        <a href="<?= root_url('news.php'); ?>">Latest News</a>
+                        <a href="<?= root_url('news'); ?>">Latest News</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('contact.php'); ?>">Contact Us</a>
+                        <a href="<?= root_url('contact'); ?>">Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -30,16 +30,16 @@
                         <a href="<?= root_url('faq'); ?>">Shopping FAQs</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('shipping.php'); ?>">Shipping</a>
+                        <a href="<?= root_url('shipping'); ?>">Shipping</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('sitemap.php'); ?>">Our Sitemap</a>
+                        <a href="<?= root_url('sitemap'); ?>">Our Sitemap</a>
                     </li>
                     <li>
                         <a href="<?= root_url('terms'); ?>">Terms of Use</a>
                     </li>
                     <li>
-                        <a href="<?= root_url('privacy-policy.php'); ?>">Privacy Policy</a>  
+                        <a href="<?= root_url('privacy-policy'); ?>">Privacy Policy</a>  
                     </li>
                 </ul>
             </div>
@@ -807,7 +807,7 @@
                     var product_sidebar = returnSidebarProduct(product_id, product_name, '', product_image, product_price, quantity, 'remove');
 
                     if ($('.cart-count-bottom').text() == 0) {
-                        window.location.href = 'cart.php';
+                        window.location.href = 'cart';
                     }
 
                 }
@@ -936,7 +936,7 @@
                         evaluateSubTotal();
 
                         if ($('.cart-count-bottom').text() == 0) {
-                            window.location.href = 'cart.php';
+                            window.location.href = 'cart';
                         }
 
                     }
