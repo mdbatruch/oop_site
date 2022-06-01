@@ -11,8 +11,8 @@ include_once '../classes/product.class.php';
 
 require('../initialize.php');
 
- error_reporting(E_ALL);
-    ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
   
   
 $database = new Database($site_path);
@@ -24,7 +24,7 @@ $product->name = isset($_GET['name']) ? $_GET['name'] : die();
   
 $product->readOne();
   
-if($product->name!=null){
+if($product->id!=null){
 
     $product_arr = array(
         "id" =>  $product->id,
@@ -32,14 +32,13 @@ if($product->name!=null){
         "description" => $product->description,
         "price" => $product->price,
         "image" => $product->image,
-        "category_id" => $product->category_id,
-        "category_name" => $product->category_name
+        "category_id" => $product->category_id
   
     );
   
     http_response_code(200);
   
-    echo json_encode($product_arr);
+    echo json_encode($product_arr, JSON_INVALID_UTF8_SUBSTITUTE);
 }
   
 else{
