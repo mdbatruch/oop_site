@@ -40,7 +40,8 @@ if($num>0){
   
     http_response_code(200);
   
-    echo json_encode($products_arr);
+    echo json_encode($products_arr, JSON_INVALID_UTF8_SUBSTITUTE);
+    
 } else{
   
     http_response_code(404);
