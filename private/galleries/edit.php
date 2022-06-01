@@ -1,9 +1,6 @@
 <?php
     
     require('../../initialize.php');
-
-    // echo $_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini'
-
     global $session;
     // // echo '<pre>';
     // // print_r($session);
@@ -14,7 +11,6 @@
 
     $id = $_GET['id'];
 
-    // $gallery = Site::find_by_id($id);
     $gallery = $site->find_by_id($id);
 
     $title = 'Edit Gallery';
@@ -26,9 +22,6 @@
     $gallery = $site->findSliderById($_GET['id']);
 
     $slides = json_decode($gallery['slides']);
-
-    // echo '<pre>';
-    // print_r($gallery);
     
 ?>
 <header id="admin-header" class="container-fluid">

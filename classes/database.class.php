@@ -20,11 +20,16 @@
         }
 
         public function getConnection() {
+
+            if ($_SERVER['SERVER_NAME'] == 'localhost') {
+                $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $this->path . '/.env/db.ini');
+            } else if ($_SERVER['SERVER_NAME'] == 'castlegames.mike-batruch.ca') {
+                $db = parse_ini_file(dirname($_SERVER['DOCUMENT_ROOT']) . '/.env/db.ini');
+            }
             
-            $db = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $this->path . '/.env/db.ini');
-            
-            $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=8889';
-            $this->conn = new PDO($dsn, 'root', '');
+            $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['db'] . ';port=' . $db['port'];
+
+            $this->conn = new PDO($dsn, $db['username'], $db['password']);
 
             return $this->conn;
         }

@@ -2430,6 +2430,9 @@ body .customer-main {
     display: flex;
     justify-content: space-between;
     order: 1; }
+    @media (max-width: 399px) {
+      #ind-product .product-info .info-container .name-price {
+        flex-direction: column; } }
     @media (min-width: 768px) {
       #ind-product .product-info .info-container .name-price {
         flex-direction: column; } }
@@ -2698,6 +2701,8 @@ body {
   height: auto;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden; }
+  body a, body div, body p {
+    -webkit-font-smoothing: antialiased; }
   body .show {
     display: block !important; }
   body.no-scroll {

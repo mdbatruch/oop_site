@@ -9,7 +9,7 @@
             <div id="cart_id" style="display: none;">
                 <?= isset($_SESSION['account']) ? $items['id'] : null; ?>
             </div>
-            <div class="col-3 <?= (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') ? 'logged-in-customer col-md-5' : ''; ?> d-flex justify-content-end align-items-center customer" id="<?= isset($_SESSION['account']) ? $_SESSION['id'] : 'no-customer' ; ?>">
+            <div class="col-6 <?= (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') ? 'logged-in-customer col-md-5' : 'col-md-7'; ?> d-flex justify-content-end align-items-center customer" id="<?= isset($_SESSION['account']) ? $_SESSION['id'] : 'no-customer' ; ?>">
                 <?php
                 if (isset($_SESSION['account']) && $_SESSION['account'] == 'Customer') : ?>
                     <div class="account-name">

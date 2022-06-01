@@ -27,7 +27,11 @@ class Email {
         $this->attachment = $attachment;
         $this->path = $site_path;
 
-        $smtp = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $this->path . '/.env/smtp.ini');
+        if ($_SERVER['SERVER_NAME'] == 'localhost') {
+            $smtp = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $this->path . '/.env/smtp.ini');
+        } else if ($_SERVER['SERVER_NAME'] == 'castlegames.mike-batruch.ca') {
+            $stripe = parse_ini_file(dirname($_SERVER['DOCUMENT_ROOT']) . '/.env/smtp.ini');
+        }
 
         $this->username = $smtp['username'];
         $this->password = $smtp['password'];

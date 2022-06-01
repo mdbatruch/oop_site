@@ -2,17 +2,14 @@
     
     require('../../initialize.php');
 
-    // echo $_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']) . '/.env/db.ini'
-
     global $session;
-    // // echo '<pre>';
-    // // print_r($session);
+    // echo '<pre>';
+    // print_r($session);
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login.php' );
     }
 
-    
     $galleries = $site->find_all_galleries();
 
     $title = 'Gallery List';

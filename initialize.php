@@ -8,9 +8,12 @@
     date_default_timezone_set('America/Toronto');
 
     $site_root_name = explode("/", $_SERVER['PHP_SELF']);
-    $path = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/' . $site_root_name[1] . '/.env/path.ini');
 
-    // echo $_SERVER['DOCUMENT_ROOT'] . '/' . $site_root_name[1];
+    if ($_SERVER['SERVER_NAME'] == 'localhost') {
+        $path = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/' . $site_root_name[1] . '/.env/path.ini');
+    } else if ($_SERVER['SERVER_NAME'] == 'castlegames.mike-batruch.ca') {
+        $path = parse_ini_file(dirname($_SERVER['DOCUMENT_ROOT']) . '/.env/path.ini');
+    }
 
     $site_path =  $path['path'];
 

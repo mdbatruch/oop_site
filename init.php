@@ -240,7 +240,11 @@ require __DIR__ . '/lib/Service/OAuthService.php';
 require __DIR__ . '/lib/Webhook.php';
 require __DIR__ . '/lib/WebhookSignature.php';
 
-$stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $site_path . '/.env/stripe.ini');
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    $stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $site_path . '/.env/stripe.ini');
+} else if ($_SERVER['SERVER_NAME'] == 'castlegames.mike-batruch.ca') {
+    $stripe = parse_ini_file(dirname($_SERVER['DOCUMENT_ROOT']) . '/.env/stripe.ini');
+}
 
 \Stripe\Stripe::setApiKey($stripe['secret_key']);
 \Stripe\Stripe::setVerifySslCerts(false);

@@ -11,7 +11,11 @@
     require('../initialize.php');
     require_once('../init.php');
 
-    $stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $site_path . '/.env/stripe.ini');
+    if ($_SERVER['SERVER_NAME'] == 'localhost') {
+      $stripe = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . $site_path . '/.env/stripe.ini');
+    } else if ($_SERVER['SERVER_NAME'] == 'castlegames.mike-batruch.ca') {
+        $stripe = parse_ini_file(dirname($_SERVER['DOCUMENT_ROOT']) . '/.env/stripe.ini');
+    }
 
     $data = [];
     $errors = [];

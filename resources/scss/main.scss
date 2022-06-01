@@ -2,6 +2,9 @@ body {
     height: auto;
     font-family: $roboto;
     overflow-x: hidden;
+    a, div, p {
+        -webkit-font-smoothing: antialiased;
+    }
     .show {
         display: block !important;
     }
