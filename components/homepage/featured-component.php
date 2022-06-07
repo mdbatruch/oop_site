@@ -49,7 +49,7 @@
         </div>
         <div class="col-md-6 col-xl-3">
             <div class="img-container">
-                <img src="<?= root_url('images/balrog.jpg'); ?>" alt="Balrog" class="img-fluid">  
+                <img src="<?= root_url('images/Balrog.jpg'); ?>" alt="Balrog" class="img-fluid">  
             </div>
             <div class="meta-container">
                 <div class="mb-1">
@@ -117,7 +117,7 @@
         </div>
         <div class="col-md-6 col-xl-3">
             <div class="img-container">
-                <img src="<?= root_url('images/smaug.png'); ?>" alt="Smaug" class="img-fluid">  
+                <img src="<?= root_url('images/Smaug.png'); ?>" alt="Smaug" class="img-fluid">  
             </div>
             <div class="meta-container">
                 <div class="mb-1">
