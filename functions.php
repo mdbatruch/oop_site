@@ -9,6 +9,8 @@
 
     function root_url($string) {
 
+        global $protocol;
+
         if ($string[0] != '/') {
             $string = "/" . $string;
         }
@@ -17,6 +19,8 @@
     }
 
     function root_url_private($string) {
+
+        global $protocol;
 
         if ($string[0] != '/') {
             $string = "/" . $string;
