@@ -1,6 +1,6 @@
 <?php
 
-require_once('cart.class.php');
+require_once('Cart.class.php');
 
 class Customer extends Cart {
   
