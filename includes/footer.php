@@ -1025,8 +1025,11 @@
     </script>
     <script src="js/2.d1644945.chunk.js"></script>
     <script src="js/main.4a4fc564.chunk.js"></script>
-    <script id="__bs_script__">//<![CDATA[
-        document.write("<script async src='http://HOST:8890/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
-        //]]></script>
+    <?php if ($_SERVER['SERVER_NAME'] == 'localhost') : ?>
+        <script id="__bs_script__">//<![CDATA[
+            document.write("<script async src='http://HOST:8890/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
+            //]]>
+        </script>
+    <?php endif; ?>
     </body>
 </html>
