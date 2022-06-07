@@ -6,7 +6,7 @@
 
 
     if (!$session->is_logged_in_as_customer($_SESSION['account'])) {
-        header( 'location: ../../customer.php?timedout=true' );
+        header( 'location: ../../customer?timedout=true' );
     }
 
     $profile = Customer::view_customer_info($_SESSION['id'], $db);

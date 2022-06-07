@@ -17,7 +17,7 @@
     // echo $order_count;
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
-        header( 'location: ../../login.php' );
+        header( 'location: ../../login' );
     }
 
     // start pagination limit
@@ -62,7 +62,7 @@
                     <?php foreach($customers as $customer) : ?>
                         <tr>
                             <td>
-                                <a href="customer.php?id=<?= $customer['id']; ?>">Customer Id: <?= $customer['id']; ?></a>
+                                <a href="customer?id=<?= $customer['id']; ?>">Customer Id: <?= $customer['id']; ?></a>
                             </td>
                             <td>Username: <?= $customer['username']; ?></td>
                             <td>

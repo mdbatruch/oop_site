@@ -7,7 +7,7 @@
     // print_r($session);
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
-        header( 'location: ../../login.php' );
+        header( 'location: ../../login' );
     }
 
     $pages = $site->find_all_pages();

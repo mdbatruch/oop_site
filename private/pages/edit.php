@@ -5,7 +5,7 @@
     global $session;
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
-        header( 'location: ../../login.php?timedout=true' );
+        header( 'location: ../../login?timedout=true' );
     }
 
     // echo '<pre>';

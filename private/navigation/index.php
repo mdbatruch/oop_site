@@ -7,7 +7,7 @@
     // // print_r($session);
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
-        header( 'location: ../../login.php' );
+        header( 'location: ../../login' );
     }
 
     $title = 'Edit Main Navigation';

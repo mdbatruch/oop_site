@@ -17,7 +17,7 @@
     // echo $order_count;
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
-        header( 'location: ../../login.php' );
+        header( 'location: ../../login' );
     }
 
     $title = 'Orders';

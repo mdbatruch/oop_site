@@ -22,14 +22,14 @@
     // echo $order_count;
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
-        header( 'location: ../../login.php' );
+        header( 'location: ../../login' );
     }
 
     // start pagination limit
     $pagination_limit = $current_page * $page_count;
 
     if (!($pagination_limit - $order_count <= $page_count)) {
-        header( 'location: customer.php?id=' .  $customer['id']);
+        header( 'location: customer?id=' .  $customer['id']);
     } 
 
     // end pagination limit
@@ -38,7 +38,7 @@
 
     $site->addPrivateHeader($title);
 
-    $url = root_url_private('customers/customer.php?id=' . $customer['id']);
+    $url = root_url_private('customers/customer?id=' . $customer['id']);
 
     // echo '<pre>';
     // print_r($customer);

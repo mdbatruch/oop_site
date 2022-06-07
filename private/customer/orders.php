@@ -6,7 +6,7 @@
 
 
     if (!$session->is_logged_in_as_customer($_SESSION['account'])) {
-        header( 'location: ../../customer.php?timedout=true' );
+        header( 'location: ../../customer?timedout=true' );
     }
 
     $current_page = $_GET['page'] ?? 1;

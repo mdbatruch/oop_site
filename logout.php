@@ -10,8 +10,8 @@
     $session->logout();
 
     if ($customer) {
-        header( 'location: ./customer.php' );
+        header( 'location: ./customer' );
     } else {
-        header( 'location: ./login.php' );
+        header( 'location: ./login' );
     }
 ?>

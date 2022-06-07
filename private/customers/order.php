@@ -14,7 +14,7 @@
     // echo $order_count;
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
-        header( 'location: ../../login.php' );
+        header( 'location: ../../login' );
     }
 
     $title = 'Orders';
@@ -38,7 +38,7 @@
         <h2>Order Description for <?= $customer['username']; ?></h2>
     </div>
     <div class="row">
-        <a href="customer.php?id=<?= $customer['id']; ?>"><< Back to Customer Profile</a>
+        <a href="customer?id=<?= $customer['id']; ?>"><< Back to Customer Profile</a>
     </div>
         <div class="row">
         <table>

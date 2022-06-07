@@ -8,7 +8,7 @@
     // print_r($_SESSION);
 
     if (!$session->is_logged_in_as_customer($_SESSION['account'])) {
-        header( 'location: ../../customer.php?timedout=true' );
+        header( 'location: ../../customer?timedout=true' );
     } elseif ($_SESSION['id'] !== $_GET['id']) {
         header( 'location: index.php?id=' . $_SESSION['id']);
     }
