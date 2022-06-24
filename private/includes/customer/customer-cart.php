@@ -72,7 +72,9 @@
             </div>
         </div>
         <div class="pt-2 pb-2 logo-container d-flex justify-content-center">
-            <img src="<?= root_url('images/CastleGames.png'); ?>" alt="Castle Games" class="img-fluid">
+            <a href="<?= root_url('/'); ?>">
+                <img src="<?= root_url('images/CastleGames.png'); ?>" alt="Castle Games" class="img-fluid">
+            </a>
         </div>
         <div class="d-flex justify-content-end align-self-center cart">
             <div class="d-flex h-100">

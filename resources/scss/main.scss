@@ -766,21 +766,32 @@ body {
             }
         }
     }
-    .input-container {
-        &.popup {
-            padding: 20px 40px 30px;
-            .search-icon {
-                top: 15px;
-                right: 10px;
+    .MuiModal-root {
+        .MuiDrawer-paper {
+            @media(max-width: 599px) {
+                width: 90%;
             }
-            .spinner {
-                right: 15px;
-                top: 15px;
+            .input-container {
+                &.popup {
+                    padding: 20px 40px 30px;
+                    .search-icon {
+                        top: 15px;
+                        right: 10px;
+                    }
+                    .spinner {
+                        right: 15px;
+                        top: 15px;
+                    }
+                }
+            }
+            #container {
+                .product {
+                    &:last-child {
+                        margin-bottom: 80px;
+                    }
+                }
             }
         }
-    }
-    #container {
-        padding: 0 20px 40px;
     }
 }
 

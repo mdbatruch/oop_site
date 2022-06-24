@@ -3283,16 +3283,19 @@ body {
               max-width: 100%; }
               body main .category-search .inner .App form input[type="text"]::placeholder {
                 color: #fff; }
-  body .input-container.popup {
+  @media (max-width: 599px) {
+    body .MuiModal-root .MuiDrawer-paper {
+      width: 90%; } }
+  body .MuiModal-root .MuiDrawer-paper .input-container.popup {
     padding: 20px 40px 30px; }
-    body .input-container.popup .search-icon {
+    body .MuiModal-root .MuiDrawer-paper .input-container.popup .search-icon {
       top: 15px;
       right: 10px; }
-    body .input-container.popup .spinner {
+    body .MuiModal-root .MuiDrawer-paper .input-container.popup .spinner {
       right: 15px;
       top: 15px; }
-  body #container {
-    padding: 0 20px 40px; }
+  body .MuiModal-root .MuiDrawer-paper #container .product:last-child {
+    margin-bottom: 80px; }
 
 .close {
   float: right;
