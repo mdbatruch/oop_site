@@ -9,7 +9,7 @@
             <link rel="stylesheet" href="<?php echo root_url('css/font-awesome.min.css'); ?>" />
             <link rel="stylesheet" href="<?php echo root_url('css/styles.css'); ?>">
             <link rel="stylesheet" href="<?php echo root_url('css/bootstrap.css'); ?>" />
-            <link rel="stylesheet" href="<?php echo root_url('css/search.css'); ?>" />
+            <link rel="stylesheet" href="<?php echo root_url('css/main.chunk.css'); ?>" />
             <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
             
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

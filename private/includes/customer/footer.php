@@ -80,8 +80,8 @@
     <script src="<?php echo root_url('js/checkout.js'); ?>"></script>
     <script src="<?php echo root_url('js/carousel.js'); ?>"></script>
 
-    <script src="js/2.d1644945.chunk.js"></script>
-    <script src="js/main.4a4fc564.chunk.js"></script>
+    <script src="js/2.6621e767.chunk.js"></script>
+    <script src="js/main.chunk.js"></script>
 
     <script type="text/javascript">
         

@@ -2850,7 +2850,8 @@ body {
         body main .container-fluid .browse-categories .search-container #root .App {
           margin: 0px;
           max-width: none;
-          width: 100%; }
+          width: 100%;
+          padding: 0px; }
           body main .container-fluid .browse-categories .search-container #root .App form {
             max-width: none; }
             body main .container-fluid .browse-categories .search-container #root .App form input[type="text"] {
@@ -2866,9 +2867,12 @@ body {
                   border: 1px solid #999;
                   background-color: #fff;
                   padding: 10px; } }
-            body main .container-fluid .browse-categories .search-container #root .App form .spinner {
-              right: 5px;
-              top: calc(50% - 9px); }
+            body main .container-fluid .browse-categories .search-container #root .App form .input-container .search-icon {
+              top: 20px;
+              right: 15px; }
+              @media (min-width: 768px) {
+                body main .container-fluid .browse-categories .search-container #root .App form .input-container .search-icon {
+                  top: 15px; } }
             body main .container-fluid .browse-categories .search-container #root .App form #container .show {
               position: absolute;
               background-color: #fff;
@@ -3279,6 +3283,16 @@ body {
               max-width: 100%; }
               body main .category-search .inner .App form input[type="text"]::placeholder {
                 color: #fff; }
+  body .input-container.popup {
+    padding: 20px 40px 30px; }
+    body .input-container.popup .search-icon {
+      top: 15px;
+      right: 10px; }
+    body .input-container.popup .spinner {
+      right: 15px;
+      top: 15px; }
+  body #container {
+    padding: 0 20px 40px; }
 
 .close {
   float: right;

@@ -187,6 +187,7 @@ body {
                             margin: 0px;
                             max-width: none;
                             width: 100%;
+                            padding: 0px;
                             form {
                                 max-width: none;
                                 input[type="text"] {
@@ -204,9 +205,14 @@ body {
                                         padding: 10px;
                                     }
                                 }
-                                .spinner {
-                                    right: 5px;
-                                    top: calc(50% - 9px);
+                                .input-container {
+                                    .search-icon {
+                                        top: 20px;
+                                        right: 15px;
+                                        @media(min-width: 768px) {
+                                            top: 15px;
+                                        }
+                                    }
                                 }
                                 #container {
                                     .show {
@@ -759,6 +765,22 @@ body {
                 }
             }
         }
+    }
+    .input-container {
+        &.popup {
+            padding: 20px 40px 30px;
+            .search-icon {
+                top: 15px;
+                right: 10px;
+            }
+            .spinner {
+                right: 15px;
+                top: 15px;
+            }
+        }
+    }
+    #container {
+        padding: 0 20px 40px;
     }
 }
 
