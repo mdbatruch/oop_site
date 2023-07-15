@@ -126,9 +126,6 @@ class Customer extends Cart {
 
                     $cart->createCart($customerId['id']);
 
-                    // echo '<pre>';
-                    // print_r($customerId);
-
                     $data['success'] = true;
 
                     session_regenerate_id();
@@ -187,8 +184,6 @@ class Customer extends Cart {
                     $stmt->execute();
 
                     $customer_exists = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                    // print_r($customer_exists);
 
                     if (empty($customer_exists)) {
                         $data['success'] = false;
@@ -262,9 +257,6 @@ class Customer extends Cart {
             $stmt->execute();
             $email_exists = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // echo '<pre>';
-            // print_r($email_exists);
-
             if (!empty($email_exists)) {
                 if ($email_exists['email'] == $email && !($email_exists['id'] == $id)) {
                     $errors['email'] = 'There is already an account associated with this email. Please contact the administrator for assistance with your account.';
@@ -282,19 +274,12 @@ class Customer extends Cart {
             $stmt->execute();
             $username_exists = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // echo '<pre>';
-            // print_r($username_exists);
-
             if (!empty($username_exists)) {
                 if ($username_exists['username'] == $username && !($username_exists['id'] == $id)) {
                     $errors['username'] = 'This username already exists, please try another one';
                 }
             }
-
         }
-
-        // echo '<pre>';
-        // print_r($address);
 
         if (empty($address['street'])) {
             $errors['street'] = 'Street cannot be blank';
@@ -367,9 +352,6 @@ class Customer extends Cart {
         
                             $_SESSION['username'] = $username;
         
-                            // echo '<pre>';
-                            // print_r($_SESSION);
-        
                             $data['success'] = true;
         
                             $data['message'] = 'Success! Your Account was updated!';
@@ -382,9 +364,6 @@ class Customer extends Cart {
                         }
                     }
                 } else {
-
-                    // echo 'does not works';
-                    // exit;
 
                 if (!empty($errors)) {
 
@@ -408,9 +387,6 @@ class Customer extends Cart {
                             $stmt->execute() or die(print_r($stmt->errorInfo(), true));
         
                             $_SESSION['username'] = $username;
-        
-                            // echo '<pre>';
-                            // print_r($_SESSION);
         
                             $data['success'] = true;
                             

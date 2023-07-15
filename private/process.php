@@ -21,11 +21,10 @@
     $errors = [];
     $id = $_POST['id'];
 
-    // print_r($_POST);
 
     global $connect;
 
-  switch($id){
+  switch($id) {
       case 'login':
 
         $username = $_POST['username'] ?? '';
@@ -39,7 +38,6 @@
       
           $admin = $site->find_admin($username);
 
-      // print_r($admin);
           if (empty($admin)) {
             $errors['username'] = 'This username does not exist, man!';
           } else {
@@ -68,9 +66,6 @@
           $data['message'] = 'Logging you in now.';
           $data['success'] = true;
       
-
-          // $session = new Session;
-
           $_SESSION['username'] = $admin['username'];
           $_SESSION['account'] = 'Administrator';
           $_SESSION['last_login'] = time();
@@ -121,8 +116,6 @@
         $email = $_POST['email'];
         $message = $_POST['message'];
 
-        // var_dump($attachment);
-
         if (!isset($_FILES['file'])) {
           $attachment = '';
         } else {
@@ -153,19 +146,11 @@
 
         $active = $_POST['gallery_active'];
   
-        // var_dump($active);
-
-        // exit;
-
         $slides = [];
 
         if (!empty($_FILES['gallery_images'])) {
 
           foreach ($_FILES['gallery_images']['name'] as $key => $name) {
-
-
-            //to make indexed
-            // $slides[][$key] = $name;
 
             $tmp_name = $_FILES['gallery_images']['tmp_name'][$key];
 
@@ -179,24 +164,6 @@
       }
 
        $slides = json_encode($slides);
-
-      //  print_r($slides);
-
-      //   for($i=0; $i<count($_FILES['gallery_images']); $i++) {
-
-      //     $target_path = "uploads/";
-
-      //     // print_r($slides);
-
-      //     // $ext = explode('.', basename( $_FILES['file']['gallery_images'][$i]));
-      //     // $target_path = $target_path . md5(uniqid()) . "." . $ext[count($ext)-1]; 
-      
-      //     // if(move_uploaded_file($_FILES['file']['tmp_name'][$i], $target_path)) {
-      //     //     echo "The file has been uploaded successfully <br />";
-      //     // } else{
-      //     //     echo "There was an error uploading the file, please try again! <br />";
-      //     // }
-      // }
 
        $stmt = $db->prepare("SELECT title, id from galleries WHERE title = ?");
        $stmt->execute(array($title));
@@ -241,15 +208,9 @@
 
             $stmt->execute();
 
-            // if ($stmt->execute()) {
+            $data['success'] = true;
 
-
-              $data['success'] = true;
-
-              $data['message'] = 'Success! Gallery was created!';
-            // } else {
-            //   print_r($db->errorInfo());
-            // }
+            $data['message'] = 'Success! Gallery was created!';
 
           } catch (PDOException $e) {
                     
@@ -282,22 +243,8 @@
         }
 
         $assoc = $_POST['gallery_assoc'];
-
         $active = $_POST['gallery_active'];
 
-
-        // if ($_POST['gallery_active']) {
-        // $active = 'Yes';
-        // } else {
-        //   $active = 'No';
-        // }
-
-        // var_dump($active);
-
-        // exit;
-
-
-        //add images to this
         $slides = [];
 
         $existing = $_POST['existing'];
@@ -308,17 +255,9 @@
           $slides[] = $exists;
         }
 
-        // print_r($slides);
-
-        // exit;
-
         if (!empty($_FILES['gallery_images'])) {
 
             foreach ($_FILES['gallery_images']['name'] as $key => $name) {
-
-
-              //to make indexed
-              // $slides[][$key] = $name;
 
               $tmp_name = $_FILES['gallery_images']['tmp_name'][$key];
 
@@ -330,10 +269,6 @@
 
           }
       }
-
-      //  print_r($slides);
-
-      //  exit;
 
        $slides = json_encode($slides);
 
@@ -361,11 +296,6 @@
 
       $check_assoc = in_array_r($gallery_id, $assoc_exists) ? 'found' : 'not found';
 
-      //  echo $title_exists . '<br>';
-      //  echo $assoc_exists . '<br>';
-      // echo $gallery_id;
-      //  print_r($assoc_exists);
-
        if ($title_exists && $check_id == 'not found'){
             $errors['title'] = "This name already exists, please choose another one";
         }
@@ -392,7 +322,6 @@
           $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           $stmt = $db->prepare("UPDATE galleries SET title = ?, description = ?, page_id = ?, slides = ?, active = ? WHERE id = ? LIMIT 1");
-          // $stmt->bindParam("sisi", $title, $assoc, $slides, $gallery_id);
   
           $stmt->bindParam(1, $title);
           $stmt->bindParam(2, $description);
@@ -445,38 +374,6 @@
       break;
 
       case 'save-navigation':
-
-        // echo '<pre>';
-        // print_r($_POST);
-
-        // old
-
-      //   $nav = $_POST['order'];
-
-      //   try {
-          
-      //     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-      //     $stmt = $db->prepare('UPDATE pages SET nav_order = ? WHERE page=?');
-
-      //     foreach ($nav as $key => $value) {
-      //         $stmt->bindValue(1, $value['order'], PDO::PARAM_INT);
-      //         $stmt->bindValue(2, $value['page']);
-      //         $stmt->execute();
-      //     }
-
-      //       $data['success'] = true;
-      //       $data['message'] = 'Success! Your Nav has been edited!';
-
-
-      //   } catch (PDOException $e) {
-                  
-      //     $data['success'] = false;
-
-      //     $data['message'] = $e->getMessage();
-      // }
-
-      //old
 
          try {
           
@@ -556,11 +453,6 @@
 
       case 'customer-update':
 
-        // echo '<pre>';
-        // print_r($_POST);
-
-        // exit;
-
         $id = $_POST['customer_id'];
         $firstName = $_POST['first_name'];
         $lastName = $_POST['last_name'];
@@ -582,17 +474,8 @@
         $product = $_POST['product'];
         $quantity = $_POST['quantity'];
 
-        // print_r($_POST);
-
         $cart_item = new CartItem($db);
-
-        // if ($cart_item->exists($user_id)) {
-        //   $cart_item->update($product, $user_id);
-        //   echo 'updated';
-        // } else {
-          $cart_item->create($product, $user_id, $cart_id, $quantity);
-        //   echo 'created';
-        // }
+        $cart_item->create($product, $user_id, $cart_id, $quantity);
 
       break;
 
@@ -601,9 +484,6 @@
         $product_id = $_POST['product_id'];
         $cart_id = $_POST['cart_id'];
         $quantity = $_POST['quantity'];
-
-        // echo '<pre>';
-        // print_r($_POST);
 
         $cart_item = new CartItem($db);
 
@@ -618,9 +498,6 @@
         $cart_id = $_POST['cart_id'];
         $quantity = $_POST['quantity'];
 
-        // echo '<pre>';
-        // print_r($_POST);
-
         $cart_item = new CartItem($db);
 
         $cart_item->increase($product_id, $cart_id, $quantity);
@@ -632,9 +509,6 @@
 
         $product_id = $_POST['product_id'];
         $cart_id = $_POST['cart_id'];
-
-        // echo '<pre>';
-        // print_r($_POST);
 
         $cart_item = new CartItem($db);
 
@@ -653,9 +527,6 @@
           $quantity = 1;
         }
 
-        // echo '<pre>';
-        // print_r($_POST);
-
         $cart_item = new CartItem($db);
 
         $cart_item->increase($product_id, $cart_id, $quantity, $product);
@@ -672,9 +543,6 @@
         if (empty($_POST['quantity'])) {
           $quantity = 1;
         }
-
-        // echo '<pre>';
-        // print_r($_POST);
 
         $cart_item = new CartItem($db);
 

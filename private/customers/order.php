@@ -8,11 +8,6 @@
 
     $customer = Customer::view_customer_info($order[0]['customer_id'], $db);
 
-    // echo '<pre>';
-    // print_r($customer);
-
-    // echo $order_count;
-
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login' );
     }
@@ -20,9 +15,6 @@
     $title = 'Orders';
 
     $site->addPrivateHeader($title);
-    // echo '<pre>';
-    // print_r($customer);
-
 ?>
 
 

@@ -225,7 +225,6 @@
             $output = "";
 
             if (isset($_GET['category'])) {
-                // echo $this->total_count;
                 $output .= '<div class="pagination d-flex text-center">';
                 $output .= $this->previous_category_link($url, $_GET['category']);
                 $output .= '<div class="pagination-index mx-2">Page ' . $this->current_page . ' of ' . $this->total_pages() . '</div>';
@@ -277,7 +276,6 @@
             $output = "";
 
             if (isset($_GET['category'])) {
-                // echo $this->total_count;
                 echo '<div class="pagination d-block text-center">';
                     if (isset($this->previous_link)) {
                         echo "<a href=\"{$url}&page={$this->previous_page()}&category={$_GET['category']}\">&laquo;</a>";

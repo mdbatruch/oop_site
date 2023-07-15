@@ -35,7 +35,6 @@ body {
         }
     }
     .customer-main {
-        // min-height: calc(100vh - 163px);
         background-color: $brand-peach;
         .customer-top {
             background-color: #343a40;
@@ -99,7 +98,6 @@ body {
                         left: 50%;
                         width: 90%;
                         top: 0;
-                        // height: 80vh;
                         overflow: scroll;
                         &::-webkit-scrollbar {
                             width: 0px;
@@ -518,9 +516,6 @@ body {
             }
         }
         .no-orders {
-            // @media(min-height: 650px) {
-            //     transform: translateY(50%);
-            // }
             h3 {
                 text-transform: uppercase;
             }

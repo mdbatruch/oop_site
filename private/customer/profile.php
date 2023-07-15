@@ -13,14 +13,9 @@
 
     $address = json_decode($profile['address']);
 
-    // echo '<pre>';
-    // print_r($profile);
+    $title = 'Customer Profile';
 
-//  include('../includes/header.php');
-
- $title = 'Customer Profile';
-
- $subtotal = 0;
+    $subtotal = 0;
 
     if (!empty($_SESSION) && $_SESSION['account'] !== 'Administrator') {
 

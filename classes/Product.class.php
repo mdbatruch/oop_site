@@ -16,8 +16,6 @@ class Product{
         $this->conn = $db;
     }
 
-    // start api endpoints
-
     public function create(){
     
         $stmt = $this->conn->prepare("INSERT INTO " . $this->table_name . " SET name=:name, price=:price, description=:description, image=:image, category_id=:category_id, created=:created");
@@ -150,12 +148,9 @@ class Product{
         return $stmt;
     }
 
-    //end api endpoints
-
     function read($limit = null, $offset = null){
  
         // select all products query
-        // $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC";
         $query = "SELECT id, name, description, image, product_gallery, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC LIMIT " . $limit . " OFFSET " . $offset;
      
         // prepare query statement
@@ -212,15 +207,12 @@ class Product{
         $rows = $stmt->fetch(PDO::FETCH_NUM);
      
         // return count
-        // echo '<pre>';
-        // print_r($rows);
         return $rows[0];
     }
 
     function readByCategory($limit = null, $offset = null, $category){
  
         // select all products query
-        // $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " ORDER BY created DESC";
         $query = "SELECT id, name, description, image, price, category_id  FROM " . $this->table_name . " WHERE category_id = ? ORDER BY created DESC LIMIT " . $limit . " OFFSET " . $offset;
 
         // prepare query statement
@@ -267,7 +259,6 @@ class Product{
     function getRange($limit = null, $offset = null, $from, $to = null){
  
         // select all products query
-        // $query = "SELECT *  FROM " . $this->table_name . " WHERE price BETWEEN ? AND ? ORDER BY price ASC LIMIT " . $limit . " OFFSET " . $offset;
         $query = "SELECT *  FROM " . $this->table_name . " WHERE price BETWEEN ? AND ? ORDER BY price ASC";
 
         // prepare query statement

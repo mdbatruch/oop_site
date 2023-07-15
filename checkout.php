@@ -217,8 +217,6 @@
     $("#order").submit(function(e){
         e.preventDefault();
 
-            console.log('processing order');
-
             $("#submit-btn").hide();
             $('input:button.previous').hide();
             $("#loader").show();
@@ -257,8 +255,6 @@ function stripeResponseHandler(status, response) {
 
         //insert the token into the form
         $("#order").append("<input type='hidden' name='token' value='" + token + "' />");
-
-        console.log(response);
 
         var id = 'order';
 
@@ -319,14 +315,6 @@ function stripeResponseHandler(status, response) {
 
         var card_type = $('.step-3 .payment-confirm span').text();
 
-        // if (card_type == '002') {
-        //     var card = 'MasterCard';
-        // } else if (card_type == '001') {
-        //     var card = 'VISA';
-        // } else {
-        //     var card = '';
-        // }
-
         var expiry = $('#month').val() + '/' + $('#year').val();
 
         var card_details = {
@@ -340,19 +328,13 @@ function stripeResponseHandler(status, response) {
 
         var order = getCheckoutItems();
 
-        console.log(id, customer_id, contact_details, delivery_address, billing_address, shipping_information, card_details, order, taxes_subtotals, amount, token);
-
         $.ajax({
                 type: "POST",
                 url: "private/process.php",
                 async: false,
                 data: {id, customer_id, contact_details, delivery_address, billing_address, shipping_information, card_details, order, taxes_subtotals, amount, token},
             }).done(function(data){
-                console.log(data);
-                // console.log(data.order);
-                // let order_num = parseFloat(data);
                 window.location.href = 'confirmation.php?order=' + data;
-            
         });
 
     }

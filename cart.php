@@ -30,9 +30,6 @@
 
     $subtotal = '';
 
-    // echo '<pre>';
-    // print_r($products);
-
 ?>
 <header>
     <?php $site->addCartHeader($site, $count, $items, $subtotal, $db); ?>

@@ -12,53 +12,19 @@
     <script type="text/javascript">
         $(function  () {
 
-            // $("ol.navbar-nav").sortable();
-
         $('.nav-sort').nestable({
             group: 1
         });
 
-        // var output = $('.nav-sort').contents();
-        // var output = window.JSON.stringify($('.nav-sort').nestable('serialize'));
-
-        // console.log(output);
-
-        // updateOutput($('#nestable').data('output', $('#nestable-output')));
 
             $("#save-navigation").on("click", function(e){
                 e.preventDefault();
-
-                console.log('a nav edit has been tried');
                     
                     var button = $(this).attr('id');
                     var nav_name = $("ol.navbar-nav").attr('id');
                     var nav_container = $("ol.navbar-nav").contents();
 
-                    console.log(button, nav_name, nav_container);
-
                     var output = window.JSON.stringify($('.nav-sort').nestable('serialize'));
-
-                    console.log(output);
-
-
-                    // only one tier item
-
-                    // var order = [];
-
-                    // $('li.nav-item').each(function(i, obj) {
-                    //     $item = $(this).index();
-                    //     $page = $(this).text();
-
-                    //     order.push({
-                    //         order: $item,
-                    //         page: $page
-                    //     });
-
-                    // });
-
-                    // console.log(order);
-
-                    // end only one tier item
 
                     $.ajax({
                         type: "POST",
@@ -70,12 +36,8 @@
                     if (!data.success) {
                         
                             $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                        
-                            console.log('nav did not submit!');
 
                         } else {
-                            
-                            console.log('nav edited!');
 
                             $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                         }
@@ -92,14 +54,8 @@
     $(".delete").on("click", function(e){
         e.preventDefault();
 
-        console.log('a project deletion has been tried');
-            
-            // var class = $(this).attr('class');
             var project_id = $(this).attr('data-id');
 
-            console.log(project_id);
-
-    
             $.ajax({
                 type: "POST",
                 url: "../process.php",
@@ -110,12 +66,8 @@
             if (!data.success) {
 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                
-                    console.log('Project did not delete!');
 
                 } else {
-                    
-                    console.log('Project deleted!');
 
                     $('.delete[data-id="' + data.id + '"]').closest('.page').remove();
 
@@ -129,10 +81,6 @@
     $("#new-page").on("submit", function(e){
         e.preventDefault();
 
-        console.log('a page submission has been tried');
-
-            // $('#page_description').tinymce().save();
-
             tinyMCE.triggerSave();
             
             var formId = $('form').attr('id');
@@ -140,10 +88,6 @@
             var page_title = $("#page_title").val();
             var page_subtitle = $("#page_subtitle").val();
             var page_description = $("#page_description").val();
-            // var page_description = $("#page_description").html(tinymce.get('#page_description').getContent());
-
-            console.log(formId, page_name, page_title, page_subtitle, page_description);
-            
 
             $.ajax({
                 type: "POST",
@@ -169,14 +113,10 @@
                     }
                 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                
-                    console.log('page did not submit!');
 
                 } else {
 
                     $(location).attr('href', data.redirect);
-                    
-                    console.log('page created!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
                 }
@@ -187,10 +127,6 @@
 
     $("#new-gallery").on("submit", function(e){
         e.preventDefault();
-
-        console.log('a gallery submission has been tried');
-
-            // tinyMCE.triggerSave();
             
             var formId = $('form').attr('id');
             var gallery_title = $("#gallery_title").val();
@@ -208,8 +144,6 @@
 
             var gallery_active = $("#gallery_active").val();
 
-            // var gallery_description = $("#gallery_description").val();
-
             var form_data = new FormData();
 
             form_data.append('id', formId);
@@ -222,11 +156,6 @@
                 for (var index = 0; index < totalfiles; index++) {
                     form_data.append("gallery_images[]", document.getElementById('gallery_images').files[index]);
                 }
-            // form_data.append('gallery_images', gallery_images);
-
-
-            console.log(formId, gallery_title, gallery_assoc, gallery_desc, gallery_active, gallery_images);
-            
 
             $.ajax({
                 type: "POST",
@@ -254,14 +183,10 @@
                     }
                 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                
-                    console.log('gallery did not submit!');
 
                 } else {
 
                     $(location).attr('href', data.redirect);
-                    
-                    console.log('gallery created!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
                 }
@@ -277,10 +202,6 @@
     $("#edit-gallery").on("submit", function(e){
         e.preventDefault();
 
-        console.log('a gallery edit has been tried');
-
-            // tinyMCE.triggerSave();
-            
             var formId = $('form').attr('id');
             var gallery_id = $("#gallery_id").val();
             var gallery_title = $("#gallery_title").val();
@@ -298,8 +219,6 @@
 
             var gallery_active = $("#gallery_active").val();
 
-            // var gallery_description = $("#gallery_description").val();
-
             var form_data = new FormData();
 
             form_data.append('id', formId);
@@ -313,21 +232,15 @@
                 for (var index = 0; index < totalfiles; index++) {
                     form_data.append("gallery_images[]", document.getElementById('gallery_images').files[index]);
                 }
-            // form_data.append('gallery_images', gallery_images);
 
             var existing = [];
 
             $('.current-image').each(function(i, obj) {
                 $image = $(this).attr('data-name');
-                console.log($image);
                 existing.push($image);
             });
 
             form_data.append('existing', existing);
-
-
-            console.log(formId, gallery_title, gallery_assoc, gallery_active, gallery_images, gallery_desc, existing);
-            
 
             $.ajax({
                 type: "POST",
@@ -355,14 +268,10 @@
                     }
                 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                
-                    console.log('gallery did not submit!');
 
                 } else {
 
                     $(location).attr('href', data.redirect);
-                    
-                    console.log('gallery created!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
                 }
@@ -388,14 +297,9 @@
     $(".confirm-delete-gallery").on("click", function(e){
         e.preventDefault();
 
-        console.log('a gallery deletion has been tried');
-            
-            var formId = $(this).attr('class');
-            var gallery_id = $(this).attr('data-id');
+        var formId = $(this).attr('class');
+        var gallery_id = $(this).attr('data-id');
 
-        console.log(formId, gallery_id);
-
-    
             $.ajax({
                 type: "POST",
                 url: "../process.php",
@@ -406,12 +310,8 @@
             if (!data.success) {
 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                
-                    console.log('Gallery did not delete!');
 
                 } else {
-                    
-                    console.log('Gallery deleted!');
 
                     let modal = $('#id01');
 
@@ -430,8 +330,6 @@
     $("#edit-page").on("submit", function(e){
         e.preventDefault();
 
-        console.log('a page edit has been tried');
-
             tinyMCE.triggerSave();
             
             var formId = $('form').attr('id');
@@ -440,9 +338,6 @@
             var page_title = $("#page_title").val();
             var page_subtitle = $("#page_subtitle").val();
             var page_description = $("#page_description").val();
-
-            console.log(formId, page_id, page_name, page_title, page_subtitle, page_description);
-            
 
             $.ajax({
                 type: "POST",
@@ -468,14 +363,10 @@
                     }
                 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                
-                    console.log('page edit did not work!');
 
                 } else {
 
                     $(location).attr('href', data.redirect);
-                    
-                    console.log('page has been edited!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
@@ -484,12 +375,8 @@
                     }, 5000);
 
                 }
-            
         });
-
     });
-    
-    
 </script>
 
 </body>

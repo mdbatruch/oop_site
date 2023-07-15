@@ -62,9 +62,7 @@
         }
 
         public function addCartMenu($db) {
-            // $root = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path);
             require_once("components/cart-menu.php");
-            // include "$root/includes/header.php";
         }
 
         public function addCustomerCartMenu($db) {
@@ -77,9 +75,7 @@
         }
 
         public function addItemRemoval() {
-            // $root = realpath($_SERVER['DOCUMENT_ROOT'] .  $this->path);
             require_once("components/item-removal.php");
-            // include "$root/includes/header.php";
         }
 
         public function addFooter() {
@@ -164,18 +160,11 @@
                                 }
                             }
                         }
-                        
-                        // echo '<pre>';
-                        // print_r($item);
 
-                        array_push($new_nav, $item);
-                    
+                        array_push($new_nav, $item);                    
                     }
 
                     $nav = json_encode($new_nav);
-
-                    // echo '<pre>';
-                    // print($nav);
 
                     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -209,18 +198,11 @@
                                 }
                             }
                         }
-                        
-                        // echo '<pre>';
-                        // print_r($item);
 
                         array_push($new_nav, $item);
-                    
                     }
 
                     $nav = json_encode($new_nav);
-
-                    echo '<pre>';
-                    print($nav);
 
                     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -237,9 +219,6 @@
             $items = self::find_nav_by_title('main-navigation');
 
             $items = json_decode($items[0]['output'], true);
-
-            // echo '<pre>';
-            // print_r($items);
 
             echo '<ol id="main-navigation" class="navbar-nav dd-list">';
                 foreach($items as $item) {
@@ -265,9 +244,6 @@
             $items = self::find_nav_by_title('main-navigation');
 
             $items = json_decode($items[0]['output'], true);
-
-            // echo '<pre>';
-            // print_r($items);
 
             echo '<ul id="main-navigation" class="navbar-nav dd-list">';
                 foreach($items as $item) {
@@ -305,9 +281,6 @@
             $items = self::find_nav_by_title('main-navigation');
 
             $items = json_decode($items[0]['output'], true);
-
-            // echo '<pre>';
-            // print_r($items);
 
             echo '<ul id="main-navigation" class="navbar-nav dd-list">';
                 foreach($items as $item) {
@@ -489,10 +462,6 @@
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // echo '<pre>';
-            // print_r($row);
-            // echo $id;
-
             if($row && $id !== $row['id']) {
                 $errors['name'] = 'This page name has already been taken, please choose another one.';
                 
@@ -531,10 +500,6 @@
                     
                     // update navigation bar here
                     $output = self::navUpdate($id, $name);
-
-                    // echo '<pre>';
-                    // print_r($output);
-
   
                       $data['success'] = true;
   

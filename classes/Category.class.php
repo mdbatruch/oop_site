@@ -53,8 +53,6 @@ class Category{
             $stmt->bindParam(":category_id", $categoryId);
 
             $stmt->execute();
-
-            // $row = $stmt->fetch(PDO::FETCH_ASSOC);
       
             return $stmt;
 

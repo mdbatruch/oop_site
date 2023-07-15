@@ -8,15 +8,9 @@
         header( 'location: ../../login?timedout=true' );
     }
 
-    // echo '<pre>';
-    // print_r($pages);
-
     $id = $_GET['id'];
 
     $page = $site->find_by_id($id);
-
-    // echo '<pre>';
-    // print_r($page);
 
     $title = 'Edit Page';
 

@@ -17,9 +17,6 @@
 
     $profile = Customer::view_customer_info($_SESSION['id'], $db);
 
-    // echo '<pre>';
-    // print_r($profile);
-
     $title = 'Customer Orders';
 
     $subtotal = 0;
@@ -70,9 +67,6 @@
     // end pagination limit
 
     $url = root_url_private('customer/orders.php?id=' . $_GET['id']);
-
-    // echo '<pre>';
-    // print_r($orders);
 
 ?>
 
@@ -204,14 +198,11 @@
                                                     </div>
                                                     <div class="products-main">
                                                         <?php foreach($order['products'] as $product) {
-                                                            // echo '<pre>';
-                                                            // print_r($product);
                                                             $image = Product::getProductImage($product->item_name, $db);
                                                             if (!isset($product->item_id)) {
                                                                 $product->item_id = "";
                                                             }
-                                                            ?>
-
+                                                        ?>
                                                             <div class="cart-product my-2 d-flex" data-id="<?= $product->item_id; ?>">
                                                                 <div class="img-container">
                                                                     <a href="<?= root_url('product?id=' . $product->item_id); ?>" target="_blank">

@@ -3,8 +3,6 @@
     require('../../initialize.php');
 
     global $session;
-    // echo '<pre>';
-    // print_r($session);
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login' );
@@ -35,16 +33,11 @@
             <ul>
                 <?php 
                 
-                // echo '<pre/>';
-                // print_r($galleries);
-
                 foreach($galleries as $gallery) : 
                     
                     $name = $gallery['title']; 
                     $gallery_id = $gallery['id'];
                     $slides = json_decode($gallery['slides']);
-
-                    // print_r($slides);
 
                     $page_assoc = $site->find_by_id($gallery['page_id']);
 

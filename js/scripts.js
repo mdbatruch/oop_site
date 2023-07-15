@@ -5,8 +5,6 @@ function evaluateSubTotal() {
         var item_total = $(this).find('.price').html();
 
         total += parseFloat(item_total)
-
-        // alert(total);
     });
 
     $('#sub-total').text('$' + total);
@@ -24,8 +22,6 @@ function evaluateSliderSubTotal() {
         var item_total_formatted = item_total.substring(1, item_total.length);
 
         total += quantity * parseFloat(item_total_formatted)
-
-        // alert(total);
     });
 
     $('.cart-total').text(total);
@@ -40,8 +36,6 @@ function evaluateSliderCartSubTotal() {
         var item_total_formatted = item_total.substring(1, item_total.length);
 
         var final_total = item_total_formatted * quantity;
-
-        // console.log(final_total);
 
         total += parseFloat(final_total);
 
@@ -69,13 +63,8 @@ function returnSidebarProduct(id, name, description, image, price, quantity, adj
         var quantity_container = $(this).find('.product-quantity');
         var existing_quantity = $(this).find('.product-quantity').html().trim();
 
-        // console.log(quantity + 'preloop');
-
         var quantity = self.quantity || 1;
 
-        // console.log(quantity + 'loop');
-
-        // console.log(existing_name + " " + name);
         if (existing_name == name) {
             exists = true;
 
@@ -103,10 +92,6 @@ function returnSidebarProduct(id, name, description, image, price, quantity, adj
     });
 
     if (!exists) {
-
-        // console.log(quantity + 'general');
-        // console.log(this.quantity + 'this');
-        // console.log(self.quantity + 'self');
 
         var loc = window.location.pathname;
         var dir = loc.substring(0, loc.lastIndexOf('/'));
@@ -151,8 +136,6 @@ function evaluateCartCount() {
         var item_total = $(this).find('.product-quantity').html();
 
         total += parseFloat(item_total)
-
-        // alert(total);
     });
 
     $('.cart-count').text(total);
@@ -168,7 +151,6 @@ function evaluateSliderCartCount() {
 
         total += parseFloat(item_total)
 
-        // alert(total);
     });
 
     $('.cart-count').text(total);
@@ -217,11 +199,8 @@ function getCheckoutItems() {
             order_item.item_quantity = item_quantity;
             order_item.item_price = item_price;
             order_item.item_individual_price = item_individual_price;
-
         
             order_items.push(order_item);
-            
-            // console.log(order_items);
     });
 
     return order_items;
@@ -255,15 +234,12 @@ function toggleProductGalleryImages() {
 
     var carousel_item = $('.carousel-item');
 
-    console.log(main);
     $.each(image, function(index, val) {
         
         var src = $(this).attr('src');
 
         // get the images order number
         var order = $(this).attr('data-order');
-
-        console.log(src);
 
         // when you click on side image
         $(this).on('click', function(){
@@ -275,15 +251,11 @@ function toggleProductGalleryImages() {
         $(this).addClass('active');
 
         $(this).siblings().removeClass('active');
-
-        console.log(order);
            
            // loop through carousel items and find the carousel item with the same order number
            $.each(carousel_item, function(index, val) {
             
              var carousel_order = $(this).attr('data-order')
-
-               console.log(carousel_order + ' carousel');
                 if (carousel_order == order) {
                     $(this).siblings().removeClass('active');
                     $(this).addClass('active');
@@ -442,7 +414,6 @@ function toggleOrderBillingList() {
         e.stopPropagation();
 
         let id = $(this).attr('data-id');
-        console.log(id);
 
         $(body).addClass('no-scroll');
 
@@ -455,7 +426,6 @@ function toggleOrderBillingList() {
         e.stopPropagation();
 
         let id = $(this).attr('data-id');
-        console.log(id);
 
         $(body).addClass('no-scroll');
 

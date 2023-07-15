@@ -16,11 +16,6 @@
 
     $orders = Order::fetchOrders($_GET['id'], $page_count, $pagination->offset(), $db);
 
-    // echo '<pre>';
-    // print_r($order_count);
-
-    // echo $order_count;
-
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login' );
     }
@@ -30,18 +25,13 @@
 
     if (!($pagination_limit - $order_count <= $page_count)) {
         header( 'location: customer?id=' .  $customer['id']);
-    } 
-
-    // end pagination limit
+    }
 
     $title = 'Customer Profile';
 
     $site->addPrivateHeader($title);
 
     $url = root_url_private('customers/customer?id=' . $customer['id']);
-
-    // echo '<pre>';
-    // print_r($customer);
 
 ?>
 

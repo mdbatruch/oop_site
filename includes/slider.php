@@ -1,7 +1,8 @@
 <?php 
 
 global $site;
-//find slider by ID
+
+    //find slider by ID
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
     } else {
@@ -10,9 +11,6 @@ global $site;
     $gallery = $site->findSliderByPageId($id);
 
     $slides = json_decode($gallery['slides']);
-
-    // echo '<pre>';
-    // print_r($slides);
 ?>
 
 <?php if ($gallery['active']) : ?>

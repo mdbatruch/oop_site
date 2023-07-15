@@ -250,25 +250,11 @@
                 }
             }
 
-            //check errors array values
-            console.log(errors);
-
             // make sure they are all true
             let checker = arr => arr.every(v => v === true);
-            console.log(checker(errors));
-
-            // errors.forEach(function(item) {
-            //     if(item == true) {
-            //         var validate = false;
-            //     } else {
-            //         var validate = true;
-            //     }
-            // });
 
             // if all items in errors array are true, then proceed to next step
             if (checker(errors) == true) {
-
-                // alert('empty');
 
                 if(animating) return false;
                 animating = true;
@@ -282,12 +268,7 @@
                 $(".titles h1").eq($("fieldset").index(next_fs)).addClass("active");
                 $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-                console.log($("#progressbar li").eq($("fieldset").index(next_fs)));
-
                 if (count == 2) {
-            
-
-
                     $(name).text(first_name + " " + last_name);
                     $(phone_value).text(phone);
                     $(email_value).text(email);
@@ -338,12 +319,7 @@
                     }
                 }
 
-                // alert(name);
-                // if (first_name == '') {
-                //     $('#first_name').after('<h1>Enter a name</h1>');
-                // } else {
-                console.log('next clicked');
-                    //show the next fieldset
+                // show the next fieldset
                 next_fs.show(); 
                 //hide the current fieldset with style
                 current_fs.animate({opacity: 0}, {
@@ -371,8 +347,6 @@
                     //this comes from the custom easing plugin
                     easing: 'easeInOutBack'
                 });
-                    
-                // }
                 }
             
         });
@@ -397,9 +371,9 @@
             $(".titles h1").eq($("fieldset").index(previous_fs)).addClass("active");
             $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
             
-            //show the previous fieldset
+            // show the previous fieldset
             previous_fs.show(); 
-            //hide the current fieldset with style
+            // hide the current fieldset with style
             current_fs.animate({opacity: 0}, {
                 step: function(now, mx) {
                     //as the opacity of current_fs reduces to 0 - stored in "now"

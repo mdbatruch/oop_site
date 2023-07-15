@@ -2,19 +2,13 @@
     
     require('../../initialize.php');
 
-    // require_once('../../init.php');
-
     global $session;
-    // // echo '<pre>';
-    // // print_r($session);
 
     $customer_count = Customer::fetchAllCustomersCount($db);
 
     $current_page = $_GET['page'] ?? 1;
 
     $page_count = 10;
-
-    // echo $order_count;
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login' );
@@ -27,8 +21,6 @@
         header( 'location: index.php' );
     } 
 
-    // end pagination limit
-
     $title = 'Customers';
 
     $site->addPrivateHeader($title);
@@ -38,9 +30,6 @@
     $customers = Customer::fetchAllCustomers($db, $page_count, $pagination->offset());
 
     $url = root_url_private('customers/index.php');
-
-    // echo '<pre>';
-    // print_r($customers);
 
 ?>
 

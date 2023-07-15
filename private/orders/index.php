@@ -3,18 +3,12 @@
     require('../../initialize.php');
 
     global $session;
-    // // echo '<pre>';
-    // // print_r($session);
-
-    // $stmt = $product->read($per_page, $pagination->offset());
 
     $order_count = Order::fetchAllOrdersCount($db);
 
     $current_page = $_GET['page'] ?? 1;
 
     $page_count = 5;
-
-    // echo $order_count;
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login' );
@@ -35,11 +29,7 @@
 
     if (!($pagination_limit - $order_count <= $page_count)) {
         header( 'location: index.php' );
-    } 
-    // end pagination limit
-
-    // echo '<pre>';
-    // print_r($orders);
+    }
 
 ?>
 

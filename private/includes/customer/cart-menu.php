@@ -7,8 +7,6 @@
 
         $products = $cart_item->get_cart_id($_SESSION['id'], $items['id']);
     }
-    // echo '<pre>';
-    // print_r($products);
 ?>
 <div class="cart-menu">
     <div class="header d-flex p-4">

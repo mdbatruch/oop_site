@@ -3,15 +3,10 @@
     require('../../initialize.php');
 
     global $session;
-    // // echo '<pre>';
-    // // print_r($session);
 
     if (!$session->is_logged_in_as_admin($_SESSION['account'])) {
         header( 'location: ../../login?timedout=true' );
     }
-
-    // echo '<pre>';
-    // print_r($pages);
 
     $title = 'Add New Page';
 

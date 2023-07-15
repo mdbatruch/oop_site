@@ -9,8 +9,6 @@
         public $user_id;
         public $created;
         public $modified;
-        // public $products;
-
         public function __construct($db){
             $this->conn = $db;
         }
@@ -24,27 +22,16 @@
 
                 $stmt->execute();
 
-                // $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                // return $rows;
-
                 $products_arr=array();
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    
-                    // echo '<pre>';
-                    // print_r($row);
 
                     $row_decoded = json_decode($row['product']);
-
-                    // echo '<pre>';
-                    // print_r($row_decoded);
 
                     if(empty($row_decoded->image)) {
                         $row_decoded->image = 'Missing.jpg';
                     }
 
-                    // echo $row_decoded->id;
                     extract($row);
               
                     $product_item=array(
@@ -91,10 +78,6 @@
         }
 
         public function create($products, $user_id, $cart_id, $quantity) {
-
-            // echo '<pre>';
-            // print_r($products);
-
             $product_id = $products['id'];
 
             $stmt = $this->conn->prepare('SELECT * FROM cart_items WHERE product_id=:product_id AND cart_id=:cart_id');
@@ -104,9 +87,6 @@
             $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
             $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // echo '<pre>';
-            // print_r($rows);
 
             if (!empty($rows)) {
 
@@ -168,9 +148,6 @@
 
             $rows = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // echo '<pre>';
-            // print_r($rows);
-
             if (!empty($rows)) {
 
                 $new_quantity = $rows['quantity'] + 1;
@@ -188,7 +165,7 @@
                     $stmt->execute() or die(print_r($stmt->errorInfo(), true));
 
                     $data['quantity'] = $new_quantity;
-                    // $data['new_item'] = false;
+
                     $data['price'] = $price;
 
                     $data['id'] = $product_id;
@@ -212,7 +189,6 @@
                 try {
                     
                     $product = json_encode($product);
-                    // $new_quantity = $rows['quantity'] + 1;
 
                     $stmt = $this->conn->prepare('INSERT INTO cart_items (product_id, product, quantity, cart_id) VALUES (?, ?, ?, ?)' );
                     
@@ -222,10 +198,6 @@
                     $stmt->bindParam(4, $cart_id);
 
                     $stmt->execute() or die(print_r($stmt->errorInfo(), true));
-
-                    // $data['quantity'] = $new_quantity;
-
-                    // $data['new_item'] = true;
 
                     $data['id'] = $product_id;
 
@@ -280,8 +252,6 @@
 
         public function delete($product_id, $cart_id, $quantity) {
 
-            // echo $product_id . " " . $cart_id . " " . $quantity;
-
             $stmt = $this->conn->prepare('SELECT * FROM cart_items WHERE product_id=:product_id AND cart_id=:cart_id');
             $stmt->bindValue(":product_id", $product_id);
             $stmt->bindValue(":cart_id", $cart_id);
@@ -290,27 +260,13 @@
 
             $rows = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // echo '<pre>';
-            // print_r($rows);
-
             $price_decode = json_decode($rows['product']);
-
-            // echo '<pre>';
-            // print_r($price_decode);
 
             $new_quantity = $rows['quantity'] - 1;
 
             $price = substr($price_decode->price, 1) * $new_quantity;
 
-            // echo $price;
-
             if (!empty($rows) && $rows['quantity'] > 0 && $new_quantity > 0) {
-
-                // echo $quantity;
-
-                // $new_quantity = $rows['quantity'] - 1;
-
-                // echo '<br/>hello' . $new_quantity;
 
                 $stmt = $this->conn->prepare('UPDATE cart_items SET quantity = :new_quantity WHERE product_id=:product_id AND cart_id=:cart_id');
                 $stmt->bindValue(":new_quantity", $new_quantity);
@@ -330,9 +286,6 @@
                 $data['message'] = 'Success! Your Cart has been updated!';
 
             } else {
-                // $success = false;
-
-                // if ($success) {
                     try {
 
                         $stmt = $this->conn->prepare('DELETE FROM cart_items WHERE product_id = ? AND cart_id = ? LIMIT 1' );
@@ -357,8 +310,7 @@
             
                             $data['success'] = false;
             
-                        }
-                // }   
+                    }
             }
 
             echo json_encode($data);
@@ -373,73 +325,6 @@
             $stmt->execute() or die(print_r($stmt->errorInfo(), true));
             
             $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // $rows = $rows['products'];
-            echo '<pre>';
-            print_r($rows);
-
-            // echo gettype($rows['products']);
-
-            // $rows = json_encode($rows['products']);
-
-            // print_r($rows);
-            // print_r($products);
-
-            // $object = (object) $products;
-
-            // echo '<pre>';
-            // print_r($rows);
-
-
-            // $products = array_merge($rows, $products);
-            // $products = json_encode($products);
-            echo '<pre>';
-            print_r($products);
-
-            $test = array_map('array_merge', $rows, $products);
-
-            echo '<pre>';
-            print_r($test);
-
-            // $rows["products"][] = $products;
-
-            // $products_update = [];
-
-            // $products_update = array_merge($products, $rows['products']);
-
-            // echo '<pre>';
-            // print_r($products_update);
-
-            // $products_update = json_encode($products_update);
-
-            // $products = json_encode($products);
-
-            // echo '<pre>';
-            // print_r($products_update);
-
-            // foreach ($products as $product) {
-            //     $products_col[] = $product;
-            // }
-
-            // $test = array_push($rows, $products);
-
-            // $rows['products'][] = $products;
-
-            // $rows = json_encode($products);
-
-            // array_push($products_col, $rows);
-
-            // $products_col = array_merge($products_col, $rows);
-
-            // echo '<pre>';
-            // print_r($rows);
-
-            // echo '<pre>';
-            // print_r($products_col);
-
-            // echo $products;
-            // echo '<pre>';
-            // print_r($test);
 
             try {
 
@@ -458,38 +343,17 @@
         public function get_cart($user_id) {
             
             try {
+                $stmt = $this->conn->prepare("SELECT * FROM carts WHERE user_id=:user_id");
 
-                // $stmt = $this->conn->prepare("SELECT count(*) from cart_items WHERE user_id=:user_id");
+                $stmt->bindParam(":user_id", $user_id);
 
-                // $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
 
-                // $stmt->execute();
+                $stmt->execute();
 
-                // $number_of_rows = $stmt->fetchColumn();
+                $rows = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                // $number_of_rows = 1;
-
-                // if ($number_of_rows > 0) {
-                    
-                    $stmt = $this->conn->prepare("SELECT * FROM carts WHERE user_id=:user_id");
-
-                    $stmt->bindParam(":user_id", $user_id);
-
-                    $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
-
-                    // $stmt->execute() or die(print_r($stmt->errorInfo(), true));
-
-                    $stmt->execute();
-
-                    $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                    return $rows;
-
-                // } else {
-                //     return false;
-                //     // echo 'test';
-                // }
-
+                return $rows;
 
             } catch (Exception $e) {
 
@@ -505,10 +369,6 @@
                 // prepare query statement
                 $stmt = $this->conn->prepare("SELECT count(*) FROM cart_items WHERE user_id=:user_id");
             
-                // sanitize
-                // $this->product_id=htmlspecialchars(strip_tags($this->product_id));
-                // $this->user_id=htmlspecialchars(strip_tags($this->user_id));
-            
                 // bind category id variable
                 $stmt->bindParam(":user_id", $user_id);
             
@@ -517,7 +377,6 @@
             
                 // get row value
                 $rows = $stmt->fetch(PDO::FETCH_NUM);
-                // print_r($rows);
             
                 // return
                 if($rows[0]>0){
@@ -545,30 +404,6 @@
                     return $e->getMessage();
                 }
         }
-
-        // public function count(){
- 
-        //     // query to count existing cart item
-        //     $query = "SELECT count(*) FROM " . $this->table_name . " WHERE user_id=:user_id";
-         
-        //     // prepare query statement
-        //     $stmt = $this->conn->prepare( $query );
-         
-        //     // sanitize
-        //     $this->user_id=htmlspecialchars(strip_tags($this->user_id));
-         
-        //     // bind category id variable
-        //     $stmt->bindParam(":user_id", $this->user_id);
-         
-        //     // execute query
-        //     $stmt->execute();
-         
-        //     // get row value
-        //     $rows = $stmt->fetch(PDO::FETCH_NUM);
-         
-        //     // return
-        //     return $rows[0];
-        // }
 
     }
 ?>

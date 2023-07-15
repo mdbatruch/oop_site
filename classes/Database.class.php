@@ -57,65 +57,6 @@
                 return $e->getMessage();
             }
         }
-
-        // public function __construct($server, $user, $password, $database) {
-
-        //     self::$server = $server;
-        //     self::$user = $user;
-        //     self::$password = $password;
-        //     self::$database = $database;
-        //     self::$port = 8889;
-            
-        //     try {
-        //         $db = new mysqli(self::$server, self::$user, self::$password, self::$database, 8889);
-        //     } catch(Exception $e) {
-        //         echo "Connection failed: " . $e->getMessage();
-        //     }
-        // }
-
-        // static public function set_database($database) {
-        //     self::$database = $database;
-        //   }
-
-        // static public function find_by_sql($sql) {
-        //     $result = self::$database->query($sql);
-        //     if(!$result) {
-        //         exit("Database query failed.");
-        //     }
-        
-        //     // results into objects
-        //     $object_array = [];
-        //     while($record = $result->fetch_assoc()) {
-        //         $object_array[] = static::instantiate($record);
-        //     }
-        
-        //     $result->free();
-        
-        //     return $object_array;
-        // }
-
-        // static protected function instantiate($record) {
-        //     $object = new static;
-        //     // Could manually assign values to properties
-        //     // but automatically assignment is easier and re-usable
-        //     foreach($record as $property => $value) {
-        //       if(property_exists($object, $property)) {
-        //         $object->$property = $value;
-        //       }
-        //     }
-        //     return $object;
-        //   }
-          
-        // static public function find_all() {
-        //     $sql = "SELECT id, page, title, subtitle, description FROM " . static::$table_name;
-
-        //     $stmt = self::$database->prepare($sql);
-        //     $stmt->execute();
-        //     $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        //     return $pages;
-        // }
-
     }
 
 

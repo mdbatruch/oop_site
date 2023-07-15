@@ -58,7 +58,6 @@
                 $exists = $stripe->customers->all(['email' => $order['contact_details']['email']]);
 
                 // if no existing customer, then create a new customer 
-
                 if (empty($exists['data'])) {
                 
                   $stripe->customers->create([
@@ -74,42 +73,15 @@
                     $name = $exists['data'][0]['name'];
                 }
 
-                //remove decimal values from price
+                // remove decimal values from price
                 $stripe_amount = str_replace('.', '', $stripe_amount);
 
                 $stripe->charges->create([
                     'amount' => $stripe_amount,
                     'currency' => 'cad',
                     'source' => $order['token'],
-                    // 'customer' => 'customer_id',
                     'description' => 'Order Charge for ' . $name,
                 ]);
-
-
-                //   $stripe->orders->create([
-                //     'currency' => 'cad',
-                //     'email' => $order['contact_details']['email'],
-                //     'items' => [
-                //       [
-                //         'type' => 'sku',
-                //         'parent' => 'price_1J64rIG2sTnL7IR6h0OijRys',
-                //         'quantity' => '12',
-                //         'amount' => '400'
-                //       ],
-                //     ],
-                //     'shipping' => [
-                //       'name' => $order['contact_details']['name'],
-                //       'address' => [
-                //         'line1' => $order['delivery_address']['street'],
-                //         'city' => $order['delivery_address']['city'],
-                //         'state' => $order['delivery_address']['province'],
-                //         'country' => 'Canada',
-                //         'postal_code' => $order['delivery_address']['postal'],
-                //       ],
-                //     ],
-                //   ]);
-
-                // exit;
 
                 $stmt = $this->conn->prepare('INSERT INTO orders (customer_id, contact_details, shipping_address, billing_address, shipping_information, products, card_info, taxes_subtotals, amount) VALUES (?,?,?,?,?,?,?,?,?)');
                 $stmt->bindParam(1, $customer_id);
@@ -154,8 +126,6 @@
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                     extract($row);
 
-                    // print_r($row);
-              
                     $order_item=array(
                         "id" => $row['id'],
                         "customer_id" => $customer_id,
@@ -198,8 +168,6 @@
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                     extract($row);
 
-                    // print_r($row);
-              
                     $order_item=array(
                         "id" => $row['id'],
                         "customer_id" => $customer_id,
@@ -229,10 +197,7 @@
         static function fetchAllOrders($db, $limit = null, $offset = null) {
 
             try {
-
                 $orders = [];
-
-                // $stmt = $db->prepare('SELECT * FROM orders');
 
                 $query = "SELECT *  FROM orders LIMIT " . $limit . " OFFSET " . $offset;
                 
@@ -241,8 +206,6 @@
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                     extract($row);
-
-                    // print_r($row);
               
                     $order_item=array(
                         "id" => $row['id'],
@@ -302,9 +265,6 @@
                     return $e->getMessage();
                 }
         }
-
-        
-
     }
 
 ?>

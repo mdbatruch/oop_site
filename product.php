@@ -25,8 +25,6 @@
         header( 'location: products');
     }
 
-    // end product id check
-
     $chosen = $product->getProduct($_GET['id']);
 
     $galleries = json_decode($chosen['product_gallery']);

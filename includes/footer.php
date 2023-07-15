@@ -134,8 +134,6 @@
 
                 var chosen = $(category_list).children('option:selected').text();
 
-                console.log(chosen);
-
                 if (window.location.href.indexOf("?category") > -1 || window.location.href.indexOf("?page") > -1) {
 
                     $url = window.location.href.split('?')[0];
@@ -152,21 +150,14 @@
         $("#login").on("submit", function(e){
 
             e.preventDefault();
-    
-            console.log('a login has been attempted');
-    
-            // function loginForm() {
+
     
                 var formData = {
                     'username'         : $('input[name=username]').val(),
                     'password'         : $('input[name=password]').val(),
                     'id'               : $('form').attr('id')
                 };
-                // var username = $("#username").val();
-                // var password = $("#password").val();
 
-                console.log(formData);
-    
                 $.ajax({
                     type: "POST",
                     url: "private/process.php",
@@ -189,41 +180,22 @@
                             }
                         
                             $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                        
-                            console.log('Login Not Successful!');
     
                         } else {
     
-                            // $('.alert-danger').remove();
-    
                             $(location).attr('href', data.redirect);
-    
-                            // window.location.replace(data.redirecturl);
-    
-                            // header('Location:' + data.redirecturl);
                             
-                            console.log('Login Successful!');
-                            // alert('Just got in!');
-    
                             $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
-    
-                            // $('#login-form').trigger("reset");
+
                         }
                     
                 });
-    
-            // }
             });
 
         $('#contact').submit(function(e){
 
             e.preventDefault(); 
 
-            console.log('contact has been attempted');
-
-            // var formId = $('form').attr('id');
-
-            // hardcode form value to prevent overlap with search bar
             var formId = 'contact';
             var name = $('#name').val();
             var email = $('#email').val();
@@ -238,8 +210,6 @@
             form_data.append('file', file_data);
             form_data.append('message', message);
 
-
-            console.log(formId, name, email, file_data, message);
 
             $.ajax({
                 type: "POST",
@@ -287,14 +257,10 @@
         $('#contact-form').submit(function(e){
             e.preventDefault();
 
-            console.log('contact has been attempted');
-
             var name = $('#name').val();
             var email = $('#email').val();
             var subject = $('#subject').val();
             var message = $('#message').val();
-
-            console.log(name, email, subject, message);
 
             $('#form-message').html('<div class="alert alert-success">Thanks ' + name + ', we got your message. We\'ll look to contact you at: ' + email + ' about your inquiry about ' + subject + ' (P.S. this email will not send anywhere actually).</div>');
 
@@ -305,9 +271,7 @@
 
         $('#customer-register').submit(function(e){
 
-        e.preventDefault(); 
-
-        console.log('customer register has been attempted');
+        e.preventDefault();
 
         var id = $(this).attr('id');
         var first_name = $('#firstname').val();
@@ -331,14 +295,6 @@
             postal: postal,
             country: country
         }
-
-        console.log(id, first_name, last_name, email, street, suite, city, province, postal, country, username);
-
-        // if (password !== password_validate) {
-        //     $('#confirm-password-error').html('<div class="alert alert-danger mt-3 input-alert-error">Passwords do not match, please try again<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        // } else 
-        
-        // {
 
             $.ajax({
                 type: "POST",
@@ -434,22 +390,15 @@
 
                     }
             });
-        // }
-
         });
 
         $('#customer-login').submit(function(e){
 
             e.preventDefault(); 
 
-            console.log('customer login has been attempted');
-
             var id = $(this).attr('id');
             var username = $('#login-username').val();
             var password = $('#login-password').val();
-
-
-            // console.log(username);
 
                 $.ajax({
                     type: "POST",
@@ -476,9 +425,6 @@
                             $('#login-form-message').html('<div class="alert alert-danger mt-3 input-alert-error">' + data.message + '</div>');
 
                         } else {
-
-                            console.log(data);
-                            console.log('success!')
 
                             $('#login-username-error').html('');
                             $('#login-password-error').html('');
@@ -521,8 +467,6 @@
                     price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
                 }
 
-                console.log(id, user_id, cart_id, product);
-
                 if (user_id == 'no-customer') {
                     var customer = false;
                     
@@ -552,22 +496,17 @@
 
                                     $('#cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
-                                        // update cart count in header on browser side
-                                        var cartText = $('.cart-count').text();
+                                    // update cart count in header on browser side
+                                    var cartText = $('.cart-count').text();
 
-                                        var newCount = parseFloat(cartText) + 1;
+                                    var newCount = parseFloat(cartText) + 1;
 
-                                        $('.cart-count').text(newCount);
+                                    $('.cart-count').text(newCount);
 
-                                        // add product to sidebar
-                                        var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price, 1, '');
+                                    // add product to sidebar
+                                    var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price, 1, '');
 
-                                        $( ".cart-summary-slider" ).append(product_sidebar);
-                                        // add to side menu
-                                        // $('#cart-sub-total').text(newCount);
-
-
-
+                                    $( ".cart-summary-slider" ).append(product_sidebar);
                                 }
                         });
 
@@ -604,8 +543,6 @@
                     image: image[image.length - 1],
                     price: $(this).parent().siblings('.price').text().replace(/\s+/g, ' ').trim(),
                 }
-                
-                console.log(id, user_id, cart_id, product);
 
                 if (user_id == 'no-customer') {
                     var customer = false;
@@ -647,11 +584,6 @@
                                         var product_sidebar = returnSidebarProduct(product_json.id, product_json.name, product_json.description, product_json.image, product_json.price, 1, '');
 
                                         $( ".cart-summary-slider" ).append(product_sidebar);
-                                        // add to side menu
-                                        // $('#cart-sub-total').text(newCount);
-
-
-
                                 }
                         });
 
@@ -663,8 +595,6 @@
             $('#add-cart').click(function(e){
 
                 e.preventDefault(); 
-
-                console.log('cart addition has been attempted');
 
                 var customer = true;
                 var admin = false;
@@ -694,10 +624,6 @@
                 }
 
                 var amount = parseFloat(product_price_unformatted) *  parseFloat(quantity);
-
-                console.log(product_price_unformatted);
-
-                console.log(id, user_id, cart_id, product, quantity);
 
                 if (user_id == 'no-customer') {
                     var customer = false;
@@ -756,8 +682,6 @@
 
         $(".remove-item").on("click", function(e){
         e.preventDefault();
-
-        console.log('an item deletion has been tried');
             
             var formId = $(this).attr('data-action');
             var product_id = $(this).attr('data-id');
@@ -766,9 +690,6 @@
             var product_price = $(this).attr('data-price');
             var cart_id = $('#cart_id').text().trim();
             var quantity = $(this).attr('data-quantity');
-
-        console.log(formId, product_id, cart_id);
-
     
             $.ajax({
                 type: "POST",
@@ -781,11 +702,7 @@
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    console.log('Item did not delete!');
-
                 } else {
-                    
-                    console.log('Item deleted!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
@@ -799,7 +716,6 @@
                     }
 
                     // reevaluate sub total and cart count
-
                     evaluateCartCount();
 
                     evaluateSubTotal();
@@ -818,8 +734,6 @@
 
     $(".add-item").on("click", function(e){
         e.preventDefault();
-
-        console.log('an item additon from the cart has been tried');
             
             var formId = $(this).attr('data-action');
             var product_id = $(this).attr('data-id');
@@ -828,9 +742,6 @@
             var product_price = $(this).attr('data-price');
             var cart_id = $('#cart_id').text().trim();
             var quantity = $(this).attr('data-quantity');
-
-        console.log(formId, product_id, cart_id, quantity);
-
     
             $.ajax({
                 type: "POST",
@@ -843,11 +754,7 @@
 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    console.log('Item did not add!');
-
                 } else {
-                    
-                    console.log('Item Added!');
 
                     $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
@@ -857,7 +764,6 @@
                     $('.product[data-id="' + data.id + '"]').find('.add-item').attr('data-quantity', data.quantity);
 
                     // reevaluate sub total and cart count
-
                     evaluateCartCount();
 
                     evaluateSubTotal();
@@ -874,17 +780,11 @@
 
     $(".remove-item-full").on("click", function(e){
         e.preventDefault();
-
-
-        console.log('an item deletion has been tried');
             
             var formId = $(this).attr('data-action');
             var product_id = $(this).attr('data-id');
             var cart_id = $('#cart_id').text().trim();
             var quantity = $(this).attr('data-quantity');
-
-            console.log(formId, product_id, cart_id);
-
             var item_removal = $('#item-removal');
             var body = $('body');
 
@@ -918,11 +818,7 @@
 
                         $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                        console.log('Item did not delete!');
-
                     } else {
-                        
-                        console.log('Item deleted!');
 
                         $('#form-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                         
@@ -932,7 +828,6 @@
 
                         // reevaluate sub total and cart count
                         evaluateCartCount();
-
                         evaluateSubTotal();
 
                         if ($('.cart-count-bottom').text() == 0) {
@@ -950,8 +845,6 @@
     $(".remove-item-full-cart").on("click", function(e){
         e.preventDefault();
 
-        console.log('an item deletion has been tried');
-            
             var formId = $(this).attr('data-action');
             var product_id = $(this).attr('data-id');
             var cart_id = $('#cart_id').text().trim();
@@ -961,8 +854,6 @@
             var body = $('body');
 
             $(item_removal).addClass('d-block');
-
-        console.log(formId, product_id, cart_id);
 
         $("#confirm-item-removal .cancel").on("click", function(e){
                 e.preventDefault();
@@ -992,11 +883,7 @@
 
                     $('#cart-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    console.log('Item did not delete!');
-
                 } else {
-                    
-                    console.log('Item deleted!');
 
                     $('#slider-cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                     

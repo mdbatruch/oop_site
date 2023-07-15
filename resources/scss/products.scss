@@ -305,7 +305,6 @@
                 .price {
                     background-color: $verylightgrey;
                     @media(min-width: 768px) {
-                        // width: 25%;
                         margin-right: 1.5rem;
                     }
                     .price-container {
@@ -430,7 +429,6 @@
             flex-direction: column;
         }
         .add-cart-products {
-            // bottom: 20px;
             justify-content: flex-end;
             position: relative;
             @media(min-width: 768px) {
@@ -581,7 +579,6 @@
                 order: 2;
                 overflow: scroll;
                 width: 100%;
-                // display: none !important;
                 &::-webkit-scrollbar {
                     display: none;
                 }

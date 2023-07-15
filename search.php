@@ -14,10 +14,6 @@
                 $query = $search->search_term($_GET['q']);
             }
 
-            // echo '<pre>';
-            // print_r($query);
-
-
         } catch (PDOException $e) {
 
           echo $e->getMessage();
@@ -55,12 +51,7 @@
                 <h1>Search results</h1>
                 <div class="col-12">
                     <?php 
-                        // if ($_GET['q'] === '') {
-                            $search->render($query);
-                        // } else {
-
-                        // }
-                    
+                        $search->render($query);
                     ?>
                 </div>
             </p> 

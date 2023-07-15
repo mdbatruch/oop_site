@@ -84,8 +84,6 @@
     <script src="js/main.chunk.js"></script>
 
     <script type="text/javascript">
-        
-        // toggleBodyandFormMessage();
 
         toggleCartMenu();
 
@@ -129,8 +127,6 @@
                 postal: postal,
                 country: country
             }
-
-            // console.log(id, customer_id, username, first_name, last_name, email, street, suite, city, province, postal, country);
 
             $.ajax({
                 type: "POST",
@@ -209,11 +205,7 @@
 
                     $('#form-message').html('<div class="alert alert-danger">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    console.log('Profile did not update!');
-
                 } else {
-                    
-                    console.log('Profile updated!');
 
                     $('#form-message').html('<div class="alert alert-success"><img src="<?= root_url('uploads/check.png'); ?>" alt="success" class="img-fluid mb-2">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
@@ -234,8 +226,6 @@
 
         $(".remove-item-full-cart").on("click", function(e){
             e.preventDefault();
-
-            console.log('an item deletion has been tried');
             
             var formId = $(this).attr('data-action');
             var product_id = $(this).attr('data-id');
@@ -246,8 +236,6 @@
             var body = $('body');
 
             $(item_removal).addClass('d-block');
-
-            console.log(formId, product_id, cart_id);
 
         $("#confirm-item-removal .cancel").on("click", function(e){
                 e.preventDefault();
@@ -277,11 +265,7 @@
 
                     $('#cart-message').html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
 
-                    console.log('Item did not delete!');
-
                 } else {
-                    
-                    console.log('Item deleted!');
 
                     $('#slider-cart-message-' + data.id).html('<div class="alert alert-success">' + data.message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
                     

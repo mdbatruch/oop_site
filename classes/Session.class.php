@@ -3,7 +3,6 @@
     class Session {
 
         private $admin_id;
-        // public $account;
         public $username;
         public $id;
         private $last_login;
@@ -24,7 +23,6 @@
                 session_regenerate_id();
 
                 // set this instances' properties and session variables with the given values from the form submission and validation from database
-                // $this->admin_id = $_SESSION['admin_id'] = $admin->id;
                 $this->username = $username;
                 $this->last_login = $login_time;
                 $this->admin = true;
@@ -49,8 +47,6 @@
 
         public function is_logged_in_as_admin($account) {
             // returns true is there is and admin id and the last login was no too long ago
-            // return isset($this->username) && $this->last_login_is_recent();
-            // return isset($this->username);
             if ($account === 'Administrator') {
                 return true;
             }
@@ -62,14 +58,9 @@
             if ($account === 'Customer') {
                 return true;
             }
-
-            // if (isset($this->admin)){
-            //     return true;
-            // }
         }
 
         public function logout() {
-            // unset($_SESSION['admin_id']);
             unset($_SESSION['username']);
             unset($_SESSION['account']);
             unset($_SESSION['last_login']);
@@ -83,7 +74,6 @@
 
         private function check_stored_login() {
             if (isset($_SESSION['username'])) {
-                // $this->admin_id = $_SESSION['admin_id'];
                 $this->username = $_SESSION['username'];
                 $this->last_login = $_SESSION['last_login'];
             }

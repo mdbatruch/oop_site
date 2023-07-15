@@ -18,7 +18,7 @@
 
         if (isset($_SESSION['orders'])) {
             foreach ($_SESSION['orders'] as $key => $value) {
-                //check if this is not the first time the page has been viewed
+                // check if this is not the first time the page has been viewed
                 if($_GET['order'] == $value) {
                 
                     unset($_SESSION['order_success']);
@@ -74,10 +74,6 @@
         $count = 0;
         $items = null;
     }
-
-    // echo '<pre>';
-    // print_r($order);
-
 ?>
 <header>
     <div class="container-fluid">
@@ -139,7 +135,6 @@
                             <div class="billing-details my-2">
                                 <h6>Billing Details:</h6>
                                 <?php
-                                    // card variable also used on lines 200
                                     $card = json_decode($order[0]['card_info']);
                                     $customer_info = json_decode($order[0]['contact_details']);
                                     $billing_address = json_decode($order[0]['billing_address']); 

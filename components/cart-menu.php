@@ -9,8 +9,6 @@
     } else {
         $products = false;
     }
-    // echo '<pre>';
-    // print_r($products);
 ?>
 <div class="cart-menu">
     <div class="header d-flex p-4">

@@ -1,7 +1,5 @@
 <?php
 
-// require 'mail/PHPMailerAutoload.php';
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -74,7 +72,6 @@ class Email {
     public function attach() {
 
         // add attachment validation here as well
-        
         if (!empty($this->attachment) &&
         $this->attachment['error'] == UPLOAD_ERR_OK) {
             return true;
@@ -100,15 +97,10 @@ class Email {
 
             $this->attach();
 
-            // var_dump($this->attachment);
-
             if ($this->attach()) {
                 $mail->AddAttachment($this->attachment['tmp_name'],
                 $this->attachment['name']);
             }
-
-            // var_dump($this->attachment);
-
 
             $mail->IsSMTP();
             $mail->SMTPDebug = 0;
