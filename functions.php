@@ -28,5 +28,4 @@
 
         return $protocol . SITE_ROOT_PRIVATE . $string;
     }
-
 ?>
